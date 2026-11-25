@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PESCA-CLICK PAITA | Mercado B2B del Muelle a la Cebichería & Telemetría IoT</title>
+        <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome 6 CDN -->
@@ -13,6 +15,7 @@
             darkMode: 'class',
             theme: {
                 extend: {
+                    fontFamily: { sans: ["'Plus Jakarta Sans'", 'sans-serif'], mono: ["'JetBrains Mono'", 'monospace'] },
                     colors: {
                         brand: {
                             50: '#f0f9ff',
@@ -96,6 +99,14 @@
             from { transform: translateX(100%); opacity: 0; }
             to { transform: translateX(0); opacity: 1; }
         }
+
+    
+        /* SLEEK SCROLLBAR & RANGE SLIDER */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 99px; }
+        ::-webkit-scrollbar-thumb:hover { background: #0284c7; }
+        .ticker-wrap:hover .ticker-move { animation-play-state: paused; }
 
     </style>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
@@ -265,9 +276,12 @@
                         <a href="#modulo-catalogo" class="bg-brand-600 hover:bg-brand-700 text-white font-bold px-6 py-3.5 rounded-xl shadow-md transition flex items-center text-sm">
                             <i class="fas fa-fish mr-2"></i> Ver Capturas Frescas del Día
                         </a>
-                        <a href="#modulo-radar" class="bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 font-semibold px-6 py-3.5 rounded-xl transition flex items-center text-sm shadow-sm">
-                            <i class="fas fa-crosshairs mr-2 text-brand-600"></i> Rastrear Lanchas en Radar AIS
+                        <a href="#modulo-radar" class="bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 font-semibold px-5 py-3.5 rounded-xl transition flex items-center text-sm shadow-sm">
+                            <i class="fas fa-crosshairs mr-2 text-brand-600"></i> Radar AIS en Vivo
                         </a>
+                        <button onclick="openFishermanModal()" class="bg-brand-900 hover:bg-brand-800 text-cyan-200 border border-brand-700 font-bold px-5 py-3.5 rounded-xl transition flex items-center text-sm shadow-md">
+                            <i class="fas fa-anchor mr-2 text-cyan-400"></i> Portal Pescador (Reportar Pesca)
+                        </button>
                     </div>
                 </div>
 
@@ -389,7 +403,7 @@
                 <!-- ======================================================== -->
         <!-- MÓDULO 1: RADAR AIS, TELEMETRÍA Y SEGUIMIENTO MARÍTIMO     -->
         <!-- ======================================================== -->
-        <section id="modulo-radar" class="space-y-6 pt-4">
+        <section id="modulo-radar" class="scroll-mt-24 space-y-6 pt-4">
             
             <!-- HEADER DEL MÓDULO CON MODOS DE VISUALIZACIÓN -->
             <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 pb-2 border-b border-slate-200">
@@ -431,6 +445,8 @@
                             <span class="text-white font-bold">VHF AIS 161.975 MHz</span>
                             <span class="text-slate-500">|</span>
                             <span class="text-cyan-300">RANGO: 12 MN</span>
+                            <span class="text-slate-500 hidden sm:inline">|</span>
+                            <span id="radar-coords" class="text-emerald-300 hidden sm:inline">05°04'50"S 81°06'35"W</span>
                         </div>
                         <div class="flex items-center space-x-3 text-slate-300">
                             <span><i class="fas fa-wind mr-1 text-cyan-400"></i> 14 kts SSW</span>
@@ -463,7 +479,7 @@
                             <path d="M 120 10 Q 130 50 115 100 T 145 160 T 160 195" fill="none" stroke="#06b6d4" stroke-width="1.5" stroke-dasharray="2,2"/>
                             <!-- Zona de Puerto DPA -->
                             <circle cx="115" cy="100" r="3" fill="#38bdf8"/>
-                            <text x="122" y="103" fill="#38bdf8" font-size="6" font-family="monospace">DPA PAITA</text>
+                            
                             <text x="135" y="145" fill="#94a3b8" font-size="5" font-family="monospace">Yacila</text>
                             <text x="145" y="185" fill="#94a3b8" font-size="5" font-family="monospace">La Islilla</text>
                         </svg>
@@ -737,7 +753,7 @@
 
         <!-- MÓDULO 2: CATÁLOGO B2B & PREVENTA DIRECTA                 -->
         <!-- ======================================================== -->
-        <section id="modulo-catalogo" class="space-y-6">
+        <section id="modulo-catalogo" class="scroll-mt-24 space-y-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
                 <div>
                     <div class="text-xs font-mono uppercase tracking-wider text-brand-600 font-bold mb-1">
@@ -1435,7 +1451,7 @@
         <!-- ======================================================== -->
         <!-- MÓDULO 3: BALANZA DIGITAL INDUSTRIAL CON TARA             -->
         <!-- ======================================================== -->
-        <section id="modulo-balanza" class="space-y-6">
+        <section id="modulo-balanza" class="scroll-mt-24 space-y-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
                 <div>
                     <div class="text-xs font-mono uppercase tracking-wider text-brand-600 font-bold mb-1">
@@ -1576,7 +1592,7 @@
         <!-- ======================================================== -->
         <!-- MÓDULO 4: CADENA DE FRÍO IoT                              -->
         <!-- ======================================================== -->
-        <section id="modulo-frio" class="space-y-6">
+        <section id="modulo-frio" class="scroll-mt-24 space-y-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
                 <div>
                     <div class="text-xs font-mono uppercase tracking-wider text-brand-600 font-bold mb-1">
@@ -1675,40 +1691,43 @@
                             </div>
                         </div>
 
-                        <!-- Route progress -->
-                        <div class="my-5 bg-slate-50 p-4 rounded-xl border border-slate-200 relative space-y-4 font-mono text-xs">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center space-x-2">
-                                    <span class="w-3.5 h-3.5 rounded-full bg-brand-600"></span>
-                                    <div>
-                                        <strong class="text-slate-900 block">DPA Paita (Muelle)</strong>
-                                        <span class="text-[10px] text-slate-500">Salida: 05:40 AM (1.2 °C)</span>
-                                    </div>
-                                </div>
-                                <span class="text-slate-500 text-[11px]"><i class="fas fa-clock mr-1"></i> Km 0.0</span>
+                        <!-- Route progress INTERACTIVO POR PUNTOS GPS -->
+                        <div class="my-4 bg-slate-50 p-4 rounded-2xl border border-slate-200 relative space-y-4 font-mono text-xs">
+                            <div class="flex items-center justify-between text-[11px]">
+                                <span class="text-slate-500 font-sans font-semibold">Simulador de Tramo GPS (haz clic en cada parada):</span>
+                                <span id="route-gps-status" class="text-brand-700 font-bold">Km 42 • Peaje Sullana (1.4 °C)</span>
                             </div>
 
-                            <!-- Progress Bar -->
-                            <div class="relative py-2">
+                            <!-- Progress Bar Dinámica -->
+                            <div class="relative py-3">
                                 <div class="h-2.5 w-full bg-slate-200 rounded-full overflow-hidden">
-                                    <div class="h-full bg-gradient-to-r from-brand-500 to-emerald-500 w-3/4 rounded-full"></div>
+                                    <div id="route-progress-fill" class="h-full bg-gradient-to-r from-brand-500 to-emerald-500 rounded-full transition-all duration-500" style="width: 72%"></div>
                                 </div>
-                                <div class="absolute top-0 left-3/4 transform -translate-x-1/2 -translate-y-1">
-                                    <span class="bg-brand-600 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full shadow-md flex items-center">
-                                        <i class="fas fa-truck mr-1"></i> En Tránsito (Km 42)
+                                <div id="route-truck-pill" class="absolute top-0 transform -translate-x-1/2 transition-all duration-500" style="left: 72%">
+                                    <span class="bg-brand-900 text-cyan-300 text-[10px] font-bold px-2.5 py-0.5 rounded-full shadow-md flex items-center whitespace-nowrap border border-cyan-500/40">
+                                        <i class="fas fa-truck mr-1 text-emerald-400"></i> <span id="route-truck-km">Km 42</span>
                                     </span>
                                 </div>
                             </div>
 
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center space-x-2">
-                                    <span class="w-3.5 h-3.5 rounded-full bg-emerald-500"></span>
-                                    <div>
-                                        <strong class="text-slate-900 block">Piura Metropolitana (Cebicherías)</strong>
-                                        <span class="text-[10px] text-slate-500">Llegada Estimada: 06:28 AM (1.4 °C)</span>
-                                    </div>
-                                </div>
-                                <span class="text-slate-500 text-[11px]"><i class="fas fa-map-marker-alt mr-1 text-emerald-500"></i> Km 58.0</span>
+                            <!-- 4 Checkpoints Clickeables -->
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[10px]">
+                                <button onclick="setRouteStop(8, 'Km 0', 'DPA Paita Muelle (05:40 AM)', '1.2 °C', '0 km/h (Estiba)')" class="bg-white hover:bg-brand-50 border border-slate-200 p-2 rounded-xl text-left transition">
+                                    <strong class="text-brand-700 block">1. DPA Paita</strong>
+                                    <span class="text-slate-500">Km 0 • 05:40 AM</span>
+                                </button>
+                                <button onclick="setRouteStop(38, 'Km 22', 'El Cruce San Lucas (06:00 AM)', '1.3 °C', '68 km/h')" class="bg-white hover:bg-brand-50 border border-slate-200 p-2 rounded-xl text-left transition">
+                                    <strong class="text-brand-700 block">2. San Lucas</strong>
+                                    <span class="text-slate-500">Km 22 • 06:00 AM</span>
+                                </button>
+                                <button onclick="setRouteStop(72, 'Km 42', 'Peaje Sullana (06:14 AM)', '1.4 °C', '64 km/h')" class="bg-brand-50 hover:bg-brand-100 border border-brand-300 p-2 rounded-xl text-left transition">
+                                    <strong class="text-brand-900 block">3. En Tránsito</strong>
+                                    <span class="text-brand-700">Km 42 • 06:14 AM</span>
+                                </button>
+                                <button onclick="setRouteStop(96, 'Km 58', 'Cebichería El Cántaro (06:28 AM)', '1.4 °C', 'Entregado ✓')" class="bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 p-2 rounded-xl text-left transition">
+                                    <strong class="text-emerald-800 block">4. Piura Centro</strong>
+                                    <span class="text-emerald-700">Km 58 • 06:28 AM</span>
+                                </button>
                             </div>
                         </div>
 
@@ -1743,7 +1762,7 @@
         <!-- ======================================================== -->
         <!-- MÓDULO 5: BÓVEDA ESCROW Y FINTECH                         -->
         <!-- ======================================================== -->
-        <section id="modulo-escrow" class="space-y-6">
+        <section id="modulo-escrow" class="scroll-mt-24 space-y-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
                 <div>
                     <div class="text-xs font-mono uppercase tracking-wider text-brand-600 font-bold mb-1">
@@ -1810,7 +1829,7 @@
         <!-- ======================================================== -->
         <!-- MÓDULO 6: TRAZABILIDAD SANIPES QR Y SHA-256               -->
         <!-- ======================================================== -->
-        <section id="modulo-trazabilidad" class="space-y-6">
+        <section id="modulo-trazabilidad" class="scroll-mt-24 space-y-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
                 <div>
                     <div class="text-xs font-mono uppercase tracking-wider text-brand-600 font-bold mb-1">
@@ -1934,6 +1953,66 @@
 
 
         <!-- ======================================================== -->
+        
+        <!-- ======================================================== -->
+        <!-- CALCULADORA INTERACTIVA DE AHORRO MENSUAL & IMPACTO ROI  -->
+        <!-- ======================================================== -->
+        <section id="calculadora-roi" class="scroll-mt-24 bg-gradient-to-br from-brand-950 via-brand-900 to-slate-900 text-white rounded-3xl p-6 sm:p-10 shadow-2xl border border-brand-800 relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+                <div class="lg:col-span-5 space-y-4">
+                    <span class="bg-cyan-500/20 text-cyan-300 border border-cyan-400/30 font-mono text-[10px] px-3 py-1 rounded-full font-bold uppercase inline-block">
+                        <i class="fas fa-calculator mr-1"></i> SIMULADOR FINANCIERO B2B
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl font-black leading-tight">Calcula el Ahorro Real de tu Cebichería al Mes</h2>
+                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        Ajusta los kilogramos diarios que compra tu restaurante en Piura o Sullana (promedio del estudio de campo: <strong>40 kg/día</strong>) y comprueba cuánto dinero dejas de regalar al intermediario.
+                    </p>
+
+                    <div class="space-y-4 pt-2 bg-white/5 p-5 rounded-2xl border border-white/10 font-mono text-xs">
+                        <div>
+                            <div class="flex justify-between mb-1.5">
+                                <span class="text-cyan-200">Consumo diario del restaurante:</span>
+                                <strong id="roi-kg-val" class="text-white text-sm">40 kg/día</strong>
+                            </div>
+                            <input id="roi-kg-slider" type="range" min="10" max="120" step="5" value="40" oninput="updateROICalc()" class="w-full accent-emerald-400 cursor-pointer">
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1.5">
+                                <span class="text-cyan-200">Días de operación al mes:</span>
+                                <strong id="roi-days-val" class="text-white text-sm">26 días</strong>
+                            </div>
+                            <input id="roi-days-slider" type="range" min="15" max="30" step="1" value="26" oninput="updateROICalc()" class="w-full accent-cyan-400 cursor-pointer">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 font-mono">
+                    <div class="bg-white/10 backdrop-blur-md p-5 rounded-2xl border border-white/15 space-y-1">
+                        <span class="text-[10px] text-red-300 uppercase font-bold">Gasto Canal Tradicional (S/ 22/kg)</span>
+                        <div id="roi-trad-total" class="text-2xl font-black text-red-300 line-through">S/ 22,880.00</div>
+                        <span class="text-[11px] text-slate-400 block font-sans">Pagando sobreprecio a revendedores en terminal</span>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md p-5 rounded-2xl border border-cyan-400/40 space-y-1">
+                        <span class="text-[10px] text-cyan-300 uppercase font-bold">Inversión con PESCA-CLICK (S/ 15/kg)</span>
+                        <div id="roi-pc-total" class="text-2xl font-black text-white">S/ 15,600.00</div>
+                        <span class="text-[11px] text-cyan-200 block font-sans">Incluye flete frío a 1.4 °C puesto en puerta</span>
+                    </div>
+                    <div class="bg-emerald-500/20 backdrop-blur-md p-5 rounded-2xl border-2 border-emerald-400 space-y-1 shadow-lg">
+                        <span class="text-[10px] text-emerald-300 uppercase font-bold">💰 AHORRO NETO DE TU RESTAURANTE</span>
+                        <div id="roi-saving-month" class="text-3xl font-black text-emerald-300">S/ 7,280.00 <small class="text-xs font-normal">/mes</small></div>
+                        <span id="roi-saving-year" class="text-[11px] text-emerald-200 font-bold block">Equivale a S/ 87,360.00 ahorrados al año</span>
+                    </div>
+                    <div class="bg-amber-500/15 backdrop-blur-md p-5 rounded-2xl border border-amber-400/40 space-y-1">
+                        <span class="text-[10px] text-amber-300 uppercase font-bold">🐟 INGRESO EXTRA AL PESCADOR PAITA</span>
+                        <div id="roi-fish-gain" class="text-3xl font-black text-amber-300">+S/ 7,800.00 <small class="text-xs font-normal">/mes</small></div>
+                        <span class="text-[11px] text-amber-200 block font-sans">S/ 7.50 extra por kg directo sin intermediario</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
         <!-- VOCES REALES DEL PILOTO VALIDADO (PAITA -> PIURA)         -->
         <!-- ======================================================== -->
         <section class="space-y-6 pt-4">
@@ -2000,6 +2079,34 @@
 
     <!-- COMMERCIAL FOOTER -->
     <footer class="bg-white border-t border-slate-200 py-10 px-4 mt-16 text-slate-500 text-xs font-mono shadow-inner">
+        <!-- INFRAESTRUCTURA & CUMPLIMIENTO NORMATIVO -->
+        <div class="max-w-7xl mx-auto pb-8 mb-8 border-b border-slate-200 grid grid-cols-2 md:grid-cols-5 gap-3 text-center text-[11px]">
+            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                <i class="fas fa-shield-alt text-emerald-600 text-base mb-1 block"></i>
+                <strong class="text-slate-800 block">Sanipes D.S. 040</strong>
+                <span class="text-slate-500">Inocuidad Hidrobiológica</span>
+            </div>
+            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                <i class="fas fa-anchor text-brand-600 text-base mb-1 block"></i>
+                <strong class="text-slate-800 block">PRODUCE / DIREPRO</strong>
+                <span class="text-slate-500">Tallas Mínimas Legales</span>
+            </div>
+            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                <i class="fas fa-weight-hanging text-amber-600 text-base mb-1 block"></i>
+                <strong class="text-slate-800 block">Torrey RS-232</strong>
+                <span class="text-slate-500">Tara Oficial -2.5 kg</span>
+            </div>
+            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                <i class="fas fa-microchip text-cyan-600 text-base mb-1 block"></i>
+                <strong class="text-slate-800 block">IoT DS18B20 IP68</strong>
+                <span class="text-slate-500">Frío Continuo 1.4 °C</span>
+            </div>
+            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 col-span-2 md:col-span-1">
+                <i class="fas fa-lock text-purple-600 text-base mb-1 block"></i>
+                <strong class="text-slate-800 block">Bóveda Escrow SHA-256</strong>
+                <span class="text-slate-500">Liquidación Yape en 2.1s</span>
+            </div>
+        </div>
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
             <div class="space-y-2 text-center md:text-left">
                 <div class="text-slate-900 text-base font-bold flex items-center justify-center md:justify-start">
@@ -2070,6 +2177,58 @@
                     </a>
                 </div>
             </div>
+        </div>
+    </div>
+
+    
+    <!-- MODAL PORTAL DEL PESCADOR: REPORTAR CAPTURA DESDE ALTAMAR -->
+    <div id="modal-fisherman" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-900/65 backdrop-blur-sm">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-7 shadow-2xl border border-slate-200 space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                <div class="flex items-center space-x-2.5">
+                    <div class="w-10 h-10 rounded-xl bg-brand-900 text-cyan-300 flex items-center justify-center text-lg"><i class="fas fa-anchor"></i></div>
+                    <div>
+                        <h3 class="text-base font-black text-slate-900">Portal del Pescador (Altamar)</h3>
+                        <span class="text-[10px] font-mono text-brand-600 font-bold">Emisión VHF / WhatsApp a 45 Cebicherías</span>
+                    </div>
+                </div>
+                <button onclick="closeFishermanModal()" class="text-slate-400 hover:text-slate-700"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="space-y-3 text-xs">
+                <div>
+                    <label class="font-bold text-slate-700 block mb-1">Embarcación / Patrón:</label>
+                    <select id="fm-vessel" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 font-mono font-bold">
+                        <option value="Siempre San Pedro • Don Pedro Chunga">Siempre San Pedro (Don Pedro Chunga)</option>
+                        <option value="Don Lucho I • Don Luis Morales">Don Lucho I (Don Luis Morales - Yacila)</option>
+                        <option value="V. de las Mercedes • Don Carlos Fiestas">Virgen de las Mercedes (Don Carlos - La Islilla)</option>
+                        <option value="San José Bendito • Don Manuel Rumiche">San José Bendito (Don Manuel Rumiche)</option>
+                    </select>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="font-bold text-slate-700 block mb-1">Especie Capturada:</label>
+                        <select id="fm-specie" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 font-bold">
+                            <option value="Cabrilla Norteña">Cabrilla Norteña</option>
+                            <option value="Tollo de Leche">Tollo de Leche</option>
+                            <option value="Pota Manto Limpio">Pota Manto Limpio</option>
+                            <option value="Mero Murique">Mero Murique</option>
+                            <option value="Lenguado Fino">Lenguado Fino</option>
+                            <option value="Chita de Peña">Chita de Peña</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="font-bold text-slate-700 block mb-1">Kilos Estimados (kg):</label>
+                        <input id="fm-kg" type="number" value="220" min="30" step="10" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 font-mono font-bold">
+                    </div>
+                </div>
+                <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-200 text-emerald-800 font-mono text-[11px]">
+                    <i class="fas fa-snowflake mr-1"></i> Temperatura reportada en bodega con hielo: <strong>1.2 °C</strong> • Comisión al pescador: <strong>0%</strong>
+                </div>
+            </div>
+            <button onclick="submitFishermanReport()" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-3.5 rounded-xl text-xs shadow-md transition flex items-center justify-center space-x-2">
+                <i class="fas fa-broadcast-tower"></i>
+                <span>Emitir Aviso de Arribo en Tiempo Real</span>
+            </button>
         </div>
     </div>
 
@@ -2369,6 +2528,7 @@
             document.getElementById('vessel-specie-pill').innerText = v.specie;
             document.getElementById('vessel-caleta-pill').innerText = v.caleta;
             document.getElementById('vessel-ficha-link').href = v.ficha;
+            const coordsMap = { sanpedro: '05°04\'12"S 81°07\'18"W', donlucho: '05°07\'45"S 81°10\'04"W', mercedes: '05°04\'48"S 81°06\'38"W', sanjose: '05°08\'30"S 81°12\'20"W' }; const rc = document.getElementById('radar-coords'); if (rc && coordsMap[key]) rc.innerText = coordsMap[key];
 
             // Update navigation badge
             const badge = document.getElementById('vessel-badge');
@@ -2968,10 +3128,70 @@
             }, 650);
         }
 
+        
+        // 11. Portal del Pescador + Ruta Interactiva + Calculadora ROI
+        function openFishermanModal() {
+            playBeep(760, 0.05);
+            document.getElementById('modal-fisherman').classList.remove('hidden');
+        }
+        function closeFishermanModal() {
+            document.getElementById('modal-fisherman').classList.add('hidden');
+        }
+        function submitFishermanReport() {
+            const vessel = document.getElementById('fm-vessel').value;
+            const specie = document.getElementById('fm-specie').value;
+            const kg = document.getElementById('fm-kg').value || '200';
+            closeFishermanModal();
+            playSonarPing();
+            triggerCelebration();
+
+            // Update ticker notice live
+            const ticker = document.querySelector('.ticker-move');
+            if (ticker) {
+                const newNotice = `<span class="mx-4 text-emerald-600 font-black"><i class="fas fa-broadcast-tower mr-1 animate-pulse"></i> ÚLTIMO MINUTO: ${vessel} reporta ${kg} kg de ${specie} fresca rumbo a DPA Paita (1.2 °C)</span> • `;
+                ticker.innerHTML = newNotice + ticker.innerHTML;
+            }
+            showToast('¡Aviso Emitido a 45 Cebicherías!', `${kg} kg de ${specie} (${vessel.split('•')[0].trim()}) publicados en preventa.`, 'success');
+        }
+
+        function setRouteStop(pct, kmLabel, placeLabel, tempVal, speedVal) {
+            playBeep(820, 0.04);
+            const fill = document.getElementById('route-progress-fill');
+            const pill = document.getElementById('route-truck-pill');
+            const kmTxt = document.getElementById('route-truck-km');
+            const stTxt = document.getElementById('route-gps-status');
+            if (fill) fill.style.width = pct + '%';
+            if (pill) pill.style.left = pct + '%';
+            if (kmTxt) kmTxt.innerText = kmLabel;
+            if (stTxt) stTxt.innerText = `${kmLabel} • ${placeLabel} • ${speedVal}`;
+            showToast(`GPS ${kmLabel}`, `${placeLabel} • Temp sensor: ${tempVal}`, 'info');
+        }
+
+        function updateROICalc() {
+            const kg = parseInt(document.getElementById('roi-kg-slider')?.value) || 40;
+            const days = parseInt(document.getElementById('roi-days-slider')?.value) || 26;
+            const monthlyKg = kg * days;
+            const trad = monthlyKg * 22.00;
+            const pc = monthlyKg * 15.00;
+            const saveM = trad - pc;
+            const saveY = saveM * 12;
+            const fishGain = monthlyKg * 7.50;
+
+            const fmt = n => 'S/ ' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            document.getElementById('roi-kg-val').innerText = kg + ' kg/día';
+            document.getElementById('roi-days-val').innerText = days + ' días';
+            document.getElementById('roi-trad-total').innerText = fmt(trad);
+            document.getElementById('roi-pc-total').innerText = fmt(pc);
+            document.getElementById('roi-saving-month').innerHTML = `${fmt(saveM)} <small class="text-xs font-normal">/mes</small>`;
+            document.getElementById('roi-saving-year').innerText = `Equivale a ${fmt(saveY)} ahorrados al año`;
+            document.getElementById('roi-fish-gain').innerHTML = `+${fmt(fishGain)} <small class="text-xs font-normal">/mes</small>`;
+        }
+
         // Inicialización al cargar página
         window.onload = function() {
             renderCart();
             selectVesselByKey('sanpedro', true);
+            updateROICalc();
         }
     </script>
 
