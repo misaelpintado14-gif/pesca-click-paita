@@ -450,14 +450,27 @@
             <!-- PRODUCT CARDS GRID (CLEAN LIGHT DESIGN) -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- SPECIE 1: CABRILLA -->
-                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-card hover:shadow-card-hover transition flex flex-col justify-between">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="text-[11px] font-mono text-brand-700 bg-brand-50 px-2 py-0.5 rounded font-bold border border-brand-100">1° Calidad Marina</span>
-                            <span class="text-xs text-emerald-600 font-bold"><i class="fas fa-circle text-[8px] mr-1"></i> Disponible</span>
+                <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-card hover:shadow-card-hover transition flex flex-col justify-between group">
+                    <div class="relative h-44 overflow-hidden bg-slate-900">
+                        <img src="img/cabrilla.jpg" alt="Cabrilla Norteña" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+                        <div class="absolute top-3 left-3 flex gap-1.5">
+                            <span class="bg-brand-900/90 text-cyan-200 text-[10px] font-mono px-2.5 py-1 rounded-full font-bold backdrop-blur-sm border border-brand-700">1° Calidad</span>
+                            <span class="bg-emerald-500 text-white text-[10px] font-mono px-2 py-0.5 rounded-full font-bold flex items-center"><i class="fas fa-circle text-[6px] mr-1 animate-pulse"></i> Fresco</span>
                         </div>
-                        <h3 class="text-lg font-bold text-slate-900">Cabrilla Norteña</h3>
-                        <p class="text-xs text-slate-500">Paralabrax humeralis. Ideal para cebiche clásico y sudado piurano. Textura firme.</p>
+                        <div class="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-white">
+                            <div>
+                                <h3 class="text-base font-black leading-tight">Cabrilla Norteña</h3>
+                                <span class="text-[10px] text-cyan-300 font-mono italic">Paralabrax humeralis</span>
+                            </div>
+                            <a href="producto-cabrilla.html" class="bg-white/25 hover:bg-white text-white hover:text-slate-900 px-2 py-0.5 rounded text-[10px] font-bold font-mono transition">
+                                Ficha →
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-5 space-y-3 flex-grow flex flex-col justify-between">
+                        <div>
+                            <p class="text-xs text-slate-500 mb-2">Pescado insignia del litoral piurano. Carne semi-firme para cebiche clásico y sudado.</p>
                         
                         <div class="space-y-1.5 pt-2 text-xs font-mono">
                             <div class="flex justify-between text-slate-500">
@@ -493,14 +506,27 @@
                 </div>
 
                 <!-- SPECIE 2: TOLLO -->
-                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-card hover:shadow-card-hover transition flex flex-col justify-between">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="text-[11px] font-mono text-brand-700 bg-brand-50 px-2 py-0.5 rounded font-bold border border-brand-100">Carne Blanca</span>
-                            <span class="text-xs text-emerald-600 font-bold"><i class="fas fa-circle text-[8px] mr-1"></i> Disponible</span>
+                <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-card hover:shadow-card-hover transition flex flex-col justify-between group">
+                    <div class="relative h-44 overflow-hidden bg-slate-900">
+                        <img src="img/tollo.jpg" alt="Tollo de Leche" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+                        <div class="absolute top-3 left-3 flex gap-1.5">
+                            <span class="bg-brand-900/90 text-cyan-200 text-[10px] font-mono px-2.5 py-1 rounded-full font-bold backdrop-blur-sm border border-brand-700">Carne Blanca</span>
+                            <span class="bg-emerald-500 text-white text-[10px] font-mono px-2 py-0.5 rounded-full font-bold flex items-center"><i class="fas fa-circle text-[6px] mr-1 animate-pulse"></i> Fresco</span>
                         </div>
-                        <h3 class="text-lg font-bold text-slate-900">Tollo de Leche</h3>
-                        <p class="text-xs text-slate-500">Mustelus whitneyi. Pulpa blanca sin espinas, preferido por restaurantes marinos.</p>
+                        <div class="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-white">
+                            <div>
+                                <h3 class="text-base font-black leading-tight">Tollo de Leche</h3>
+                                <span class="text-[10px] text-cyan-300 font-mono italic">Mustelus whitneyi</span>
+                            </div>
+                            <a href="producto-tollo.html" class="bg-white/25 hover:bg-white text-white hover:text-slate-900 px-2 py-0.5 rounded text-[10px] font-bold font-mono transition">
+                                Ficha →
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-5 space-y-3 flex-grow flex flex-col justify-between">
+                        <div>
+                            <p class="text-xs text-slate-500 mb-2">Pulpa blanca y tierna sin espinas. Ideal para cebiche, chicharrón y milanesa marina.</p>
                         
                         <div class="space-y-1.5 pt-2 text-xs font-mono">
                             <div class="flex justify-between text-slate-500">
@@ -536,14 +562,27 @@
                 </div>
 
                 <!-- SPECIE 3: POTA MANTO LIMPIO -->
-                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-card hover:shadow-card-hover transition flex flex-col justify-between">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="text-[11px] font-mono text-brand-700 bg-brand-50 px-2 py-0.5 rounded font-bold border border-brand-100">Chicharrón / Wok</span>
-                            <span class="text-xs text-emerald-600 font-bold"><i class="fas fa-circle text-[8px] mr-1"></i> Disponible</span>
+                <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-card hover:shadow-card-hover transition flex flex-col justify-between group">
+                    <div class="relative h-44 overflow-hidden bg-slate-900">
+                        <img src="img/pota.jpg" alt="Pota Manto Limpio" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+                        <div class="absolute top-3 left-3 flex gap-1.5">
+                            <span class="bg-brand-900/90 text-cyan-200 text-[10px] font-mono px-2.5 py-1 rounded-full font-bold backdrop-blur-sm border border-brand-700">Chicharrón / Wok</span>
+                            <span class="bg-emerald-500 text-white text-[10px] font-mono px-2 py-0.5 rounded-full font-bold flex items-center"><i class="fas fa-circle text-[6px] mr-1 animate-pulse"></i> Fresco</span>
                         </div>
-                        <h3 class="text-lg font-bold text-slate-900">Pota Manto Limpio</h3>
-                        <p class="text-xs text-slate-500">Dosidicus gigas. Filete limpio sin piel ni vísceras, listo para corte en cocina marina.</p>
+                        <div class="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-white">
+                            <div>
+                                <h3 class="text-base font-black leading-tight">Pota Manto Limpio</h3>
+                                <span class="text-[10px] text-cyan-300 font-mono italic">Dosidicus gigas</span>
+                            </div>
+                            <a href="producto-pota.html" class="bg-white/25 hover:bg-white text-white hover:text-slate-900 px-2 py-0.5 rounded text-[10px] font-bold font-mono transition">
+                                Ficha →
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-5 space-y-3 flex-grow flex flex-col justify-between">
+                        <div>
+                            <p class="text-xs text-slate-500 mb-2">Manto grueso de 18 mm limpio y eviscerado. Cero amoniaco gracias al frío a 0.9 °C.</p>
                         
                         <div class="space-y-1.5 pt-2 text-xs font-mono">
                             <div class="flex justify-between text-slate-500">
@@ -579,14 +618,27 @@
                 </div>
 
                 <!-- SPECIE 4: MERO MURIQUE -->
-                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-card hover:shadow-card-hover transition flex flex-col justify-between">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="text-[11px] font-mono text-amber-800 bg-amber-50 px-2 py-0.5 rounded font-bold border border-amber-200">Alta Gama Gourmet</span>
-                            <span class="text-xs text-amber-600 font-bold"><i class="fas fa-circle text-[8px] mr-1"></i> Lote Limitado</span>
+                <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-card hover:shadow-card-hover transition flex flex-col justify-between group">
+                    <div class="relative h-44 overflow-hidden bg-slate-900">
+                        <img src="img/mero.jpg" alt="Mero Murique" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+                        <div class="absolute top-3 left-3 flex gap-1.5">
+                            <span class="bg-amber-500 text-white text-[10px] font-mono px-2.5 py-1 rounded-full font-bold shadow">Alta Gama Gourmet</span>
+                            <span class="bg-slate-900/90 text-amber-300 text-[10px] font-mono px-2 py-0.5 rounded-full font-bold border border-amber-500">Lote Exclusivo</span>
                         </div>
-                        <h3 class="text-lg font-bold text-slate-900">Mero Murique</h3>
-                        <p class="text-xs text-slate-500">Epinephelus quinquefasciatus. Pescado premium de roca, captura selectiva con espinel.</p>
+                        <div class="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-white">
+                            <div>
+                                <h3 class="text-base font-black leading-tight">Mero Murique</h3>
+                                <span class="text-[10px] text-amber-200 font-mono italic">Epinephelus quinquefasciatus</span>
+                            </div>
+                            <a href="producto-mero.html" class="bg-white/25 hover:bg-white text-white hover:text-slate-900 px-2 py-0.5 rounded text-[10px] font-bold font-mono transition">
+                                Ficha →
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-5 space-y-3 flex-grow flex flex-col justify-between">
+                        <div>
+                            <p class="text-xs text-slate-500 mb-2">El rey de la mesa norteña. Captura selectiva con espinel a 40 brazas. Carne perlada.</p>
                         
                         <div class="space-y-1.5 pt-2 text-xs font-mono">
                             <div class="flex justify-between text-slate-500">
@@ -659,12 +711,15 @@
                         <div class="text-slate-600">Total Inversión en Pescado: <strong id="cart-total" class="text-lg text-brand-900 font-mono font-bold">S/ 405.00</strong></div>
                         <div class="text-emerald-700 font-bold"><i class="fas fa-check-circle"></i> Ahorro Neto Total de tu Restaurante: <strong id="cart-savings" class="font-mono">S/ 255.00</strong></div>
                     </div>
-                    <div class="flex items-center space-x-3 w-full md:w-auto">
+                    <div class="flex flex-wrap items-center gap-3 w-full md:w-auto">
                         <button onclick="clearCart()" class="text-xs text-slate-500 hover:text-red-500 px-3 py-2 transition font-medium">
                             <i class="fas fa-trash-alt mr-1"></i> Vaciar
                         </button>
-                        <a href="#modulo-escrow" onclick="prepareEscrow()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-3 rounded-xl text-xs transition shadow-md flex items-center justify-center">
-                            <i class="fas fa-shield-alt mr-2"></i> Pagar con Bóveda Escrow (Yape / Plin)
+                        <button onclick="sendOrderWhatsApp()" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-5 py-3 rounded-xl text-xs transition shadow-md flex items-center justify-center">
+                            <i class="fab fa-whatsapp mr-2 text-base"></i> Pedir por WhatsApp
+                        </button>
+                        <a href="#modulo-escrow" onclick="prepareEscrow()" class="bg-brand-600 hover:bg-brand-700 text-white font-bold px-5 py-3 rounded-xl text-xs transition shadow-md flex items-center justify-center">
+                            <i class="fas fa-shield-alt mr-2"></i> Bóveda Escrow (Yape)
                         </a>
                     </div>
                 </div>
@@ -1257,6 +1312,37 @@
         let cart = [
             { name: 'Cabrilla Norteña', qty: 30, price: 13.50, tradPrice: 22.00 }
         ];
+
+        
+        function sendOrderWhatsApp() {
+            if (cart.length === 0) {
+                alert('Tu pedido está vacío. Añade especies frescas primero.');
+                return;
+            }
+            playCashChime();
+            let msg = `*🐟 PEDIDO OFICIAL PESCA-CLICK PAITA v2.4*\n`;
+            msg += `*Cliente:* Cebichería "El Cántaro" (Piura)\n`;
+            msg += `*Despacho:* Madrugada 05:00 AM (Arribo muelle DPA Paita)\n`;
+            msg += `-------------------------------------------\n`;
+            let total = 0;
+            let totalAhorro = 0;
+            cart.forEach(item => {
+                const sub = item.qty * item.price;
+                const trad = item.qty * item.tradPrice;
+                total += sub;
+                totalAhorro += (trad - sub);
+                msg += `• *${item.name}*: ${item.qty} kg x S/ ${item.price.toFixed(2)} = S/ ${sub.toFixed(2)}\n`;
+            });
+            msg += `-------------------------------------------\n`;
+            msg += `*TOTAL INVERSIÓN:* S/ ${total.toFixed(2)}\n`;
+            msg += `*AHORRO FRENTE A REVENDEDOR:* + S/ ${totalAhorro.toFixed(2)} (-31.8%)\n`;
+            msg += `*Cadena de Frío:* 1.4 °C garantizada (Sanipes D.S. 040)\n`;
+            msg += `*Tara Oficial:* -2.5 kg/jaba en balanza industrial Torrey\n`;
+            msg += `*Pago:* Retenido en Bóveda Escrow / Yape al recibir conforme\n`;
+            
+            const url = `https://api.whatsapp.com/send?phone=51969824110&text=${encodeURIComponent(msg)}`;
+            window.open(url, '_blank');
+        }
 
         function renderCart() {
             const tbody = document.getElementById('cart-items');
