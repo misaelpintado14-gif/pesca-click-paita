@@ -747,10 +747,10 @@
             <div class="flex flex-wrap items-center justify-between gap-3 bg-white p-3 rounded-2xl border border-slate-200 shadow-sm">
                 <div class="flex flex-wrap items-center gap-1.5 text-xs font-mono">
                     <span class="text-slate-400 mr-2 text-[11px] font-sans font-semibold">Filtrar Especies:</span>
-                    <button onclick="filterCatalog('all')" id="flt-all" class="bg-brand-900 text-white px-3 py-1.5 rounded-xl font-bold transition">Todas (4)</button>
+                    <button onclick="filterCatalog('all')" id="flt-all" class="bg-brand-900 text-white px-3 py-1.5 rounded-xl font-bold transition">Todas (8)</button>
                     <button onclick="filterCatalog('roca')" id="flt-roca" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-xl font-semibold transition">Pescados de Roca</button>
-                    <button onclick="filterCatalog('blanca')" id="flt-blanca" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-xl font-semibold transition">Carne Blanca</button>
-                    <button onclick="filterCatalog('marisco')" id="flt-marisco" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-xl font-semibold transition">Cefalópodos / Pota</button>
+                    <button onclick="filterCatalog('blanca')" id="flt-blanca" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-xl font-semibold transition">Carne Blanca & Finos</button>
+                    <button onclick="filterCatalog('marisco')" id="flt-marisco" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-xl font-semibold transition">Mariscos & Pota</button>
                     <button onclick="filterCatalog('gourmet')" id="flt-gourmet" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-xl font-semibold transition">Alta Gama Gourmet</button>
                 </div>
                 <div class="text-xs font-mono text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-xl border border-emerald-200 font-bold flex items-center">
@@ -758,25 +758,24 @@
                 </div>
             </div>
 
-
-                        <!-- PRODUCT CARDS GRID (4 COLUMNAS HORIZONTALES PERFECTAS) -->
+            <!-- PRODUCT CARDS GRID (8 ESPECIES EN 2 FILAS DE 4 COLUMNAS) -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
                 
-                <!-- SPECIE 1: CABRILLA -->
-                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-card hover:shadow-card-hover transition flex flex-col justify-between group">
+                <!-- SPECIE: CABRILLA NORTEÑA -->
+                <div data-cat="roca" class="catalog-card bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-card hover:shadow-card-hover transition flex flex-col justify-between group">
                     <div class="relative h-44 overflow-hidden bg-slate-900">
                         <img src="img/cabrilla.jpg" alt="Cabrilla Norteña" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
                         <div class="absolute top-3 left-3 flex gap-1.5">
-                            <span class="bg-brand-900/90 text-cyan-200 text-[10px] font-mono px-2.5 py-1 rounded-full font-bold backdrop-blur-sm border border-brand-700">1° Calidad</span>
+                            <span class="bg-brand-900/90 text-cyan-200 border border-brand-700 text-[10px] font-mono px-2.5 py-1 rounded-full font-bold backdrop-blur-sm shadow">1° Calidad Marina</span>
                             <span class="bg-emerald-500 text-white text-[10px] font-mono px-2 py-0.5 rounded-full font-bold flex items-center"><i class="fas fa-circle text-[6px] mr-1 animate-pulse"></i> Fresco</span>
                         </div>
-                        <div class="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-white">
-                            <div>
-                                <h3 class="text-base font-black leading-tight">Cabrilla Norteña</h3>
-                                <span class="text-[10px] text-cyan-300 font-mono italic">Paralabrax humeralis</span>
+                        <div class="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-white gap-2">
+                            <div class="min-w-0">
+                                <h3 class="text-base font-black leading-tight truncate">Cabrilla Norteña</h3>
+                                <span class="text-[10px] text-cyan-300 font-mono italic block truncate">Paralabrax humeralis</span>
                             </div>
-                            <a href="producto-cabrilla.html" class="bg-white/25 hover:bg-white text-white hover:text-slate-900 px-2 py-0.5 rounded text-[10px] font-bold font-mono transition">
+                            <a href="producto-cabrilla.html" class="bg-white/25 hover:bg-white text-white hover:text-slate-900 px-2 py-0.5 rounded text-[10px] font-bold font-mono transition shrink-0">
                                 Ficha →
                             </a>
                         </div>
@@ -795,7 +794,7 @@
                                 </div>
                                 <div class="flex justify-between items-center bg-brand-50 p-2 rounded-lg border border-brand-100 font-bold">
                                     <span class="text-brand-900">Precio Pesca-Click:</span>
-                                    <span class="text-base text-emerald-600">S/ 13.50 <small class="text-xs text-slate-600">/kg</small></span>
+                                    <span class="text-base text-emerald-600 whitespace-nowrap">S/ 13.50 <small class="text-xs text-slate-600">/kg</small></span>
                                 </div>
                             </div>
                             <div class="bg-slate-50 p-2 rounded-lg text-[11px] space-y-0.5 border border-slate-100 mt-2">
@@ -824,22 +823,21 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- SPECIE 2: TOLLO -->
-                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-card hover:shadow-card-hover transition flex flex-col justify-between group">
+                <!-- SPECIE: TOLLO DE LECHE -->
+                <div data-cat="blanca" class="catalog-card bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-card hover:shadow-card-hover transition flex flex-col justify-between group">
                     <div class="relative h-44 overflow-hidden bg-slate-900">
                         <img src="img/tollo.jpg" alt="Tollo de Leche" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
                         <div class="absolute top-3 left-3 flex gap-1.5">
-                            <span class="bg-brand-900/90 text-cyan-200 text-[10px] font-mono px-2.5 py-1 rounded-full font-bold backdrop-blur-sm border border-brand-700">Carne Blanca</span>
+                            <span class="bg-brand-900/90 text-cyan-200 border border-brand-700 text-[10px] font-mono px-2.5 py-1 rounded-full font-bold backdrop-blur-sm shadow">Carne Blanca</span>
                             <span class="bg-emerald-500 text-white text-[10px] font-mono px-2 py-0.5 rounded-full font-bold flex items-center"><i class="fas fa-circle text-[6px] mr-1 animate-pulse"></i> Fresco</span>
                         </div>
-                        <div class="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-white">
-                            <div>
-                                <h3 class="text-base font-black leading-tight">Tollo de Leche</h3>
-                                <span class="text-[10px] text-cyan-300 font-mono italic">Mustelus whitneyi</span>
+                        <div class="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-white gap-2">
+                            <div class="min-w-0">
+                                <h3 class="text-base font-black leading-tight truncate">Tollo de Leche</h3>
+                                <span class="text-[10px] text-cyan-300 font-mono italic block truncate">Mustelus whitneyi</span>
                             </div>
-                            <a href="producto-tollo.html" class="bg-white/25 hover:bg-white text-white hover:text-slate-900 px-2 py-0.5 rounded text-[10px] font-bold font-mono transition">
+                            <a href="producto-tollo.html" class="bg-white/25 hover:bg-white text-white hover:text-slate-900 px-2 py-0.5 rounded text-[10px] font-bold font-mono transition shrink-0">
                                 Ficha →
                             </a>
                         </div>
@@ -858,7 +856,7 @@
                                 </div>
                                 <div class="flex justify-between items-center bg-brand-50 p-2 rounded-lg border border-brand-100 font-bold">
                                     <span class="text-brand-900">Precio Pesca-Click:</span>
-                                    <span class="text-base text-emerald-600">S/ 11.00 <small class="text-xs text-slate-600">/kg</small></span>
+                                    <span class="text-base text-emerald-600 whitespace-nowrap">S/ 11.00 <small class="text-xs text-slate-600">/kg</small></span>
                                 </div>
                             </div>
                             <div class="bg-slate-50 p-2 rounded-lg text-[11px] space-y-0.5 border border-slate-100 mt-2">
@@ -887,22 +885,21 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- SPECIE 3: POTA MANTO LIMPIO -->
-                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-card hover:shadow-card-hover transition flex flex-col justify-between group">
+                <!-- SPECIE: POTA MANTO LIMPIO -->
+                <div data-cat="marisco" class="catalog-card bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-card hover:shadow-card-hover transition flex flex-col justify-between group">
                     <div class="relative h-44 overflow-hidden bg-slate-900">
                         <img src="img/pota.jpg" alt="Pota Manto Limpio" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
                         <div class="absolute top-3 left-3 flex gap-1.5">
-                            <span class="bg-brand-900/90 text-cyan-200 text-[10px] font-mono px-2.5 py-1 rounded-full font-bold backdrop-blur-sm border border-brand-700">Chicharrón / Wok</span>
+                            <span class="bg-brand-900/90 text-cyan-200 border border-brand-700 text-[10px] font-mono px-2.5 py-1 rounded-full font-bold backdrop-blur-sm shadow">Chicharrón / Wok</span>
                             <span class="bg-emerald-500 text-white text-[10px] font-mono px-2 py-0.5 rounded-full font-bold flex items-center"><i class="fas fa-circle text-[6px] mr-1 animate-pulse"></i> Fresco</span>
                         </div>
-                        <div class="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-white">
-                            <div>
-                                <h3 class="text-base font-black leading-tight">Pota Manto Limpio</h3>
-                                <span class="text-[10px] text-cyan-300 font-mono italic">Dosidicus gigas</span>
+                        <div class="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-white gap-2">
+                            <div class="min-w-0">
+                                <h3 class="text-base font-black leading-tight truncate">Pota Manto Limpio</h3>
+                                <span class="text-[10px] text-cyan-300 font-mono italic block truncate">Dosidicus gigas</span>
                             </div>
-                            <a href="producto-pota.html" class="bg-white/25 hover:bg-white text-white hover:text-slate-900 px-2 py-0.5 rounded text-[10px] font-bold font-mono transition">
+                            <a href="producto-pota.html" class="bg-white/25 hover:bg-white text-white hover:text-slate-900 px-2 py-0.5 rounded text-[10px] font-bold font-mono transition shrink-0">
                                 Ficha →
                             </a>
                         </div>
@@ -921,7 +918,7 @@
                                 </div>
                                 <div class="flex justify-between items-center bg-brand-50 p-2 rounded-lg border border-brand-100 font-bold">
                                     <span class="text-brand-900">Precio Pesca-Click:</span>
-                                    <span class="text-base text-emerald-600">S/ 4.80 <small class="text-xs text-slate-600">/kg</small></span>
+                                    <span class="text-base text-emerald-600 whitespace-nowrap">S/ 4.80 <small class="text-xs text-slate-600">/kg</small></span>
                                 </div>
                             </div>
                             <div class="bg-slate-50 p-2 rounded-lg text-[11px] space-y-0.5 border border-slate-100 mt-2">
@@ -950,22 +947,21 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- SPECIE 4: MERO MURIQUE -->
-                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-card hover:shadow-card-hover transition flex flex-col justify-between group">
+                <!-- SPECIE: MERO MURIQUE -->
+                <div data-cat="gourmet" class="catalog-card bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-card hover:shadow-card-hover transition flex flex-col justify-between group">
                     <div class="relative h-44 overflow-hidden bg-slate-900">
                         <img src="img/mero.jpg" alt="Mero Murique" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
                         <div class="absolute top-3 left-3 flex gap-1.5">
-                            <span class="bg-amber-500 text-white text-[10px] font-mono px-2.5 py-1 rounded-full font-bold shadow">Alta Gama Gourmet</span>
-                            <span class="bg-slate-900/90 text-amber-300 text-[10px] font-mono px-2 py-0.5 rounded-full font-bold border border-amber-500">Lote Exclusivo</span>
+                            <span class="bg-amber-500 text-white text-[10px] font-mono px-2.5 py-1 rounded-full font-bold backdrop-blur-sm shadow">Alta Gama Gourmet</span>
+                            <span class="bg-emerald-500 text-white text-[10px] font-mono px-2 py-0.5 rounded-full font-bold flex items-center"><i class="fas fa-circle text-[6px] mr-1 animate-pulse"></i> Lote Exclusivo</span>
                         </div>
-                        <div class="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-white">
-                            <div>
-                                <h3 class="text-base font-black leading-tight">Mero Murique</h3>
-                                <span class="text-[10px] text-amber-200 font-mono italic">Epinephelus quinquefasciatus</span>
+                        <div class="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-white gap-2">
+                            <div class="min-w-0">
+                                <h3 class="text-base font-black leading-tight truncate">Mero Murique</h3>
+                                <span class="text-[10px] text-cyan-300 font-mono italic block truncate">Epinephelus quinquefasciatus</span>
                             </div>
-                            <a href="producto-mero.html" class="bg-white/25 hover:bg-white text-white hover:text-slate-900 px-2 py-0.5 rounded text-[10px] font-bold font-mono transition">
+                            <a href="producto-mero.html" class="bg-white/25 hover:bg-white text-white hover:text-slate-900 px-2 py-0.5 rounded text-[10px] font-bold font-mono transition shrink-0">
                                 Ficha →
                             </a>
                         </div>
@@ -984,7 +980,7 @@
                                 </div>
                                 <div class="flex justify-between items-center bg-brand-50 p-2 rounded-lg border border-brand-100 font-bold">
                                     <span class="text-brand-900">Precio Pesca-Click:</span>
-                                    <span class="text-base text-emerald-600">S/ 42.00 <small class="text-xs text-slate-600">/kg</small></span>
+                                    <span class="text-base text-emerald-600 whitespace-nowrap">S/ 42.00 <small class="text-xs text-slate-600">/kg</small></span>
                                 </div>
                             </div>
                             <div class="bg-slate-50 p-2 rounded-lg text-[11px] space-y-0.5 border border-slate-100 mt-2">
@@ -1013,7 +1009,254 @@
                         </div>
                     </div>
                 </div>
+                <!-- SPECIE: LENGUADO FINO -->
+                <div data-cat="blanca" class="catalog-card bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-card hover:shadow-card-hover transition flex flex-col justify-between group">
+                    <div class="relative h-44 overflow-hidden bg-slate-900">
+                        <img src="img/lenguado.jpg" alt="Lenguado Fino" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+                        <div class="absolute top-3 left-3 flex gap-1.5">
+                            <span class="bg-brand-900/90 text-cyan-200 border border-brand-700 text-[10px] font-mono px-2.5 py-1 rounded-full font-bold backdrop-blur-sm shadow">Filete Premium</span>
+                            <span class="bg-emerald-500 text-white text-[10px] font-mono px-2 py-0.5 rounded-full font-bold flex items-center"><i class="fas fa-circle text-[6px] mr-1 animate-pulse"></i> Disponible</span>
+                        </div>
+                        <div class="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-white gap-2">
+                            <div class="min-w-0">
+                                <h3 class="text-base font-black leading-tight truncate">Lenguado Fino</h3>
+                                <span class="text-[10px] text-cyan-300 font-mono italic block truncate">Paralichthys adspersus</span>
+                            </div>
+                            <a href="producto-lenguado.html" class="bg-white/25 hover:bg-white text-white hover:text-slate-900 px-2 py-0.5 rounded text-[10px] font-bold font-mono transition shrink-0">
+                                Ficha →
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-5 space-y-3 flex-grow flex flex-col justify-between">
+                        <div>
+                            <p class="text-xs text-slate-500 mb-2">Carne delicada y nacarada de fondo arenoso. Corte perfecto para tiradito al ají amarillo.</p>
+                            <div class="space-y-1.5 pt-2 text-xs font-mono">
+                                <div class="flex justify-between text-slate-500">
+                                    <span>Acopiador en playa:</span>
+                                    <span class="line-through text-red-500">S/ 22.00 /kg</span>
+                                </div>
+                                <div class="flex justify-between text-slate-500">
+                                    <span>Revendedor en Piura:</span>
+                                    <span class="line-through text-red-500">S/ 52.00 /kg</span>
+                                </div>
+                                <div class="flex justify-between items-center bg-brand-50 p-2 rounded-lg border border-brand-100 font-bold">
+                                    <span class="text-brand-900">Precio Pesca-Click:</span>
+                                    <span class="text-base text-emerald-600 whitespace-nowrap">S/ 36.00 <small class="text-xs text-slate-600">/kg</small></span>
+                                </div>
+                            </div>
+                            <div class="bg-slate-50 p-2 rounded-lg text-[11px] space-y-0.5 border border-slate-100 mt-2">
+                                <div class="text-amber-700 font-medium"><i class="fas fa-user-shield mr-1"></i> Pescador gana: <strong>+63%</strong> (S/ 14.00 más)</div>
+                                <div class="text-emerald-700 font-bold"><i class="fas fa-piggy-bank mr-1"></i> Cebichería ahorra: <strong>-30.8%</strong> (S/ 16.00 menos)</div>
+                            </div>
+                        </div>
 
+                        <div class="pt-4 mt-2 border-t border-slate-100 space-y-2">
+                            <div class="flex items-center space-x-2">
+                                <label class="text-xs text-slate-600 font-medium">Cantidad:</label>
+                                <input id="qty-lenguado" type="number" value="15" min="5" step="5" class="bg-slate-50 text-slate-900 text-xs font-mono border border-slate-300 rounded-lg px-2 py-1.5 w-20 text-center font-bold">
+                                <span class="text-xs text-slate-500 font-mono">kg</span>
+                            </div>
+                            <button onclick="addToOrder('Lenguado Fino', 36.00, 'qty-lenguado')" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-2.5 rounded-xl text-xs transition flex items-center justify-center shadow-sm">
+                                <i class="fas fa-plus-circle mr-1.5"></i> Añadir a Pedido B2B
+                            </button>
+                            <div class="flex items-center space-x-2 pt-1">
+                                <button onclick="openQuickView('lenguado')" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 py-1.5 rounded-xl text-[11px] font-bold font-mono transition flex items-center justify-center">
+                                    <i class="fas fa-eye mr-1 text-brand-600"></i> Vista Rápida
+                                </button>
+                                <a href="producto-lenguado.html" class="flex-1 bg-brand-50 hover:bg-brand-100 text-brand-700 py-1.5 rounded-xl text-[11px] font-bold font-mono transition flex items-center justify-center">
+                                    <i class="fas fa-file-invoice mr-1 text-brand-600"></i> Ficha B2B
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- SPECIE: CHITA DE PEÑA -->
+                <div data-cat="roca" class="catalog-card bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-card hover:shadow-card-hover transition flex flex-col justify-between group">
+                    <div class="relative h-44 overflow-hidden bg-slate-900">
+                        <img src="img/chita.jpg" alt="Chita de Peña" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+                        <div class="absolute top-3 left-3 flex gap-1.5">
+                            <span class="bg-brand-900/90 text-cyan-200 border border-brand-700 text-[10px] font-mono px-2.5 py-1 rounded-full font-bold backdrop-blur-sm shadow">Pescado de Peña</span>
+                            <span class="bg-emerald-500 text-white text-[10px] font-mono px-2 py-0.5 rounded-full font-bold flex items-center"><i class="fas fa-circle text-[6px] mr-1 animate-pulse"></i> Disponible</span>
+                        </div>
+                        <div class="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-white gap-2">
+                            <div class="min-w-0">
+                                <h3 class="text-base font-black leading-tight truncate">Chita de Peña</h3>
+                                <span class="text-[10px] text-cyan-300 font-mono italic block truncate">Anisotremus scapularis</span>
+                            </div>
+                            <a href="producto-chita.html" class="bg-white/25 hover:bg-white text-white hover:text-slate-900 px-2 py-0.5 rounded text-[10px] font-bold font-mono transition shrink-0">
+                                Ficha →
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-5 space-y-3 flex-grow flex flex-col justify-between">
+                        <div>
+                            <p class="text-xs text-slate-500 mb-2">Pescado costero de peña capturado a cordel. Insuperable entera frita, a la sal o en cebiche.</p>
+                            <div class="space-y-1.5 pt-2 text-xs font-mono">
+                                <div class="flex justify-between text-slate-500">
+                                    <span>Acopiador en playa:</span>
+                                    <span class="line-through text-red-500">S/ 14.00 /kg</span>
+                                </div>
+                                <div class="flex justify-between text-slate-500">
+                                    <span>Revendedor en Piura:</span>
+                                    <span class="line-through text-red-500">S/ 34.00 /kg</span>
+                                </div>
+                                <div class="flex justify-between items-center bg-brand-50 p-2 rounded-lg border border-brand-100 font-bold">
+                                    <span class="text-brand-900">Precio Pesca-Click:</span>
+                                    <span class="text-base text-emerald-600 whitespace-nowrap">S/ 23.00 <small class="text-xs text-slate-600">/kg</small></span>
+                                </div>
+                            </div>
+                            <div class="bg-slate-50 p-2 rounded-lg text-[11px] space-y-0.5 border border-slate-100 mt-2">
+                                <div class="text-amber-700 font-medium"><i class="fas fa-user-shield mr-1"></i> Pescador gana: <strong>+64%</strong> (S/ 9.00 más)</div>
+                                <div class="text-emerald-700 font-bold"><i class="fas fa-piggy-bank mr-1"></i> Cebichería ahorra: <strong>-32.4%</strong> (S/ 11.00 menos)</div>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 mt-2 border-t border-slate-100 space-y-2">
+                            <div class="flex items-center space-x-2">
+                                <label class="text-xs text-slate-600 font-medium">Cantidad:</label>
+                                <input id="qty-chita" type="number" value="20" min="10" step="5" class="bg-slate-50 text-slate-900 text-xs font-mono border border-slate-300 rounded-lg px-2 py-1.5 w-20 text-center font-bold">
+                                <span class="text-xs text-slate-500 font-mono">kg</span>
+                            </div>
+                            <button onclick="addToOrder('Chita de Peña', 23.00, 'qty-chita')" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-2.5 rounded-xl text-xs transition flex items-center justify-center shadow-sm">
+                                <i class="fas fa-plus-circle mr-1.5"></i> Añadir a Pedido B2B
+                            </button>
+                            <div class="flex items-center space-x-2 pt-1">
+                                <button onclick="openQuickView('chita')" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 py-1.5 rounded-xl text-[11px] font-bold font-mono transition flex items-center justify-center">
+                                    <i class="fas fa-eye mr-1 text-brand-600"></i> Vista Rápida
+                                </button>
+                                <a href="producto-chita.html" class="flex-1 bg-brand-50 hover:bg-brand-100 text-brand-700 py-1.5 rounded-xl text-[11px] font-bold font-mono transition flex items-center justify-center">
+                                    <i class="fas fa-file-invoice mr-1 text-brand-600"></i> Ficha B2B
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- SPECIE: LANGOSTINO JUMBO 16/20 -->
+                <div data-cat="marisco" class="catalog-card bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-card hover:shadow-card-hover transition flex flex-col justify-between group">
+                    <div class="relative h-44 overflow-hidden bg-slate-900">
+                        <img src="img/langostinos.jpg" alt="Langostino Jumbo 16/20" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+                        <div class="absolute top-3 left-3 flex gap-1.5">
+                            <span class="bg-brand-900/90 text-cyan-200 border border-brand-700 text-[10px] font-mono px-2.5 py-1 rounded-full font-bold backdrop-blur-sm shadow">Mariscos Frescos</span>
+                            <span class="bg-emerald-500 text-white text-[10px] font-mono px-2 py-0.5 rounded-full font-bold flex items-center"><i class="fas fa-circle text-[6px] mr-1 animate-pulse"></i> Disponible</span>
+                        </div>
+                        <div class="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-white gap-2">
+                            <div class="min-w-0">
+                                <h3 class="text-base font-black leading-tight truncate">Langostino Jumbo 16/20</h3>
+                                <span class="text-[10px] text-cyan-300 font-mono italic block truncate">Litopenaeus vannamei</span>
+                            </div>
+                            <a href="producto-langostinos.html" class="bg-white/25 hover:bg-white text-white hover:text-slate-900 px-2 py-0.5 rounded text-[10px] font-bold font-mono transition shrink-0">
+                                Ficha →
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-5 space-y-3 flex-grow flex flex-col justify-between">
+                        <div>
+                            <p class="text-xs text-slate-500 mb-2">Langostinos enteros de gran calibre y cola firme para Arroz con Mariscos, Chupe y Jaleas.</p>
+                            <div class="space-y-1.5 pt-2 text-xs font-mono">
+                                <div class="flex justify-between text-slate-500">
+                                    <span>Acopiador en playa:</span>
+                                    <span class="line-through text-red-500">S/ 16.00 /kg</span>
+                                </div>
+                                <div class="flex justify-between text-slate-500">
+                                    <span>Revendedor en Piura:</span>
+                                    <span class="line-through text-red-500">S/ 38.00 /kg</span>
+                                </div>
+                                <div class="flex justify-between items-center bg-brand-50 p-2 rounded-lg border border-brand-100 font-bold">
+                                    <span class="text-brand-900">Precio Pesca-Click:</span>
+                                    <span class="text-base text-emerald-600 whitespace-nowrap">S/ 26.00 <small class="text-xs text-slate-600">/kg</small></span>
+                                </div>
+                            </div>
+                            <div class="bg-slate-50 p-2 rounded-lg text-[11px] space-y-0.5 border border-slate-100 mt-2">
+                                <div class="text-amber-700 font-medium"><i class="fas fa-user-shield mr-1"></i> Pescador gana: <strong>+62%</strong> (S/ 10.00 más)</div>
+                                <div class="text-emerald-700 font-bold"><i class="fas fa-piggy-bank mr-1"></i> Cebichería ahorra: <strong>-31.6%</strong> (S/ 12.00 menos)</div>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 mt-2 border-t border-slate-100 space-y-2">
+                            <div class="flex items-center space-x-2">
+                                <label class="text-xs text-slate-600 font-medium">Cantidad:</label>
+                                <input id="qty-langostinos" type="number" value="20" min="10" step="5" class="bg-slate-50 text-slate-900 text-xs font-mono border border-slate-300 rounded-lg px-2 py-1.5 w-20 text-center font-bold">
+                                <span class="text-xs text-slate-500 font-mono">kg</span>
+                            </div>
+                            <button onclick="addToOrder('Langostino Jumbo 16/20', 26.00, 'qty-langostinos')" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-2.5 rounded-xl text-xs transition flex items-center justify-center shadow-sm">
+                                <i class="fas fa-plus-circle mr-1.5"></i> Añadir a Pedido B2B
+                            </button>
+                            <div class="flex items-center space-x-2 pt-1">
+                                <button onclick="openQuickView('langostinos')" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 py-1.5 rounded-xl text-[11px] font-bold font-mono transition flex items-center justify-center">
+                                    <i class="fas fa-eye mr-1 text-brand-600"></i> Vista Rápida
+                                </button>
+                                <a href="producto-langostinos.html" class="flex-1 bg-brand-50 hover:bg-brand-100 text-brand-700 py-1.5 rounded-xl text-[11px] font-bold font-mono transition flex items-center justify-center">
+                                    <i class="fas fa-file-invoice mr-1 text-brand-600"></i> Ficha B2B
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- SPECIE: CONCHAS DE ABANICO -->
+                <div data-cat="gourmet" class="catalog-card bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-card hover:shadow-card-hover transition flex flex-col justify-between group">
+                    <div class="relative h-44 overflow-hidden bg-slate-900">
+                        <img src="img/conchas_abanico.jpg" alt="Conchas de Abanico" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+                        <div class="absolute top-3 left-3 flex gap-1.5">
+                            <span class="bg-brand-900/90 text-cyan-200 border border-brand-700 text-[10px] font-mono px-2.5 py-1 rounded-full font-bold backdrop-blur-sm shadow">Concha de Exportación</span>
+                            <span class="bg-emerald-500 text-white text-[10px] font-mono px-2 py-0.5 rounded-full font-bold flex items-center"><i class="fas fa-circle text-[6px] mr-1 animate-pulse"></i> Fresco</span>
+                        </div>
+                        <div class="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-white gap-2">
+                            <div class="min-w-0">
+                                <h3 class="text-base font-black leading-tight truncate">Conchas de Abanico</h3>
+                                <span class="text-[10px] text-cyan-300 font-mono italic block truncate">Argopecten purpuratus</span>
+                            </div>
+                            <a href="producto-conchas.html" class="bg-white/25 hover:bg-white text-white hover:text-slate-900 px-2 py-0.5 rounded text-[10px] font-bold font-mono transition shrink-0">
+                                Ficha →
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-5 space-y-3 flex-grow flex flex-col justify-between">
+                        <div>
+                            <p class="text-xs text-slate-500 mb-2">Conchas frescas con coral naranja vibrante de Bahía de Sechura y Paita para parmesana y leche de tigre.</p>
+                            <div class="space-y-1.5 pt-2 text-xs font-mono">
+                                <div class="flex justify-between text-slate-500">
+                                    <span>Acopiador en playa:</span>
+                                    <span class="line-through text-red-500">S/ 12.00 /kg</span>
+                                </div>
+                                <div class="flex justify-between text-slate-500">
+                                    <span>Revendedor en Piura:</span>
+                                    <span class="line-through text-red-500">S/ 30.00 /kg</span>
+                                </div>
+                                <div class="flex justify-between items-center bg-brand-50 p-2 rounded-lg border border-brand-100 font-bold">
+                                    <span class="text-brand-900">Precio Pesca-Click:</span>
+                                    <span class="text-base text-emerald-600 whitespace-nowrap">S/ 20.00 <small class="text-xs text-slate-600">/kg</small></span>
+                                </div>
+                            </div>
+                            <div class="bg-slate-50 p-2 rounded-lg text-[11px] space-y-0.5 border border-slate-100 mt-2">
+                                <div class="text-amber-700 font-medium"><i class="fas fa-user-shield mr-1"></i> Pescador gana: <strong>+66%</strong> (S/ 8.00 más)</div>
+                                <div class="text-emerald-700 font-bold"><i class="fas fa-piggy-bank mr-1"></i> Cebichería ahorra: <strong>-33.3%</strong> (S/ 10.00 menos)</div>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 mt-2 border-t border-slate-100 space-y-2">
+                            <div class="flex items-center space-x-2">
+                                <label class="text-xs text-slate-600 font-medium">Cantidad:</label>
+                                <input id="qty-conchas" type="number" value="20" min="10" step="5" class="bg-slate-50 text-slate-900 text-xs font-mono border border-slate-300 rounded-lg px-2 py-1.5 w-20 text-center font-bold">
+                                <span class="text-xs text-slate-500 font-mono">kg</span>
+                            </div>
+                            <button onclick="addToOrder('Conchas de Abanico', 20.00, 'qty-conchas')" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-2.5 rounded-xl text-xs transition flex items-center justify-center shadow-sm">
+                                <i class="fas fa-plus-circle mr-1.5"></i> Añadir a Pedido B2B
+                            </button>
+                            <div class="flex items-center space-x-2 pt-1">
+                                <button onclick="openQuickView('conchas')" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 py-1.5 rounded-xl text-[11px] font-bold font-mono transition flex items-center justify-center">
+                                    <i class="fas fa-eye mr-1 text-brand-600"></i> Vista Rápida
+                                </button>
+                                <a href="producto-conchas.html" class="flex-1 bg-brand-50 hover:bg-brand-100 text-brand-700 py-1.5 rounded-xl text-[11px] font-bold font-mono transition flex items-center justify-center">
+                                    <i class="fas fa-file-invoice mr-1 text-brand-600"></i> Ficha B2B
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
 
@@ -1995,15 +2238,8 @@
             const activeBtn = document.getElementById('flt-' + cat);
             if (activeBtn) activeBtn.className = 'bg-brand-900 text-white px-3 py-1.5 rounded-xl font-bold transition';
 
-            const cards = {
-                roca: document.querySelector('[alt="Cabrilla Norteña"]')?.closest('.bg-white'),
-                blanca: document.querySelector('[alt="Tollo de Leche"]')?.closest('.bg-white'),
-                marisco: document.querySelector('[alt="Pota Manto Limpio"]')?.closest('.bg-white'),
-                gourmet: document.querySelector('[alt="Mero Murique"]')?.closest('.bg-white')
-            };
-
-            Object.keys(cards).forEach(k => {
-                if (cards[k]) cards[k].style.display = (cat === 'all' || cat === k) ? 'flex' : 'none';
+            document.querySelectorAll('.catalog-card').forEach(card => {
+                card.style.display = (cat === 'all' || card.getAttribute('data-cat') === cat) ? 'flex' : 'none';
             });
         }
 
@@ -2019,7 +2255,11 @@
                 'Cabrilla Norteña': 22.00,
                 'Tollo de Leche': 18.00,
                 'Pota Manto Limpio': 8.00,
-                'Mero Murique': 60.00
+                'Mero Murique': 60.00,
+                'Lenguado Fino': 52.00,
+                'Chita de Peña': 34.00,
+                'Langostino Jumbo 16/20': 38.00,
+                'Conchas de Abanico': 30.00
             };
 
             const existing = cart.find(i => i.name === name);
@@ -2106,10 +2346,14 @@
 
         // 5. Modales: Vista Rápida y Bóveda Escrow
         const quickViewData = {
-            'cabrilla': { title: 'Cabrilla Norteña', scientific: 'Paralabrax humeralis', category: '1° Calidad Marina', img: 'img/cabrilla.jpg', desc: 'Pescado insignia del litoral piurano. Captura artesanal en Paita. Carne semi-firme, ojos cristalinos y textura ideal para cebiche.', price: 'S/ 13.50 /kg', saving: '-38.6% (Ahorras S/ 8.50/kg)', link: 'producto-cabrilla.html', unitPrice: 13.50 },
+            'cabrilla': { title: 'Cabrilla Norteña', scientific: 'Paralabrax humeralis', category: '1° Calidad Marina', img: 'img/cabrilla.jpg', desc: 'Pescado insignia del litoral piurano. Captura artesanal en Paita. Carne semi-firme ideal para cebiche y sudado.', price: 'S/ 13.50 /kg', saving: '-38.6% (Ahorras S/ 8.50/kg)', link: 'producto-cabrilla.html', unitPrice: 13.50 },
             'tollo': { title: 'Tollo de Leche', scientific: 'Mustelus whitneyi', category: 'Carne Blanca Sin Espinas', img: 'img/tollo.jpg', desc: 'Pulpa blanca y tierna sin espinas, desembarcado en Caleta Yacila. Favorito familiar en Piura.', price: 'S/ 11.00 /kg', saving: '-38.8% (Ahorras S/ 7.00/kg)', link: 'producto-tollo.html', unitPrice: 11.00 },
             'pota': { title: 'Pota Manto Limpio', scientific: 'Dosidicus gigas', category: 'Cefalópodo del Pacífico', img: 'img/pota.jpg', desc: 'Manto blanco de 18 mm eviscerado en altamar a 0.9 °C sin químicos. Listo para chicharrón y wok.', price: 'S/ 4.80 /kg', saving: '-40.0% (Ahorras S/ 3.20/kg)', link: 'producto-pota.html', unitPrice: 4.80 },
-            'mero': { title: 'Mero Murique', scientific: 'Epinephelus quinquefasciatus', category: 'Alta Gama Gourmet', img: 'img/mero.jpg', desc: 'El rey de la gastronomía norteña. Captura selectiva con espinel de fondo en Tierra Colorada.', price: 'S/ 42.00 /kg', saving: '-30.0% (Ahorras S/ 18.00/kg)', link: 'producto-mero.html', unitPrice: 42.00 }
+            'mero': { title: 'Mero Murique', scientific: 'Epinephelus quinquefasciatus', category: 'Alta Gama Gourmet', img: 'img/mero.jpg', desc: 'El rey de la gastronomía norteña. Captura selectiva con espinel de fondo en Tierra Colorada.', price: 'S/ 42.00 /kg', saving: '-30.0% (Ahorras S/ 18.00/kg)', link: 'producto-mero.html', unitPrice: 42.00 },
+            'lenguado': { title: 'Lenguado Fino', scientific: 'Paralichthys adspersus', category: 'Filete Premium', img: 'img/lenguado.jpg', desc: 'Carne sedosa de fondo arenoso, ideal para tiraditos al ají amarillo y cebiches gourmet.', price: 'S/ 36.00 /kg', saving: '-30.8% (Ahorras S/ 16.00/kg)', link: 'producto-lenguado.html', unitPrice: 36.00 },
+            'chita': { title: 'Chita de Peña', scientific: 'Anisotremus scapularis', category: 'Pescado de Peña', img: 'img/chita.jpg', desc: 'Captura artesanal a cordel en La Islilla. Sabor intenso insuperable frita entera o en cebiche.', price: 'S/ 23.00 /kg', saving: '-32.4% (Ahorras S/ 11.00/kg)', link: 'producto-chita.html', unitPrice: 23.00 },
+            'langostinos': { title: 'Langostino Jumbo 16/20', scientific: 'Litopenaeus vannamei', category: 'Mariscos Frescos', img: 'img/langostinos.jpg', desc: 'Langostinos enteros con cabeza libre de sulfitos, para Chupe y Arroz con Mariscos.', price: 'S/ 26.00 /kg', saving: '-31.6% (Ahorras S/ 12.00/kg)', link: 'producto-langostinos.html', unitPrice: 26.00 },
+            'conchas': { title: 'Conchas de Abanico', scientific: 'Argopecten purpuratus', category: 'Concha de Exportación', img: 'img/conchas_abanico.jpg', desc: 'Conchas frescas con coral naranja vibrante y registro Sanipes vigente.', price: 'S/ 20.00 /kg', saving: '-33.3% (Ahorras S/ 10.00/kg)', link: 'producto-conchas.html', unitPrice: 20.00 }
         };
         let currentQvKey = 'cabrilla';
 
