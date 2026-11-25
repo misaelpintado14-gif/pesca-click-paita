@@ -89,6 +89,28 @@
             </div>
         </div>
 
+        
+        <!-- CRONÓMETRO INTERACTIVO DE SUSTENTACIÓN (3:00 MIN - 100 PUNTOS) -->
+        <div class="bg-gradient-to-r from-brand-900 to-slate-900 text-white rounded-3xl p-6 mb-10 shadow-xl border border-brand-800 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="space-y-1.5">
+                <span class="bg-cyan-500/20 text-cyan-300 border border-cyan-400/30 font-mono text-[10px] px-2.5 py-0.5 rounded-full font-bold uppercase">
+                    <i class="fas fa-stopwatch mr-1"></i> SIMULADOR DE EXPOSICIÓN ORAL (PARTE 3)
+                </span>
+                <h3 class="text-lg sm:text-xl font-bold">Cronómetro Oficial de Sustentación (3 Minutos)</h3>
+                <p id="pitch-phase" class="text-xs text-cyan-200 font-mono">Fase actual: Bloque 1 — Apertura y Problema en Paita (0:00 - 0:45)</p>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="bg-slate-950/80 border border-cyan-500/40 px-5 py-2.5 rounded-2xl text-3xl font-black font-mono text-cyan-300 tracking-wider" id="pitch-timer-display">
+                    03:00
+                </div>
+                <div class="flex space-x-2 text-xs font-mono">
+                    <button onclick="startPitchTimer()" class="bg-emerald-600 hover:bg-emerald-500 text-white px-3.5 py-2.5 rounded-xl font-bold transition shadow"><i class="fas fa-play mr-1"></i> Iniciar</button>
+                    <button onclick="pausePitchTimer()" class="bg-amber-600 hover:bg-amber-500 text-white px-3 py-2.5 rounded-xl font-bold transition"><i class="fas fa-pause"></i></button>
+                    <button onclick="resetPitchTimer()" class="bg-slate-700 hover:bg-slate-600 text-white px-3 py-2.5 rounded-xl font-bold transition"><i class="fas fa-redo"></i></button>
+                </div>
+            </div>
+        </div>
+
         <!-- 12 CARDS GRID (EACH ONE A DEDICATED HTML) -->
         <div class="mb-12">
             <h2 class="text-xl font-black text-slate-900 mb-6 flex items-center">
@@ -470,6 +492,32 @@
             </div>
         </div>
     </footer>
+
+
+    <script>
+        let pitchSeconds = 180;
+        let pitchInterval = null;
+        function updatePitchUI() {
+            const m = Math.floor(pitchSeconds / 60);
+            const s = pitchSeconds % 60;
+            document.getElementById('pitch-timer-display').innerText = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+            const elapsed = 180 - pitchSeconds;
+            const ph = document.getElementById('pitch-phase');
+            if (elapsed < 45) ph.innerText = 'Bloque 1: Apertura y Abuso de Intermediarios en Paita (0:00 - 0:45)';
+            else if (elapsed < 90) ph.innerText = 'Bloque 2: Solución Web, Balanza Tara y Frío IoT 1.4 °C (0:45 - 1:30)';
+            else if (elapsed < 135) ph.innerText = 'Bloque 3: Piloto 6,850 kg, VAN S/ 285k y TIR 142.8% (1:30 - 2:15)';
+            else ph.innerText = 'Bloque 4: Compromiso Ético Triple Impacto y Cierre (2:15 - 3:00)';
+        }
+        function startPitchTimer() {
+            if (pitchInterval) return;
+            pitchInterval = setInterval(() => {
+                if (pitchSeconds > 0) { pitchSeconds--; updatePitchUI(); }
+                else { clearInterval(pitchInterval); pitchInterval = null; document.getElementById('pitch-phase').innerText = '¡TIEMPO COMPLETADO — SUSTENTACIÓN DE 100 PUNTOS LISTA!'; }
+            }, 1000);
+        }
+        function pausePitchTimer() { clearInterval(pitchInterval); pitchInterval = null; }
+        function resetPitchTimer() { pausePitchTimer(); pitchSeconds = 180; updatePitchUI(); }
+    </script>
 
 </body>
 </html>

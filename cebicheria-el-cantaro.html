@@ -17,11 +17,13 @@
             }
         }
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
 
+    <div class="sticky top-0 z-50 shadow-sm">
     <!-- TOP BAR DE PROCEDENCIA MARINA -->
-    <header class="bg-emerald-950 text-white text-xs py-2 px-4 sticky top-0 z-50 shadow-md">
+    <header class="bg-emerald-950 text-white text-xs py-2 px-4 border-b border-emerald-900">
         <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
             <div class="flex items-center space-x-2">
                 <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
@@ -38,7 +40,7 @@
     </header>
 
     <!-- NAVBAR DEL RESTAURANTE -->
-    <nav class="bg-white border-b border-slate-200 sticky top-8 z-40 shadow-sm">
+    <nav class="bg-white/95 backdrop-blur-md border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 py-3.5 flex items-center justify-between gap-4">
             <div class="flex items-center space-x-3">
                 <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-500 text-white flex items-center justify-center text-xl shadow-md">
@@ -55,6 +57,7 @@
             <div class="hidden md:flex items-center space-x-6 text-xs font-bold text-slate-700">
                 <a href="#menu-platos" class="hover:text-emerald-600 transition">Nuestra Carta (9)</a>
                 <a href="#comanda-mesa" class="hover:text-emerald-600 transition">Tu Comanda</a>
+                <a href="#reservas" class="hover:text-emerald-600 transition">Reservar Mesa</a>
                 <a href="#trazabilidad-mesa" class="hover:text-emerald-600 transition">Trazabilidad QR</a>
             </div>
 
@@ -70,6 +73,7 @@
             </div>
         </div>
     </nav>
+    </div>
 
     <!-- HERO RESTAURANTE -->
     <section class="relative bg-slate-950 text-white py-14 px-4 overflow-hidden border-b border-slate-200">
@@ -123,6 +127,27 @@
     <!-- CARTA DE PLATOS PREPARADOS -->
     <main class="max-w-7xl mx-auto px-4 py-12 flex-grow w-full space-y-10">
         
+        
+        <!-- DEL MAR A TU MESA EN 4 PASOS -->
+        <section class="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200 shadow-sm grid grid-cols-2 lg:grid-cols-4 gap-4 text-xs font-mono">
+            <div class="flex items-center space-x-3 p-2 rounded-2xl bg-brand-50/70 border border-brand-100">
+                <span class="w-9 h-9 rounded-xl bg-brand-600 text-white flex items-center justify-center font-bold shrink-0">05:00</span>
+                <div><strong class="text-brand-900 block font-sans">Pesca en Paita</strong><span class="text-[10px] text-slate-600">Arribo al muelle DPA</span></div>
+            </div>
+            <div class="flex items-center space-x-3 p-2 rounded-2xl bg-cyan-50/70 border border-cyan-100">
+                <span class="w-9 h-9 rounded-xl bg-cyan-600 text-white flex items-center justify-center font-bold shrink-0">05:30</span>
+                <div><strong class="text-cyan-950 block font-sans">Balanza Certificada</strong><span class="text-[10px] text-slate-600">Tara oficial -2.5 kg</span></div>
+            </div>
+            <div class="flex items-center space-x-3 p-2 rounded-2xl bg-blue-50/70 border border-blue-100">
+                <span class="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold shrink-0">06:28</span>
+                <div><strong class="text-blue-950 block font-sans">Furgón a 1.4 °C</strong><span class="text-[10px] text-slate-600">Recepción en Piura</span></div>
+            </div>
+            <div class="flex items-center space-x-3 p-2 rounded-2xl bg-emerald-50/70 border border-emerald-100">
+                <span class="w-9 h-9 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold shrink-0">11:30</span>
+                <div><strong class="text-emerald-950 block font-sans">Cocina en Vivo</strong><span class="text-[10px] text-slate-600">Al limón y wok al instante</span></div>
+            </div>
+        </section>
+
         <div id="menu-platos" class="text-center space-y-3">
             <span class="text-xs font-mono text-emerald-700 font-bold uppercase tracking-wider bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200 inline-block">
                 GASTRONOMÍA PIURANA DE ALTA CALIDAD • FOTOS REALES
@@ -144,11 +169,12 @@
         <!-- GRID DE 9 PLATOS -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
-            <div data-cat="frios" class="dish-card bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
+            <div data-cat="frios" class="dish-card bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
                 <div>
                     <div class="relative h-56 overflow-hidden bg-slate-900">
                         <img src="img/plato_cebiche.jpg" alt="Cebiche Clásico Piurano" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+                        <span class="absolute top-3 right-3 bg-black/60 text-white font-mono text-[10px] px-2 py-0.5 rounded-full backdrop-blur-sm"><i class="far fa-clock mr-1 text-emerald-300"></i>12-15 min</span>
                         <span class="absolute top-3 left-3 bg-emerald-500 text-white font-mono text-[10px] px-2.5 py-1 rounded-full font-bold shadow">
                             ★ PLATO ESTRELLA
                         </span>
@@ -174,11 +200,12 @@
                     </button>
                 </div>
             </div>
-            <div data-cat="calientes" class="dish-card bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
+            <div data-cat="calientes" class="dish-card bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
                 <div>
                     <div class="relative h-56 overflow-hidden bg-slate-900">
                         <img src="img/plato_sudado.jpg" alt="Sudado Especial a la Paitana" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+                        <span class="absolute top-3 right-3 bg-black/60 text-white font-mono text-[10px] px-2 py-0.5 rounded-full backdrop-blur-sm"><i class="far fa-clock mr-1 text-emerald-300"></i>12-15 min</span>
                         <span class="absolute top-3 left-3 bg-brand-600 text-white font-mono text-[10px] px-2.5 py-1 rounded-full font-bold shadow">
                             TRADICIÓN PAITANA
                         </span>
@@ -204,11 +231,12 @@
                     </button>
                 </div>
             </div>
-            <div data-cat="fritos" class="dish-card bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
+            <div data-cat="fritos" class="dish-card bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
                 <div>
                     <div class="relative h-56 overflow-hidden bg-slate-900">
                         <img src="img/plato_chicharron_tollo.jpg" alt="Chicharrón Crocante de Tollo" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+                        <span class="absolute top-3 right-3 bg-black/60 text-white font-mono text-[10px] px-2 py-0.5 rounded-full backdrop-blur-sm"><i class="far fa-clock mr-1 text-emerald-300"></i>12-15 min</span>
                         <span class="absolute top-3 left-3 bg-amber-500 text-slate-950 font-mono text-[10px] px-2.5 py-1 rounded-full font-bold shadow">
                             SIN ESPINAS
                         </span>
@@ -234,11 +262,12 @@
                     </button>
                 </div>
             </div>
-            <div data-cat="fritos" class="dish-card bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
+            <div data-cat="fritos" class="dish-card bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
                 <div>
                     <div class="relative h-56 overflow-hidden bg-slate-900">
                         <img src="img/plato_chicharron_pota.jpg" alt="Chicharrón de Pota al Wok" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+                        <span class="absolute top-3 right-3 bg-black/60 text-white font-mono text-[10px] px-2 py-0.5 rounded-full backdrop-blur-sm"><i class="far fa-clock mr-1 text-emerald-300"></i>12-15 min</span>
                         <span class="absolute top-3 left-3 bg-purple-600 text-white font-mono text-[10px] px-2.5 py-1 rounded-full font-bold shadow">
                             FAVORITO DE LA TARDE
                         </span>
@@ -264,11 +293,12 @@
                     </button>
                 </div>
             </div>
-            <div data-cat="calientes" class="dish-card bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
+            <div data-cat="calientes" class="dish-card bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
                 <div>
                     <div class="relative h-56 overflow-hidden bg-slate-900">
                         <img src="img/plato_mero_sudado.jpg" alt="Mero Murique a lo Macho" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+                        <span class="absolute top-3 right-3 bg-black/60 text-white font-mono text-[10px] px-2 py-0.5 rounded-full backdrop-blur-sm"><i class="far fa-clock mr-1 text-emerald-300"></i>12-15 min</span>
                         <span class="absolute top-3 left-3 bg-amber-400 text-slate-950 font-mono text-[10px] px-2.5 py-1 rounded-full font-bold shadow">
                             👑 ALTA COCINA GOURMET
                         </span>
@@ -294,11 +324,12 @@
                     </button>
                 </div>
             </div>
-            <div data-cat="calientes" class="dish-card bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
+            <div data-cat="calientes" class="dish-card bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
                 <div>
                     <div class="relative h-56 overflow-hidden bg-slate-900">
                         <img src="img/plato_arroz_mariscos.jpg" alt="Arroz con Mariscos a la Norteña" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+                        <span class="absolute top-3 right-3 bg-black/60 text-white font-mono text-[10px] px-2 py-0.5 rounded-full backdrop-blur-sm"><i class="far fa-clock mr-1 text-emerald-300"></i>12-15 min</span>
                         <span class="absolute top-3 left-3 bg-red-600 text-white font-mono text-[10px] px-2.5 py-1 rounded-full font-bold shadow">
                             CALIENTITO AL SARTÉN
                         </span>
@@ -324,11 +355,12 @@
                     </button>
                 </div>
             </div>
-            <div data-cat="frios" class="dish-card bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
+            <div data-cat="frios" class="dish-card bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
                 <div>
                     <div class="relative h-56 overflow-hidden bg-slate-900">
                         <img src="img/plato_tiradito.jpg" alt="Tiradito de Lenguado al Ají Amarillo" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+                        <span class="absolute top-3 right-3 bg-black/60 text-white font-mono text-[10px] px-2 py-0.5 rounded-full backdrop-blur-sm"><i class="far fa-clock mr-1 text-emerald-300"></i>12-15 min</span>
                         <span class="absolute top-3 left-3 bg-yellow-400 text-slate-950 font-mono text-[10px] px-2.5 py-1 rounded-full font-bold shadow">
                             CHEF RECOMIENDA
                         </span>
@@ -354,11 +386,12 @@
                     </button>
                 </div>
             </div>
-            <div data-cat="fritos" class="dish-card bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
+            <div data-cat="fritos" class="dish-card bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
                 <div>
                     <div class="relative h-56 overflow-hidden bg-slate-900">
                         <img src="img/plato_jalea_mixta.jpg" alt="Jalea Mixta Crocante Paitana" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+                        <span class="absolute top-3 right-3 bg-black/60 text-white font-mono text-[10px] px-2 py-0.5 rounded-full backdrop-blur-sm"><i class="far fa-clock mr-1 text-emerald-300"></i>12-15 min</span>
                         <span class="absolute top-3 left-3 bg-orange-500 text-white font-mono text-[10px] px-2.5 py-1 rounded-full font-bold shadow">
                             PARA COMPARTIR
                         </span>
@@ -384,11 +417,12 @@
                     </button>
                 </div>
             </div>
-            <div data-cat="calientes" class="dish-card bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
+            <div data-cat="calientes" class="dish-card bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
                 <div>
                     <div class="relative h-56 overflow-hidden bg-slate-900">
                         <img src="img/plato_chupe.jpg" alt="Chupe Norteño de Langostinos" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+                        <span class="absolute top-3 right-3 bg-black/60 text-white font-mono text-[10px] px-2 py-0.5 rounded-full backdrop-blur-sm"><i class="far fa-clock mr-1 text-emerald-300"></i>12-15 min</span>
                         <span class="absolute top-3 left-3 bg-rose-600 text-white font-mono text-[10px] px-2.5 py-1 rounded-full font-bold shadow">
                             RECONSTITUYENTE
                         </span>
@@ -443,6 +477,61 @@
             </div>
         </div>
 
+
+        <!-- SECCIÓN INTERACTIVA: RESERVAR MESA -->
+        <section id="reservas" class="bg-gradient-to-br from-emerald-900 to-slate-900 text-white rounded-3xl p-6 sm:p-10 shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-5 space-y-3">
+                <span class="bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 font-mono text-[10px] px-3 py-1 rounded-full font-bold uppercase inline-block">
+                    <i class="fas fa-calendar-check mr-1"></i> RESERVAS EN PIURA CENTRO
+                </span>
+                <h3 class="text-2xl sm:text-3xl font-black">Reserva tu Mesa en "El Cántaro"</h3>
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    Asegura tu mesa hoy para disfrutar de cebiche recién cortado, sudados a la paitana en olla de barro y chicharrones crocantes con trazabilidad marina verificada.
+                </p>
+                <div class="text-xs font-mono text-emerald-300 space-y-1 pt-2">
+                    <div><i class="fas fa-map-marker-alt mr-1.5"></i> Jr. Ayacucho 450, Piura Centro</div>
+                    <div><i class="fas fa-phone-alt mr-1.5"></i> Reservas Directas: (073) 32-4890</div>
+                </div>
+            </div>
+            <div class="lg:col-span-7 bg-white text-slate-800 rounded-2xl p-6 shadow-lg grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                <div>
+                    <label class="font-bold text-slate-700 block mb-1">Nombre del Comensal:</label>
+                    <input id="res-name" type="text" placeholder="Ej. Familia Pintado" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 font-medium">
+                </div>
+                <div>
+                    <label class="font-bold text-slate-700 block mb-1">Personas:</label>
+                    <select id="res-people" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 font-mono font-bold">
+                        <option>2 Personas</option>
+                        <option selected>4 Personas</option>
+                        <option>6 Personas</option>
+                        <option>Mesa Familiar (8+)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="font-bold text-slate-700 block mb-1">Hora de Llegada:</label>
+                    <select id="res-time" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 font-mono font-bold">
+                        <option>12:30 PM (Almuerzo)</option>
+                        <option selected>01:30 PM (Hora Punta)</option>
+                        <option>02:30 PM (Tarde Marina)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="font-bold text-slate-700 block mb-1">Zona Preferida:</label>
+                    <select id="res-zone" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 font-medium">
+                        <option>Salón Principal Piura</option>
+                        <option>Barra Cevichera en Vivo</option>
+                        <option>Terraza Fresca</option>
+                    </select>
+                </div>
+                <div class="sm:col-span-2 pt-1">
+                    <button onclick="confirmReservation()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-xl transition shadow-md flex items-center justify-center space-x-2">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Confirmar Reserva de Mesa Ahora</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
         <!-- SECCIÓN DE TRAZABILIDAD EN MESA (CÓDIGO QR) -->
         <div id="trazabilidad-mesa" class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-lg space-y-6">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
@@ -486,6 +575,37 @@
         </div>
     </footer>
 
+    
+    <!-- CHATBOT CONCIERGE DEL CHEF MARCO -->
+    <div class="fixed bottom-6 left-6 z-50 font-sans">
+        <button onclick="toggleCebChat()" class="bg-emerald-700 hover:bg-emerald-600 text-white p-3.5 rounded-full shadow-2xl border-2 border-emerald-300/40 flex items-center space-x-2 transition hover:scale-105">
+            <i class="fas fa-concierge-bell text-lg text-emerald-200"></i>
+            <span class="text-xs font-mono font-bold pr-1 hidden sm:inline">Chef Marco En Línea</span>
+        </button>
+        <div id="ceb-chat-win" class="hidden absolute bottom-16 left-0 w-80 sm:w-96 bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden">
+            <div class="bg-emerald-900 text-white p-4 flex items-center justify-between">
+                <div class="flex items-center space-x-2.5">
+                    <img src="img/plato_cebiche.jpg" class="w-9 h-9 rounded-full object-cover border-2 border-emerald-400">
+                    <div>
+                        <strong class="text-xs block">Chef Marco • El Cántaro</strong>
+                        <span class="text-[10px] text-emerald-300 font-mono">Cocina Abierta Piura Centro</span>
+                    </div>
+                </div>
+                <button onclick="toggleCebChat()" class="text-slate-300 hover:text-white"><i class="fas fa-times"></i></button>
+            </div>
+            <div id="ceb-chat-msgs" class="p-4 h-64 overflow-y-auto bg-slate-50 space-y-2.5 text-xs">
+                <div class="bg-white p-3 rounded-2xl rounded-tl-none border border-slate-200 shadow-sm">
+                    <strong class="text-emerald-700 block text-[10px]">Chef Marco</strong>
+                    ¡Bienvenido a El Cántaro! Hoy nos llegó Cabrilla Norteña y Lenguado fresquísimo a 1.4 °C desde Paita. ¿Qué te provoca hoy?
+                </div>
+            </div>
+            <div class="p-2 bg-slate-100 border-t border-slate-200 flex flex-wrap gap-1 text-[10px] font-mono">
+                <button onclick="askChef('¿Qué pesca fresca llegó hoy?')" class="bg-white hover:bg-emerald-50 px-2 py-1 rounded-lg border border-slate-200">🐟 Pesca más fresca</button>
+                <button onclick="askChef('¿Cuál recomiendas sin espinas?')" class="bg-white hover:bg-emerald-50 px-2 py-1 rounded-lg border border-slate-200">👶 Sin espinas</button>
+            </div>
+        </div>
+    </div>
+
     <div id="ceb-toast-box" class="fixed bottom-6 right-6 z-50 space-y-2 pointer-events-none"></div>
 
     <script>
@@ -515,7 +635,32 @@
                             <span><strong>${item.qty}x</strong> ${item.name}</span>
                             <div class="flex items-center space-x-3">
                                 <strong class="text-emerald-700">S/ ${(item.qty * item.price).toFixed(2)}</strong>
-                                <button onclick="cebCart.splice(${idx},1); renderCebCart();" class="text-red-500 hover:text-red-700"><i class="fas fa-times"></i></button>
+                                <button onclick="cebCart.splice(${idx},1); 
+        function confirmReservation() {
+            const name = document.getElementById('res-name').value.trim() || 'Invitado Especial';
+            const ppl = document.getElementById('res-people').value;
+            const time = document.getElementById('res-time').value;
+            const zone = document.getElementById('res-zone').value;
+            if (typeof confetti === 'function') confetti({ particleCount: 70, spread: 60, origin: { y: 0.7 } });
+            showCebToast('¡Mesa Reservada con Éxito!', `${name} • ${ppl} a las ${time} (${zone}). ¡Te esperamos!`);
+        }
+
+        function toggleCebChat() {
+            document.getElementById('ceb-chat-win').classList.toggle('hidden');
+        }
+
+        function askChef(q) {
+            const box = document.getElementById('ceb-chat-msgs');
+            box.innerHTML += `<div class="bg-emerald-600 text-white p-2.5 rounded-2xl rounded-tr-none ml-8">${q}</div>`;
+            setTimeout(() => {
+                let ans = 'Hoy la estrella es nuestro Cebiche Clásico con Cabrilla recién llegada de Don Pedro Chunga.';
+                if (q.includes('espinas')) ans = 'Te recomiendo el Chicharrón Crocante de Tollo de Leche (S/ 36) o el Tiradito de Lenguado al Ají Amarillo (S/ 46). ¡100% libre de espinas!';
+                box.innerHTML += `<div class="bg-white p-2.5 rounded-2xl rounded-tl-none border border-slate-200 mr-8"><strong class="text-emerald-700 block text-[10px]">Chef Marco</strong>${ans}</div>`;
+                box.scrollTop = box.scrollHeight;
+            }, 400);
+        }
+
+        renderCebCart();" class="text-red-500 hover:text-red-700"><i class="fas fa-times"></i></button>
                             </div>
                         </div>`;
                 });
@@ -527,11 +672,61 @@
         function orderDish(name, price) {
             const existing = cebCart.find(i => i.name === name);
             if (existing) existing.qty += 1; else cebCart.push({ name, qty: 1, price });
-            renderCebCart();
+            
+        function confirmReservation() {
+            const name = document.getElementById('res-name').value.trim() || 'Invitado Especial';
+            const ppl = document.getElementById('res-people').value;
+            const time = document.getElementById('res-time').value;
+            const zone = document.getElementById('res-zone').value;
+            if (typeof confetti === 'function') confetti({ particleCount: 70, spread: 60, origin: { y: 0.7 } });
+            showCebToast('¡Mesa Reservada con Éxito!', `${name} • ${ppl} a las ${time} (${zone}). ¡Te esperamos!`);
+        }
+
+        function toggleCebChat() {
+            document.getElementById('ceb-chat-win').classList.toggle('hidden');
+        }
+
+        function askChef(q) {
+            const box = document.getElementById('ceb-chat-msgs');
+            box.innerHTML += `<div class="bg-emerald-600 text-white p-2.5 rounded-2xl rounded-tr-none ml-8">${q}</div>`;
+            setTimeout(() => {
+                let ans = 'Hoy la estrella es nuestro Cebiche Clásico con Cabrilla recién llegada de Don Pedro Chunga.';
+                if (q.includes('espinas')) ans = 'Te recomiendo el Chicharrón Crocante de Tollo de Leche (S/ 36) o el Tiradito de Lenguado al Ají Amarillo (S/ 46). ¡100% libre de espinas!';
+                box.innerHTML += `<div class="bg-white p-2.5 rounded-2xl rounded-tl-none border border-slate-200 mr-8"><strong class="text-emerald-700 block text-[10px]">Chef Marco</strong>${ans}</div>`;
+                box.scrollTop = box.scrollHeight;
+            }, 400);
+        }
+
+        renderCebCart();
             showCebToast('¡Plato Añadido a Tu Comanda!', `${name} (S/ ${price.toFixed(2)}) listo para preparar con pesca de hoy.`);
         }
 
-        function clearCebCart() { cebCart = []; renderCebCart(); }
+        function clearCebCart() { cebCart = []; 
+        function confirmReservation() {
+            const name = document.getElementById('res-name').value.trim() || 'Invitado Especial';
+            const ppl = document.getElementById('res-people').value;
+            const time = document.getElementById('res-time').value;
+            const zone = document.getElementById('res-zone').value;
+            if (typeof confetti === 'function') confetti({ particleCount: 70, spread: 60, origin: { y: 0.7 } });
+            showCebToast('¡Mesa Reservada con Éxito!', `${name} • ${ppl} a las ${time} (${zone}). ¡Te esperamos!`);
+        }
+
+        function toggleCebChat() {
+            document.getElementById('ceb-chat-win').classList.toggle('hidden');
+        }
+
+        function askChef(q) {
+            const box = document.getElementById('ceb-chat-msgs');
+            box.innerHTML += `<div class="bg-emerald-600 text-white p-2.5 rounded-2xl rounded-tr-none ml-8">${q}</div>`;
+            setTimeout(() => {
+                let ans = 'Hoy la estrella es nuestro Cebiche Clásico con Cabrilla recién llegada de Don Pedro Chunga.';
+                if (q.includes('espinas')) ans = 'Te recomiendo el Chicharrón Crocante de Tollo de Leche (S/ 36) o el Tiradito de Lenguado al Ají Amarillo (S/ 46). ¡100% libre de espinas!';
+                box.innerHTML += `<div class="bg-white p-2.5 rounded-2xl rounded-tl-none border border-slate-200 mr-8"><strong class="text-emerald-700 block text-[10px]">Chef Marco</strong>${ans}</div>`;
+                box.scrollTop = box.scrollHeight;
+            }, 400);
+        }
+
+        renderCebCart(); }
 
         function sendCebWhatsApp() {
             if (cebCart.length === 0) { showCebToast('Comanda vacía', 'Añade primero un plato de la carta.'); return; }
@@ -552,6 +747,31 @@
             document.querySelectorAll('.dish-card').forEach(el => {
                 el.style.display = (cat === 'all' || el.getAttribute('data-cat') === cat) ? 'flex' : 'none';
             });
+        }
+
+        
+        function confirmReservation() {
+            const name = document.getElementById('res-name').value.trim() || 'Invitado Especial';
+            const ppl = document.getElementById('res-people').value;
+            const time = document.getElementById('res-time').value;
+            const zone = document.getElementById('res-zone').value;
+            if (typeof confetti === 'function') confetti({ particleCount: 70, spread: 60, origin: { y: 0.7 } });
+            showCebToast('¡Mesa Reservada con Éxito!', `${name} • ${ppl} a las ${time} (${zone}). ¡Te esperamos!`);
+        }
+
+        function toggleCebChat() {
+            document.getElementById('ceb-chat-win').classList.toggle('hidden');
+        }
+
+        function askChef(q) {
+            const box = document.getElementById('ceb-chat-msgs');
+            box.innerHTML += `<div class="bg-emerald-600 text-white p-2.5 rounded-2xl rounded-tr-none ml-8">${q}</div>`;
+            setTimeout(() => {
+                let ans = 'Hoy la estrella es nuestro Cebiche Clásico con Cabrilla recién llegada de Don Pedro Chunga.';
+                if (q.includes('espinas')) ans = 'Te recomiendo el Chicharrón Crocante de Tollo de Leche (S/ 36) o el Tiradito de Lenguado al Ají Amarillo (S/ 46). ¡100% libre de espinas!';
+                box.innerHTML += `<div class="bg-white p-2.5 rounded-2xl rounded-tl-none border border-slate-200 mr-8"><strong class="text-emerald-700 block text-[10px]">Chef Marco</strong>${ans}</div>`;
+                box.scrollTop = box.scrollHeight;
+            }, 400);
         }
 
         renderCebCart();
