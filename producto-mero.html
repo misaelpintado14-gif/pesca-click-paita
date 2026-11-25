@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mero Murique — Ficha Técnica B2B | PESCA-CLICK PAITA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#F0F9FF',
+                            100: '#E0F2FE',
+                            500: '#0284C7',
+                            600: '#0369A1',
+                            900: '#0A2540'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- TOP BAR -->
+    <header class="bg-brand-900 text-white text-xs py-2.5 px-4 sticky top-0 z-50 border-b border-brand-800 shadow-sm">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <a href="index.html#modulo-catalogo" class="bg-brand-800 hover:bg-brand-700 text-cyan-200 px-3 py-1 rounded-lg border border-brand-700 transition flex items-center font-semibold">
+                    <i class="fas fa-arrow-left mr-1.5"></i> Volver al Catálogo B2B
+                </a>
+                <span class="text-slate-400">|</span>
+                <span class="font-mono text-cyan-300 hidden sm:inline"><i class="fas fa-certificate mr-1 text-emerald-400"></i> FICHA TÉCNICA SANIPES D.S. 040</span>
+            </div>
+            <div class="flex items-center space-x-3">
+                <a href="portal_sesion15.html" class="bg-cyan-600/30 hover:bg-cyan-600/50 text-cyan-200 border border-cyan-400/40 px-3 py-1 rounded font-semibold transition flex items-center">
+                    <i class="fas fa-graduation-cap mr-1.5"></i> Hub Sesión 15
+                </a>
+                <a href="index.html" class="bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-1 rounded font-bold transition flex items-center shadow-sm">
+                    <i class="fas fa-store mr-1.5"></i> Plataforma Principal
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-8 flex-grow w-full">
+
+        <!-- BREADCRUMBS -->
+        <nav class="flex items-center space-x-2 text-xs text-slate-500 font-mono mb-6">
+            <a href="index.html" class="hover:text-brand-600">PESCA-CLICK PAITA</a>
+            <span>/</span>
+            <a href="index.html#modulo-catalogo" class="hover:text-brand-600">Catálogo B2B</a>
+            <span>/</span>
+            <span class="text-slate-800 font-bold">Mero Murique</span>
+        </nav>
+
+        <!-- MAIN PRODUCT HERO GRID -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-12">
+
+            <!-- LEFT: IMAGE GALLERY & REAL TIME TELEMETRY -->
+            <div class="lg:col-span-6 space-y-4">
+                <div class="relative rounded-3xl overflow-hidden bg-slate-900 border border-slate-200 shadow-xl group aspect-[4/3] flex items-center justify-center">
+                    <img src="img/mero.jpg" alt="Mero Murique" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                    
+                    <!-- Floating badges -->
+                    <div class="absolute top-4 left-4 flex flex-col gap-2">
+                        <span class="bg-emerald-500 text-white font-mono text-xs px-3 py-1 rounded-full font-bold shadow flex items-center">
+                            <span class="w-2 h-2 rounded-full bg-white animate-pulse mr-1.5"></span> PESCA DEL DÍA FRESCA
+                        </span>
+                        <span class="bg-brand-900/90 text-cyan-200 font-mono text-[11px] px-3 py-1 rounded-full backdrop-blur-sm border border-brand-700">
+                            <i class="fas fa-snowflake mr-1 text-cyan-400"></i> 1.0 °C en Cámara de Frío
+                        </span>
+                    </div>
+
+                    <div class="absolute bottom-4 left-4 right-4 text-white">
+                        <div class="text-xs text-cyan-300 font-mono uppercase tracking-wider mb-1">Alta Gama Gourmet • El Rey de la Gastronomía Norteña</div>
+                        <h1 class="text-2xl sm:text-3xl font-black">Mero Murique</h1>
+                        <p class="text-xs text-slate-300 italic font-mono">Epinephelus quinquefasciatus</p>
+                    </div>
+                </div>
+
+                <!-- DOCK & CAPTAIN INFO CARD -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-3">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                        <div class="text-xs font-bold text-slate-800 uppercase tracking-wide flex items-center">
+                            <i class="fas fa-ship text-brand-600 mr-2"></i> Trazabilidad del Patrón de Lancha
+                        </div>
+                        <span class="text-[11px] bg-slate-100 text-slate-700 font-mono px-2 py-0.5 rounded font-semibold">Certificado Sanipes</span>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                        <div>
+                            <span class="text-slate-400 block text-[10px] uppercase font-mono">Embarcación:</span>
+                            <strong class="text-slate-800">Lancha "San José Bendito" (PT-51203-BM)</strong>
+                        </div>
+                        <div>
+                            <span class="text-slate-400 block text-[10px] uppercase font-mono">Patrón Responsable:</span>
+                            <strong class="text-slate-800">Don Manuel Rumiche Vite (Tierra Colorada - Paita)</strong>
+                        </div>
+                        <div>
+                            <span class="text-slate-400 block text-[10px] uppercase font-mono">Puerto de Desembarque:</span>
+                            <span class="text-slate-700">DPA Paita</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-400 block text-[10px] uppercase font-mono">Arte de Pesca Selectivo:</span>
+                            <span class="text-slate-700">Espinel vertical de fondo en arrecifes de piedra a 40 brazas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: PRICE COMPARISON, SAVINGS & SIMULATOR -->
+            <div class="lg:col-span-6 space-y-6">
+
+                <!-- PRICE TRANSPARENCY CARD -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xl space-y-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-xs font-mono font-bold text-brand-600 uppercase tracking-wider">Cotización Oficial B2B</span>
+                            <div class="flex items-baseline space-x-2 mt-1">
+                                <span class="text-4xl sm:text-5xl font-black text-brand-900 font-mono">S/ 42.00</span>
+                                <span class="text-slate-500 font-semibold text-sm">/ Kilogramo Neto</span>
+                            </div>
+                        </div>
+                        <div class="bg-emerald-50 text-emerald-800 border border-emerald-300 rounded-2xl px-4 py-2.5 text-center">
+                            <span class="text-xs font-bold block uppercase">Ahorro Cebichería</span>
+                            <span class="text-2xl font-black text-emerald-600 font-mono">-30.0%</span>
+                        </div>
+                    </div>
+
+                    <!-- 3-WAY COMPARISON BAR -->
+                    <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200 space-y-3">
+                        <div class="text-xs font-bold text-slate-700 flex items-center justify-between">
+                            <span>Comparativa de Precios del Mercado (Paita - Piura):</span>
+                            <span class="text-emerald-600 font-bold"><i class="fas fa-balance-scale mr-1"></i> Precio Justo Simétrico</span>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 text-center text-xs font-mono">
+                            <div class="bg-red-50 text-red-800 p-2.5 rounded-xl border border-red-200">
+                                <span class="text-[10px] text-red-500 uppercase block font-sans">Abuso Intermediario</span>
+                                <strong class="text-base block text-red-600 line-through">S/ 25.00</strong>
+                                <span class="text-[10px] text-red-500">Paga al pescador</span>
+                            </div>
+                            <div class="bg-amber-50 text-amber-800 p-2.5 rounded-xl border border-amber-200">
+                                <span class="text-[10px] text-amber-600 uppercase block font-sans">Revendedor Piura</span>
+                                <strong class="text-base block text-amber-700 line-through">S/ 60.00</strong>
+                                <span class="text-[10px] text-amber-600">Cobra a cebichería</span>
+                            </div>
+                            <div class="bg-emerald-100 text-emerald-900 p-2.5 rounded-xl border-2 border-emerald-500 shadow-sm">
+                                <span class="text-[10px] text-emerald-700 uppercase block font-sans font-bold">PESCA-CLICK B2B</span>
+                                <strong class="text-base block text-emerald-800">S/ 42.00</strong>
+                                <span class="text-[10px] text-emerald-700 font-bold">+68% (S/ 17.00 más por kg)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- INSTANT ORDER CALCULATOR -->
+                    <div class="border-t border-slate-100 pt-5 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <label for="calc-kg" class="text-xs font-bold text-slate-800 uppercase">
+                                <i class="fas fa-calculator text-brand-600 mr-1.5"></i> Calcular Pedido en Kilogramos:
+                            </label>
+                            <span class="text-xs text-slate-500 font-mono">Tara oficial: -2.5 kg/jaba</span>
+                        </div>
+                        
+                        <div class="flex items-center space-x-3">
+                            <div class="relative flex-1">
+                                <input type="number" id="calc-kg" value="30" min="5" max="500" step="5" oninput="updateProductCalc()" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-lg font-mono font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                                <span class="absolute right-4 top-3.5 text-slate-400 font-mono text-sm font-semibold">KG</span>
+                            </div>
+                            <button onclick="addFromProduct()" class="bg-brand-600 hover:bg-brand-700 text-white font-bold px-6 py-3.5 rounded-xl shadow-md transition flex items-center space-x-2 text-sm">
+                                <i class="fas fa-cart-plus"></i>
+                                <span>Añadir Pedido</span>
+                            </button>
+                        </div>
+
+                        <!-- LIVE CALC RESULT -->
+                        <div class="bg-brand-50 rounded-2xl p-4 border border-brand-100 flex items-center justify-between text-xs">
+                            <div>
+                                <span class="text-slate-500 block">Inversión en PESCA-CLICK:</span>
+                                <strong id="calc-total" class="text-xl font-black text-brand-900 font-mono">S/ 405.00</strong>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-slate-500 block">Ahorro frente al Revendedor:</span>
+                                <strong id="calc-saving" class="text-xl font-black text-emerald-600 font-mono">+ S/ 255.00</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SANIPES SEAL -->
+                    <div class="bg-slate-50 rounded-xl p-3 border border-slate-200 flex items-center justify-between text-xs text-slate-600">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-shield-alt text-emerald-600 text-base"></i>
+                            <span>Registro Sanitario Oficial: <strong class="font-mono">SANIPES-DPA-PAITA-2026-0884</strong></span>
+                        </div>
+                        <span class="text-emerald-700 font-bold"><i class="fas fa-check-circle mr-1"></i> Válido 2026</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- DETAILS TABS: CULINARY, TEXTURE & TECHNICAL SPECS -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-3">
+                <div class="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center text-lg font-bold">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <h3 class="text-base font-bold text-slate-800">Aplicación Culinaria</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Plato estrella de los mejores restaurantes gourmet: Mero en costra de sal, Sudado imperial a la norteña, Ceviche de mero.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-3">
+                <div class="w-10 h-10 rounded-xl bg-cyan-100 text-cyan-600 flex items-center justify-center text-lg font-bold">
+                    <i class="fas fa-water"></i>
+                </div>
+                <h3 class="text-base font-bold text-slate-800">Textura y Propiedades</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Carne blanca perlada excepcional, sabor dulce yodado inconfundible, hojuela gelatinosa que retiene jugosidad.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-3">
+                <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center text-lg font-bold">
+                    <i class="fas fa-clipboard-check"></i>
+                </div>
+                <h3 class="text-base font-bold text-slate-800">Control de Calidad DPA</h3>
+                <ul class="text-xs text-slate-600 space-y-1.5 font-mono">
+                    <li>• Ojos convexos y cristalinos</li>
+                    <li>• Branquias rojo escarlata vivo</li>
+                    <li>• Firmeza elástica al tacto (rigor mortis)</li>
+                    <li>• Olor puro a brisa marina sin amoniaco</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- TECHNICAL SPECIFICATIONS TABLE -->
+        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm mb-12">
+            <h2 class="text-lg font-bold text-slate-900 mb-6 flex items-center">
+                <i class="fas fa-table-list text-brand-600 mr-2.5"></i> Especificaciones Técnicas y Parámetros de Inocuidad
+            </h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs">
+                    <tbody>
+                        
+        <tr class="border-b border-slate-100 bg-slate-50">
+            <td class="py-3 px-4 font-bold text-slate-700 w-1/3">Talla Comercial</td>
+            <td class="py-3 px-4 text-slate-600 font-mono">Piezas selectas de 3 a 6 kg (Madurez garantizada)</td>
+        </tr>
+        
+        <tr class="border-b border-slate-100 bg-white">
+            <td class="py-3 px-4 font-bold text-slate-700 w-1/3">Captura</td>
+            <td class="py-3 px-4 text-slate-600 font-mono">Pesca 100% selectiva con anzuelo de fondo</td>
+        </tr>
+        
+        <tr class="border-b border-slate-100 bg-slate-50">
+            <td class="py-3 px-4 font-bold text-slate-700 w-1/3">Frecuencia de Arribo</td>
+            <td class="py-3 px-4 text-slate-600 font-mono">2 a 3 lanchas por semana (Stock limitado B2B)</td>
+        </tr>
+        
+        <tr class="border-b border-slate-100 bg-white">
+            <td class="py-3 px-4 font-bold text-slate-700 w-1/3">Cadena de Custodia</td>
+            <td class="py-3 px-4 text-slate-600 font-mono">Precinto de seguridad QR inviolable</td>
+        </tr>
+        
+        <tr class="border-b border-slate-100 bg-slate-50">
+            <td class="py-3 px-4 font-bold text-slate-700 w-1/3">Entrega VIP</td>
+            <td class="py-3 px-4 text-slate-600 font-mono">Directo a la mesa de preparación del Chef</td>
+        </tr>
+        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- OTHER PRODUCTS NAVIGATION -->
+        <div class="border-t border-slate-200 pt-8 mb-12">
+            <h3 class="text-sm font-bold text-slate-800 mb-4">Explorar Otras Especies del DPA Paita:</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-bold">
+                <a href="producto-cabrilla.html" class="bg-white p-3.5 rounded-xl border border-slate-200 hover:border-brand-500 hover:text-brand-600 transition text-center shadow-sm block">
+                    🐟 Cabrilla Norteña
+                </a>
+                <a href="producto-tollo.html" class="bg-white p-3.5 rounded-xl border border-slate-200 hover:border-brand-500 hover:text-brand-600 transition text-center shadow-sm block">
+                    🦈 Tollo de Leche
+                </a>
+                <a href="producto-pota.html" class="bg-white p-3.5 rounded-xl border border-slate-200 hover:border-brand-500 hover:text-brand-600 transition text-center shadow-sm block">
+                    🦑 Pota Manto Limpio
+                </a>
+                <a href="producto-mero.html" class="bg-white p-3.5 rounded-xl border border-slate-200 hover:border-brand-500 hover:text-brand-600 transition text-center shadow-sm block">
+                    👑 Mero Murique
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-slate-200 py-8 px-4 text-center text-xs text-slate-500 font-mono">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>PESCA-CLICK PAITA v2.4 • Plataforma B2B Pesquera • Muelle DPA Paita</div>
+            <div class="space-x-4">
+                <a href="index.html" class="hover:text-brand-600">Inicio</a>
+                <a href="index.html#modulo-catalogo" class="hover:text-brand-600">Catálogo</a>
+                <a href="portal_sesion15.html" class="hover:text-brand-600">Hub Sesión 15</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const unitPrice = 42.0;
+        const revendedorPrice = 60.0;
+
+        function updateProductCalc() {
+            const kg = parseFloat(document.getElementById('calc-kg').value) || 0;
+            const total = kg * unitPrice;
+            const revendedorTotal = kg * revendedorPrice;
+            const saving = revendedorTotal - total;
+
+            document.getElementById('calc-total').innerText = 'S/ ' + total.toFixed(2);
+            document.getElementById('calc-saving').innerText = '+ S/ ' + Math.max(0, saving).toFixed(2);
+        }
+
+        function addFromProduct() {
+            const kg = parseFloat(document.getElementById('calc-kg').value) || 30;
+            alert('¡Excelente! Se han añadido ' + kg + ' kg de Mero Murique al pedido B2B de tu cebichería.\n\nRedirigiendo a la plataforma para finalizar el despacho en frío...');
+            window.location.href = 'index.html#modulo-catalogo';
+        }
+    </script>
+</body>
+</html>

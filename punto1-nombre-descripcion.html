@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1. Nombre y Descripción del Negocio — Sesión 15 | PESCA-CLICK PAITA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#F0F9FF',
+                            100: '#E0F2FE',
+                            500: '#0284C7',
+                            600: '#0369A1',
+                            900: '#0A2540'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- ACADEMIC TOP BAR -->
+    <header class="bg-brand-900 text-white text-xs py-2.5 px-4 sticky top-0 z-50 border-b border-brand-800 shadow-sm">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <a href="portal_sesion15.html" class="bg-brand-800 hover:bg-brand-700 text-cyan-200 px-3 py-1 rounded-lg border border-brand-700 transition flex items-center font-semibold">
+                    <i class="fas fa-th-large mr-1.5"></i> Hub Sesión 15
+                </a>
+                <span class="text-slate-400">|</span>
+                <span class="font-mono text-cyan-300 hidden sm:inline">ALUMNO: Gerson Misael Pintado Huaman • MG. FIORELLA PAZOS (100 PTOS)</span>
+            </div>
+            <div class="flex items-center space-x-2">
+                <a href="portal_sesion15.html" class="bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1 rounded text-xs font-semibold transition">
+                    <i class="fas fa-chevron-left mr-1"></i> Anterior
+                </a>
+                <a href="punto2-problema-necesidad.html" class="bg-cyan-600 hover:bg-cyan-500 text-white px-3 py-1 rounded text-xs font-bold transition">
+                    Siguiente <i class="fas fa-chevron-right ml-1"></i>
+                </a>
+                <a href="index.html" class="bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-1 rounded text-xs font-bold transition ml-2">
+                    <i class="fas fa-store mr-1"></i> Web B2B
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 py-8 flex-grow w-full">
+
+        <!-- BREADCRUMBS -->
+        <nav class="flex items-center space-x-2 text-xs text-slate-500 font-mono mb-6">
+            <a href="portal_sesion15.html" class="hover:text-brand-600">Sesión 15 (Presentación)</a>
+            <span>/</span>
+            <span class="text-slate-800 font-bold">1. Nombre y Descripción del Negocio</span>
+        </nav>
+
+        <!-- HEADER CARD WITH HERO IMAGE -->
+        <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-lg mb-8">
+            <div class="relative h-48 sm:h-64 bg-slate-900">
+                <img src="img/muelle_paita.jpg" alt="1. Nombre y Descripción del Negocio" class="w-full h-full object-cover opacity-80">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent"></div>
+                <div class="absolute bottom-6 left-6 right-6 text-white">
+                    <span class="bg-brand-500 text-white font-mono text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider mb-2 inline-block">
+                        <i class="fas fa-building mr-1.5"></i> PARTE 1 • PUNTO 1
+                    </span>
+                    <h1 class="text-2xl sm:text-3xl font-black">1. Nombre y Descripción del Negocio</h1>
+                    <p class="text-xs sm:text-sm text-cyan-200 font-mono mt-1">Arquitectura de Plataformas y Servicios TI aplicada al Sector Pesquero</p>
+                </div>
+            </div>
+
+            <!-- CONTENT BODY -->
+            <div class="p-6 sm:p-8">
+                
+        <div class="space-y-6 text-sm text-slate-700 leading-relaxed">
+            <div class="bg-blue-50 border-l-4 border-brand-600 p-5 rounded-r-2xl">
+                <h3 class="text-base font-bold text-brand-900 mb-2">Nombre Oficial del Emprendimiento Tecnológico:</h3>
+                <p class="text-lg font-black text-brand-600 font-mono">PESCA-CLICK PAITA v2.4 (Mercado Web Digital del Muelle al Restaurante)</p>
+            </div>
+            
+            <p><strong>PESCA-CLICK PAITA</strong> es una plataforma web y móvil B2B de comercio marítimo directo y logística refrigerada en tiempo real. Su propósito es conectar de forma transparente las capturas de los pescadores artesanales del Desembarcadero Pesquero Artesanal (DPA) de Paita, Caleta Yacila y La Islilla con la demanda gastronómica de 180 cebicherías y restaurantes de Piura y Sullana (58 km de trayecto).</p>
+
+            <h4 class="font-bold text-slate-900 text-base mt-6">Los 4 Componentes de TI Administrados:</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm">
+                    <strong class="text-brand-600 block mb-1"><i class="fas fa-mobile-alt mr-1.5"></i> 1. PWA Offline-First & Bot WhatsApp</strong>
+                    Reporte de capturas desde altamar a 1-2 horas de puerto con bajo consumo de datos.
+                </div>
+                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm">
+                    <strong class="text-amber-600 block mb-1"><i class="fas fa-weight-hanging mr-1.5"></i> 2. Balanza Digital Industrial RS-232</strong>
+                    Pesaje honesto con descuento automático de tara de jaba (-2.5 kg) y ticket oficial con código de barras.
+                </div>
+                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm">
+                    <strong class="text-cyan-600 block mb-1"><i class="fas fa-snowflake mr-1.5"></i> 3. Telemetría de Frío IoT Celular (1.4 °C)</strong>
+                    Sensores sumergibles DS18B20 y GPS en furgón isotérmico que transmiten cada 30 segundos.
+                </div>
+                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm">
+                    <strong class="text-emerald-600 block mb-1"><i class="fas fa-shield-alt mr-1.5"></i> 4. Bóveda Escrow Virtual (Yape/Plin B2B)</strong>
+                    Fondos retenidos en custodia digital y transferidos automáticamente al patrón en 2.1 segundos tras entrega conforme.
+                </div>
+            </div>
+        </div>
+        
+            </div>
+
+            <!-- BOTTOM FOOTER NAVIGATION -->
+            <div class="bg-slate-50 border-t border-slate-100 p-4 sm:p-6 flex flex-wrap items-center justify-between gap-4">
+                <a href="portal_sesion15.html" class="text-xs font-bold text-slate-600 hover:text-brand-600 flex items-center">
+                    <i class="fas fa-arrow-left mr-2"></i> Punto Anterior
+                </a>
+                <div class="space-x-3 text-xs font-mono">
+                    <a href="portal_sesion15.html" class="bg-brand-50 hover:bg-brand-100 text-brand-700 px-4 py-2 rounded-xl font-bold transition">
+                        <i class="fas fa-th mr-1"></i> Ver Todos los Puntos
+                    </a>
+                    <a href="PROYECTO_INNOVACION_PESCA_CLICK_SESION15.pdf" target="_blank" class="bg-red-50 hover:bg-red-100 text-red-700 px-4 py-2 rounded-xl font-bold transition">
+                        <i class="fas fa-file-pdf mr-1"></i> Descargar PDF Oficial
+                    </a>
+                </div>
+                <a href="punto2-problema-necesidad.html" class="text-xs font-bold text-brand-600 hover:text-brand-700 flex items-center">
+                    Siguiente Punto <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-slate-200 py-6 px-4 text-center text-xs text-slate-500 font-mono">
+        PESCA-CLICK PAITA • Proyecto de Innovación Tecnológica • Sesión 15 • Carrera APSTI VI Ciclo
+    </footer>
+
+</body>
+</html>

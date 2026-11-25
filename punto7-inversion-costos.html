@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7. Inversión Inicial (CAPEX) y Estructura de Costos (OPEX) — Sesión 15 | PESCA-CLICK PAITA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#F0F9FF',
+                            100: '#E0F2FE',
+                            500: '#0284C7',
+                            600: '#0369A1',
+                            900: '#0A2540'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- ACADEMIC TOP BAR -->
+    <header class="bg-brand-900 text-white text-xs py-2.5 px-4 sticky top-0 z-50 border-b border-brand-800 shadow-sm">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <a href="portal_sesion15.html" class="bg-brand-800 hover:bg-brand-700 text-cyan-200 px-3 py-1 rounded-lg border border-brand-700 transition flex items-center font-semibold">
+                    <i class="fas fa-th-large mr-1.5"></i> Hub Sesión 15
+                </a>
+                <span class="text-slate-400">|</span>
+                <span class="font-mono text-cyan-300 hidden sm:inline">ALUMNO: Gerson Misael Pintado Huaman • MG. FIORELLA PAZOS (100 PTOS)</span>
+            </div>
+            <div class="flex items-center space-x-2">
+                <a href="punto6-proceso-recursos.html" class="bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1 rounded text-xs font-semibold transition">
+                    <i class="fas fa-chevron-left mr-1"></i> Anterior
+                </a>
+                <a href="punto8-proyecciones-rentabilidad.html" class="bg-cyan-600 hover:bg-cyan-500 text-white px-3 py-1 rounded text-xs font-bold transition">
+                    Siguiente <i class="fas fa-chevron-right ml-1"></i>
+                </a>
+                <a href="index.html" class="bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-1 rounded text-xs font-bold transition ml-2">
+                    <i class="fas fa-store mr-1"></i> Web B2B
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 py-8 flex-grow w-full">
+
+        <!-- BREADCRUMBS -->
+        <nav class="flex items-center space-x-2 text-xs text-slate-500 font-mono mb-6">
+            <a href="portal_sesion15.html" class="hover:text-brand-600">Sesión 15 (Presentación)</a>
+            <span>/</span>
+            <span class="text-slate-800 font-bold">7. Inversión Inicial (CAPEX) y Estructura de Costos (OPEX)</span>
+        </nav>
+
+        <!-- HEADER CARD WITH HERO IMAGE -->
+        <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-lg mb-8">
+            <div class="relative h-48 sm:h-64 bg-slate-900">
+                <img src="img/furgon.jpg" alt="7. Inversión Inicial (CAPEX) y Estructura de Costos (OPEX)" class="w-full h-full object-cover opacity-80">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent"></div>
+                <div class="absolute bottom-6 left-6 right-6 text-white">
+                    <span class="bg-brand-500 text-white font-mono text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider mb-2 inline-block">
+                        <i class="fas fa-coins mr-1.5"></i> PARTE 1 • PUNTO 7
+                    </span>
+                    <h1 class="text-2xl sm:text-3xl font-black">7. Inversión Inicial (CAPEX) y Estructura de Costos (OPEX)</h1>
+                    <p class="text-xs sm:text-sm text-cyan-200 font-mono mt-1">Presupuesto Financiero Real Auditado para Puesta en Marcha</p>
+                </div>
+            </div>
+
+            <!-- CONTENT BODY -->
+            <div class="p-6 sm:p-8">
+                
+        <div class="space-y-6 text-sm text-slate-700 leading-relaxed">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                    <div class="bg-brand-900 text-white p-3.5 font-bold flex justify-between items-center text-xs">
+                        <span>INVERSIÓN INICIAL (CAPEX)</span>
+                        <span class="text-cyan-300 font-mono text-sm font-black">S/ 25,250.00</span>
+                    </div>
+                    <table class="w-full text-xs">
+                        <tbody class="divide-y divide-slate-100">
+                            <tr><td class="p-3 text-slate-600">Acondicionamiento Furgón Térmico</td><td class="p-3 font-mono font-bold text-right">S/ 12,000.00</td></tr>
+                            <tr><td class="p-3 text-slate-600">Balanza Industrial Torrey RS-232</td><td class="p-3 font-mono font-bold text-right">S/ 2,450.00</td></tr>
+                            <tr><td class="p-3 text-slate-600">Hardware Telemetría IoT (Sensores/GPS)</td><td class="p-3 font-mono font-bold text-right">S/ 3,000.00</td></tr>
+                            <tr><td class="p-3 text-slate-600">100 Jabas Plásticas Oficiales (-2.5 kg)</td><td class="p-3 font-mono font-bold text-right">S/ 3,500.00</td></tr>
+                            <tr><td class="p-3 text-slate-600">Tablets Industriales e Impresoras</td><td class="p-3 font-mono font-bold text-right">S/ 2,800.00</td></tr>
+                            <tr><td class="p-3 text-slate-600">Licencias, Sanipes y Formalización</td><td class="p-3 font-mono font-bold text-right">S/ 1,500.00</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                    <div class="bg-slate-800 text-white p-3.5 font-bold flex justify-between items-center text-xs">
+                        <span>COSTO OPERATIVO MENSUAL (OPEX)</span>
+                        <span class="text-emerald-300 font-mono text-sm font-black">S/ 6,650.00 / mes</span>
+                    </div>
+                    <table class="w-full text-xs">
+                        <tbody class="divide-y divide-slate-100">
+                            <tr><td class="p-3 text-slate-600">Combustible Diésel (58 km diario x 26 d)</td><td class="p-3 font-mono font-bold text-right">S/ 1,450.00</td></tr>
+                            <tr><td class="p-3 text-slate-600">Hielo en escamas alimentario (DPA Paita)</td><td class="p-3 font-mono font-bold text-right">S/ 720.00</td></tr>
+                            <tr><td class="p-3 text-slate-600">Conductor - Estibador Calificado</td><td class="p-3 font-mono font-bold text-right">S/ 1,800.00</td></tr>
+                            <tr><td class="p-3 text-slate-600">Supervisor de Pesaje y Calidad DPA</td><td class="p-3 font-mono font-bold text-right">S/ 1,400.00</td></tr>
+                            <tr><td class="p-3 text-slate-600">Servidores Cloud y Conectividad IoT</td><td class="p-3 font-mono font-bold text-right">S/ 380.00</td></tr>
+                            <tr><td class="p-3 text-slate-600">Mantenimiento preventivo y contingencias</td><td class="p-3 font-mono font-bold text-right">S/ 900.00</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="p-4 bg-emerald-50 rounded-2xl border border-emerald-200 text-xs text-emerald-900 font-mono">
+                <strong>Costo Unitario de Transporte:</strong> Apenas <strong>S/ 0.55 por kilogramo transportado</strong>. Al cobrar S/ 1.50/kg de comisión de servicio, PESCA-CLICK obtiene un <strong>Margen Bruto de S/ 0.95 por kilo</strong> manteniendo un ahorro del 31.8% para la cebichería.
+            </div>
+        </div>
+        
+            </div>
+
+            <!-- BOTTOM FOOTER NAVIGATION -->
+            <div class="bg-slate-50 border-t border-slate-100 p-4 sm:p-6 flex flex-wrap items-center justify-between gap-4">
+                <a href="punto6-proceso-recursos.html" class="text-xs font-bold text-slate-600 hover:text-brand-600 flex items-center">
+                    <i class="fas fa-arrow-left mr-2"></i> Punto Anterior
+                </a>
+                <div class="space-x-3 text-xs font-mono">
+                    <a href="portal_sesion15.html" class="bg-brand-50 hover:bg-brand-100 text-brand-700 px-4 py-2 rounded-xl font-bold transition">
+                        <i class="fas fa-th mr-1"></i> Ver Todos los Puntos
+                    </a>
+                    <a href="PROYECTO_INNOVACION_PESCA_CLICK_SESION15.pdf" target="_blank" class="bg-red-50 hover:bg-red-100 text-red-700 px-4 py-2 rounded-xl font-bold transition">
+                        <i class="fas fa-file-pdf mr-1"></i> Descargar PDF Oficial
+                    </a>
+                </div>
+                <a href="punto8-proyecciones-rentabilidad.html" class="text-xs font-bold text-brand-600 hover:text-brand-700 flex items-center">
+                    Siguiente Punto <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-slate-200 py-6 px-4 text-center text-xs text-slate-500 font-mono">
+        PESCA-CLICK PAITA • Proyecto de Innovación Tecnológica • Sesión 15 • Carrera APSTI VI Ciclo
+    </footer>
+
+</body>
+</html>

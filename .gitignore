@@ -1,0 +1,3 @@
+subir_git_limpio.py
+*.pyc
+__pycache__/

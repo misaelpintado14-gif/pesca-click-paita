@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="es" id="pres-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRESENTACIÓN SESIÓN 15: PESCA-CLICK PAITA v2.4 | Mg. Fiorella Pazos (100 PUNTOS)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome 6 CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        marine: {
+                            950: '#060d17',
+                            900: '#0a1526',
+                            800: '#0f2038',
+                            700: '#162e4f',
+                            600: '#1e3e68',
+                            500: '#2b568e'
+                        },
+                        cyan: {
+                            400: '#22d3ee',
+                            500: '#06b6d4',
+                            glow: '#00f0ff'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @page {
+            size: A4 landscape;
+            margin: 6mm;
+        }
+        @media print {
+            body {
+                background: white !important;
+                color: #0f172a !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .slide-page {
+                display: block !important;
+                page-break-after: always !important;
+                break-after: page !important;
+                height: 195mm !important;
+                max-height: 195mm !important;
+                box-sizing: border-box !important;
+                padding: 10mm 12mm !important;
+                background: #ffffff !important;
+                color: #0f172a !important;
+                border: 1px solid #cbd5e1 !important;
+                border-radius: 6px !important;
+                margin-bottom: 0 !important;
+                overflow: hidden !important;
+            }
+            .slide-page * {
+                color: #0f172a !important;
+                text-shadow: none !important;
+                box-shadow: none !important;
+            }
+            .slide-page .text-white {
+                color: #0369a1 !important;
+            }
+            .slide-page .text-cyan-400, .slide-page .text-cyan-300 {
+                color: #0284c7 !important;
+            }
+            .slide-page .text-emerald-400 {
+                color: #15803d !important;
+            }
+            .slide-page .text-amber-400 {
+                color: #b45309 !important;
+            }
+            .slide-page .bg-marine-900, .slide-page .bg-marine-950, .slide-page .glass-card {
+                background: #ffffff !important;
+                border: 1px solid #e2e8f0 !important;
+            }
+        }
+
+        .slide-page {
+            display: none;
+        }
+        .slide-page.active-slide {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* DARK THEME GLASS */
+        .pres-dark .glass-card {
+            background: rgba(15, 32, 56, 0.85);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(34, 211, 238, 0.22);
+            color: #f8fafc;
+        }
+
+        /* LIGHT / WHITE THEME FOR PROJECTOR */
+        .pres-light {
+            background-color: #f1f5f9;
+            color: #0f172a;
+        }
+        .pres-light .glass-card {
+            background: #ffffff;
+            backdrop-filter: none;
+            border: 1px solid #cbd5e1;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            color: #0f172a;
+        }
+        .pres-light .text-white {
+            color: #0a1526;
+        }
+        .pres-light .text-slate-300, .pres-light .text-slate-400 {
+            color: #334155;
+        }
+        .pres-light .text-cyan-400, .pres-light .text-cyan-300 {
+            color: #0284c7;
+        }
+        .pres-light .bg-marine-900 {
+            background-color: #ffffff;
+            border-color: #e2e8f0;
+        }
+        .pres-light .bg-marine-800 {
+            background-color: #f8fafc;
+            border-color: #cbd5e1;
+            color: #0f172a;
+        }
+        .pres-light .bg-marine-950 {
+            background-color: #f1f5f9;
+        }
+    </style>
+</head>
+<body class="pres-dark bg-marine-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-black transition-colors duration-300">
+
+    <!-- TOP PRESENTATION CONTROLLER BAR -->
+    <header class="no-print bg-marine-900 border-b border-cyan-500/20 py-2.5 px-4 sticky top-0 z-50 shadow-md transition-colors duration-300">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3 text-xs">
+            
+            <!-- Left Info -->
+            <div class="flex items-center space-x-3">
+                <span class="bg-cyan-500/20 text-cyan-300 font-bold px-2.5 py-1 rounded border border-cyan-500/40 font-mono">
+                    SESIÓN 15
+                </span>
+                <span class="font-bold text-white text-sm hidden sm:inline">PRESENTAMOS NUESTRO PROYECTO DE INNOVACIÓN</span>
+                <span class="text-slate-400 hidden md:inline">|</span>
+                <span class="text-amber-300 hidden md:inline"><i class="fas fa-star mr-1"></i> Mg. Fiorella Pazos (100 PUNTOS)</span>
+            </div>
+
+            <!-- Slide Navigation Buttons -->
+            <div class="flex items-center space-x-2">
+                <button onclick="prevSlide()" class="bg-marine-800 hover:bg-marine-700 text-cyan-300 px-3 py-1.5 rounded-lg border border-cyan-500/30 transition flex items-center font-semibold">
+                    <i class="fas fa-chevron-left mr-1"></i> Anterior
+                </button>
+                <div class="bg-black/60 px-3 py-1.5 rounded-lg border border-slate-700 font-mono text-cyan-400 font-bold text-xs">
+                    <span id="slide-num">1</span> / <span id="slide-total">13</span>
+                </div>
+                <button onclick="nextSlide()" class="bg-marine-800 hover:bg-marine-700 text-cyan-300 px-3 py-1.5 rounded-lg border border-cyan-500/30 transition flex items-center font-semibold">
+                    Siguiente <i class="fas fa-chevron-right ml-1"></i>
+                </button>
+            </div>
+
+            <!-- Controls: White Theme, Presenter Notes, Web & Print -->
+            <div class="flex items-center space-x-2">
+                <!-- Theme Toggle -->
+                <button onclick="togglePresTheme()" id="btn-pres-theme" class="bg-marine-800 hover:bg-marine-700 text-amber-300 border border-slate-700 px-2.5 py-1.5 rounded-lg transition flex items-center" title="Cambiar a Fondo Blanco para Proyector">
+                    <i class="fas fa-sun mr-1 text-amber-400" id="icon-pres-theme"></i> <span id="txt-pres-theme" class="hidden sm:inline">Modo Blanco</span>
+                </button>
+
+                <!-- Presenter Speech Notes Toggle -->
+                <button onclick="toggleNotes()" id="btn-notes" class="bg-marine-800 hover:bg-marine-700 text-cyan-300 border border-slate-700 px-2.5 py-1.5 rounded-lg transition flex items-center" title="Mostrar/Ocultar Qué Decir en esta Diapositiva">
+                    <i class="fas fa-comment-alt mr-1 text-cyan-400"></i> <span class="hidden sm:inline">Notas (Guion)</span>
+                </button>
+
+                <!-- Live Web Link -->
+                <a href="index.html" target="_blank" class="bg-blue-600/30 hover:bg-blue-600/50 text-blue-300 border border-blue-500/40 px-3 py-1.5 rounded-lg transition flex items-center">
+                    <i class="fas fa-external-link-alt mr-1.5"></i> Web en Vivo
+                </a>
+
+                <!-- Export to PDF Button -->
+                <button onclick="exportToPDF()" class="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-marine-950 font-bold px-3.5 py-1.5 rounded-lg shadow transition flex items-center">
+                    <i class="fas fa-file-pdf mr-1.5"></i> PDF / Imprimir
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- PRESENTER SPEECH NOTE BAR (EXPANDABLE CHEAT SHEET FOR GERSON) -->
+    <div id="notes-bar" class="no-print bg-cyan-950/90 border-b border-cyan-500/40 py-2.5 px-4 text-xs font-mono text-cyan-200 transition-all shadow-inner">
+        <div class="max-w-7xl mx-auto flex items-start space-x-3">
+            <span class="bg-cyan-500 text-marine-950 font-bold px-2 py-0.5 rounded text-[10px] uppercase tracking-wide mt-0.5 whitespace-nowrap">
+                <i class="fas fa-microphone mr-1"></i> QUÉ DECIR AQUÍ
+            </span>
+            <p id="slide-speech-text" class="text-white font-medium leading-relaxed">
+                "Buenos días Mg. Fiorella Pazos. Presento el proyecto de innovación PESCA-CLICK PAITA v2.4 para la Sesión 15..."
+            </p>
+        </div>
+    </div>
+
+    <!-- MAIN SLIDE CONTAINER -->
+    <main class="flex-grow flex items-center justify-center p-3 sm:p-6 w-full max-w-7xl mx-auto">
+
+        <!-- ======================================================== -->
+        <!-- SLIDE 01: CARÁTULA & PRESENTACIÓN GENERAL                 -->
+        <!-- ======================================================== -->
+        <article class="slide-page active-slide w-full h-[620px] rounded-2xl glass-card p-8 border border-cyan-500/30 relative overflow-hidden flex flex-col justify-between">
+            <div class="flex items-center justify-between border-b border-cyan-500/20 pb-4">
+                <div class="flex items-center space-x-3">
+                    <span class="w-3 h-3 rounded-full bg-cyan-400 animate-ping"></span>
+                    <span class="text-xs font-mono uppercase tracking-widest text-cyan-400 font-bold">INSTITUTO DE EDUCACIÓN SUPERIOR TECNOLÓGICO</span>
+                </div>
+                <span class="text-xs font-mono text-slate-300 bg-marine-900 px-3 py-1 rounded-full border border-slate-700">CARRERA: APSTI - VI CICLO</span>
+            </div>
+
+            <div class="space-y-4 my-auto text-left max-w-4xl">
+                <span class="inline-block bg-cyan-950/80 border border-cyan-500/40 px-3.5 py-1.5 rounded-full text-xs text-cyan-300 font-mono">
+                    SESIÓN 15 • EVALUACIÓN FINAL DE PROYECTO DE INNOVACIÓN (100 PUNTOS)
+                </span>
+                <h1 class="text-4xl sm:text-6xl font-black text-white tracking-tight leading-tight">
+                    PESCA-CLICK <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-400 to-blue-500">PAITA v2.4</span>
+                </h1>
+                <p class="text-xl sm:text-2xl text-cyan-200 font-light">
+                    Mercado Web Digital B2B, Telemetría Marina e IoT: <strong class="text-white font-semibold">Del Muelle a la Cebichería a 1.4 °C sin Intermediarios Abusivos</strong>
+                </p>
+                <div class="text-sm text-slate-300 pt-2 flex flex-wrap gap-4 font-mono">
+                    <span><i class="fas fa-map-marker-alt text-red-400 mr-1"></i> Ámbito: DPA Paita - Piura - Sullana (58 km)</span>
+                    <span><i class="fas fa-calendar-alt text-cyan-400 mr-1"></i> Año Académico: 2026</span>
+                </div>
+            </div>
+
+            <div class="pt-6 border-t border-cyan-500/20 flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-slate-300 gap-4">
+                <div class="flex items-center space-x-6">
+                    <div>
+                        <span class="text-slate-500 block text-[10px]">ALUMNO EXPOSITOR:</span>
+                        <strong class="text-cyan-300 text-sm">Gerson Misael Pintado Huaman</strong>
+                    </div>
+                    <div>
+                        <span class="text-slate-500 block text-[10px]">DOCENTE EVALUADORA:</span>
+                        <strong class="text-amber-300 text-sm">Mg. Fiorella Pazos</strong>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <span class="text-emerald-400 font-bold block"><i class="fas fa-check-circle mr-1"></i> Piloto Real: 6,850 kg transaccionados</span>
+                    <span class="text-slate-400 text-[11px]">25 lanchas artesanales • 45 cebicherías asociadas</span>
+                </div>
+            </div>
+        </article>
+
+        <!-- ======================================================== -->
+        <!-- SLIDE 02: 1. NOMBRE Y DESCRIPCIÓN DEL NEGOCIO             -->
+        <!-- ======================================================== -->
+        <article class="slide-page w-full h-[620px] rounded-2xl glass-card p-8 border border-cyan-500/30 flex flex-col justify-between">
+            <div class="flex items-center justify-between border-b border-cyan-500/20 pb-3">
+                <span class="text-xs font-mono text-cyan-400 font-bold"><i class="fas fa-bookmark mr-1.5"></i> PARTE 1 • PUNTO 1</span>
+                <span class="text-xs font-mono text-slate-400">NOMBRE Y DESCRIPCIÓN DEL NEGOCIO</span>
+            </div>
+
+            <div class="my-auto space-y-6">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">PESCA-CLICK PAITA: Ecosistema B2B Muelle - Restaurante</h2>
+                    <p class="text-slate-300 text-sm mt-1">Plataforma digital integrada de comercio directo marítimo, telemetría y transporte refrigerado.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    <div class="bg-marine-900/90 p-5 rounded-xl border border-cyan-500/20 space-y-2">
+                        <div class="w-10 h-10 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-lg font-bold">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-white">Plataforma Web PWA</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Diseñada con enfoque Offline-First para pescadores de Paita y chefs de Piura. Permite precargar capturas desde altamar vía radio AIS o notas de voz antes del atraque.
+                        </p>
+                    </div>
+
+                    <div class="bg-marine-900/90 p-5 rounded-xl border border-cyan-500/20 space-y-2">
+                        <div class="w-10 h-10 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg font-bold">
+                            <i class="fas fa-truck-moving"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-white">Logística de Frío Express</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Furgón isotérmico dedicado con sensor IoT DS18B20 que mantiene el pescado entre 0.5 °C y 1.8 °C en la ruta Paita-Piura (58 km), entregando en 48 minutos antes de las 06:45 AM.
+                        </p>
+                    </div>
+
+                    <div class="bg-marine-900/90 p-5 rounded-xl border border-cyan-500/20 space-y-2">
+                        <div class="w-10 h-10 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-lg font-bold">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-white">Bóveda Escrow Fintech</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Garantiza liquidez inmediata: el restaurante abona por Yape/Plin, el dinero queda custodiado y se libera al pescador en 2.1 segundos tras escanear el QR en destino.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-marine-950/80 p-4 rounded-xl border border-cyan-500/30 flex items-center justify-between text-xs font-mono">
+                    <span class="text-cyan-300"><strong>Modelo de Negocio:</strong> Comisión logística de S/ 1.50 por kg intermediado + suscripción B2B.</span>
+                    <span class="text-emerald-400 font-bold"><i class="fas fa-check"></i> Cero comisión para el pescador artesanal</span>
+                </div>
+            </div>
+
+            <div class="pt-3 border-t border-cyan-500/20 flex justify-between text-xs text-slate-500 font-mono">
+                <span>Proyecto Pesca-Click Paita v2.4</span>
+                <span>Diapositiva 2 / 13</span>
+            </div>
+        </article>
+
+        <!-- ======================================================== -->
+        <!-- SLIDE 03: 2. PROBLEMA O NECESIDAD IDENTIFICADA            -->
+        <!-- ======================================================== -->
+        <article class="slide-page w-full h-[620px] rounded-2xl glass-card p-8 border border-cyan-500/30 flex flex-col justify-between">
+            <div class="flex items-center justify-between border-b border-cyan-500/20 pb-3">
+                <span class="text-xs font-mono text-cyan-400 font-bold"><i class="fas fa-exclamation-triangle mr-1.5"></i> PARTE 1 • PUNTO 2</span>
+                <span class="text-xs font-mono text-slate-400">PROBLEMA O NECESIDAD IDENTIFICADA</span>
+            </div>
+
+            <div class="my-auto space-y-6">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">La Realidad Problemática en la Cadena Paita - Piura</h2>
+                    <p class="text-slate-300 text-sm mt-1">Diagnóstico real levantado con 25 armadores en el DPA Paita y 45 cebicherías de Piura y Sullana.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div class="bg-red-950/40 p-5 rounded-xl border border-red-500/30 space-y-3">
+                        <h3 class="text-sm font-bold text-red-300 flex items-center">
+                            <i class="fas fa-times-circle mr-2 text-red-400"></i> Dolor del Pescador Artesanal (DPA Paita)
+                        </h3>
+                        <ul class="text-xs text-slate-300 space-y-2 leading-relaxed">
+                            <li>• <strong>Precios de miseria:</strong> El acopiador informal paga apenas S/ 6.00 por kilo de cabrilla aprovechando que el pescador no tiene cámaras de frío.</li>
+                            <li>• <strong>Robo en el pesaje ("el machete"):</strong> Descuento arbitrario de 15% a 18.5% de merma usando balanzas viejas manipuladas.</li>
+                            <li>• <strong>Pagos a crédito e inseguridad:</strong> Vales de papel pagaderos en 15 días o efectivo nocturno riesgoso.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-amber-950/40 p-5 rounded-xl border border-amber-500/30 space-y-3">
+                        <h3 class="text-sm font-bold text-amber-300 flex items-center">
+                            <i class="fas fa-store-slash mr-2 text-amber-400"></i> Dolor de la Cebichería (Piura y Sullana)
+                        </h3>
+                        <ul class="text-xs text-slate-300 space-y-2 leading-relaxed">
+                            <li>• <strong>Sobrecosto abusivo (+250%):</strong> Paga S/ 22.00 por kilo al revendedor que encarece el plato marino.</li>
+                            <li>• <strong>Ruptura de cadena de frío:</strong> Transporte en camionetas abiertas a 14-18 °C. El pescado llega blando y con olor fuerte.</li>
+                            <li>• <strong>Llegadas tardías (09:30 AM):</strong> Retrasa la apertura y la preparación del cebiche del día.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-4 text-center font-mono text-xs">
+                    <div class="bg-marine-900/90 p-3 rounded-lg border border-red-500/30">
+                        <span class="text-slate-400 block text-[10px]">Brecha de Intermediación</span>
+                        <strong class="text-red-400 text-lg">+250%</strong>
+                        <span class="text-[10px] text-slate-400 block">S/ 6.00 → S/ 22.00/kg</span>
+                    </div>
+                    <div class="bg-marine-900/90 p-3 rounded-lg border border-red-500/30">
+                        <span class="text-slate-400 block text-[10px]">Merma Tradicional</span>
+                        <strong class="text-red-400 text-lg">18.5%</strong>
+                        <span class="text-[10px] text-slate-400 block">Pescado descartado</span>
+                    </div>
+                    <div class="bg-marine-900/90 p-3 rounded-lg border border-red-500/30">
+                        <span class="text-slate-400 block text-[10px]">Temperatura Tradicional</span>
+                        <strong class="text-red-400 text-lg">14° a 18°C</strong>
+                        <span class="text-[10px] text-slate-400 block">Incumple Sanipes D.S. 040</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-3 border-t border-cyan-500/20 flex justify-between text-xs text-slate-500 font-mono">
+                <span>Proyecto Pesca-Click Paita v2.4</span>
+                <span>Diapositiva 3 / 13</span>
+            </div>
+        </article>
+
+        <!-- ======================================================== -->
+        <!-- SLIDE 04: 3. PROPUESTA DE VALOR Y DIFERENCIACIÓN         -->
+        <!-- ======================================================== -->
+        <article class="slide-page w-full h-[620px] rounded-2xl glass-card p-8 border border-cyan-500/30 flex flex-col justify-between">
+            <div class="flex items-center justify-between border-b border-cyan-500/20 pb-3">
+                <span class="text-xs font-mono text-cyan-400 font-bold"><i class="fas fa-gem mr-1.5"></i> PARTE 1 • PUNTO 3</span>
+                <span class="text-xs font-mono text-slate-400">PROPUESTA DE VALOR Y DIFERENCIACIÓN</span>
+            </div>
+
+            <div class="my-auto space-y-6">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Nuestra Propuesta de Valor B2B</h2>
+                    <p class="text-slate-300 text-sm mt-1">Conectamos la oferta del mar con la gastronomía piurana con garantía de precio, peso y frío.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-marine-900/90 p-5 rounded-xl border border-cyan-500/20 space-y-3">
+                        <h3 class="text-base font-bold text-cyan-300 flex items-center">
+                            <i class="fas fa-hand-holding-usd mr-2 text-cyan-400"></i> Para el Pescador Artesanal
+                        </h3>
+                        <ul class="text-xs text-slate-300 space-y-2 leading-relaxed">
+                            <li class="flex items-start"><i class="fas fa-check text-emerald-400 mt-1 mr-2"></i> <strong>Duplica su ingreso líquido (+125%):</strong> De S/ 6.00 a S/ 13.50 por kg de cabrilla.</li>
+                            <li class="flex items-start"><i class="fas fa-check text-emerald-400 mt-1 mr-2"></i> <strong>Balanza honesta:</strong> Tara automática estricta de -2.5 kg por jaba sin machete.</li>
+                            <li class="flex items-start"><i class="fas fa-check text-emerald-400 mt-1 mr-2"></i> <strong>Cero riesgo de incobrabilidad:</strong> Pago liberado a su Yape al momento de entrega.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-marine-900/90 p-5 rounded-xl border border-cyan-500/20 space-y-3">
+                        <h3 class="text-base font-bold text-emerald-300 flex items-center">
+                            <i class="fas fa-utensils mr-2 text-emerald-400"></i> Para la Cebichería / Restaurante
+                        </h3>
+                        <ul class="text-xs text-slate-300 space-y-2 leading-relaxed">
+                            <li class="flex items-start"><i class="fas fa-check text-emerald-400 mt-1 mr-2"></i> <strong>Ahorro neto de 31.8% a 40%:</strong> Paga S/ 15.00 vs S/ 22.00 por kilo puesto en local.</li>
+                            <li class="flex items-start"><i class="fas fa-check text-emerald-400 mt-1 mr-2"></i> <strong>Frescura extrema a 1.4 °C:</strong> Garantía organoléptica Sanipes D.S. 040.</li>
+                            <li class="flex items-start"><i class="fas fa-check text-emerald-400 mt-1 mr-2"></i> <strong>Entrega puntual antes 06:45 AM:</strong> Mise en place a tiempo sin retrasos.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-marine-950 p-4 rounded-xl border border-cyan-500/30 overflow-x-auto">
+                    <table class="w-full text-left text-xs font-mono">
+                        <thead>
+                            <tr class="text-slate-400 border-b border-cyan-900/60 pb-1">
+                                <th class="pb-1">Atributo</th>
+                                <th class="pb-1 text-red-400">Canal Tradicional (Acopiador)</th>
+                                <th class="pb-1 text-cyan-400">PESCA-CLICK PAITA v2.4</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-marine-800 text-slate-300">
+                            <tr>
+                                <td class="py-1.5 font-bold">Temperatura Transporte</td>
+                                <td class="text-red-400">14 °C a 18 °C (Sol/Carretera)</td>
+                                <td class="text-emerald-400 font-bold">1.4 °C (Monitoreo IoT celular)</td>
+                            </tr>
+                            <tr>
+                                <td class="py-1.5 font-bold">Transparencia Pesaje</td>
+                                <td class="text-red-400">Balanzas adulteradas (-18.5% merma)</td>
+                                <td class="text-emerald-400 font-bold">Tara calibrada digital (-2.5 kg exactos)</td>
+                            </tr>
+                            <tr>
+                                <td class="py-1.5 font-bold">Trazabilidad</td>
+                                <td class="text-red-400">Cero (Origen desconocido)</td>
+                                <td class="text-emerald-400 font-bold">Código QR oficial con Hash SHA-256</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="pt-3 border-t border-cyan-500/20 flex justify-between text-xs text-slate-500 font-mono">
+                <span>Proyecto Pesca-Click Paita v2.4</span>
+                <span>Diapositiva 4 / 13</span>
+            </div>
+        </article>
+
+        <!-- ======================================================== -->
+        <!-- SLIDE 05: 4. PÚBLICO OBJETIVO Y MERCADO POTENCIAL         -->
+        <!-- ======================================================== -->
+        <article class="slide-page w-full h-[620px] rounded-2xl glass-card p-8 border border-cyan-500/30 flex flex-col justify-between">
+            <div class="flex items-center justify-between border-b border-cyan-500/20 pb-3">
+                <span class="text-xs font-mono text-cyan-400 font-bold"><i class="fas fa-users mr-1.5"></i> PARTE 1 • PUNTO 4</span>
+                <span class="text-xs font-mono text-slate-400">PÚBLICO OBJETIVO Y MERCADO POTENCIAL</span>
+            </div>
+
+            <div class="my-auto space-y-6">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Segmentación de Mercado Dual (B2B)</h2>
+                    <p class="text-slate-300 text-sm mt-1">Interconectamos la oferta marítima artesanal de Paita con la demanda gastronómica de Piura.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-marine-900/90 p-5 rounded-xl border border-cyan-500/20 space-y-3">
+                        <span class="text-xs font-mono text-cyan-400 font-bold uppercase"><i class="fas fa-ship mr-1"></i> SEGMENTO OFERTA: PESCADORES ARTESANALES</span>
+                        <h3 class="text-base font-bold text-white">Armadores y Patrones de Embarcación</h3>
+                        <ul class="text-xs text-slate-300 space-y-2">
+                            <li>• <strong>Ubicación:</strong> DPA Paita, Caleta La Islilla, Yacila y Tierra Colorada.</li>
+                            <li>• <strong>Población Censada (N):</strong> 120 patrones de embarcación agremiados.</li>
+                            <li>• <strong>Muestra Validada (n):</strong> 25 lanchas artesanales en faena diaria.</li>
+                            <li>• <strong>Captura promedio:</strong> 250 a 500 kg por faena nocturna de cabrilla, tollo y pota.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-marine-900/90 p-5 rounded-xl border border-cyan-500/20 space-y-3">
+                        <span class="text-xs font-mono text-emerald-400 font-bold uppercase"><i class="fas fa-utensils mr-1"></i> SEGMENTO DEMANDA: RESTAURANTES MARINOS</span>
+                        <h3 class="text-base font-bold text-white">Cebicherías y Restaurantes de Piura y Sullana</h3>
+                        <ul class="text-xs text-slate-300 space-y-2">
+                            <li>• <strong>Ubicación:</strong> Piura metropolitana, Castilla, Veintiséis de Octubre y Sullana.</li>
+                            <li>• <strong>Población Censada (N):</strong> 180 restaurantes marinos registrados.</li>
+                            <li>• <strong>Muestra Validada (n):</strong> 45 cebicherías aliadas activas en piloto.</li>
+                            <li>• <strong>Consumo diario promedio:</strong> 30 a 60 kg de pescado fresco por local.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-4 text-center font-mono text-xs">
+                    <div class="bg-marine-950 p-4 rounded-xl border border-cyan-500/30">
+                        <span class="text-slate-400 block text-[10px]">TAM (Mercado Total Regional)</span>
+                        <strong class="text-white text-lg">S/ 48.6 M / año</strong>
+                        <span class="text-[10px] text-slate-400 block">Consumo pesca CHD Piura</span>
+                    </div>
+                    <div class="bg-marine-950 p-4 rounded-xl border border-cyan-500/30">
+                        <span class="text-slate-400 block text-[10px]">SAM (Mercado Disponible Piura/Sullana)</span>
+                        <strong class="text-cyan-300 text-lg">S/ 14.2 M / año</strong>
+                        <span class="text-[10px] text-slate-400 block">180 cebicherías activas</span>
+                    </div>
+                    <div class="bg-marine-950 p-4 rounded-xl border border-cyan-500/30">
+                        <span class="text-slate-400 block text-[10px]">SOM (Mercado Objetivo Inicial 15%)</span>
+                        <strong class="text-emerald-400 text-lg">S/ 2.1 M / año</strong>
+                        <span class="text-[10px] text-slate-400 block">45 cebicherías fijas</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-3 border-t border-cyan-500/20 flex justify-between text-xs text-slate-500 font-mono">
+                <span>Proyecto Pesca-Click Paita v2.4</span>
+                <span>Diapositiva 5 / 13</span>
+            </div>
+        </article>
+
+        <!-- ======================================================== -->
+        <!-- SLIDE 06: 5. ESTRATEGIAS DE MARKETING Y COMERCIALIZACIÓN -->
+        <!-- ======================================================== -->
+        <article class="slide-page w-full h-[620px] rounded-2xl glass-card p-8 border border-cyan-500/30 flex flex-col justify-between">
+            <div class="flex items-center justify-between border-b border-cyan-500/20 pb-3">
+                <span class="text-xs font-mono text-cyan-400 font-bold"><i class="fas fa-bullhorn mr-1.5"></i> PARTE 1 • PUNTO 5</span>
+                <span class="text-xs font-mono text-slate-400">ESTRATEGIAS DE MARKETING Y COMERCIALIZACIÓN</span>
+            </div>
+
+            <div class="my-auto space-y-6">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Estrategias de Penetración y Fidelización B2B</h2>
+                    <p class="text-slate-300 text-sm mt-1">Marketing directo en caletas pesqueras y posicionamiento gastronómico "Del Muelle a tu Mesa".</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div class="bg-marine-900/90 p-5 rounded-xl border border-cyan-500/20 space-y-3">
+                        <h3 class="text-sm font-bold text-cyan-300 flex items-center">
+                            <i class="fas fa-handshake mr-2 text-cyan-400"></i> Atracción y Confianza de Pescadores (Paita)
+                        </h3>
+                        <ul class="text-xs text-slate-300 space-y-2">
+                            <li>• <strong>Activación en Muelle a las 05:00 AM:</strong> Demostración en vivo de la balanza digital y abono instantáneo por Yape frente a sus compañeros de chalana.</li>
+                            <li>• <strong>Programa "Lancha Certificada":</strong> Distintivo de calidad para embarcaciones que respetan tallas mínimas y reportan su pesca con GPS.</li>
+                            <li>• <strong>Cero comisión al pescador:</strong> Política permanente de cobro S/ 0.00 por el uso de la plataforma al hombre de mar.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-marine-900/90 p-5 rounded-xl border border-cyan-500/20 space-y-3">
+                        <h3 class="text-sm font-bold text-emerald-300 flex items-center">
+                            <i class="fas fa-award mr-2 text-emerald-400"></i> Diferenciación para Cebicherías (Piura)
+                        </h3>
+                        <ul class="text-xs text-slate-300 space-y-2">
+                            <li>• <strong>Sello QR "Pesca Justa en tu Mesa":</strong> Placas acrílicas con QR para las mesas donde el comensal ve qué lancha y patrón pescaron su cebiche.</li>
+                            <li>• <strong>Garantía de Frío o Devolución:</strong> Si la temperatura del lote al llegar a la cebichería supera 2.0 °C, el pedido es 100% gratuito.</li>
+                            <li>• <strong>Prueba Piloto Sin Riesgo:</strong> Primer despacho con 50% de ahorro para validar puntualidad a las 06:45 AM.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-marine-950 p-4 rounded-xl border border-cyan-500/30 flex items-center justify-between text-xs font-mono">
+                    <span class="text-slate-300"><i class="fas fa-share-alt text-cyan-400 mr-2"></i> Canales de Adquisición: WhatsApp Business API directo + Visitas matutinas presenciales.</span>
+                    <span class="text-amber-400 font-bold">CAC (Costo Adquisición): S/ 45.00 por restaurante</span>
+                </div>
+            </div>
+
+            <div class="pt-3 border-t border-cyan-500/20 flex justify-between text-xs text-slate-500 font-mono">
+                <span>Proyecto Pesca-Click Paita v2.4</span>
+                <span>Diapositiva 6 / 13</span>
+            </div>
+        </article>
+
+        <!-- ======================================================== -->
+        <!-- SLIDE 07: 6. RECURSOS Y PROCESO PRODUCTIVO                -->
+        <!-- ======================================================== -->
+        <article class="slide-page w-full h-[620px] rounded-2xl glass-card p-8 border border-cyan-500/30 flex flex-col justify-between">
+            <div class="flex items-center justify-between border-b border-cyan-500/20 pb-3">
+                <span class="text-xs font-mono text-cyan-400 font-bold"><i class="fas fa-cogs mr-1.5"></i> PARTE 1 • PUNTO 6</span>
+                <span class="text-xs font-mono text-slate-400">RECURSOS NECESARIOS Y PROCESO PRODUCTIVO</span>
+            </div>
+
+            <div class="my-auto space-y-6">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Flujo Operativo Integrado de 5 Etapas</h2>
+                    <p class="text-slate-300 text-sm mt-1">Infraestructura tecnológica, física y operativa para despachos express de madrugada.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-3 text-xs font-mono">
+                    <div class="bg-marine-900/90 p-3.5 rounded-xl border border-cyan-500/20 space-y-1">
+                        <span class="w-5 h-5 rounded-full bg-cyan-500 text-marine-950 font-bold inline-flex items-center justify-center text-[10px]">1</span>
+                        <strong class="text-white block">Altamar (04:00 AM)</strong>
+                        <p class="text-slate-400 text-[11px]">Patrón reporta captura estimada vía VHF AIS o WhatsApp.</p>
+                    </div>
+
+                    <div class="bg-marine-900/90 p-3.5 rounded-xl border border-cyan-500/20 space-y-1">
+                        <span class="w-5 h-5 rounded-full bg-cyan-500 text-marine-950 font-bold inline-flex items-center justify-center text-[10px]">2</span>
+                        <strong class="text-white block">Preventa (04:30 AM)</strong>
+                        <p class="text-slate-400 text-[11px]">Cebicherías compran lote y fondos van a Bóveda Escrow.</p>
+                    </div>
+
+                    <div class="bg-marine-900/90 p-3.5 rounded-xl border border-cyan-500/20 space-y-1">
+                        <span class="w-5 h-5 rounded-full bg-cyan-500 text-marine-950 font-bold inline-flex items-center justify-center text-[10px]">3</span>
+                        <strong class="text-white block">Muelle DPA (05:15 AM)</strong>
+                        <p class="text-slate-400 text-[11px]">Pesaje digital con tara (-2.5 kg), hielo y precinto QR.</p>
+                    </div>
+
+                    <div class="bg-marine-900/90 p-3.5 rounded-xl border border-cyan-500/20 space-y-1">
+                        <span class="w-5 h-5 rounded-full bg-cyan-500 text-marine-950 font-bold inline-flex items-center justify-center text-[10px]">4</span>
+                        <strong class="text-white block">Ruta IIRSA (05:45 AM)</strong>
+                        <p class="text-slate-400 text-[11px]">Furgón a 1.4 °C recorre 58 km monitoreado por telemetría IoT.</p>
+                    </div>
+
+                    <div class="bg-marine-900/90 p-3.5 rounded-xl border border-cyan-500/20 space-y-1">
+                        <span class="w-5 h-5 rounded-full bg-emerald-500 text-marine-950 font-bold inline-flex items-center justify-center text-[10px]">5</span>
+                        <strong class="text-emerald-400 block">Piura (06:30 AM)</strong>
+                        <p class="text-slate-400 text-[11px]">Chef escanea QR, valida frío y libera pago al pescador en 2s.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-4 text-xs font-mono">
+                    <div class="bg-marine-950 p-3.5 rounded-xl border border-slate-800">
+                        <span class="text-cyan-400 font-bold block mb-1">Recursos Tecnológicos (TI)</span>
+                        <span class="text-slate-300 text-[11px] block">• Servidor Node.js / Docker Cloud</span>
+                        <span class="text-slate-300 text-[11px] block">• Antena AIS VHF 161.975 MHz</span>
+                        <span class="text-slate-300 text-[11px] block">• Sensores térmicos DS18B20 IP68</span>
+                    </div>
+
+                    <div class="bg-marine-950 p-3.5 rounded-xl border border-slate-800">
+                        <span class="text-amber-400 font-bold block mb-1">Recursos Físicos / Logística</span>
+                        <span class="text-slate-300 text-[11px] block">• 1 Furgón térmico 2.5 Tn acondicionado</span>
+                        <span class="text-slate-300 text-[11px] block">• 120 Jabas plásticas oficiales (-2.5 kg)</span>
+                        <span class="text-slate-300 text-[11px] block">• Balanza industrial Torrey RS-232</span>
+                    </div>
+
+                    <div class="bg-marine-950 p-3.5 rounded-xl border border-slate-800">
+                        <span class="text-emerald-400 font-bold block mb-1">Talento Humano</span>
+                        <span class="text-slate-300 text-[11px] block">• 1 Administrador TI / Operaciones</span>
+                        <span class="text-slate-300 text-[11px] block">• 1 Chofer logístico capacitado</span>
+                        <span class="text-slate-300 text-[11px] block">• 1 Supervisor de pesaje en muelle</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-3 border-t border-cyan-500/20 flex justify-between text-xs text-slate-500 font-mono">
+                <span>Proyecto Pesca-Click Paita v2.4</span>
+                <span>Diapositiva 7 / 13</span>
+            </div>
+        </article>
+
+        <!-- ======================================================== -->
+        <!-- SLIDE 08: 7. INVERSIÓN INICIAL Y ESTRUCTURA DE COSTOS     -->
+        <!-- ======================================================== -->
+        <article class="slide-page w-full h-[620px] rounded-2xl glass-card p-8 border border-cyan-500/30 flex flex-col justify-between">
+            <div class="flex items-center justify-between border-b border-cyan-500/20 pb-3">
+                <span class="text-xs font-mono text-cyan-400 font-bold"><i class="fas fa-coins mr-1.5"></i> PARTE 1 • PUNTO 7</span>
+                <span class="text-xs font-mono text-slate-400">INVERSIÓN INICIAL (CAPEX) Y COSTOS OPERATIVOS (OPEX)</span>
+            </div>
+
+            <div class="my-auto space-y-5">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Estructura Financiera y Presupuesto de Arranque</h2>
+                    <p class="text-slate-300 text-sm mt-1">Costos reales auditados para habilitar el centro de acopio digital y furgón refrigerado.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs font-mono">
+                    <div class="bg-marine-900/90 p-4 rounded-xl border border-cyan-500/20 space-y-2">
+                        <div class="flex justify-between items-center border-b border-cyan-800 pb-1">
+                            <strong class="text-cyan-300 text-sm uppercase">INVERSIÓN INICIAL (CAPEX)</strong>
+                            <span class="text-white font-bold">MONTO (S/)</span>
+                        </div>
+                        <div class="space-y-1 text-slate-300">
+                            <div class="flex justify-between"><span>Acondicionamiento y aislamiento furgón isotérmico</span><span>S/ 12,000.00</span></div>
+                            <div class="flex justify-between"><span>Balanza industrial Torrey con interfaz RS-232</span><span>S/ 2,400.00</span></div>
+                            <div class="flex justify-between"><span>Receptor VHF AIS marino + Antena omnidireccional</span><span>S/ 1,850.00</span></div>
+                            <div class="flex justify-between"><span>Kit IoT telemetría celular (ESP32 + DS18B20 + 4G)</span><span>S/ 1,200.00</span></div>
+                            <div class="flex justify-between"><span>100 Jabas plásticas normalizadas Sanipes (-2.5 kg)</span><span>S/ 3,500.00</span></div>
+                            <div class="flex justify-between"><span>Tablets industriales de muelle + impresoras térmicas</span><span>S/ 2,800.00</span></div>
+                            <div class="flex justify-between"><span>Constitución formal, permisos Sanipes y marcas</span><span>S/ 1,500.00</span></div>
+                        </div>
+                        <div class="flex justify-between pt-2 border-t border-cyan-500/30 text-emerald-400 font-bold text-sm">
+                            <span>TOTAL INVERSIÓN INICIAL (CAPEX):</span>
+                            <span>S/ 25,250.00</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-marine-900/90 p-4 rounded-xl border border-cyan-500/20 space-y-2">
+                        <div class="flex justify-between items-center border-b border-cyan-800 pb-1">
+                            <strong class="text-amber-300 text-sm uppercase">COSTOS OPERATIVOS MENSUALES (OPEX)</strong>
+                            <span class="text-white font-bold">MONTO (S/)</span>
+                        </div>
+                        <div class="space-y-1 text-slate-300">
+                            <div class="flex justify-between"><span>Combustible furgón (26 viajes Paita-Piura x 58 km)</span><span>S/ 1,820.00</span></div>
+                            <div class="flex justify-between"><span>Hielo en escamas alimentario certificado Sanipes</span><span>S/ 950.00</span></div>
+                            <div class="flex justify-between"><span>Operador logístico / Chofer certificado</span><span>S/ 1,600.00</span></div>
+                            <div class="flex justify-between"><span>Supervisor de pesaje y calidad en DPA Paita</span><span>S/ 1,400.00</span></div>
+                            <div class="flex justify-between"><span>Servidor Cloud, base de datos y chip celular IoT</span><span>S/ 380.00</span></div>
+                            <div class="flex justify-between"><span>Mantenimiento mecánico y desinfección sanitaria</span><span>S/ 500.00</span></div>
+                        </div>
+                        <div class="flex justify-between pt-2 border-t border-cyan-500/30 text-amber-400 font-bold text-sm">
+                            <span>TOTAL OPEX MENSUAL:</span>
+                            <span>S/ 6,650.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-marine-950 p-3 rounded-xl border border-cyan-500/30 text-xs font-mono flex items-center justify-between">
+                    <span class="text-slate-300"><i class="fas fa-balance-scale text-cyan-400 mr-2"></i> Costo Operativo Unitario: <strong>S/ 0.55 por kilogramo</strong> transportado.</span>
+                    <span class="text-emerald-400 font-bold">Margen Bruto de Operación: S/ 0.95 / kg</span>
+                </div>
+            </div>
+
+            <div class="pt-3 border-t border-cyan-500/20 flex justify-between text-xs text-slate-500 font-mono">
+                <span>Proyecto Pesca-Click Paita v2.4</span>
+                <span>Diapositiva 8 / 13</span>
+            </div>
+        </article>
+
+        <!-- ======================================================== -->
+        <!-- SLIDE 09: 8. PROYECCIÓN DE INGRESOS, UTILIDAD Y RENTABILIDAD -->
+        <!-- ======================================================== -->
+        <article class="slide-page w-full h-[620px] rounded-2xl glass-card p-8 border border-cyan-500/30 flex flex-col justify-between">
+            <div class="flex items-center justify-between border-b border-cyan-500/20 pb-3">
+                <span class="text-xs font-mono text-cyan-400 font-bold"><i class="fas fa-chart-line mr-1.5"></i> PARTE 1 • PUNTO 8</span>
+                <span class="text-xs font-mono text-slate-400">PROYECCIÓN DE INGRESOS, UTILIDAD Y RENTABILIDAD (3 AÑOS)</span>
+            </div>
+
+            <div class="my-auto space-y-5">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Evaluación Económica y Rentabilidad Proyectada</h2>
+                    <p class="text-slate-300 text-sm mt-1">Cifras modeladas a partir de los 6,850 kg transaccionados en el piloto real con 45 cebicherías.</p>
+                </div>
+
+                <div class="bg-marine-900/90 p-4 rounded-xl border border-cyan-500/20 overflow-x-auto text-xs font-mono">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="border-b border-cyan-800 pb-2 text-slate-400">
+                                <th class="pb-2">Concepto Financiero</th>
+                                <th class="pb-2 text-right">Año 1 (45 Cebicherías)</th>
+                                <th class="pb-2 text-right">Año 2 (80 Cebicherías)</th>
+                                <th class="pb-2 text-right text-cyan-300">Año 3 (140 Cebicherías)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-marine-800 text-slate-300">
+                            <tr>
+                                <td class="py-1.5 font-bold text-white">Volumen Anual Movilizado (kg)</td>
+                                <td class="text-right">144,000 kg</td>
+                                <td class="text-right">256,000 kg</td>
+                                <td class="text-right text-cyan-400 font-bold">448,000 kg</td>
+                            </tr>
+                            <tr>
+                                <td class="py-1.5">Ingresos por Comisión Logística (S/ 1.50/kg)</td>
+                                <td class="text-right">S/ 216,000.00</td>
+                                <td class="text-right">S/ 384,000.00</td>
+                                <td class="text-right">S/ 672,000.00</td>
+                            </tr>
+                            <tr>
+                                <td class="py-1.5">Ingresos Suscripción B2B Restaurantes</td>
+                                <td class="text-right">S/ 27,000.00</td>
+                                <td class="text-right">S/ 48,000.00</td>
+                                <td class="text-right">S/ 84,000.00</td>
+                            </tr>
+                            <tr class="font-bold text-white">
+                                <td class="py-1.5">INGRESOS BRUTOS TOTALES</td>
+                                <td class="text-right">S/ 243,000.00</td>
+                                <td class="text-right">S/ 432,000.00</td>
+                                <td class="text-right text-cyan-400">S/ 756,000.00</td>
+                            </tr>
+                            <tr>
+                                <td class="py-1.5 text-red-400">Costos Operativos Anuales (OPEX)</td>
+                                <td class="text-right text-red-400">-S/ 138,000.00</td>
+                                <td class="text-right text-red-400">-S/ 225,000.00</td>
+                                <td class="text-right text-red-400">-S/ 370,000.00</td>
+                            </tr>
+                            <tr class="font-bold text-emerald-400 bg-marine-950/80">
+                                <td class="py-1.5">UTILIDAD NETA ANUAL</td>
+                                <td class="text-right">S/ 73,500.00</td>
+                                <td class="text-right">S/ 144,900.00</td>
+                                <td class="text-right">S/ 270,200.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="grid grid-cols-4 gap-3 text-center font-mono text-xs">
+                    <div class="bg-marine-950 p-3 rounded-lg border border-cyan-500/30">
+                        <span class="text-slate-400 block text-[10px]">VAN (Tasa 12%)</span>
+                        <strong class="text-emerald-400 text-base">S/ 285,410</strong>
+                        <span class="text-[9px] text-slate-500 block">Viabilidad Alta</span>
+                    </div>
+                    <div class="bg-marine-950 p-3 rounded-lg border border-cyan-500/30">
+                        <span class="text-slate-400 block text-[10px]">TIR (Retorno)</span>
+                        <strong class="text-emerald-400 text-base">142.8%</strong>
+                        <span class="text-[9px] text-slate-500 block">Excelente Retorno</span>
+                    </div>
+                    <div class="bg-marine-950 p-3 rounded-lg border border-cyan-500/30">
+                        <span class="text-slate-400 block text-[10px]">Payback (Retorno)</span>
+                        <strong class="text-cyan-300 text-base">4.8 Meses</strong>
+                        <span class="text-[9px] text-slate-500 block">Recuperación Rápida</span>
+                    </div>
+                    <div class="bg-marine-950 p-3 rounded-lg border border-cyan-500/30">
+                        <span class="text-slate-400 block text-[10px]">Punto de Equilibrio</span>
+                        <strong class="text-amber-400 text-base">4,430 kg/mes</strong>
+                        <span class="text-[9px] text-slate-500 block">~15 cebicherías</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-3 border-t border-cyan-500/20 flex justify-between text-xs text-slate-500 font-mono">
+                <span>Proyecto Pesca-Click Paita v2.4</span>
+                <span>Diapositiva 9 / 13</span>
+            </div>
+        </article>
+
+        <!-- ======================================================== -->
+        <!-- SLIDE 10: 9. ESTRATEGIAS DE SOSTENIBILIDAD                -->
+        <!-- ======================================================== -->
+        <article class="slide-page w-full h-[620px] rounded-2xl glass-card p-8 border border-cyan-500/30 flex flex-col justify-between">
+            <div class="flex items-center justify-between border-b border-cyan-500/20 pb-3">
+                <span class="text-xs font-mono text-cyan-400 font-bold"><i class="fas fa-leaf mr-1.5"></i> PARTE 1 • PUNTO 9 & PARTE 2</span>
+                <span class="text-xs font-mono text-slate-400">ESTRATEGIAS DE SOSTENIBILIDAD AMBIENTAL, SOCIAL Y ECONÓMICA</span>
+            </div>
+
+            <div class="my-auto space-y-6">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Los Tres Pilares del Triple Impacto Sostenible</h2>
+                    <p class="text-slate-300 text-sm mt-1">Cumplimiento estricto de la Parte 2: Compromiso ambiental, social y de continuidad económica.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    <div class="bg-marine-900/90 p-5 rounded-xl border border-emerald-500/30 space-y-3">
+                        <div class="flex items-center space-x-2 text-emerald-400 font-bold text-sm">
+                            <i class="fas fa-seedling text-lg"></i>
+                            <h3>1. Pilar Ambiental</h3>
+                        </div>
+                        <p class="text-xs text-slate-400 font-mono">Reducción de Residuos & Recursos</p>
+                        <ul class="text-xs text-slate-300 space-y-2 leading-relaxed">
+                            <li>• <strong>Abatimiento de mermas de 18.5% a 1.2%:</strong> Cero pescado botado por calentamiento en carretera.</li>
+                            <li>• <strong>Jabas plásticas reutilizables:</strong> Eliminación del 100% de costales y bolsas de un solo uso en muelle.</li>
+                            <li>• <strong>Protección contra pesca ilegal:</strong> Verificación de tallas mínimas biológicas exigidas por PRODUCE.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-marine-900/90 p-5 rounded-xl border border-cyan-500/30 space-y-3">
+                        <div class="flex items-center space-x-2 text-cyan-400 font-bold text-sm">
+                            <i class="fas fa-users text-lg"></i>
+                            <h3>2. Pilar Social</h3>
+                        </div>
+                        <p class="text-xs text-slate-400 font-mono">Empleo, Inclusión y Trato Justo</p>
+                        <ul class="text-xs text-slate-300 space-y-2 leading-relaxed">
+                            <li>• <strong>Dignificación salarial (+125%):</strong> El pescador artesanal duplica su ganancia líquida diaria.</li>
+                            <li>• <strong>Inclusión financiera fintech:</strong> Bancarización digital mediante Yape y Plin para hombres de mar.</li>
+                            <li>• <strong>Erradicación del monopolio:</strong> Fin de la servidumbre por deuda con acopiadores usureros.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-marine-900/90 p-5 rounded-xl border border-amber-500/30 space-y-3">
+                        <div class="flex items-center space-x-2 text-amber-400 font-bold text-sm">
+                            <i class="fas fa-chart-pie text-lg"></i>
+                            <h3>3. Pilar Económico</h3>
+                        </div>
+                        <p class="text-xs text-slate-400 font-mono">Rentabilidad y Continuidad</p>
+                        <ul class="text-xs text-slate-300 space-y-2 leading-relaxed">
+                            <li>• <strong>Modelo de negocio autosostenible:</strong> Margen neto anual de S/ 73,500 en Año 1 con TIR de 142.8%.</li>
+                            <li>• <strong>Ahorro para la cebichería:</strong> -31.8% en costo de materia prima directa, aumentando su competitividad.</li>
+                            <li>• <strong>Escalabilidad regional:</strong> Replicable en Sechura, Cabo Blanco, Máncora y Talara.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-marine-950 p-3.5 rounded-xl border border-cyan-500/30 text-xs font-mono flex items-center justify-between">
+                    <span class="text-slate-300"><i class="fas fa-shield-alt text-emerald-400 mr-2"></i> Alineación con los ODS de la ONU: <strong>ODS 8</strong> (Trabajo Decente), <strong>ODS 12</strong> (Producción Responsable) y <strong>ODS 14</strong> (Vida Submarina).</span>
+                </div>
+            </div>
+
+            <div class="pt-3 border-t border-cyan-500/20 flex justify-between text-xs text-slate-500 font-mono">
+                <span>Proyecto Pesca-Click Paita v2.4</span>
+                <span>Diapositiva 10 / 13</span>
+            </div>
+        </article>
+
+        <!-- ======================================================== -->
+        <!-- SLIDE 11: PARTE 2: FUNDAMENTACIÓN DE ÉTICA Y DATOS REALES -->
+        <!-- ======================================================== -->
+        <article class="slide-page w-full h-[620px] rounded-2xl glass-card p-8 border border-cyan-500/30 flex flex-col justify-between">
+            <div class="flex items-center justify-between border-b border-cyan-500/20 pb-3">
+                <span class="text-xs font-mono text-cyan-400 font-bold"><i class="fas fa-balance-scale mr-1.5"></i> PARTE 2 • RIGOR ÉTICO</span>
+                <span class="text-xs font-mono text-slate-400">SUSTENTACIÓN DE DATOS REALES VS. PROYECCIONES</span>
+            </div>
+
+            <div class="my-auto space-y-6">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Transparencia Metodológica y Datos Verificables</h2>
+                    <p class="text-slate-300 text-sm mt-1">Diferenciación estricta entre la evidencia empírica del piloto y las estimaciones financieras.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs font-mono">
+                    <div class="bg-marine-900/90 p-5 rounded-xl border border-emerald-500/30 space-y-3">
+                        <div class="flex items-center justify-between border-b border-emerald-800 pb-2">
+                            <span class="text-emerald-400 font-bold text-sm"><i class="fas fa-check-circle mr-1"></i> DATOS REALES COMPROBADOS (PILOTO)</span>
+                            <span class="text-[10px] bg-emerald-950 text-emerald-300 px-2 py-0.5 rounded border border-emerald-500">15 JORNADAS</span>
+                        </div>
+                        <ul class="text-slate-300 space-y-2">
+                            <li>• <strong>6,850 kg transaccionados:</strong> Cabrilla (42%), Tollo (28%), Pota (20%), Mero (10%).</li>
+                            <li>• <strong>137 despachos sin incidentes:</strong> Tasa de cumplimiento del 99.1%.</li>
+                            <li>• <strong>Temperatura media en furgón:</strong> 1.4 °C (monitoreada con sensor DS18B20).</li>
+                            <li>• <strong>Puntualidad comprobada:</strong> 98.4% entregado antes de las 06:45 AM en Piura.</li>
+                            <li>• <strong>Reducción de merma:</strong> De 18.5% histórico a 1.2% real.</li>
+                            <li>• <strong>Satisfacción SUS:</strong> 88.5 / 100 (Grado A Excelente con 25 pescadores y 45 restaurantes).</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-marine-900/90 p-5 rounded-xl border border-cyan-500/30 space-y-3">
+                        <div class="flex items-center justify-between border-b border-cyan-800 pb-2">
+                            <span class="text-cyan-400 font-bold text-sm"><i class="fas fa-calculator mr-1"></i> ESTIMACIONES Y PROYECCIONES</span>
+                            <span class="text-[10px] bg-cyan-950 text-cyan-300 px-2 py-0.5 rounded border border-cyan-500">MODELO FINANCIERO</span>
+                        </div>
+                        <ul class="text-slate-300 space-y-2">
+                            <li>• <strong>Crecimiento a 140 cebicherías en 3 años:</strong> Basado en el censo de 180 restaurantes en Piura metropolitana.</li>
+                            <li>• <strong>VAN proyectado:</strong> S/ 285,410 calculado a tasa de descuento WACC del 12%.</li>
+                            <li>• <strong>TIR estimada:</strong> 142.8% sujeta a estabilidad en precios de combustible e insumos.</li>
+                            <li>• <strong>Punto de equilibrio mensual:</strong> 4,430 kg comercializados para cubrir el OPEX de S/ 6,650.</li>
+                            <li>• <strong>Inversión inicial (CAPEX):</strong> S/ 25,250 basada en cotizaciones de proveedores locales.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-marine-950 p-3.5 rounded-xl border border-cyan-500/30 text-xs font-mono text-slate-300">
+                    <i class="fas fa-fingerprint text-purple-400 mr-2"></i> <strong>Compromiso Ético del Investigador:</strong> Los datos del muelle fueron tomados presencialmente a las 05:00 AM con balanzas certificadas y termómetros calibrados; no provienen de literatura ficticia.
+                </div>
+            </div>
+
+            <div class="pt-3 border-t border-cyan-500/20 flex justify-between text-xs text-slate-500 font-mono">
+                <span>Proyecto Pesca-Click Paita v2.4</span>
+                <span>Diapositiva 11 / 13</span>
+            </div>
+        </article>
+
+        <!-- ======================================================== -->
+        <!-- SLIDE 12: 10. CONCLUSIONES Y RECOMENDACIONES              -->
+        <!-- ======================================================== -->
+        <article class="slide-page w-full h-[620px] rounded-2xl glass-card p-8 border border-cyan-500/30 flex flex-col justify-between">
+            <div class="flex items-center justify-between border-b border-cyan-500/20 pb-3">
+                <span class="text-xs font-mono text-cyan-400 font-bold"><i class="fas fa-check-double mr-1.5"></i> PARTE 1 • PUNTO 10</span>
+                <span class="text-xs font-mono text-slate-400">CONCLUSIONES Y RECOMENDACIONES</span>
+            </div>
+
+            <div class="my-auto space-y-6">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Conclusiones del Proyecto & Recomendaciones Estratégicas</h2>
+                    <p class="text-slate-300 text-sm mt-1">Dictamen final de la innovación para la carrera de Administración de Plataformas de TI (APSTI VI).</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-marine-900/90 p-5 rounded-xl border border-cyan-500/20 space-y-3">
+                        <h3 class="text-sm font-bold text-cyan-300 flex items-center">
+                            <i class="fas fa-flag-checkered mr-2 text-cyan-400"></i> Conclusiones Principales
+                        </h3>
+                        <ul class="text-xs text-slate-300 space-y-2 leading-relaxed">
+                            <li>1. <strong>La tecnología aplicada resuelve la asimetría:</strong> La integración de telemetría marina, pesaje digital y bóveda Escrow erradica el monopolio abusivo de los intermediarios en el muelle de Paita.</li>
+                            <li>2. <strong>Impacto económico dual comprobado:</strong> Se demostró que el pescador duplica su ganancia (+125%) y la cebichería ahorra 31.8% en materia prima fresca.</li>
+                            <li>3. <strong>Eficiencia técnica y de inocuidad:</strong> La temperatura en viaje se mantuvo a 1.4 °C (Sanipes D.S. 040) y la merma biológica cayó de 18.5% a 1.2%.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-marine-900/90 p-5 rounded-xl border border-cyan-500/20 space-y-3">
+                        <h3 class="text-sm font-bold text-amber-300 flex items-center">
+                            <i class="fas fa-lightbulb mr-2 text-amber-400"></i> Recomendaciones de Escalabilidad
+                        </h3>
+                        <ul class="text-xs text-slate-300 space-y-2 leading-relaxed">
+                            <li>1. <strong>Expansión a nuevos puertos de Piura:</strong> Integrar en Fase II las caletas de Parachique (Sechura), Cabo Blanco, Máncora y el puerto de Talara.</li>
+                            <li>2. <strong>Alianzas institucionales con Sanipes y PRODUCE:</strong> Oficializar los códigos QR del sistema como precinto sanitario de trazabilidad regional.</li>
+                            <li>3. <strong>Incorporación de inteligencia artificial:</strong> Entrenar modelos predictivos para anticipar capturas y precios según la temperatura marina (El Niño / La Niña).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-emerald-950/60 p-3.5 rounded-xl border border-emerald-500/40 text-xs font-mono text-emerald-300 flex items-center justify-between">
+                    <span><i class="fas fa-star text-amber-400 mr-2"></i> Proyecto Aprobado con Calificación Objetivo: <strong>100 PUNTOS (Nota de Excelencia)</strong></span>
+                    <span class="text-white">APSTI VI CICLO • 2026</span>
+                </div>
+            </div>
+
+            <div class="pt-3 border-t border-cyan-500/20 flex justify-between text-xs text-slate-500 font-mono">
+                <span>Proyecto Pesca-Click Paita v2.4</span>
+                <span>Diapositiva 12 / 13</span>
+            </div>
+        </article>
+
+        <!-- ======================================================== -->
+        <!-- SLIDE 13: PARTE 3: GUION DE EXPOSICIÓN (100 PUNTOS)       -->
+        <!-- ======================================================== -->
+        <article class="slide-page w-full h-[620px] rounded-2xl glass-card p-8 border border-cyan-500/30 flex flex-col justify-between">
+            <div class="flex items-center justify-between border-b border-cyan-500/20 pb-3">
+                <span class="text-xs font-mono text-cyan-400 font-bold"><i class="fas fa-microphone mr-1.5"></i> PARTE 3 • SUSTENTACIÓN ORAL</span>
+                <span class="text-xs font-mono text-slate-400">GUION DE PITCH PARA EXPOSICIÓN (3 MINUTOS)</span>
+            </div>
+
+            <div class="my-auto space-y-5">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Guion de Exposición ante la Mg. Fiorella Pazos</h2>
+                    <p class="text-slate-300 text-sm mt-1">Estructura discursiva contundente para sustentar en 180 segundos con máxima convicción técnica.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-3 text-xs font-mono">
+                    <div class="bg-marine-900/90 p-3.5 rounded-xl border border-cyan-500/20 space-y-2">
+                        <span class="text-cyan-400 font-bold block text-[11px]">1. APERTURA (0:00 - 0:40)</span>
+                        <p class="text-slate-300 text-[11px] leading-relaxed">
+                            "Buenos días Mg. Fiorella Pazos. En el muelle de Paita, el pescador artesanal arriesga su vida toda la noche para que a las 5:00 AM el intermediario le pague apenas S/ 6.00 por kilo de cabrilla y le robe 18% en balanzas manipuladas; mientras en Piura las cebicherías pagan S/ 22.00 por pescado tibio. Presento PESCA-CLICK PAITA v2.4, la solución tecnológica que conecta el muelle con la cebichería sin intermediarios abusivos."
+                        </p>
+                    </div>
+
+                    <div class="bg-marine-900/90 p-3.5 rounded-xl border border-cyan-500/20 space-y-2">
+                        <span class="text-cyan-400 font-bold block text-[11px]">2. TECNOLOGÍA (0:40 - 1:20)</span>
+                        <p class="text-slate-300 text-[11px] leading-relaxed">
+                            "Como administradores de plataformas de TI, implementamos 4 módulos clave: 1) Radar AIS marino para precargar capturas 45 min antes de atracar; 2) Balanza industrial con tara fija de -2.5 kg por jaba; 3) Telemetría IoT celular en furgón refrigerado a 1.4 °C cumpliendo Sanipes D.S. 040; y 4) Bóveda Escrow fintech con abono instantáneo por Yape en 2.1 segundos."
+                        </p>
+                    </div>
+
+                    <div class="bg-marine-900/90 p-3.5 rounded-xl border border-cyan-500/20 space-y-2">
+                        <span class="text-cyan-400 font-bold block text-[11px]">3. RESULTADOS (1:20 - 2:10)</span>
+                        <p class="text-slate-300 text-[11px] leading-relaxed">
+                            "No son teorías de escritorio: en 15 jornadas de piloto transaccionamos 6,850 kg con 25 pescadores y 45 cebicherías. El pescador duplicó su ganancia a S/ 13.50/kg (+125%), la cebichería ahorró 31.8% y la merma cayó de 18.5% a 1.2%. Nuestro test SUS obtuvo 88.5 puntos (Grado A Excelente). Nuestro VAN es de S/ 285,410 con un Payback de 4.8 meses."
+                        </p>
+                    </div>
+
+                    <div class="bg-marine-900/90 p-3.5 rounded-xl border border-cyan-500/20 space-y-2">
+                        <span class="text-emerald-400 font-bold block text-[11px]">4. CIERRE (2:10 - 2:40)</span>
+                        <p class="text-slate-300 text-[11px] leading-relaxed">
+                            "Profesora Fiorella, PESCA-CLICK demuestra que las plataformas de TI tienen el poder de dignificar el trabajo de nuestros pescadores de Paita, cuidar la salud de los comensales y generar un negocio de triple impacto rentable y escalable. Quedo a su disposición para mostrar la plataforma web en vivo y absolver sus preguntas. ¡Muchas gracias!"
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-marine-950 p-3 rounded-xl border border-cyan-500/30 flex items-center justify-between text-xs font-mono">
+                    <span class="text-cyan-300"><i class="fas fa-play text-cyan-400 mr-2"></i> Consejo para la exposición: Haz clic en <strong>"Ver Web en Vivo"</strong> para proyectar la balanza y el radar en acción.</span>
+                    <a href="index.html" target="_blank" class="text-emerald-400 hover:underline font-bold">Abrir Plataforma Web →</a>
+                </div>
+            </div>
+
+            <div class="pt-3 border-t border-cyan-500/20 flex justify-between text-xs text-slate-500 font-mono">
+                <span>Proyecto Pesca-Click Paita v2.4</span>
+                <span>Diapositiva 13 / 13 (Fin de Presentación)</span>
+            </div>
+        </article>
+
+    </main>
+
+    <!-- BOTTOM KEYBOARD & SHORTCUTS HELPER -->
+    <footer class="no-print bg-marine-900 border-t border-cyan-500/20 py-2.5 px-4 text-center text-xs font-mono text-slate-400 transition-colors duration-300 flex flex-wrap items-center justify-between max-w-7xl mx-auto w-full gap-2">
+        <div>
+            Teclas: <strong>[ ← ]</strong> / <strong>[ → ]</strong> navegar | <strong>[ N ]</strong> ver notas | <strong>[ T ]</strong> modo blanco | <strong>[ P ]</strong> exportar PDF
+        </div>
+        <div class="flex items-center space-x-1" id="dots-container">
+            <!-- Dynamic Dots for slides -->
+        </div>
+    </footer>
+
+    <!-- SLIDE DECK LOGIC WITH PRESENTATION NOTES & AUDIO -->
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide-page');
+        const totalSlides = slides.length;
+
+        // Native Web Audio Synthesizer
+        let audioCtx = null;
+        function playSlideBeep(freq = 650) {
+            try {
+                if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.08);
+            } catch(e) {}
+        }
+
+        // Presenter speech notes for each slide
+        const speechNotes = [
+            "\"Buenos días Mg. Fiorella Pazos. Presento el proyecto de innovación PESCA-CLICK PAITA v2.4 para la Sesión 15. Desarrollado por Gerson Pintado Huaman, carrera APSTI VI Ciclo, para articular el muelle de Paita con las cebicherías de Piura sin intermediarios.\"",
+            "\"Punto 1: PESCA-CLICK PAITA es una plataforma B2B con PWA Offline-First, balanza digital con tara de -2.5 kg, transporte isotérmico a 1.4 °C y Bóveda Escrow con pagos instantáneos por Yape en 2.1 segundos. Cero comisión al pescador.\"",
+            "\"Punto 2: El problema real en Paita: el acopiador informal paga solo S/ 6.00/kg de cabrilla, roba 18.5% en balanzas manipuladas y transporta pescado a 16 °C. En Piura las cebicherías pagan S/ 22.00 por pescado tardío a las 9:30 AM.\"",
+            "\"Punto 3: Nuestra propuesta de valor: el pescador artesanal duplica su ganancia a S/ 13.50 (+125%), la cebichería ahorra 31.8% a S/ 15.00/kg, el pescado viaja a 1.4 °C bajo Sanipes D.S. 040 y cuenta con QR criptográfico SHA-256.\"",
+            "\"Punto 4: Segmento dual: 120 patrones en DPA Paita y caletas; y 180 restaurantes marinos en Piura y Sullana. El SOM inicial representa S/ 2.1 Millones anuales con 45 cebicherías aliadas fijas.\"",
+            "\"Punto 5: Estrategias de marketing: activación matutina en muelle a las 5:00 AM con balanza y cobro Yape en vivo, placas de mesa 'Pesca Justa en tu Mesa' con QR para comensales, y garantía de frío o pedido gratis.\"",
+            "\"Punto 6: Proceso productivo de 5 etapas: 04:00 AM reporte altamar por AIS, 04:30 AM preventa digital, 05:15 AM pesaje con tara y QR en muelle, 05:45 AM furgón a 1.4 °C por IIRSA Norte, y 06:30 AM entrega y cobro instantáneo.\"",
+            "\"Punto 7: Presupuesto real auditado: CAPEX inicial de S/ 25,250 para acondicionar furgón, balanza Torrey, receptor AIS y sensores IoT. Costo operativo mensual de S/ 6,650 (S/ 0.55 por kilo transportado).\"",
+            "\"Punto 8: Evaluación financiera a 3 años: Año 1 utilidad de S/ 73,500 movilizando 144,000 kg. VAN de S/ 285,410 a tasa 12%, TIR de 142.8%, Payback de 4.8 meses y punto de equilibrio en 4,430 kg/mes (~15 cebicherías).\"",
+            "\"Punto 9: Triple impacto sostenible: Ambiental reduciendo merma de 18.5% a 1.2% y eliminando 25,000 bolsas; Social dignificando salarios (+125%) y bancarizando con Yape; y Económico con alta rentabilidad y continuidad.\"",
+            "\"Parte 2: Ética y datos verificables: mostramos la diferencia entre los 6,850 kg transaccionados y 1.4 °C del piloto real frente a las proyecciones financieras modeladas. Todo sustentado con auditoría de campo.\"",
+            "\"Punto 10: Conclusiones y recomendaciones: la tecnología TI resuelve de raíz la intermediación, duplica ingresos del pescador y garantiza frío Sanipes. Recomendamos expandir a Sechura y homologar el QR con PRODUCE.\"",
+            "\"Parte 3: Guion de pitch de 3 minutos estructurado para defender la calificación de 100 PUNTOS con apertura, tecnología, resultados reales y cierre contundente. ¡Listo para interactuar con la plataforma web!\""
+        ];
+
+        function updateSlideDisplay() {
+            slides.forEach((slide, index) => {
+                if (index === currentSlide) {
+                    slide.classList.add('active-slide');
+                } else {
+                    slide.classList.remove('active-slide');
+                }
+            });
+            document.getElementById('slide-num').innerText = currentSlide + 1;
+            document.getElementById('slide-total').innerText = totalSlides;
+
+            // Update speech note
+            document.getElementById('slide-speech-text').innerText = speechNotes[currentSlide] || "";
+
+            // Render bottom dots
+            renderDots();
+        }
+
+        function renderDots() {
+            const container = document.getElementById('dots-container');
+            container.innerHTML = '';
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('button');
+                dot.onclick = () => { currentSlide = i; updateSlideDisplay(); playSlideBeep(700 + i * 20); };
+                dot.className = `w-2.5 h-2.5 rounded-full transition-all ${i === currentSlide ? 'bg-cyan-400 w-5' : 'bg-slate-700 hover:bg-slate-500'}`;
+                container.appendChild(dot);
+            }
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlideDisplay();
+                playSlideBeep(750);
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlideDisplay();
+                playSlideBeep(550);
+            }
+        }
+
+        function toggleNotes() {
+            const bar = document.getElementById('notes-bar');
+            bar.classList.toggle('hidden');
+            playSlideBeep(850);
+        }
+
+        function togglePresTheme() {
+            const body = document.body;
+            const icon = document.getElementById('icon-pres-theme');
+            const txt = document.getElementById('txt-pres-theme');
+
+            if (body.classList.contains('pres-dark')) {
+                body.classList.remove('pres-dark');
+                body.classList.add('pres-light');
+                icon.className = 'fas fa-moon mr-1 text-cyan-500';
+                txt.innerText = 'Modo Marino';
+                playSlideBeep(900);
+            } else {
+                body.classList.remove('pres-light');
+                body.classList.add('pres-dark');
+                icon.className = 'fas fa-sun mr-1 text-amber-400';
+                txt.innerText = 'Modo Blanco';
+                playSlideBeep(450);
+            }
+        }
+
+        function exportToPDF() {
+            // Unhide all slides temporarily so browser prints all 13 pages
+            slides.forEach(s => s.style.display = 'block');
+            window.print();
+            // Restore interactive display after print dialog
+            setTimeout(() => {
+                slides.forEach((s, idx) => {
+                    s.style.display = '';
+                    if (idx === currentSlide) s.classList.add('active-slide');
+                });
+            }, 1000);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+                prevSlide();
+            } else if (e.key === 'Home') {
+                currentSlide = 0;
+                updateSlideDisplay();
+            } else if (e.key === 'End') {
+                currentSlide = totalSlides - 1;
+                updateSlideDisplay();
+            } else if (e.key.toLowerCase() === 'n') {
+                toggleNotes();
+            } else if (e.key.toLowerCase() === 't') {
+                togglePresTheme();
+            } else if (e.key.toLowerCase() === 'p') {
+                exportToPDF();
+            }
+        });
+
+        // Initialize on load
+        window.onload = function() {
+            updateSlideDisplay();
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PESCA-CLICK PAITA | Mercado B2B del Muelle a la Cebichería & Telemetría IoT</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome 6 CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0284c7',
+                            600: '#0369a1',
+                            700: '#075985',
+                            800: '#0c4a6e',
+                            900: '#0a2540',
+                            950: '#061325'
+                        }
+                    },
+                    boxShadow: {
+                        'card': '0 4px 20px -2px rgba(10, 37, 64, 0.08), 0 2px 6px -1px rgba(10, 37, 64, 0.04)',
+                        'card-hover': '0 12px 30px -4px rgba(2, 132, 199, 0.15), 0 4px 12px -2px rgba(10, 37, 64, 0.06)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* RADAR SWEEP ANIMATION */
+        @keyframes radar-sweep {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .radar-beam {
+            animation: radar-sweep 3.5s linear infinite;
+            transform-origin: center center;
+        }
+
+        /* TICKER ANIMATION */
+        .ticker-wrap {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .ticker-move {
+            display: inline-block;
+            animation: ticker 32s linear infinite;
+        }
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-500 selection:text-white min-h-screen flex flex-col">
+
+    <!-- TOP TELEMETRY STATUS BAR -->
+    <aside class="bg-brand-900 text-white text-xs py-2 px-4 sticky top-0 z-50 border-b border-brand-800 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+            
+            <!-- Left: Real-time Puerto Paita status -->
+            <div class="flex items-center space-x-3">
+                <span class="flex h-2.5 w-2.5 relative">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                </span>
+                <span class="font-mono font-bold tracking-wide uppercase text-cyan-300">DPA PAITA EN VIVO</span>
+                <span class="text-slate-400">|</span>
+                <span class="hidden sm:inline text-slate-300 font-mono"><i class="fas fa-satellite-dish mr-1 text-cyan-400"></i> VHF AIS 161.975 MHz: CONECTADO</span>
+                <span class="hidden md:inline text-slate-400">|</span>
+                <span class="text-emerald-300 font-mono"><i class="fas fa-snowflake mr-1"></i> FRÍO EN RUTA: <strong id="top-temp-indicator">1.4 °C</strong></span>
+            </div>
+
+            <!-- Right Controls: Audio & Quick Access -->
+            <div class="flex items-center space-x-3 text-xs">
+                <button onclick="toggleAudio()" id="btn-sound" class="bg-brand-800/80 hover:bg-brand-700 text-cyan-200 px-2.5 py-1 rounded border border-brand-700 transition flex items-center" title="Activar/Silenciar Efectos de Sonido">
+                    <i class="fas fa-volume-up mr-1 text-cyan-300" id="icon-sound"></i> <span id="txt-sound">Audio ON</span>
+                </button>
+
+                <span class="hidden lg:inline text-slate-400">|</span>
+
+                <span class="hidden lg:flex items-center text-slate-300 font-mono">
+                    <i class="fas fa-map-marker-alt text-red-400 mr-1.5"></i> Autopista IIRSA Norte (58 km)
+                </span>
+
+                <a href="portal_sesion15.html" class="bg-brand-800 hover:bg-brand-700 text-cyan-200 border border-brand-700 px-2.5 py-1 rounded font-semibold transition flex items-center mr-2"><i class="fas fa-graduation-cap mr-1 text-cyan-400"></i> Hub Sesión 15</a>
+                <a href="#modulo-catalogo" class="bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-1 rounded font-semibold transition flex items-center shadow-sm">
+                    <i class="fas fa-shopping-cart mr-1.5"></i> Pedir Pescado Fresco
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- LIVE NEWS TICKER -->
+    <div class="bg-white border-b border-slate-200 py-1.5 ticker-wrap text-xs text-slate-600 font-mono">
+        <div class="ticker-move">
+            <span class="mx-4 text-brand-600 font-semibold"><i class="fas fa-ship mr-1 text-emerald-500"></i> Lancha "Siempre San Pedro" atracando en DPA Paita con 350 kg Cabrilla extrafresca</span> • 
+            <span class="mx-4 text-emerald-600 font-semibold"><i class="fas fa-check-circle mr-1"></i> Pescador artesanal recibe S/ 13.50/kg (+125% más sin intermediarios)</span> • 
+            <span class="mx-4 text-cyan-700 font-semibold"><i class="fas fa-utensils mr-1"></i> Cebichería "El Cántaro" (Piura) ahorra 31.8% en abastecimiento del día</span> • 
+            <span class="mx-4 text-blue-600 font-semibold"><i class="fas fa-truck mr-1"></i> Furgón térmico #02 monitoreado por telemetría IoT celular a 1.4 °C</span> • 
+            <span class="mx-4 text-purple-600 font-semibold"><i class="fas fa-qrcode mr-1"></i> Certificado Sanipes D.S. 040 verificado con firma digital SHA-256</span> •
+        </div>
+    </div>
+
+    <!-- MAIN COMMERCIAL NAVIGATION BAR -->
+    <header class="bg-white border-b border-slate-200 sticky top-9 z-40 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+            
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-cyan-500 text-white flex items-center justify-center text-xl shadow-md group-hover:scale-105 transition">
+                    <i class="fas fa-fish"></i>
+                </div>
+                <div>
+                    <div class="text-xl font-black text-brand-900 tracking-tight leading-none">
+                        PESCA-CLICK <span class="text-brand-500">PAITA</span>
+                    </div>
+                    <span class="text-[10px] font-mono text-slate-500 tracking-wider uppercase block mt-0.5">Mercado Digital B2B del Mar a la Mesa</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden lg:flex items-center space-x-1 text-xs font-semibold text-slate-600">
+                <a href="#modulo-radar" class="px-3 py-2 rounded-lg hover:text-brand-600 hover:bg-slate-100 transition flex items-center">
+                    <i class="fas fa-crosshairs mr-1.5 text-brand-500"></i> Radar AIS
+                </a>
+                <a href="#modulo-catalogo" class="px-3 py-2 rounded-lg hover:text-brand-600 hover:bg-slate-100 transition flex items-center">
+                    <i class="fas fa-store mr-1.5 text-cyan-500"></i> Catálogo B2B
+                </a>
+                <a href="#modulo-balanza" class="px-3 py-2 rounded-lg hover:text-brand-600 hover:bg-slate-100 transition flex items-center">
+                    <i class="fas fa-weight-hanging mr-1.5 text-amber-500"></i> Balanza Tara
+                </a>
+                <a href="#modulo-frio" class="px-3 py-2 rounded-lg hover:text-brand-600 hover:bg-slate-100 transition flex items-center">
+                    <i class="fas fa-snowflake mr-1.5 text-blue-500"></i> Cadena de Frío
+                </a>
+                <a href="#modulo-escrow" class="px-3 py-2 rounded-lg hover:text-brand-600 hover:bg-slate-100 transition flex items-center">
+                    <i class="fas fa-shield-alt mr-1.5 text-emerald-500"></i> Bóveda Escrow
+                </a>
+                <a href="#modulo-trazabilidad" class="px-3 py-2 rounded-lg hover:text-brand-600 hover:bg-slate-100 transition flex items-center">
+                    <i class="fas fa-qrcode mr-1.5 text-purple-500"></i> Trazabilidad QR
+                </a>
+            </nav>
+
+            <!-- User Cart & Account Status -->
+            <div class="flex items-center space-x-3">
+                <a href="#cart-container" class="bg-brand-50 hover:bg-brand-100 text-brand-700 border border-brand-200 px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center shadow-sm">
+                    <i class="fas fa-shopping-basket mr-2 text-brand-500"></i>
+                    <span>Pedido: <strong id="nav-cart-total" class="font-mono">S/ 405.00</strong></span>
+                </a>
+                <div class="hidden sm:flex items-center space-x-2 pl-2 border-l border-slate-200 text-xs">
+                    <div class="w-8 h-8 rounded-full bg-slate-100 border border-slate-300 flex items-center justify-center text-slate-600 font-bold">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="text-left leading-tight">
+                        <strong class="text-slate-800 block">Cebichería "El Cántaro"</strong>
+                        <span class="text-[10px] text-emerald-600 font-medium">Piura Centro</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- HERO SECTION (CLEAN COMMERCIAL B2B) -->
+    <section class="bg-gradient-to-b from-white via-slate-50 to-slate-100 py-12 px-4 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-10">
+                
+                <!-- Left: Headline & Commercial Value -->
+                <div class="lg:w-7/12 space-y-5 text-left">
+                    <div class="inline-flex items-center space-x-2 bg-brand-50 border border-brand-200 px-3.5 py-1.5 rounded-full text-xs font-semibold text-brand-700">
+                        <i class="fas fa-check-circle text-emerald-500"></i>
+                        <span>ABASTECIMIENTO MARÍTIMO DIRECTO • REGIONES PAITA, PIURA Y SULLANA</span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 leading-tight">
+                        Del Muelle de Paita a tu Cebichería en Piura <span class="text-brand-600">a 1.4 °C sin Intermediarios</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl">
+                        Conectamos en tiempo real la faena de los pescadores artesanales con los mejores restaurantes marinos de Piura. Pescado fresco del día con <strong class="text-slate-800">pesaje certificado en balanza con tara automática</strong>, furgón refrigerado express antes de las 06:45 AM y liquidación inmediata por Yape.
+                    </p>
+
+                    <!-- Key Commercial Value Badges -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2 text-xs font-semibold text-slate-700">
+                        <div class="flex items-center space-x-2 bg-white p-2.5 rounded-xl border border-slate-200 shadow-sm">
+                            <i class="fas fa-shield-alt text-emerald-500 text-base"></i>
+                            <span>Sanipes D.S. 040 (< 2.0 °C)</span>
+                        </div>
+                        <div class="flex items-center space-x-2 bg-white p-2.5 rounded-xl border border-slate-200 shadow-sm">
+                            <i class="fas fa-balance-scale text-brand-500 text-base"></i>
+                            <span>Tara Exacta -2.5 kg/jaba</span>
+                        </div>
+                        <div class="flex items-center space-x-2 bg-white p-2.5 rounded-xl border border-slate-200 shadow-sm">
+                            <i class="fas fa-bolt text-amber-500 text-base"></i>
+                            <span>Entrega Express < 06:45 AM</span>
+                        </div>
+                    </div>
+
+                    <!-- Call to action buttons -->
+                    <div class="flex flex-wrap items-center gap-3 pt-3">
+                        <a href="#modulo-catalogo" class="bg-brand-600 hover:bg-brand-700 text-white font-bold px-6 py-3.5 rounded-xl shadow-md transition flex items-center text-sm">
+                            <i class="fas fa-fish mr-2"></i> Ver Capturas Frescas del Día
+                        </a>
+                        <a href="#modulo-radar" class="bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 font-semibold px-6 py-3.5 rounded-xl transition flex items-center text-sm shadow-sm">
+                            <i class="fas fa-crosshairs mr-2 text-brand-600"></i> Rastrear Lanchas en Radar AIS
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: Live Commercial Metrics Card -->
+                <div class="lg:w-5/12 w-full">
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-card space-y-4">
+                        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                            <div>
+                                <h3 class="text-xs font-mono font-bold uppercase tracking-wider text-slate-500">MÉTRICAS DEL SISTEMA EN VIVO</h3>
+                                <p class="text-sm font-bold text-slate-900">Operaciones Validadas DPA Paita</p>
+                            </div>
+                            <span class="bg-emerald-50 text-emerald-700 text-xs px-2.5 py-1 rounded-full font-mono font-bold border border-emerald-200 flex items-center">
+                                <i class="fas fa-check-circle mr-1 text-emerald-500"></i> ACTIVO
+                            </span>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3.5">
+                            <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100">
+                                <span class="text-xs text-slate-500 block">Volumen Transaccionado</span>
+                                <span class="text-2xl font-black text-slate-900 font-mono">6,850 <small class="text-xs font-normal text-slate-500">kg</small></span>
+                                <span class="text-[11px] text-emerald-600 block mt-1 font-semibold"><i class="fas fa-check"></i> 137 despachos conformes</span>
+                            </div>
+
+                            <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100">
+                                <span class="text-xs text-slate-500 block">Temperatura Cadena Frío</span>
+                                <span class="text-2xl font-black text-brand-600 font-mono">1.4 <small class="text-xs font-normal text-slate-500">°C</small></span>
+                                <span class="text-[11px] text-slate-600 block mt-1 font-medium"><i class="fas fa-shield-alt text-brand-500"></i> Rango 0.5 °C a 1.8 °C</span>
+                            </div>
+
+                            <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100">
+                                <span class="text-xs text-slate-500 block">Beneficio al Pescador</span>
+                                <span class="text-2xl font-black text-emerald-600 font-mono">+125%</span>
+                                <span class="text-[11px] text-slate-600 block mt-1">S/ 6.00 → <strong>S/ 13.50</strong>/kg</span>
+                            </div>
+
+                            <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100">
+                                <span class="text-xs text-slate-500 block">Ahorro en Cebicherías</span>
+                                <span class="text-2xl font-black text-cyan-600 font-mono">-31.8%</span>
+                                <span class="text-[11px] text-slate-600 block mt-1">S/ 22.00 → <strong>S/ 15.00</strong>/kg</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-mono text-slate-600">
+                            <span><i class="fas fa-arrow-down text-emerald-500 mr-1"></i> Merma: <strong>18.5% → 1.2%</strong></span>
+                            <span><i class="fas fa-users text-brand-500 mr-1"></i> Red: <strong>25 Lanchas / 45 Locales</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENT SECTIONS (CLEAN & INTUITIVE) -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 py-12 space-y-16 w-full">
+
+        <!-- ======================================================== -->
+        <!-- MÓDULO 1: RADAR AIS Y TELEMETRÍA EN ALTAMAR               -->
+        <!-- ======================================================== -->
+        <section id="modulo-radar" class="space-y-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <div class="text-xs font-mono uppercase tracking-wider text-brand-600 font-bold mb-1">
+                        <i class="fas fa-satellite-dish mr-1.5"></i> MÓDULO 01 • TELEMETRÍA MARINA EN ALTA MAR
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Radar AIS y Detección de Arribo en Tiempo Real</h2>
+                    <p class="text-slate-600 text-sm max-w-2xl">
+                        Rastreo en vivo de embarcaciones frente a la Bahía de Paita (Caleta La Islilla, Yacila y Tierra Colorada). Conoce qué especies y cuántos kilos llegarán al muelle antes de que atraquen.
+                    </p>
+                </div>
+                <div class="flex items-center space-x-2 text-xs font-mono bg-white border border-slate-200 px-3.5 py-2 rounded-xl shadow-sm">
+                    <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+                    <span class="text-slate-700">Coordenadas DPA Paita: <strong>05°04'50"S 81°06'35"W</strong></span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                <!-- RADAR SCREEN DISPLAY -->
+                <div class="lg:col-span-7 bg-brand-950 text-white rounded-2xl p-6 flex flex-col justify-between relative overflow-hidden shadow-lg">
+                    <div class="flex items-center justify-between mb-2 z-10">
+                        <span class="text-xs font-mono text-cyan-400 font-bold"><i class="fas fa-compass mr-1"></i> BARRIDO VHF 12 MILLAS NÁUTICAS</span>
+                        <span class="text-xs text-slate-400 font-mono">FRECUENCIA: 161.975 MHz</span>
+                    </div>
+
+                    <!-- RADAR DISPLAY CANVAS -->
+                    <div class="relative w-full aspect-square max-w-[400px] mx-auto my-2 rounded-full border-2 border-cyan-500/40 bg-brand-900 overflow-hidden flex items-center justify-center shadow-inner">
+                        <div class="absolute inset-8 rounded-full border border-cyan-500/20"></div>
+                        <div class="absolute inset-20 rounded-full border border-cyan-500/20"></div>
+                        <div class="absolute inset-32 rounded-full border border-cyan-500/20"></div>
+                        <div class="absolute inset-x-0 top-1/2 h-px bg-cyan-500/25"></div>
+                        <div class="absolute inset-y-0 left-1/2 w-px bg-cyan-500/25"></div>
+                        
+                        <!-- Radar Sweep Line -->
+                        <div class="absolute inset-0 radar-beam pointer-events-none">
+                            <div class="w-1/2 h-1/2 bg-gradient-to-br from-cyan-400/40 via-cyan-500/10 to-transparent origin-bottom-right rounded-tl-full"></div>
+                        </div>
+
+                        <!-- Center: DPA Paita -->
+                        <div class="absolute z-20 flex flex-col items-center">
+                            <span class="w-3.5 h-3.5 bg-cyan-400 rounded-full ring-4 ring-cyan-500/40 shadow-sm"></span>
+                            <span class="text-[10px] font-mono text-cyan-300 font-bold mt-1 bg-brand-950/90 px-1 rounded">DPA PAITA</span>
+                        </div>
+
+                        <!-- Vessel 1: Siempre San Pedro -->
+                        <button onclick="selectVessel('Siempre San Pedro', 'PT-45210-BM', 'Don Pedro Chunga', '350 kg Cabrilla / 120 kg Tollo', '18 min', '3.8 MN', '1.4 °C')" 
+                                class="absolute top-[28%] left-[62%] group focus:outline-none z-30 transition transform hover:scale-125">
+                            <span class="relative flex h-3.5 w-3.5">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500"></span>
+                            </span>
+                            <span class="absolute left-4 -top-2 bg-brand-950/90 text-emerald-300 text-[10px] font-mono px-1.5 py-0.5 rounded border border-emerald-500/40 whitespace-nowrap shadow">
+                                San Pedro (18 min)
+                            </span>
+                        </button>
+
+                        <!-- Vessel 2: Don Lucho I -->
+                        <button onclick="selectVessel('Don Lucho I', 'PT-38194-BM', 'Don Luis Morales', '280 kg Tollo / 90 kg Cabrilla', '32 min', '6.2 MN', '1.5 °C')" 
+                                class="absolute top-[65%] left-[25%] group focus:outline-none z-30 transition transform hover:scale-125">
+                            <span class="relative flex h-3.5 w-3.5">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-cyan-500"></span>
+                            </span>
+                            <span class="absolute left-4 -top-2 bg-brand-950/90 text-cyan-300 text-[10px] font-mono px-1.5 py-0.5 rounded border border-cyan-500/40 whitespace-nowrap shadow">
+                                Don Lucho I (32 min)
+                            </span>
+                        </button>
+
+                        <!-- Vessel 3: Virgen de las Mercedes -->
+                        <button onclick="selectVessel('Virgen de las Mercedes', 'PT-19402-BM', 'Don Carlos Fiestas', '420 kg Pota Manto / 60 kg Mero', '45 min', '8.9 MN', '1.6 °C')" 
+                                class="absolute top-[18%] left-[22%] group focus:outline-none z-30 transition transform hover:scale-125">
+                            <span class="relative flex h-3.5 w-3.5">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-amber-500"></span>
+                            </span>
+                            <span class="absolute left-4 -top-2 bg-brand-950/90 text-amber-300 text-[10px] font-mono px-1.5 py-0.5 rounded border border-amber-500/40 whitespace-nowrap shadow">
+                                V. Mercedes (45 min)
+                            </span>
+                        </button>
+
+                        <!-- Vessel 4: Rosa Mística -->
+                        <button onclick="selectVessel('Rosa Mística', 'PT-22910-BM', 'Don Manuel Purizaca', '110 kg Mero Murique / 180 kg Cabrilla', '12 min', '2.4 MN', '1.3 °C')" 
+                                class="absolute top-[75%] left-[70%] group focus:outline-none z-30 transition transform hover:scale-125">
+                            <span class="relative flex h-3.5 w-3.5">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-purple-500"></span>
+                            </span>
+                            <span class="absolute left-4 -top-2 bg-brand-950/90 text-purple-300 text-[10px] font-mono px-1.5 py-0.5 rounded border border-purple-500/40 whitespace-nowrap shadow">
+                                Rosa Mística (12 min)
+                            </span>
+                        </button>
+                    </div>
+
+                    <div class="text-center text-xs text-slate-400 font-mono mt-2">
+                        <i class="fas fa-hand-pointer text-cyan-400 mr-1 animate-bounce"></i> Haz clic en los puntos del radar para inspeccionar la lancha y escuchar el sonar
+                    </div>
+                </div>
+
+                <!-- VESSEL TELEMETRY DETAILS PANEL -->
+                <div class="lg:col-span-5 bg-white rounded-2xl p-6 border border-slate-200 shadow-card flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                            <h3 class="text-base font-bold text-slate-900 flex items-center">
+                                <i class="fas fa-ship mr-2 text-brand-600"></i> Ficha de Embarcación Seleccionada
+                            </h3>
+                            <span id="vessel-badge" class="bg-emerald-50 text-emerald-700 text-xs px-2.5 py-0.5 rounded-full font-mono font-bold border border-emerald-200">
+                                EN NAVEGACIÓN
+                            </span>
+                        </div>
+
+                        <div class="space-y-4 my-4">
+                            <div>
+                                <span class="text-xs text-slate-500 block font-mono">Nombre de Lancha & Matrícula</span>
+                                <h4 id="vessel-name" class="text-xl font-extrabold text-brand-700">Siempre San Pedro</h4>
+                                <span id="vessel-reg" class="text-xs font-mono text-slate-600 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">PT-45210-BM (Paita)</span>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-3 text-xs">
+                                <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                    <span class="text-slate-500 block">Patrón de Embarcación</span>
+                                    <strong id="vessel-captain" class="text-slate-900 text-sm">Don Pedro Chunga</strong>
+                                </div>
+                                <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                    <span class="text-slate-500 block">Tiempo Estimado (ETA)</span>
+                                    <strong id="vessel-eta" class="text-emerald-600 text-sm font-mono">18 minutos</strong>
+                                </div>
+                                <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                    <span class="text-slate-500 block">Distancia a Muelle</span>
+                                    <strong id="vessel-dist" class="text-brand-600 text-sm font-mono">3.8 Millas Náuticas</strong>
+                                </div>
+                                <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                    <span class="text-slate-500 block">Frío en Bodega</span>
+                                    <strong id="vessel-temp" class="text-brand-600 text-sm font-mono">1.4 °C (Hielo Escamas)</strong>
+                                </div>
+                            </div>
+
+                            <div class="bg-brand-50 p-3.5 rounded-xl border border-brand-100 text-xs">
+                                <span class="text-slate-500 block mb-1 font-semibold">Manifiesto de Captura Declarada:</span>
+                                <div id="vessel-catch" class="text-brand-900 font-mono text-sm font-bold">
+                                    <i class="fas fa-boxes mr-1 text-brand-500"></i> 350 kg Cabrilla Norteña / 120 kg Tollo de Leche
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 pt-3 border-t border-slate-100">
+                        <button onclick="preorderLot()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition text-sm flex items-center justify-center">
+                            <i class="fas fa-cart-plus mr-2"></i> Reservar Lote de esta Embarcación
+                        </button>
+                        <p id="preorder-msg" class="text-[11px] text-center text-slate-500 italic">
+                            Precio garantizado de muelle. El pescador asegura su venta antes del atraque.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- MÓDULO 2: CATÁLOGO B2B & PREVENTA DIRECTA                 -->
+        <!-- ======================================================== -->
+        <section id="modulo-catalogo" class="space-y-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <div class="text-xs font-mono uppercase tracking-wider text-brand-600 font-bold mb-1">
+                        <i class="fas fa-store mr-1.5"></i> MÓDULO 02 • COMERCIO DIRECTO DEL MUELLE AL RESTAURANTE
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Catálogo B2B y Comparativa de Precios</h2>
+                    <p class="text-slate-600 text-sm max-w-2xl">
+                        Eliminamos la intermediación parasitaria. Paga el precio justo del día y ahorra más del 30% garantizando frescura insuperable.
+                    </p>
+                </div>
+                <div class="bg-emerald-50 border border-emerald-200 px-3.5 py-2 rounded-xl text-xs font-mono text-emerald-800 flex items-center font-bold">
+                    <i class="fas fa-check-double mr-1.5 text-emerald-600"></i> Precios de Hoy Validados en DPA Paita
+                </div>
+            </div>
+
+            <!-- PRODUCT CARDS GRID (CLEAN LIGHT DESIGN) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- SPECIE 1: CABRILLA -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-card hover:shadow-card-hover transition flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-mono text-brand-700 bg-brand-50 px-2 py-0.5 rounded font-bold border border-brand-100">1° Calidad Marina</span>
+                            <span class="text-xs text-emerald-600 font-bold"><i class="fas fa-circle text-[8px] mr-1"></i> Disponible</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900">Cabrilla Norteña</h3>
+                        <p class="text-xs text-slate-500">Paralabrax humeralis. Ideal para cebiche clásico y sudado piurano. Textura firme.</p>
+                        
+                        <div class="space-y-1.5 pt-2 text-xs font-mono">
+                            <div class="flex justify-between text-slate-500">
+                                <span>Acopiador en playa:</span>
+                                <span class="line-through text-red-500">S/ 6.00 /kg</span>
+                            </div>
+                            <div class="flex justify-between text-slate-500">
+                                <span>Revendedor en Piura:</span>
+                                <span class="line-through text-red-500">S/ 22.00 /kg</span>
+                            </div>
+                            <div class="flex justify-between items-center bg-brand-50 p-2 rounded-lg border border-brand-100 font-bold">
+                                <span class="text-brand-900">Precio Pesca-Click:</span>
+                                <span class="text-base text-emerald-600">S/ 13.50 <small class="text-xs text-slate-600">/kg</small></span>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-50 p-2 rounded-lg text-[11px] space-y-0.5 border border-slate-100">
+                            <div class="text-amber-700 font-medium"><i class="fas fa-user-shield mr-1"></i> Pescador gana: <strong>+125%</strong> (S/ 7.50 más)</div>
+                            <div class="text-emerald-700 font-bold"><i class="fas fa-piggy-bank mr-1"></i> Cebichería ahorra: <strong>-38.6%</strong> (S/ 8.50 menos)</div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 mt-4 border-t border-slate-100">
+                        <div class="flex items-center space-x-2 mb-3">
+                            <label class="text-xs text-slate-600 font-medium">Cantidad:</label>
+                            <input id="qty-cabrilla" type="number" value="30" min="10" step="5" class="bg-slate-50 text-slate-900 text-xs font-mono border border-slate-300 rounded-lg px-2 py-1.5 w-20 text-center font-bold">
+                            <span class="text-xs text-slate-500 font-mono">kg</span>
+                        </div>
+                        <button onclick="addToOrder('Cabrilla Norteña', 13.50, 'qty-cabrilla')" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-2.5 rounded-xl text-xs transition flex items-center justify-center shadow-sm">
+                            <i class="fas fa-plus-circle mr-1.5"></i> Añadir a Pedido B2B
+                        </button>
+                    </div>
+                </div>
+
+                <!-- SPECIE 2: TOLLO -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-card hover:shadow-card-hover transition flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-mono text-brand-700 bg-brand-50 px-2 py-0.5 rounded font-bold border border-brand-100">Carne Blanca</span>
+                            <span class="text-xs text-emerald-600 font-bold"><i class="fas fa-circle text-[8px] mr-1"></i> Disponible</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900">Tollo de Leche</h3>
+                        <p class="text-xs text-slate-500">Mustelus whitneyi. Pulpa blanca sin espinas, preferido por restaurantes marinos.</p>
+                        
+                        <div class="space-y-1.5 pt-2 text-xs font-mono">
+                            <div class="flex justify-between text-slate-500">
+                                <span>Acopiador en playa:</span>
+                                <span class="line-through text-red-500">S/ 5.00 /kg</span>
+                            </div>
+                            <div class="flex justify-between text-slate-500">
+                                <span>Revendedor en Piura:</span>
+                                <span class="line-through text-red-500">S/ 18.00 /kg</span>
+                            </div>
+                            <div class="flex justify-between items-center bg-brand-50 p-2 rounded-lg border border-brand-100 font-bold">
+                                <span class="text-brand-900">Precio Pesca-Click:</span>
+                                <span class="text-base text-emerald-600">S/ 11.00 <small class="text-xs text-slate-600">/kg</small></span>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-50 p-2 rounded-lg text-[11px] space-y-0.5 border border-slate-100">
+                            <div class="text-amber-700 font-medium"><i class="fas fa-user-shield mr-1"></i> Pescador gana: <strong>+120%</strong> (S/ 6.00 más)</div>
+                            <div class="text-emerald-700 font-bold"><i class="fas fa-piggy-bank mr-1"></i> Cebichería ahorra: <strong>-38.8%</strong> (S/ 7.00 menos)</div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 mt-4 border-t border-slate-100">
+                        <div class="flex items-center space-x-2 mb-3">
+                            <label class="text-xs text-slate-600 font-medium">Cantidad:</label>
+                            <input id="qty-tollo" type="number" value="25" min="10" step="5" class="bg-slate-50 text-slate-900 text-xs font-mono border border-slate-300 rounded-lg px-2 py-1.5 w-20 text-center font-bold">
+                            <span class="text-xs text-slate-500 font-mono">kg</span>
+                        </div>
+                        <button onclick="addToOrder('Tollo de Leche', 11.00, 'qty-tollo')" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-2.5 rounded-xl text-xs transition flex items-center justify-center shadow-sm">
+                            <i class="fas fa-plus-circle mr-1.5"></i> Añadir a Pedido B2B
+                        </button>
+                    </div>
+                </div>
+
+                <!-- SPECIE 3: POTA MANTO LIMPIO -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-card hover:shadow-card-hover transition flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-mono text-brand-700 bg-brand-50 px-2 py-0.5 rounded font-bold border border-brand-100">Chicharrón / Wok</span>
+                            <span class="text-xs text-emerald-600 font-bold"><i class="fas fa-circle text-[8px] mr-1"></i> Disponible</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900">Pota Manto Limpio</h3>
+                        <p class="text-xs text-slate-500">Dosidicus gigas. Filete limpio sin piel ni vísceras, listo para corte en cocina marina.</p>
+                        
+                        <div class="space-y-1.5 pt-2 text-xs font-mono">
+                            <div class="flex justify-between text-slate-500">
+                                <span>Acopiador en playa:</span>
+                                <span class="line-through text-red-500">S/ 2.00 /kg</span>
+                            </div>
+                            <div class="flex justify-between text-slate-500">
+                                <span>Revendedor en Piura:</span>
+                                <span class="line-through text-red-500">S/ 8.00 /kg</span>
+                            </div>
+                            <div class="flex justify-between items-center bg-brand-50 p-2 rounded-lg border border-brand-100 font-bold">
+                                <span class="text-brand-900">Precio Pesca-Click:</span>
+                                <span class="text-base text-emerald-600">S/ 4.80 <small class="text-xs text-slate-600">/kg</small></span>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-50 p-2 rounded-lg text-[11px] space-y-0.5 border border-slate-100">
+                            <div class="text-amber-700 font-medium"><i class="fas fa-user-shield mr-1"></i> Pescador gana: <strong>+140%</strong> (S/ 2.80 más)</div>
+                            <div class="text-emerald-700 font-bold"><i class="fas fa-piggy-bank mr-1"></i> Cebichería ahorra: <strong>-40.0%</strong> (S/ 3.20 menos)</div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 mt-4 border-t border-slate-100">
+                        <div class="flex items-center space-x-2 mb-3">
+                            <label class="text-xs text-slate-600 font-medium">Cantidad:</label>
+                            <input id="qty-pota" type="number" value="40" min="15" step="5" class="bg-slate-50 text-slate-900 text-xs font-mono border border-slate-300 rounded-lg px-2 py-1.5 w-20 text-center font-bold">
+                            <span class="text-xs text-slate-500 font-mono">kg</span>
+                        </div>
+                        <button onclick="addToOrder('Pota Manto Limpio', 4.80, 'qty-pota')" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-2.5 rounded-xl text-xs transition flex items-center justify-center shadow-sm">
+                            <i class="fas fa-plus-circle mr-1.5"></i> Añadir a Pedido B2B
+                        </button>
+                    </div>
+                </div>
+
+                <!-- SPECIE 4: MERO MURIQUE -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-card hover:shadow-card-hover transition flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-mono text-amber-800 bg-amber-50 px-2 py-0.5 rounded font-bold border border-amber-200">Alta Gama Gourmet</span>
+                            <span class="text-xs text-amber-600 font-bold"><i class="fas fa-circle text-[8px] mr-1"></i> Lote Limitado</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900">Mero Murique</h3>
+                        <p class="text-xs text-slate-500">Epinephelus quinquefasciatus. Pescado premium de roca, captura selectiva con espinel.</p>
+                        
+                        <div class="space-y-1.5 pt-2 text-xs font-mono">
+                            <div class="flex justify-between text-slate-500">
+                                <span>Acopiador en playa:</span>
+                                <span class="line-through text-red-500">S/ 25.00 /kg</span>
+                            </div>
+                            <div class="flex justify-between text-slate-500">
+                                <span>Revendedor en Piura:</span>
+                                <span class="line-through text-red-500">S/ 60.00 /kg</span>
+                            </div>
+                            <div class="flex justify-between items-center bg-brand-50 p-2 rounded-lg border border-brand-100 font-bold">
+                                <span class="text-brand-900">Precio Pesca-Click:</span>
+                                <span class="text-base text-emerald-600">S/ 42.00 <small class="text-xs text-slate-600">/kg</small></span>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-50 p-2 rounded-lg text-[11px] space-y-0.5 border border-slate-100">
+                            <div class="text-amber-700 font-medium"><i class="fas fa-user-shield mr-1"></i> Pescador gana: <strong>+68%</strong> (S/ 17.00 más)</div>
+                            <div class="text-emerald-700 font-bold"><i class="fas fa-piggy-bank mr-1"></i> Cebichería ahorra: <strong>-30.0%</strong> (S/ 18.00 menos)</div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 mt-4 border-t border-slate-100">
+                        <div class="flex items-center space-x-2 mb-3">
+                            <label class="text-xs text-slate-600 font-medium">Cantidad:</label>
+                            <input id="qty-mero" type="number" value="15" min="5" step="5" class="bg-slate-50 text-slate-900 text-xs font-mono border border-slate-300 rounded-lg px-2 py-1.5 w-20 text-center font-bold">
+                            <span class="text-xs text-slate-500 font-mono">kg</span>
+                        </div>
+                        <button onclick="addToOrder('Mero Murique', 42.00, 'qty-mero')" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-2.5 rounded-xl text-xs transition flex items-center justify-center shadow-sm">
+                            <i class="fas fa-plus-circle mr-1.5"></i> Añadir a Pedido B2B
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SHOPPING CART SUMMARY (CLEAN LIGHT DESIGN) -->
+            <div id="cart-container" class="bg-white rounded-2xl p-6 border border-slate-200 shadow-card">
+                <div class="flex flex-col md:flex-row items-center justify-between pb-4 border-b border-slate-200 gap-4">
+                    <div>
+                        <h4 class="text-base font-bold text-slate-900 flex items-center">
+                            <i class="fas fa-shopping-basket mr-2 text-brand-600"></i> Resumen de Pedido de la Cebichería
+                        </h4>
+                        <p class="text-xs text-slate-500">Cálculo transparente de ahorro para el restaurante y retribución directa al pescador.</p>
+                    </div>
+                    <span class="text-xs font-mono text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200 font-medium">
+                        Restaurante: <strong>Cebichería "El Cántaro" (Piura)</strong>
+                    </span>
+                </div>
+
+                <div class="my-4 overflow-x-auto">
+                    <table class="w-full text-left text-xs font-mono">
+                        <thead>
+                            <tr class="border-b border-slate-200 text-slate-500">
+                                <th class="py-2.5">Especie Marina</th>
+                                <th class="py-2.5 text-center">Cantidad</th>
+                                <th class="py-2.5 text-right">Precio Unitario</th>
+                                <th class="py-2.5 text-right">Total Pedido</th>
+                                <th class="py-2.5 text-right text-emerald-600">Ahorro vs Intermediario</th>
+                                <th class="py-2.5 text-center">Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cart-items" class="divide-y divide-slate-100 text-slate-800">
+                            <!-- Injected dynamically by JS -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pt-4 border-t border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div class="text-xs space-y-1">
+                        <div class="text-slate-600">Total Inversión en Pescado: <strong id="cart-total" class="text-lg text-brand-900 font-mono font-bold">S/ 405.00</strong></div>
+                        <div class="text-emerald-700 font-bold"><i class="fas fa-check-circle"></i> Ahorro Neto Total de tu Restaurante: <strong id="cart-savings" class="font-mono">S/ 255.00</strong></div>
+                    </div>
+                    <div class="flex items-center space-x-3 w-full md:w-auto">
+                        <button onclick="clearCart()" class="text-xs text-slate-500 hover:text-red-500 px-3 py-2 transition font-medium">
+                            <i class="fas fa-trash-alt mr-1"></i> Vaciar
+                        </button>
+                        <a href="#modulo-escrow" onclick="prepareEscrow()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-3 rounded-xl text-xs transition shadow-md flex items-center justify-center">
+                            <i class="fas fa-shield-alt mr-2"></i> Pagar con Bóveda Escrow (Yape / Plin)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- MÓDULO 3: BALANZA DIGITAL INDUSTRIAL CON TARA             -->
+        <!-- ======================================================== -->
+        <section id="modulo-balanza" class="space-y-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <div class="text-xs font-mono uppercase tracking-wider text-brand-600 font-bold mb-1">
+                        <i class="fas fa-weight-hanging mr-1.5"></i> MÓDULO 03 • TRANSPARENCIA Y JUSTICIA EN PESAJE
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Balanza Digital Industrial con Tara Automática</h2>
+                    <p class="text-slate-600 text-sm max-w-2xl">
+                        Acaba con la práctica corrupta del "machete" en el muelle (donde el acopiador descuenta 18.5%). La balanza Torrey serial RS-232 aplica estrictamente <strong>-2.5 kg por jaba plástica oficial</strong>.
+                    </p>
+                </div>
+                <div class="bg-brand-50 border border-brand-200 px-3.5 py-2 rounded-xl text-xs font-mono text-brand-800 font-bold">
+                    <i class="fas fa-microchip mr-1.5 text-brand-600"></i> Balanza Torrey RS-232 Calibrada
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                <!-- SCALE CONSOLE -->
+                <div class="lg:col-span-7 bg-white rounded-2xl p-6 border border-slate-200 shadow-card flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                            <span class="text-xs font-mono text-brand-600 font-bold"><i class="fas fa-desktop mr-1"></i> TERMINAL DE CONTROL DE DESCARGA DPA PAITA</span>
+                            <span class="text-xs font-mono text-emerald-600 font-bold flex items-center"><i class="fas fa-signal mr-1"></i> PUERTO COM3: ACTIVO</span>
+                        </div>
+
+                        <!-- DIGITAL LED DISPLAY -->
+                        <div class="my-6 bg-slate-900 rounded-2xl p-6 text-center font-mono relative overflow-hidden shadow-inner">
+                            <div class="text-xs text-cyan-400 uppercase tracking-widest mb-1 flex justify-between px-2">
+                                <span>INDICADOR DIGITAL NETO</span>
+                                <span>TARA ACTIVA: -2.50 kg / jaba</span>
+                            </div>
+                            <div class="text-5xl sm:text-7xl font-black text-cyan-300 tracking-wider">
+                                <span id="scale-net-display">50.00</span> <span class="text-2xl text-cyan-500 font-normal">kg</span>
+                            </div>
+                            <div class="grid grid-cols-3 gap-2 mt-4 pt-3 border-t border-slate-800 text-xs text-slate-300">
+                                <div>
+                                    <span class="text-slate-500 block text-[10px]">PESO BRUTO</span>
+                                    <span id="scale-gross" class="text-white font-bold">52.50 kg</span>
+                                </div>
+                                <div>
+                                    <span class="text-slate-500 block text-[10px]">TARA TOTAL</span>
+                                    <span id="scale-tare" class="text-amber-400 font-bold">-2.50 kg</span>
+                                </div>
+                                <div>
+                                    <span class="text-slate-500 block text-[10px]">ESTADO</span>
+                                    <span class="text-emerald-400 font-bold"><i class="fas fa-lock"></i> FIJADO</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Interactive scale sample controls -->
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                            <button onclick="setSampleWeight(52.5, 1, 'Cabrilla')" class="bg-slate-50 hover:bg-slate-100 text-slate-800 p-3 rounded-xl border border-slate-200 transition text-left">
+                                <strong class="block text-brand-700 font-bold">1 Jaba Cabrilla</strong>
+                                <span class="text-slate-500 text-[11px]">Bruto: 52.5 kg → Neto: 50.0 kg</span>
+                            </button>
+                            <button onclick="setSampleWeight(105.0, 2, 'Tollo')" class="bg-slate-50 hover:bg-slate-100 text-slate-800 p-3 rounded-xl border border-slate-200 transition text-left">
+                                <strong class="block text-brand-700 font-bold">2 Jabas Tollo</strong>
+                                <span class="text-slate-500 text-[11px]">Bruto: 105.0 kg → Neto: 100.0 kg</span>
+                            </button>
+                            <button onclick="setSampleWeight(157.5, 3, 'Pota')" class="bg-slate-50 hover:bg-slate-100 text-slate-800 p-3 rounded-xl border border-slate-200 transition text-left">
+                                <strong class="block text-brand-700 font-bold">3 Jabas Pota</strong>
+                                <span class="text-slate-500 text-[11px]">Bruto: 157.5 kg → Neto: 150.0 kg</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="pt-5 mt-5 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
+                        <span class="text-xs text-slate-500 font-mono">
+                            <i class="fas fa-shield-alt text-emerald-500 mr-1"></i> Algoritmo anti-vibración de media móvil activo (±50g).
+                        </span>
+                        <button onclick="generateScaleTicket()" class="bg-brand-600 hover:bg-brand-700 text-white font-bold px-4 py-2.5 rounded-xl text-xs transition flex items-center shadow-md">
+                            <i class="fas fa-receipt mr-1.5"></i> Emitir Ticket Fiscal Certificado
+                        </button>
+                    </div>
+                </div>
+
+                <!-- CERTIFIED SCALE TICKET PREVIEW -->
+                <div class="lg:col-span-5 bg-white rounded-2xl p-6 border border-slate-200 shadow-card flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                            <h3 class="text-sm font-bold text-slate-900 flex items-center">
+                                <i class="fas fa-ticket-alt mr-2 text-amber-500"></i> Manifiesto Digital de Pesaje
+                            </h3>
+                            <span class="text-[10px] font-mono text-slate-500">ESTÁNDAR SANIPES</span>
+                        </div>
+
+                        <!-- Ticket preview -->
+                        <div id="scale-ticket" class="bg-slate-50 text-slate-900 font-mono text-xs p-4 rounded-xl shadow-inner my-4 space-y-2 border-dashed border-2 border-slate-300">
+                            <div class="text-center pb-2 border-b border-slate-300">
+                                <strong class="text-sm block text-brand-900">PESCA-CLICK PAITA</strong>
+                                <span class="text-[10px] block text-slate-600">DPA PAITA • MUELLE FISCAL</span>
+                                <span class="text-[9px] text-slate-500 block">TICKET ELECTRÓNICO N° TC-2026-0891</span>
+                            </div>
+                            <div class="space-y-1 text-[11px]">
+                                <div class="flex justify-between"><span>FECHA / HORA:</span><span id="ticket-time" class="font-bold">24/11/2026 05:22 AM</span></div>
+                                <div class="flex justify-between"><span>LANCHA:</span><span id="ticket-vessel" class="font-bold text-brand-700">Siempre San Pedro</span></div>
+                                <div class="flex justify-between"><span>MATRÍCULA:</span><span>PT-45210-BM</span></div>
+                                <div class="flex justify-between"><span>ESPECIE:</span><span id="ticket-specie" class="font-bold">Cabrilla Norteña</span></div>
+                                <div class="flex justify-between"><span>JABAS PESADAS:</span><span id="ticket-boxes">1 Caja Plástica Oficial</span></div>
+                            </div>
+                            <div class="py-2 border-t border-b border-slate-300 space-y-1">
+                                <div class="flex justify-between"><span>PESO BRUTO:</span><span id="ticket-gross">52.50 kg</span></div>
+                                <div class="flex justify-between text-red-600 font-bold"><span>DESCUENTO TARA:</span><span id="ticket-tare">-2.50 kg</span></div>
+                                <div class="flex justify-between text-sm font-black border-t border-slate-300 pt-1">
+                                    <span>PESO NETO CERTIFICADO:</span>
+                                    <span id="ticket-net" class="text-brand-700">50.00 kg</span>
+                                </div>
+                            </div>
+                            <div class="text-center pt-1 text-[9px] text-slate-500">
+                                <i class="fas fa-barcode text-2xl block tracking-widest my-1 text-slate-800"></i>
+                                HASH SHA-256: 8f4b...39e1 | INALTERABLE
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button onclick="printScaleTicket()" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold border border-slate-300 py-2.5 rounded-xl text-xs transition flex items-center justify-center">
+                            <i class="fas fa-print mr-2 text-brand-600"></i> Imprimir Comprobante Oficial de Muelle
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- MÓDULO 4: CADENA DE FRÍO IoT                              -->
+        <!-- ======================================================== -->
+        <section id="modulo-frio" class="space-y-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <div class="text-xs font-mono uppercase tracking-wider text-brand-600 font-bold mb-1">
+                        <i class="fas fa-snowflake mr-1.5"></i> MÓDULO 04 • CADENA DE FRÍO ININTERRUMPIDA
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Monitoreo Térmico IoT en Furgón (Ruta IIRSA Norte)</h2>
+                    <p class="text-slate-600 text-sm max-w-2xl">
+                        Furgón isotérmico equipado con sensor sumergible DS18B20 IP68 y módulo celular 4G. Mantiene el pescado de Paita a Piura (58 km) a <strong>1.4 °C</strong> cumpliendo el D.S. N° 040-2001-PE.
+                    </p>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <span id="temp-status-badge" class="bg-emerald-50 text-emerald-800 border border-emerald-300 text-xs px-3.5 py-1.5 rounded-full font-mono font-bold flex items-center">
+                        <i class="fas fa-thermometer-half mr-1.5 text-emerald-600"></i> TEMPERATURA CONFORME: 1.4 °C
+                    </span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                <!-- GAUGE & ALARMS -->
+                <div class="lg:col-span-5 bg-white rounded-2xl p-6 border border-slate-200 shadow-card flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                            <span class="text-xs font-mono text-brand-600 font-bold"><i class="fas fa-microchip mr-1"></i> TELEMETRÍA IOT CELLULAR 4G</span>
+                            <span class="text-xs font-mono text-slate-500">SONDA: DS18B20 IP68</span>
+                        </div>
+
+                        <!-- LIVE TEMPERATURE GAUGE -->
+                        <div class="my-6 text-center">
+                            <div class="relative inline-flex items-center justify-center">
+                                <div id="temp-ring" class="w-48 h-48 rounded-full border-8 border-brand-100 flex flex-col items-center justify-center bg-slate-50 shadow-inner transition-colors duration-500">
+                                    <span class="text-xs text-slate-500 font-mono">CABINA FRÍO</span>
+                                    <span id="iot-temp-display" class="text-5xl font-black text-brand-600 font-mono my-1 transition-colors duration-300">1.4</span>
+                                    <span class="text-xs text-brand-700 font-mono font-bold">GRADOS CELSIUS</span>
+                                </div>
+                            </div>
+
+                            <!-- Alert Box -->
+                            <div id="temp-alert-box" class="mt-4 p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-800 flex items-center justify-center space-x-2 transition-all font-medium">
+                                <i class="fas fa-shield-check text-base text-emerald-600"></i>
+                                <span>Cadena de frío óptima. Riesgo bacteriano 0%.</span>
+                            </div>
+                        </div>
+
+                        <!-- Simulator Controls -->
+                        <div class="space-y-2 pt-2 text-xs">
+                            <span class="text-slate-500 block font-mono">Simulador de Estrés Térmico en Carretera:</span>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button onclick="simulateHeatLeak()" class="bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 p-2.5 rounded-lg font-semibold transition text-left flex items-center">
+                                    <i class="fas fa-exclamation-triangle mr-2 text-red-500"></i> Simular Apertura (> 2.5 °C)
+                                </button>
+                                <button onclick="resetOptimalTemp()" class="bg-brand-50 hover:bg-brand-100 text-brand-700 border border-brand-200 p-2.5 rounded-lg font-semibold transition text-left flex items-center">
+                                    <i class="fas fa-snowflake mr-2 text-brand-600"></i> Restablecer a 1.4 °C
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-[11px] text-slate-500 font-mono pt-4 border-t border-slate-100">
+                        <i class="fas fa-bell text-amber-500 mr-1"></i> Sirena acústica en cabina y notificación push inmediata si T > 2.5 °C por más de 60 segundos.
+                    </div>
+                </div>
+
+                <!-- ROUTE TRACKING -->
+                <div class="lg:col-span-7 bg-white rounded-2xl p-6 border border-slate-200 shadow-card flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                            <h3 class="text-sm font-bold text-slate-900 flex items-center">
+                                <i class="fas fa-route mr-2 text-brand-600"></i> Ruta Express Paita - Piura (Autopista IIRSA Norte)
+                            </h3>
+                            <span class="text-xs font-mono text-brand-700 font-bold">58 KM • TIEMPO: 48 MIN</span>
+                        </div>
+
+                        <!-- Route progress -->
+                        <div class="my-5 bg-slate-50 p-4 rounded-xl border border-slate-200 relative space-y-4 font-mono text-xs">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <span class="w-3.5 h-3.5 rounded-full bg-brand-600"></span>
+                                    <div>
+                                        <strong class="text-slate-900 block">DPA Paita (Muelle)</strong>
+                                        <span class="text-[10px] text-slate-500">Salida: 05:40 AM (1.2 °C)</span>
+                                    </div>
+                                </div>
+                                <span class="text-slate-500 text-[11px]"><i class="fas fa-clock mr-1"></i> Km 0.0</span>
+                            </div>
+
+                            <!-- Progress Bar -->
+                            <div class="relative py-2">
+                                <div class="h-2.5 w-full bg-slate-200 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-brand-500 to-emerald-500 w-3/4 rounded-full"></div>
+                                </div>
+                                <div class="absolute top-0 left-3/4 transform -translate-x-1/2 -translate-y-1">
+                                    <span class="bg-brand-600 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full shadow-md flex items-center">
+                                        <i class="fas fa-truck mr-1"></i> En Tránsito (Km 42)
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <span class="w-3.5 h-3.5 rounded-full bg-emerald-500"></span>
+                                    <div>
+                                        <strong class="text-slate-900 block">Piura Metropolitana (Cebicherías)</strong>
+                                        <span class="text-[10px] text-slate-500">Llegada Estimada: 06:28 AM (1.4 °C)</span>
+                                    </div>
+                                </div>
+                                <span class="text-slate-500 text-[11px]"><i class="fas fa-map-marker-alt mr-1 text-emerald-500"></i> Km 58.0</span>
+                            </div>
+                        </div>
+
+                        <!-- KPI HIGHLIGHTS -->
+                        <div class="grid grid-cols-3 gap-3 text-center font-mono text-xs">
+                            <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                <span class="text-slate-500 block text-[10px]">Puntualidad</span>
+                                <strong class="text-emerald-600 text-base">98.4%</strong>
+                                <span class="text-[10px] text-slate-500 block">&lt; 06:45 AM</span>
+                            </div>
+                            <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                <span class="text-slate-500 block text-[10px]">Merma Transporte</span>
+                                <strong class="text-emerald-600 text-base">1.2%</strong>
+                                <span class="text-[10px] text-slate-500 block">vs 18.5% trad.</span>
+                            </div>
+                            <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                <span class="text-slate-500 block text-[10px]">Tiempo en Muelle</span>
+                                <strong class="text-brand-600 text-base">48 min</strong>
+                                <span class="text-[10px] text-slate-500 block">-77% ahorro</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-100 text-xs text-slate-600 flex items-center justify-between">
+                        <span><i class="fas fa-snowflake text-brand-600 mr-1"></i> Furgón Isotérmico #02 • Placa: <strong>P3A-812</strong></span>
+                        <span class="text-emerald-600 font-mono font-bold"><i class="fas fa-check"></i> TELEMETRÍA ACTIVA</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- MÓDULO 5: BÓVEDA ESCROW Y FINTECH                         -->
+        <!-- ======================================================== -->
+        <section id="modulo-escrow" class="space-y-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <div class="text-xs font-mono uppercase tracking-wider text-brand-600 font-bold mb-1">
+                        <i class="fas fa-shield-alt mr-1.5"></i> MÓDULO 05 • INCLUSIÓN FINANCIERA Y PAGOS INMEDIATOS
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Bóveda Escrow y Liquidación Instantánea Fintech</h2>
+                    <p class="text-slate-600 text-sm max-w-2xl">
+                        Elimina la desconfianza del efectivo de madrugada y los vales de papel a 15 días. El restaurante paga vía <strong>Yape, Plin o BCP</strong>; los fondos quedan en custodia virtual y se liberan al pescador en 2.1 segundos tras escanear el QR en la puerta de la cebichería.
+                    </p>
+                </div>
+                <div class="bg-emerald-50 border border-emerald-200 px-3.5 py-2 rounded-xl text-xs font-mono text-emerald-800 font-bold">
+                    <i class="fas fa-bolt mr-1.5 text-emerald-600"></i> Liquidación Promedio: 2.1 Segundos
+                </div>
+            </div>
+
+            <!-- ESCROW LIFECYCLE STEPS -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-card">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs font-mono relative">
+                    <div id="step-card-1" class="bg-slate-50 p-4 rounded-xl border border-slate-200 relative">
+                        <span class="w-6 h-6 rounded-full bg-brand-600 text-white font-bold inline-flex items-center justify-center mb-2">1</span>
+                        <h4 class="text-sm font-bold text-slate-900 mb-1">Pedido y Depósito</h4>
+                        <p class="text-slate-500 text-[11px]">Cebichería confirma lote de S/ 405.00 con Yape o Plin.</p>
+                        <span class="text-[10px] text-emerald-600 block mt-2 font-bold"><i class="fas fa-check"></i> Fondos Verificados</span>
+                    </div>
+
+                    <div id="step-card-2" class="bg-slate-50 p-4 rounded-xl border border-slate-200 relative">
+                        <span class="w-6 h-6 rounded-full bg-brand-600 text-white font-bold inline-flex items-center justify-center mb-2">2</span>
+                        <h4 class="text-sm font-bold text-slate-900 mb-1">Bóveda Escrow</h4>
+                        <p class="text-slate-500 text-[11px]">Dinero custodiado en cuenta protegida sin riesgo de impago.</p>
+                        <span class="text-[10px] text-brand-600 block mt-2 font-bold"><i class="fas fa-lock"></i> Bloqueado en Custodia</span>
+                    </div>
+
+                    <div id="step-card-3" class="bg-slate-50 p-4 rounded-xl border border-slate-200 relative">
+                        <span class="w-6 h-6 rounded-full bg-brand-600 text-white font-bold inline-flex items-center justify-center mb-2">3</span>
+                        <h4 class="text-sm font-bold text-slate-900 mb-1">Escaneo QR Destino</h4>
+                        <p class="text-slate-500 text-[11px]">Chef de Piura verifica temperatura a 1.4 °C y escanea QR.</p>
+                        <span class="text-[10px] text-amber-600 block mt-2 font-bold"><i class="fas fa-qrcode"></i> Validación Conforme</span>
+                    </div>
+
+                    <div id="step-card-4" class="bg-slate-50 p-4 rounded-xl border border-slate-200 relative">
+                        <span class="w-6 h-6 rounded-full bg-emerald-600 text-white font-bold inline-flex items-center justify-center mb-2">4</span>
+                        <h4 class="text-sm font-bold text-emerald-700 mb-1">Liberación al Pescador</h4>
+                        <p class="text-slate-500 text-[11px]">Abono instantáneo al Yape/BCP de Don Pedro Chunga.</p>
+                        <span class="text-[10px] text-emerald-600 block mt-2 font-bold"><i class="fas fa-check-circle"></i> Liquidado en 2.1s</span>
+                    </div>
+                </div>
+
+                <!-- SIMULATE ESCROW FLOW -->
+                <div class="mt-6 pt-5 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div class="text-xs text-slate-600">
+                        <i class="fas fa-info-circle text-brand-600 mr-1.5"></i> Presiona el botón para ejecutar el ciclo de pago simulado en tiempo real:
+                    </div>
+                    <button onclick="runEscrowSimulation()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-3 rounded-xl text-xs transition shadow-md flex items-center">
+                        <i class="fas fa-play mr-2"></i> Ejecutar Prueba de Pago Escrow (S/ 405.00)
+                    </button>
+                </div>
+
+                <div id="escrow-log" class="mt-4 p-3.5 bg-slate-50 rounded-xl font-mono text-xs text-slate-700 hidden border border-slate-200 space-y-1">
+                    <!-- Logs injected via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- MÓDULO 6: TRAZABILIDAD SANIPES QR Y SHA-256               -->
+        <!-- ======================================================== -->
+        <section id="modulo-trazabilidad" class="space-y-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <div class="text-xs font-mono uppercase tracking-wider text-brand-600 font-bold mb-1">
+                        <i class="fas fa-qrcode mr-1.5"></i> MÓDULO 06 • TRAZABILIDAD CRIPTOGRÁFICA INALTERABLE
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Certificado Oficial Sanipes / PRODUCE con Hash SHA-256</h2>
+                    <p class="text-slate-600 text-sm max-w-2xl">
+                        Cada lote lleva un precinto QR que el comensal o el chef pueden escanear para verificar: embarcación de captura, nombre del pescador artesanal, hora de extracción, control térmico y sello sanitario.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                <!-- SCANNER / SEARCH INPUT -->
+                <div class="lg:col-span-5 bg-white rounded-2xl p-6 border border-slate-200 shadow-card flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                            <span class="text-xs font-mono text-brand-600 font-bold"><i class="fas fa-search mr-1"></i> BUSCADOR DE MANIFIESTO MARINO</span>
+                            <span class="text-xs font-mono text-slate-500">HASH SHA-256</span>
+                        </div>
+
+                        <div class="my-5 space-y-3">
+                            <label class="text-xs text-slate-700 block font-medium">Ingresa o selecciona un Código de Lote:</label>
+                            <div class="flex items-center space-x-2">
+                                <input id="lot-input" type="text" value="LOTE-PAITA-2026-042" class="w-full bg-slate-50 text-brand-900 font-mono text-xs border border-slate-300 rounded-xl px-3 py-2.5 font-bold">
+                                <button onclick="verifyLot()" class="bg-brand-600 hover:bg-brand-700 text-white font-bold px-4 py-2.5 rounded-xl text-xs transition shadow-sm">
+                                    Verificar
+                                </button>
+                            </div>
+
+                            <div class="space-y-1.5 pt-2 text-xs">
+                                <span class="text-slate-500 text-[11px] block font-mono">Lotes de prueba disponibles:</span>
+                                <div class="flex flex-wrap gap-2">
+                                    <button onclick="setLotAndVerify('LOTE-PAITA-2026-042')" class="bg-slate-50 hover:bg-slate-100 text-brand-700 text-[10px] font-mono px-2 py-1 rounded border border-slate-200 font-bold">
+                                        LOTE-PAITA-2026-042 (Cabrilla)
+                                    </button>
+                                    <button onclick="setLotAndVerify('LOTE-PAITA-2026-043')" class="bg-slate-50 hover:bg-slate-100 text-brand-700 text-[10px] font-mono px-2 py-1 rounded border border-slate-200 font-bold">
+                                        LOTE-PAITA-2026-043 (Tollo)
+                                    </button>
+                                    <button onclick="setLotAndVerify('LOTE-PAITA-2026-044')" class="bg-slate-50 hover:bg-slate-100 text-brand-700 text-[10px] font-mono px-2 py-1 rounded border border-slate-200 font-bold">
+                                        LOTE-PAITA-2026-044 (Pota)
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- QR Code visual preview -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-center my-3">
+                            <div class="w-28 h-28 bg-white mx-auto p-1.5 rounded-lg shadow-sm border border-slate-200 flex items-center justify-center">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=PESCA-CLICK-PAITA-2026-042-VERIFICADO-SANIPES" alt="QR Trazabilidad" class="w-full h-full object-contain">
+                            </div>
+                            <span class="text-[10px] font-mono text-slate-500 block mt-2">
+                                <i class="fas fa-camera mr-1 text-brand-600"></i> Escanea con tu celular para ver origen
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="text-[11px] text-slate-500 font-mono pt-3 border-t border-slate-100">
+                        <i class="fas fa-lock text-emerald-600 mr-1"></i> Garantiza la lucha contra la pesca ilegal y el respeto de tallas mínimas.
+                    </div>
+                </div>
+
+                <!-- VERIFIED MANIFEST CARD -->
+                <div class="lg:col-span-7 bg-white rounded-2xl p-6 border border-slate-200 shadow-card flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                            <h3 class="text-sm font-bold text-slate-900 flex items-center">
+                                <i class="fas fa-certificate mr-2 text-purple-600"></i> Certificado de Procedencia y Cadena de Custodia
+                            </h3>
+                            <span class="bg-purple-50 text-purple-800 text-xs px-2.5 py-0.5 rounded-full font-mono font-bold border border-purple-200">
+                                <i class="fas fa-check-circle mr-1 text-purple-600"></i> AUTÉNTICO
+                            </span>
+                        </div>
+
+                        <div class="my-4 space-y-3 font-mono text-xs">
+                            <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 grid grid-cols-2 gap-2.5 text-slate-700">
+                                <div><span class="text-slate-500 block text-[10px]">CÓDIGO DE LOTE</span><strong id="m-lot" class="text-brand-700 font-bold">LOTE-PAITA-2026-042</strong></div>
+                                <div><span class="text-slate-500 block text-[10px]">ESPECIE CAPTURADA</span><strong id="m-specie" class="text-emerald-700 font-bold">Cabrilla Norteña (Paralabrax)</strong></div>
+                                <div><span class="text-slate-500 block text-[10px]">EMBARCACIÓN & MATRÍCULA</span><strong id="m-vessel" class="text-slate-900 font-bold">Siempre San Pedro (PT-45210-BM)</strong></div>
+                                <div><span class="text-slate-500 block text-[10px]">PATRÓN DE LANCHA</span><strong id="m-captain" class="text-slate-900 font-bold">Don Pedro Chunga (Paita)</strong></div>
+                                <div><span class="text-slate-500 block text-[10px]">ZONA DE PESCA</span><strong class="text-slate-800">Frente a Caleta La Islilla</strong></div>
+                                <div><span class="text-slate-500 block text-[10px]">HORA DE EXTRACCIÓN</span><strong class="text-slate-800">Hoy 02:40 AM</strong></div>
+                                <div><span class="text-slate-500 block text-[10px]">TEMPERATURA PROMEDIO</span><strong class="text-brand-600 font-bold">1.4 °C (Monitoreo IoT)</strong></div>
+                                <div><span class="text-slate-500 block text-[10px]">DESTINO AUTORIZADO</span><strong id="m-dest" class="text-amber-800 font-bold">Cebichería "El Cántaro" (Piura)</strong></div>
+                            </div>
+
+                            <div class="bg-slate-100 p-2.5 rounded-lg border border-slate-200 text-[10px] space-y-1">
+                                <div class="flex justify-between text-slate-500">
+                                    <span>FIRMA DIGITAL SHA-256:</span>
+                                    <span class="text-slate-700 font-bold">e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</span>
+                                </div>
+                                <div class="text-emerald-700 font-semibold">
+                                    <i class="fas fa-shield-alt mr-1"></i> Certificado de Trazabilidad conforme a Sanipes D.S. N° 040-2001-PE y PRODUCE.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
+                        <span class="text-xs text-slate-500 font-mono">Acreditado para inspección sanitaria.</span>
+                        <button onclick="alert('Certificado Sanipes verificado con firma SHA-256. Todo conforme.')" class="bg-purple-600 hover:bg-purple-700 text-white font-bold px-4 py-2 rounded-xl text-xs transition shadow-sm">
+                            <i class="fas fa-download mr-1.5"></i> Descargar Manifiesto PDF
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- COMMERCIAL FOOTER -->
+    <footer class="bg-white border-t border-slate-200 py-10 px-4 mt-16 text-slate-500 text-xs font-mono shadow-inner">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="space-y-2 text-center md:text-left">
+                <div class="text-slate-900 text-base font-bold flex items-center justify-center md:justify-start">
+                    <i class="fas fa-anchor text-brand-600 mr-2"></i> PESCA-CLICK PAITA v2.4 (2026)
+                </div>
+                <p class="max-w-md text-slate-500 text-xs">
+                    Plataforma B2B de comercio directo y logística refrigerada marina. Conectando los desembarcaderos pesqueros de Paita con los mejores restaurantes de Piura y Sullana a temperatura controlada (0 °C a 2 °C).
+                </p>
+                <div class="text-[11px] text-slate-400">
+                    Muelle Fiscal DPA Paita • Caleta La Islilla • Yacila • Piura Centro • Sullana
+                </div>
+            </div>
+
+            <div class="flex flex-wrap items-center justify-center gap-3">
+                <a href="#modulo-catalogo" class="bg-brand-50 hover:bg-brand-100 text-brand-700 border border-brand-200 px-4 py-2 rounded-xl transition font-semibold">
+                    <i class="fas fa-fish mr-1.5"></i> Catálogo de Capturas
+                </a>
+                <a href="#modulo-radar" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2 rounded-xl transition">
+                    <i class="fas fa-arrow-up mr-1.5"></i> Volver Arriba
+                </a>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto text-center pt-6 mt-6 border-t border-slate-100 text-[10px] text-slate-400">
+            © 2026 PESCA-CLICK PAITA. Todos los derechos reservados. Cumplimiento Sanipes D.S. N° 040-2001-PE • PRODUCE Región Piura.
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC WITH SYNTHESIZED WEB AUDIO -->
+    <script>
+        // Web Audio Synthesizer (Native Zero-Dependency)
+        let audioCtx = null;
+        let isAudioEnabled = true;
+
+        function getAudioContext() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            return audioCtx;
+        }
+
+        function toggleAudio() {
+            isAudioEnabled = !isAudioEnabled;
+            const icon = document.getElementById('icon-sound');
+            const txt = document.getElementById('txt-sound');
+            if (isAudioEnabled) {
+                icon.className = 'fas fa-volume-up mr-1 text-cyan-300';
+                txt.innerText = 'Audio ON';
+                playBeep(650, 0.1);
+            } else {
+                icon.className = 'fas fa-volume-mute mr-1 text-slate-400';
+                txt.innerText = 'Audio Mute';
+            }
+        }
+
+        function playSonarPing() {
+            if (!isAudioEnabled) return;
+            try {
+                const ctx = getAudioContext();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(880, ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(440, ctx.currentTime + 0.6);
+                gain.gain.setValueAtTime(0.25, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.6);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + 0.6);
+            } catch(e) {}
+        }
+
+        function playBeep(freq = 750, duration = 0.08) {
+            if (!isAudioEnabled) return;
+            try {
+                const ctx = getAudioContext();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'square';
+                osc.frequency.setValueAtTime(freq, ctx.currentTime);
+                gain.gain.setValueAtTime(0.12, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + duration);
+            } catch(e) {}
+        }
+
+        function playSiren() {
+            if (!isAudioEnabled) return;
+            try {
+                const ctx = getAudioContext();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(600, ctx.currentTime);
+                osc.frequency.linearRampToValueAtTime(950, ctx.currentTime + 0.25);
+                osc.frequency.linearRampToValueAtTime(600, ctx.currentTime + 0.5);
+                gain.gain.setValueAtTime(0.2, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.55);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + 0.55);
+            } catch(e) {}
+        }
+
+        function playCashChime() {
+            if (!isAudioEnabled) return;
+            try {
+                const ctx = getAudioContext();
+                [523.25, 659.25, 783.99, 1046.50].forEach((freq, i) => {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(freq, ctx.currentTime + i * 0.1);
+                    gain.gain.setValueAtTime(0.2, ctx.currentTime + i * 0.1);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.1 + 0.4);
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.start(ctx.currentTime + i * 0.1);
+                    osc.stop(ctx.currentTime + i * 0.1 + 0.4);
+                });
+            } catch(e) {}
+        }
+
+        // SHOPPING CART STATE
+        let cart = [
+            { name: 'Cabrilla Norteña', qty: 30, price: 13.50, tradPrice: 22.00 }
+        ];
+
+        function renderCart() {
+            const tbody = document.getElementById('cart-items');
+            tbody.innerHTML = '';
+            let total = 0;
+            let savings = 0;
+
+            cart.forEach((item, index) => {
+                const subtotal = item.qty * item.price;
+                const tradTotal = item.qty * item.tradPrice;
+                const itemSavings = tradTotal - subtotal;
+                total += subtotal;
+                savings += itemSavings;
+
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="py-2.5 font-bold text-slate-900">${item.name}</td>
+                    <td class="py-2.5 text-center font-bold text-slate-700">${item.qty} kg</td>
+                    <td class="py-2.5 text-right text-slate-600">S/ ${item.price.toFixed(2)}</td>
+                    <td class="py-2.5 text-right font-black text-brand-900">S/ ${subtotal.toFixed(2)}</td>
+                    <td class="py-2.5 text-right text-emerald-700 font-bold">+ S/ ${itemSavings.toFixed(2)}</td>
+                    <td class="py-2.5 text-center">
+                        <button onclick="removeFromCart(${index})" class="text-red-500 hover:text-red-700 px-2 py-0.5"><i class="fas fa-times"></i></button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            document.getElementById('cart-total').innerText = `S/ ${total.toFixed(2)}`;
+            document.getElementById('nav-cart-total').innerText = `S/ ${total.toFixed(2)}`;
+            document.getElementById('cart-savings').innerText = `S/ ${savings.toFixed(2)}`;
+        }
+
+        function addToOrder(name, price, inputId) {
+            playBeep(850, 0.07);
+            const qty = parseInt(document.getElementById(inputId).value) || 20;
+            const tradPrices = {
+                'Cabrilla Norteña': 22.00,
+                'Tollo de Leche': 18.00,
+                'Pota Manto Limpio': 8.00,
+                'Mero Murique': 60.00
+            };
+            const existing = cart.find(i => i.name === name);
+            if (existing) {
+                existing.qty += qty;
+            } else {
+                cart.push({ name, qty, price, tradPrice: tradPrices[name] || price * 1.6 });
+            }
+            renderCart();
+            document.getElementById('cart-container').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function removeFromCart(index) {
+            playBeep(350, 0.08);
+            cart.splice(index, 1);
+            renderCart();
+        }
+
+        function clearCart() {
+            playBeep(300, 0.1);
+            cart = [];
+            renderCart();
+        }
+
+        // RADAR VESSEL SELECTION
+        function selectVessel(name, reg, captain, catchInfo, eta, dist, temp) {
+            playSonarPing();
+            document.getElementById('vessel-name').innerText = name;
+            document.getElementById('vessel-reg').innerText = `${reg} (Paita)`;
+            document.getElementById('vessel-captain').innerText = captain;
+            document.getElementById('vessel-eta').innerText = eta;
+            document.getElementById('vessel-dist').innerText = dist;
+            document.getElementById('vessel-temp').innerText = temp;
+            document.getElementById('vessel-catch').innerHTML = `<i class="fas fa-boxes mr-1 text-brand-600"></i> ${catchInfo}`;
+            document.getElementById('preorder-msg').innerText = `Lote de ${name} listo para preventa inmediata.`;
+        }
+
+        function preorderLot() {
+            playCashChime();
+            const vessel = document.getElementById('vessel-name').innerText;
+            alert(`¡Excelente! Has solicitado la reserva anticipada de captura de la lancha "${vessel}". Los lotes han sido añadidos a tu catálogo de preventa.`);
+            document.getElementById('modulo-catalogo').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // SCALE FUNCTIONS WITH DYNAMIC FLUCTUATION
+        function setSampleWeight(gross, boxes, specie) {
+            playBeep(900, 0.06);
+            const tare = boxes * 2.5;
+            const net = gross - tare;
+
+            const display = document.getElementById('scale-net-display');
+            display.innerText = '---.--';
+            setTimeout(() => {
+                display.innerText = (net + (Math.random() * 0.4 - 0.2)).toFixed(2);
+                setTimeout(() => {
+                    display.innerText = net.toFixed(2);
+                    playBeep(1200, 0.09);
+                }, 200);
+            }, 150);
+
+            document.getElementById('scale-gross').innerText = `${gross.toFixed(2)} kg`;
+            document.getElementById('scale-tare').innerText = `-${tare.toFixed(2)} kg`;
+
+            document.getElementById('ticket-specie').innerText = specie;
+            document.getElementById('ticket-boxes').innerText = `${boxes} Caja(s) Plástica(s) Oficial(es)`;
+            document.getElementById('ticket-gross').innerText = `${gross.toFixed(2)} kg`;
+            document.getElementById('ticket-tare').innerText = `-${tare.toFixed(2)} kg`;
+            document.getElementById('ticket-net').innerText = `${net.toFixed(2)} kg`;
+        }
+
+        function generateScaleTicket() {
+            playCashChime();
+            const now = new Date();
+            document.getElementById('ticket-time').innerText = now.toLocaleDateString() + ' ' + now.toLocaleTimeString();
+            alert('¡Ticket Fiscal DPA Paita emitido con éxito con descuento estricto de tara (-2.5 kg) y firma criptográfica SHA-256!');
+        }
+
+        function printScaleTicket() {
+            window.print();
+        }
+
+        // COLD CHAIN IOT SIMULATION
+        function simulateHeatLeak() {
+            playSiren();
+            document.getElementById('iot-temp-display').innerText = '3.2';
+            document.getElementById('iot-temp-display').className = 'text-5xl font-black text-red-600 font-mono my-1';
+            document.getElementById('top-temp-indicator').innerText = '3.2 °C';
+            document.getElementById('top-temp-indicator').className = 'text-red-400 font-bold';
+            document.getElementById('temp-ring').className = 'w-48 h-48 rounded-full border-8 border-red-200 flex flex-col items-center justify-center bg-red-50 shadow-inner';
+            
+            const badge = document.getElementById('temp-status-badge');
+            badge.className = 'bg-red-50 text-red-800 border border-red-300 text-xs px-3.5 py-1.5 rounded-full font-mono font-bold flex items-center animate-pulse';
+            badge.innerHTML = '<i class="fas fa-exclamation-triangle mr-1.5 text-red-600"></i> ALERTA: TEMPERATURA 3.2 °C (> 2.5 °C)';
+
+            const alertBox = document.getElementById('temp-alert-box');
+            alertBox.className = 'mt-4 p-3 rounded-xl bg-red-100 border border-red-300 text-xs text-red-800 flex items-center justify-center space-x-2 animate-bounce font-bold';
+            alertBox.innerHTML = '<i class="fas fa-exclamation-circle text-lg text-red-600"></i><span>¡Sirena en cabina activada! Alerta push enviada a supervisor en Piura.</span>';
+        }
+
+        function resetOptimalTemp() {
+            playBeep(1100, 0.12);
+            document.getElementById('iot-temp-display').innerText = '1.4';
+            document.getElementById('iot-temp-display').className = 'text-5xl font-black text-brand-600 font-mono my-1';
+            document.getElementById('top-temp-indicator').innerText = '1.4 °C';
+            document.getElementById('top-temp-indicator').className = 'text-emerald-300 font-bold';
+            document.getElementById('temp-ring').className = 'w-48 h-48 rounded-full border-8 border-brand-100 flex flex-col items-center justify-center bg-slate-50 shadow-inner';
+            
+            const badge = document.getElementById('temp-status-badge');
+            badge.className = 'bg-emerald-50 text-emerald-800 border border-emerald-300 text-xs px-3.5 py-1.5 rounded-full font-mono font-bold flex items-center';
+            badge.innerHTML = '<i class="fas fa-thermometer-half mr-1.5 text-emerald-600"></i> TEMPERATURA CONFORME: 1.4 °C';
+
+            const alertBox = document.getElementById('temp-alert-box');
+            alertBox.className = 'mt-4 p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-800 flex items-center justify-center space-x-2 font-medium';
+            alertBox.innerHTML = '<i class="fas fa-shield-check text-base text-emerald-600"></i><span>Cadena de frío óptima restablecida. Cumplimiento Sanipes D.S. 040.</span>';
+        }
+
+        // ESCROW SIMULATION
+        function prepareEscrow() {
+            document.getElementById('modulo-escrow').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function runEscrowSimulation() {
+            playCashChime();
+            const log = document.getElementById('escrow-log');
+            log.classList.remove('hidden');
+            log.innerHTML = `
+                <div class="text-brand-700"><strong>[05:30:00]</strong> Paso 1: Cebichería "El Cántaro" transfiere S/ 405.00 mediante Yape Business.</div>
+                <div class="text-slate-600"><strong>[05:30:02]</strong> Paso 2: Fondos asegurados en Bóveda Escrow Virtual PESCA-CLICK.</div>
+                <div class="text-amber-700"><strong>[06:28:15]</strong> Paso 3: Furgón P3A-812 arriba a Piura. Chef escanea QR del manifiesto. Temperatura verificada: 1.4 °C.</div>
+                <div class="text-emerald-700 font-bold"><strong>[06:28:17]</strong> Paso 4: ¡Fondos liberados! Don Pedro Chunga recibe S/ 405.00 en su cuenta Yape en 2.1 segundos. (Comisión 0% a pescador).</div>
+            `;
+            alert('¡Prueba de Bóveda Escrow ejecutada con éxito! Fondos liquidados en 2.1 segundos tras confirmación de entrega.');
+        }
+
+        // TRACEABILITY LOT LOOKUP
+        const lotDatabase = {
+            'LOTE-PAITA-2026-042': {
+                specie: 'Cabrilla Norteña (Paralabrax)',
+                vessel: 'Siempre San Pedro (PT-45210-BM)',
+                captain: 'Don Pedro Chunga (Paita)',
+                dest: 'Cebichería "El Cántaro" (Piura)'
+            },
+            'LOTE-PAITA-2026-043': {
+                specie: 'Tollo de Leche (Mustelus)',
+                vessel: 'Don Lucho I (PT-38194-BM)',
+                captain: 'Don Luis Morales (Yacila)',
+                dest: 'Restaurante Marino "Mar y Luna" (Sullana)'
+            },
+            'LOTE-PAITA-2026-044': {
+                specie: 'Pota Manto Limpio (Dosidicus)',
+                vessel: 'Virgen de las Mercedes (PT-19402-BM)',
+                captain: 'Don Carlos Fiestas (La Islilla)',
+                dest: 'Cebichería "Norte Bravío" (Castilla)'
+            }
+        };
+
+        function setLotAndVerify(code) {
+            document.getElementById('lot-input').value = code;
+            verifyLot();
+        }
+
+        function verifyLot() {
+            playSonarPing();
+            const code = document.getElementById('lot-input').value.trim();
+            const data = lotDatabase[code] || {
+                specie: 'Especie Marina Certificada',
+                vessel: 'Embarcación Artesanal Paita',
+                captain: 'Patrón de Caleta',
+                dest: 'Cebichería Piurana'
+            };
+
+            document.getElementById('m-lot').innerText = code;
+            document.getElementById('m-specie').innerText = data.specie;
+            document.getElementById('m-vessel').innerText = data.vessel;
+            document.getElementById('m-captain').innerText = data.captain;
+            document.getElementById('m-dest').innerText = data.dest;
+            alert(`Lote ${code} verificado en la base de datos oficial de Sanipes / PRODUCE.`);
+        }
+
+        // Initialize on load
+        window.onload = function() {
+            renderCart();
+        }
+    </script>
+</body>
+</html>
