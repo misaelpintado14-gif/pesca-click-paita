@@ -21,8 +21,7 @@
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
 
-    <div class="sticky top-0 z-50 shadow-sm">
-    <!-- TOP BAR DE PROCEDENCIA MARINA -->
+    <!-- TOP BAR DE PROCEDENCIA MARINA (SCROLLS NATURALLY) -->
     <header class="bg-emerald-950 text-white text-xs py-2 px-4 border-b border-emerald-900">
         <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
             <div class="flex items-center space-x-2">
@@ -39,8 +38,8 @@
         </div>
     </header>
 
-    <!-- NAVBAR DEL RESTAURANTE -->
-    <nav class="bg-white/95 backdrop-blur-md border-b border-slate-200">
+    <!-- NAVBAR DEL RESTAURANTE (SLIM STICKY) -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 py-3.5 flex items-center justify-between gap-4">
             <div class="flex items-center space-x-3">
                 <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-500 text-white flex items-center justify-center text-xl shadow-md">
@@ -73,7 +72,6 @@
             </div>
         </div>
     </nav>
-    </div>
 
     <!-- HERO RESTAURANTE -->
     <section class="relative bg-slate-950 text-white py-14 px-4 overflow-hidden border-b border-slate-200">
@@ -614,11 +612,12 @@
         function showCebToast(title, msg) {
             const box = document.getElementById('ceb-toast-box');
             if (!box) return;
+            while (box.children.length >= 2) box.firstElementChild.remove();
             const el = document.createElement('div');
             el.className = 'pointer-events-auto bg-emerald-950/95 text-white p-4 rounded-2xl border border-emerald-400/50 shadow-2xl flex items-start space-x-3 max-w-sm backdrop-blur-md transition-all duration-300';
             el.innerHTML = `<i class="fas fa-utensils text-emerald-400 text-lg mt-0.5"></i><div class="flex-1"><strong class="text-xs font-bold block">${title}</strong><span class="text-[11px] text-emerald-100 block mt-0.5">${msg}</span></div>`;
             box.appendChild(el);
-            setTimeout(() => { el.style.opacity = '0'; setTimeout(() => el.remove(), 300); }, 3500);
+            setTimeout(() => { el.style.opacity = '0'; setTimeout(() => el.remove(), 250); }, 2500);
         }
 
         function renderCebCart() {
