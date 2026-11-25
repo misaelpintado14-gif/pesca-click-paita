@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cebichería & Restaurante Marino "El Cántaro" — Piura Centro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ["'Plus Jakarta Sans'", 'sans-serif'],
+                        mono: ["'JetBrains Mono'", 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#F0F9FF',
+                            100: '#E0F2FE',
+                            500: '#0284C7',
+                            600: '#0369A1',
+                            900: '#0A2540'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- TOP BAR DE PROCEDENCIA MARINA -->
+    <header class="bg-emerald-900 text-white text-xs py-2 px-4 sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center space-x-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+                <span class="font-mono font-bold text-emerald-300">COCINA EN VIVO • HOY</span>
+                <span class="text-slate-400">|</span>
+                <span class="text-slate-200">Pesca fresca recibida hoy a las <strong>06:30 AM</strong> desde DPA Paita a <strong>1.4 °C</strong></span>
+            </div>
+            <div class="flex items-center space-x-3 text-xs">
+                <a href="index.html" class="bg-brand-600 hover:bg-brand-500 text-white px-3 py-1 rounded-lg font-bold transition flex items-center shadow-sm">
+                    <i class="fas fa-ship mr-1.5"></i> Ver Plataforma Pesca-Click B2B
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVBAR DEL RESTAURANTE -->
+    <nav class="bg-white border-b border-slate-200 sticky top-8 z-40 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-3.5 flex items-center justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-500 text-white flex items-center justify-center text-xl shadow-md">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-black text-slate-900 tracking-tight leading-none">
+                        CEBICHERÍA <span class="text-emerald-600">"EL CÁNTARO"</span>
+                    </h1>
+                    <span class="text-[10px] font-mono text-slate-500 uppercase tracking-wider block mt-0.5">Tradición Gastronómica Piurana • Desde 1994</span>
+                </div>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6 text-xs font-bold text-slate-700">
+                <a href="#menu-platos" class="hover:text-emerald-600 transition">Nuestra Carta</a>
+                <a href="#origen-pesca" class="hover:text-emerald-600 transition">Pesca Artesanal Paita</a>
+                <a href="#trazabilidad-mesa" class="hover:text-emerald-600 transition">Trazabilidad QR</a>
+                <a href="#reservas" class="hover:text-emerald-600 transition">Reservar Mesa</a>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <div class="text-right hidden sm:block">
+                    <span class="text-[10px] text-slate-400 font-mono block">Piura Centro • Jr. Ayacucho 450</span>
+                    <strong class="text-xs text-emerald-700 font-bold">Abierto hoy: 11:30 AM - 05:00 PM</strong>
+                </div>
+                <a href="#menu-platos" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-sm transition">
+                    Pedir Online
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO RESTAURANTE -->
+    <section class="relative bg-slate-950 text-white py-16 px-4 overflow-hidden border-b border-slate-200">
+        <div class="absolute inset-0 opacity-40">
+            <img src="img/muelle_paita.jpg" alt="Muelle de Paita" class="w-full h-full object-cover">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent"></div>
+
+        <div class="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-7 space-y-5">
+                <div class="inline-flex items-center space-x-2 bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 px-3.5 py-1.5 rounded-full text-xs font-mono font-bold backdrop-blur-sm">
+                    <i class="fas fa-certificate text-emerald-400"></i>
+                    <span>100% PESCA DEL DÍA DIRECTA DEL MUELLE DE PAITA</span>
+                </div>
+                <h2 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight">
+                    El Verdadero Cebiche Piurano, <br>
+                    <span class="text-emerald-400">del Mar a tu Mesa en 3 Horas.</span>
+                </h2>
+                <p class="text-slate-300 text-sm sm:text-base max-w-xl leading-relaxed">
+                    En <strong>El Cántaro</strong> no compramos a revendedores informales. Todas las mañanas recibimos directamente en nuestra cocina la pesca de Don Pedro Chunga desembarcada a las 05:00 a.m. en el muelle de Paita, conservada en hielo a 1.4 °C con tara certificada.
+                </p>
+                <div class="flex flex-wrap items-center gap-3 pt-2">
+                    <a href="#menu-platos" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-6 py-3.5 rounded-xl shadow-lg transition text-xs sm:text-sm flex items-center">
+                        <i class="fas fa-book-open mr-2"></i> Ver Carta de Platos del Día
+                    </a>
+                    <a href="index.html" class="bg-slate-900/90 hover:bg-slate-800 text-cyan-200 border border-cyan-400/30 font-semibold px-5 py-3.5 rounded-xl transition text-xs sm:text-sm flex items-center">
+                        <i class="fas fa-ship mr-2 text-cyan-400"></i> Plataforma B2B Pesca-Click
+                    </a>
+                </div>
+            </div>
+
+            <!-- CARD DE CERTIFICACIÓN DE COCINA EN VIVO -->
+            <div class="lg:col-span-5 bg-white/10 backdrop-blur-md rounded-3xl p-6 border border-white/20 text-xs font-mono space-y-4 shadow-2xl">
+                <div class="flex items-center justify-between pb-3 border-b border-white/15">
+                    <span class="text-emerald-300 font-bold uppercase"><i class="fas fa-receipt mr-1.5"></i> Manifiesto de Ingreso de Cocina</span>
+                    <span class="bg-emerald-500/30 text-emerald-200 px-2.5 py-0.5 rounded font-bold">LOTE #042</span>
+                </div>
+                <div class="space-y-2 text-slate-200">
+                    <div class="flex justify-between"><span>Especie Principal:</span><strong class="text-white">Cabrilla Norteña (30 kg)</strong></div>
+                    <div class="flex justify-between"><span>Embarcación:</span><strong class="text-white">Lancha "Siempre San Pedro"</strong></div>
+                    <div class="flex justify-between"><span>Patrón de Altamar:</span><strong class="text-cyan-300">Don Pedro Chunga (Paita)</strong></div>
+                    <div class="flex justify-between"><span>Hora de Arribo a Cocina:</span><strong class="text-emerald-300">06:28 AM (Conforme)</strong></div>
+                    <div class="flex justify-between"><span>Temperatura Auditada:</span><strong class="text-emerald-400">1.4 °C (Sensor DS18B20)</strong></div>
+                </div>
+                <div class="p-3 bg-emerald-950/60 rounded-xl border border-emerald-500/30 text-[11px] text-emerald-200">
+                    <i class="fas fa-shield-alt mr-1 text-emerald-400"></i> Certificado Sanipes D.S. 040 verificado con firma SHA-256.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CARTA DE PLATOS PREPARADOS -->
+    <main class="max-w-7xl mx-auto px-4 py-12 flex-grow w-full space-y-12">
+        
+        <div id="menu-platos" class="text-center space-y-2">
+            <span class="text-xs font-mono text-emerald-700 font-bold uppercase tracking-wider bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200 inline-block">
+                GASTRONOMÍA PIURANA DE ALTA CALIDAD
+            </span>
+            <h3 class="text-3xl font-black text-slate-900">Nuestra Carta de Pescados & Mariscos Frescos</h3>
+            <p class="text-xs sm:text-sm text-slate-500 max-w-xl mx-auto">
+                Preparados al momento por el Chef Ejecutivo Marco con la pesca marina que llegó esta madrugada desde el muelle de Paita.
+            </p>
+        </div>
+
+        <!-- GRID DE PLATOS -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- PLATO 1: CEBICHE CLÁSICO DE CABRILLA -->
+            <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
+                <div>
+                    <div class="relative h-52 overflow-hidden bg-slate-900">
+                        <img src="img/cabrilla.jpg" alt="Cebiche de Cabrilla" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <span class="absolute top-3 left-3 bg-emerald-500 text-white font-mono text-[10px] px-2.5 py-1 rounded-full font-bold shadow">
+                            ★ PLATO ESTRELLA
+                        </span>
+                        <div class="absolute bottom-3 left-4 right-4 text-white flex justify-between items-end">
+                            <div>
+                                <h4 class="text-lg font-black leading-tight">Cebiche Clásico Piurano</h4>
+                                <span class="text-[11px] text-emerald-300 font-mono">Cabrilla fresca de Don Pedro Chunga</span>
+                            </div>
+                            <span class="text-2xl font-black text-white font-mono">S/ 38.00</span>
+                        </div>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Dados de Cabrilla Norteña de textura firme, marinados al instante con limón de Chulucanas, ají limo, cebolla criolla, zarandaja piurana y chifle crocante.
+                        </p>
+                        <div class="text-[11px] font-mono text-emerald-700 bg-emerald-50 p-2 rounded-xl border border-emerald-200">
+                            <i class="fas fa-fish mr-1"></i> Desembarcado a las 05:00 AM en DPA Paita
+                        </div>
+                    </div>
+                </div>
+                <div class="p-5 pt-0">
+                    <button onclick="orderDish('Cebiche Clásico de Cabrilla', 38.00)" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl text-xs transition flex items-center justify-center space-x-1.5 shadow-sm">
+                        <i class="fas fa-utensils"></i>
+                        <span>Pedir a la Mesa / Delivery</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- PLATO 2: SUDADO A LA PAITANA -->
+            <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
+                <div>
+                    <div class="relative h-52 overflow-hidden bg-slate-900">
+                        <img src="img/cabrilla.jpg" alt="Sudado a la Paitana" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <span class="absolute top-3 left-3 bg-brand-600 text-white font-mono text-[10px] px-2.5 py-1 rounded-full font-bold shadow">
+                            TRADICIÓN NORTEÑA
+                        </span>
+                        <div class="absolute bottom-3 left-4 right-4 text-white flex justify-between items-end">
+                            <div>
+                                <h4 class="text-lg font-black leading-tight">Sudado Especial a la Paitana</h4>
+                                <span class="text-[11px] text-cyan-300 font-mono">Con chicha de jora macerada</span>
+                            </div>
+                            <span class="text-2xl font-black text-white font-mono">S/ 42.00</span>
+                        </div>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Cabrilla entera cocida a fuego lento en reducción de chicha de jora norteña, cebollas gruesas, tomate, ají amarillo y culantro, acompañada de yucas harinosas.
+                        </p>
+                        <div class="text-[11px] font-mono text-brand-700 bg-brand-50 p-2 rounded-xl border border-brand-200">
+                            <i class="fas fa-fire mr-1"></i> Receta tradicional de pescadores de Paita
+                        </div>
+                    </div>
+                </div>
+                <div class="p-5 pt-0">
+                    <button onclick="orderDish('Sudado a la Paitana', 42.00)" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl text-xs transition flex items-center justify-center space-x-1.5 shadow-sm">
+                        <i class="fas fa-utensils"></i>
+                        <span>Pedir a la Mesa / Delivery</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- PLATO 3: CHICHARRÓN DE TOLLO -->
+            <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
+                <div>
+                    <div class="relative h-52 overflow-hidden bg-slate-900">
+                        <img src="img/tollo.jpg" alt="Chicharrón de Tollo" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <span class="absolute top-3 left-3 bg-amber-500 text-white font-mono text-[10px] px-2.5 py-1 rounded-full font-bold shadow">
+                            SIN ESPINAS
+                        </span>
+                        <div class="absolute bottom-3 left-4 right-4 text-white flex justify-between items-end">
+                            <div>
+                                <h4 class="text-lg font-black leading-tight">Chicharrón Crocante de Tollo</h4>
+                                <span class="text-[11px] text-amber-300 font-mono">Tollo de leche de Caleta Yacila</span>
+                            </div>
+                            <span class="text-2xl font-black text-white font-mono">S/ 36.00</span>
+                        </div>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Dados de Tollo de Leche sin espinas, marinados en ajo, mostaza y limón, empanizados y fritos con costra crocante y corazón tierno. Con yucas y salsa tártara de la casa.
+                        </p>
+                        <div class="text-[11px] font-mono text-amber-700 bg-amber-50 p-2 rounded-xl border border-amber-200">
+                            <i class="fas fa-anchor mr-1"></i> Desembarcado por embarcación "Don Lucho I"
+                        </div>
+                    </div>
+                </div>
+                <div class="p-5 pt-0">
+                    <button onclick="orderDish('Chicharrón de Tollo', 36.00)" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl text-xs transition flex items-center justify-center space-x-1.5 shadow-sm">
+                        <i class="fas fa-utensils"></i>
+                        <span>Pedir a la Mesa / Delivery</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- PLATO 4: CHICHARRÓN DE POTA AL WOK -->
+            <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
+                <div>
+                    <div class="relative h-52 overflow-hidden bg-slate-900">
+                        <img src="img/pota.jpg" alt="Chicharrón de Pota" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <span class="absolute top-3 left-3 bg-purple-600 text-white font-mono text-[10px] px-2.5 py-1 rounded-full font-bold shadow">
+                            FAVORITO DE LA TARDE
+                        </span>
+                        <div class="absolute bottom-3 left-4 right-4 text-white flex justify-between items-end">
+                            <div>
+                                <h4 class="text-lg font-black leading-tight">Chicharrón de Pota al Wok</h4>
+                                <span class="text-[11px] text-purple-300 font-mono">Manto fresco de Caleta La Islilla</span>
+                            </div>
+                            <span class="text-2xl font-black text-white font-mono">S/ 30.00</span>
+                        </div>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Aros de pota tierna de 18 mm, cortados al sesgo y fritos al fuego vivo. Cero amoniaco gracias a la cadena de frío a 0.9 °C. Con sarsa criolla y ají mochero.
+                        </p>
+                        <div class="text-[11px] font-mono text-purple-700 bg-purple-50 p-2 rounded-xl border border-purple-200">
+                            <i class="fas fa-snowflake mr-1"></i> Eviscerada a bordo en frío continuo
+                        </div>
+                    </div>
+                </div>
+                <div class="p-5 pt-0">
+                    <button onclick="orderDish('Chicharrón de Pota al Wok', 30.00)" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl text-xs transition flex items-center justify-center space-x-1.5 shadow-sm">
+                        <i class="fas fa-utensils"></i>
+                        <span>Pedir a la Mesa / Delivery</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- PLATO 5: MERO MURIQUE GOURMET -->
+            <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
+                <div>
+                    <div class="relative h-52 overflow-hidden bg-slate-900">
+                        <img src="img/mero.jpg" alt="Mero Murique" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <span class="absolute top-3 left-3 bg-amber-500 text-slate-950 font-mono text-[10px] px-2.5 py-1 rounded-full font-bold shadow">
+                            👑 ALTA COCINA GOURMET
+                        </span>
+                        <div class="absolute bottom-3 left-4 right-4 text-white flex justify-between items-end">
+                            <div>
+                                <h4 class="text-lg font-black leading-tight">Sudado Imperial de Mero Murique</h4>
+                                <span class="text-[11px] text-amber-300 font-mono">Espinel de fondo en Tierra Colorada</span>
+                            </div>
+                            <span class="text-2xl font-black text-white font-mono">S/ 68.00</span>
+                        </div>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            La joya de la mesa norteña. Trozo selecto de Mero Murique de roca, bañado en salsa de mantequilla con hierbas aromáticas, vino blanco, chicha y yucas doradas.
+                        </p>
+                        <div class="text-[11px] font-mono text-amber-800 bg-amber-50 p-2 rounded-xl border border-amber-200">
+                            <i class="fas fa-crown mr-1"></i> Captura artesanal exclusiva de Don Manuel Rumiche
+                        </div>
+                    </div>
+                </div>
+                <div class="p-5 pt-0">
+                    <button onclick="orderDish('Sudado Imperial de Mero Murique', 68.00)" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl text-xs transition flex items-center justify-center space-x-1.5 shadow-sm">
+                        <i class="fas fa-utensils"></i>
+                        <span>Pedir a la Mesa / Delivery</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- PLATO 6: ARROZ CON MARISCOS -->
+            <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
+                <div>
+                    <div class="relative h-52 overflow-hidden bg-slate-900">
+                        <img src="img/furgon.jpg" alt="Arroz con Mariscos" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <span class="absolute top-3 left-3 bg-red-600 text-white font-mono text-[10px] px-2.5 py-1 rounded-full font-bold shadow">
+                            CALIENTITO AL SARTÉN
+                        </span>
+                        <div class="absolute bottom-3 left-4 right-4 text-white flex justify-between items-end">
+                            <div>
+                                <h4 class="text-lg font-black leading-tight">Arroz con Mariscos a la Norteña</h4>
+                                <span class="text-[11px] text-red-300 font-mono">Con conchas negras y langostinos</span>
+                            </div>
+                            <span class="text-2xl font-black text-white font-mono">S/ 40.00</span>
+                        </div>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Arroz meloso cocinado con caldo concentrado de cangrejos y cabrilla, flambeado con pisco quebranta, queso parmesano y mixtura de mariscos frescos.
+                        </p>
+                        <div class="text-[11px] font-mono text-red-700 bg-red-50 p-2 rounded-xl border border-red-200">
+                            <i class="fas fa-fire mr-1"></i> Sabor ahumado al wok en cocina abierta
+                        </div>
+                    </div>
+                </div>
+                <div class="p-5 pt-0">
+                    <button onclick="orderDish('Arroz con Mariscos a la Norteña', 40.00)" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl text-xs transition flex items-center justify-center space-x-1.5 shadow-sm">
+                        <i class="fas fa-utensils"></i>
+                        <span>Pedir a la Mesa / Delivery</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SECCIÓN DE TRAZABILIDAD EN MESA (CÓDIGO QR) -->
+        <div id="trazabilidad-mesa" class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-lg space-y-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="space-y-3 max-w-2xl">
+                    <span class="text-xs font-mono text-brand-600 font-bold bg-brand-50 px-3 py-1 rounded-full border border-brand-200">
+                        <i class="fas fa-qrcode mr-1"></i> TRAZABILIDAD EN TU MESA
+                    </span>
+                    <h3 class="text-2xl font-black text-slate-900">¿Sabes quién sacó el pescado que estás comiendo?</h3>
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        En Cebichería "El Cántaro", cada plato viene con una cartilla con código QR. Al escanearlo con la cámara de tu celular, puedes ver el video del patrón Don Pedro Chunga desembarcando en Paita, la hora exacta del pesaje y la temperatura a la que viajó en el furgón refrigerado.
+                    </p>
+                    <div class="pt-2 flex flex-wrap gap-2 text-xs font-mono">
+                        <span class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-lg border border-slate-200"><i class="fas fa-check text-emerald-500 mr-1"></i> Cero intermediarios</span>
+                        <span class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-lg border border-slate-200"><i class="fas fa-check text-emerald-500 mr-1"></i> Pago justo al pescador</span>
+                        <span class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-lg border border-slate-200"><i class="fas fa-check text-emerald-500 mr-1"></i> Inocuidad Sanipes</span>
+                    </div>
+                </div>
+
+                <div class="p-6 bg-slate-900 rounded-3xl text-white text-center font-mono space-y-3 max-w-xs w-full shadow-xl border border-slate-800">
+                    <div class="w-32 h-32 bg-white p-2 rounded-2xl mx-auto flex items-center justify-center">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://misaelpintado14-gif.github.io/pesca-click-paita/producto-cabrilla.html" alt="QR Trazabilidad" class="w-full h-full">
+                    </div>
+                    <span class="text-[10px] text-cyan-300 block">ESCANEA PARA VER TRAZABILIDAD</span>
+                    <strong class="text-xs text-emerald-400 block">LOTE-PAITA-2026-042</strong>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER DEL RESTAURANTE -->
+    <footer class="bg-slate-900 text-slate-400 py-10 px-4 text-xs font-mono border-t border-slate-800">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="space-y-1 text-center md:text-left">
+                <div class="text-white text-base font-bold">Cebichería "El Cántaro" — Piura Centro</div>
+                <p class="text-slate-500">Abastecido diariamente por la plataforma tecnológica PESCA-CLICK PAITA v2.4.</p>
+            </div>
+            <div class="flex items-center space-x-4 text-xs">
+                <a href="index.html" class="text-cyan-400 hover:underline">Ver Plataforma Pesca-Click</a>
+                <a href="portal_sesion15.html" class="text-slate-300 hover:underline">Hub Sesión 15</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function orderDish(name, price) {
+            alert('¡Excelente elección! Has seleccionado: ' + name + ' (S/ ' + price.toFixed(2) + ').\n\nTu orden ha sido enviada a la cocina del Chef Marco. Pescado fresco recibido hoy desde Paita a 1.4 °C.');
+        }
+    </script>
+</body>
+</html>

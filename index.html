@@ -195,15 +195,20 @@
                     <i class="fas fa-shopping-basket mr-2 text-brand-500"></i>
                     <span>Pedido: <strong id="nav-cart-total" class="font-mono">S/ 405.00</strong></span>
                 </a>
-                <div class="hidden sm:flex items-center space-x-2 pl-2 border-l border-slate-200 text-xs">
-                    <div class="w-8 h-8 rounded-full bg-slate-100 border border-slate-300 flex items-center justify-center text-slate-600 font-bold">
+                <a href="cebicheria-el-cantaro.html" title="Ver Carta y Cocina en Vivo de la Cebichería" class="hidden sm:flex items-center space-x-2 pl-2 border-l border-slate-200 text-xs hover:bg-emerald-50 p-1.5 rounded-xl transition group">
+                    <div class="w-8 h-8 rounded-full bg-emerald-100 group-hover:bg-emerald-600 group-hover:text-white border border-emerald-300 flex items-center justify-center text-emerald-700 font-bold transition">
                         <i class="fas fa-utensils"></i>
                     </div>
                     <div class="text-left leading-tight">
-                        <strong class="text-slate-800 block">Cebichería "El Cántaro"</strong>
-                        <span class="text-[10px] text-emerald-600 font-medium">Piura Centro</span>
+                        <div class="flex items-center space-x-1">
+                            <strong class="text-slate-800 group-hover:text-emerald-700 block transition">Cebichería "El Cántaro"</strong>
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        </div>
+                        <span class="text-[10px] text-emerald-600 font-bold flex items-center">
+                            Cocina en Vivo <i class="fas fa-arrow-right ml-1 text-[8px] group-hover:translate-x-0.5 transition"></i>
+                        </span>
                     </div>
-                </div>
+                </a>
             </div>
 
         </div>
@@ -677,10 +682,11 @@
             </div>
 
 
-            <!-- PRODUCT CARDS GRID (CLEAN LIGHT DESIGN) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- PRODUCT CARDS GRID (4 COLUMNAS HORIZONTALES PERFECTAS) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+                
                 <!-- SPECIE 1: CABRILLA -->
-                <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-card hover:shadow-card-hover transition flex flex-col justify-between group">
+                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-card hover:shadow-card-hover transition flex flex-col justify-between group">
                     <div class="relative h-44 overflow-hidden bg-slate-900">
                         <img src="img/cabrilla.jpg" alt="Cabrilla Norteña" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
@@ -701,50 +707,49 @@
                     <div class="p-5 space-y-3 flex-grow flex flex-col justify-between">
                         <div>
                             <p class="text-xs text-slate-500 mb-2">Pescado insignia del litoral piurano. Carne semi-firme para cebiche clásico y sudado.</p>
-                        
-                        <div class="space-y-1.5 pt-2 text-xs font-mono">
-                            <div class="flex justify-between text-slate-500">
-                                <span>Acopiador en playa:</span>
-                                <span class="line-through text-red-500">S/ 6.00 /kg</span>
+                            <div class="space-y-1.5 pt-2 text-xs font-mono">
+                                <div class="flex justify-between text-slate-500">
+                                    <span>Acopiador en playa:</span>
+                                    <span class="line-through text-red-500">S/ 6.00 /kg</span>
+                                </div>
+                                <div class="flex justify-between text-slate-500">
+                                    <span>Revendedor en Piura:</span>
+                                    <span class="line-through text-red-500">S/ 22.00 /kg</span>
+                                </div>
+                                <div class="flex justify-between items-center bg-brand-50 p-2 rounded-lg border border-brand-100 font-bold">
+                                    <span class="text-brand-900">Precio Pesca-Click:</span>
+                                    <span class="text-base text-emerald-600">S/ 13.50 <small class="text-xs text-slate-600">/kg</small></span>
+                                </div>
                             </div>
-                            <div class="flex justify-between text-slate-500">
-                                <span>Revendedor en Piura:</span>
-                                <span class="line-through text-red-500">S/ 22.00 /kg</span>
-                            </div>
-                            <div class="flex justify-between items-center bg-brand-50 p-2 rounded-lg border border-brand-100 font-bold">
-                                <span class="text-brand-900">Precio Pesca-Click:</span>
-                                <span class="text-base text-emerald-600">S/ 13.50 <small class="text-xs text-slate-600">/kg</small></span>
+                            <div class="bg-slate-50 p-2 rounded-lg text-[11px] space-y-0.5 border border-slate-100 mt-2">
+                                <div class="text-amber-700 font-medium"><i class="fas fa-user-shield mr-1"></i> Pescador gana: <strong>+125%</strong> (S/ 7.50 más)</div>
+                                <div class="text-emerald-700 font-bold"><i class="fas fa-piggy-bank mr-1"></i> Cebichería ahorra: <strong>-38.6%</strong> (S/ 8.50 menos)</div>
                             </div>
                         </div>
 
-                        <div class="bg-slate-50 p-2 rounded-lg text-[11px] space-y-0.5 border border-slate-100">
-                            <div class="text-amber-700 font-medium"><i class="fas fa-user-shield mr-1"></i> Pescador gana: <strong>+125%</strong> (S/ 7.50 más)</div>
-                            <div class="text-emerald-700 font-bold"><i class="fas fa-piggy-bank mr-1"></i> Cebichería ahorra: <strong>-38.6%</strong> (S/ 8.50 menos)</div>
-                        </div>
-                    </div>
-
-                    <div class="pt-4 mt-4 border-t border-slate-100">
-                        <div class="flex items-center space-x-2 mb-3">
-                            <label class="text-xs text-slate-600 font-medium">Cantidad:</label>
-                            <input id="qty-cabrilla" type="number" value="30" min="10" step="5" class="bg-slate-50 text-slate-900 text-xs font-mono border border-slate-300 rounded-lg px-2 py-1.5 w-20 text-center font-bold">
-                            <span class="text-xs text-slate-500 font-mono">kg</span>
-                        </div>
-                        <button onclick="addToOrder('Cabrilla Norteña', 13.50, 'qty-cabrilla')" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-2.5 rounded-xl text-xs transition flex items-center justify-center shadow-sm">
-                            <i class="fas fa-plus-circle mr-1.5"></i> Añadir a Pedido B2B
-                        </button>
-<div class="flex items-center space-x-2 pt-2">
-                            <button onclick="openQuickView('cabrilla')" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 py-2 rounded-xl text-[11px] font-bold font-mono transition flex items-center justify-center">
-                                <i class="fas fa-eye mr-1 text-brand-600"></i> Vista Rápida
+                        <div class="pt-4 mt-2 border-t border-slate-100 space-y-2">
+                            <div class="flex items-center space-x-2">
+                                <label class="text-xs text-slate-600 font-medium">Cantidad:</label>
+                                <input id="qty-cabrilla" type="number" value="30" min="10" step="5" class="bg-slate-50 text-slate-900 text-xs font-mono border border-slate-300 rounded-lg px-2 py-1.5 w-20 text-center font-bold">
+                                <span class="text-xs text-slate-500 font-mono">kg</span>
+                            </div>
+                            <button onclick="addToOrder('Cabrilla Norteña', 13.50, 'qty-cabrilla')" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-2.5 rounded-xl text-xs transition flex items-center justify-center shadow-sm">
+                                <i class="fas fa-plus-circle mr-1.5"></i> Añadir a Pedido B2B
                             </button>
-                            <a href="producto-cabrilla.html" class="flex-1 bg-brand-50 hover:bg-brand-100 text-brand-700 py-2 rounded-xl text-[11px] font-bold font-mono transition flex items-center justify-center">
-                                <i class="fas fa-file-invoice mr-1 text-brand-600"></i> Ficha B2B
-                            </a>
+                            <div class="flex items-center space-x-2 pt-1">
+                                <button onclick="openQuickView('cabrilla')" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 py-1.5 rounded-xl text-[11px] font-bold font-mono transition flex items-center justify-center">
+                                    <i class="fas fa-eye mr-1 text-brand-600"></i> Vista Rápida
+                                </button>
+                                <a href="producto-cabrilla.html" class="flex-1 bg-brand-50 hover:bg-brand-100 text-brand-700 py-1.5 rounded-xl text-[11px] font-bold font-mono transition flex items-center justify-center">
+                                    <i class="fas fa-file-invoice mr-1 text-brand-600"></i> Ficha B2B
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- SPECIE 2: TOLLO -->
-                <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-card hover:shadow-card-hover transition flex flex-col justify-between group">
+                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-card hover:shadow-card-hover transition flex flex-col justify-between group">
                     <div class="relative h-44 overflow-hidden bg-slate-900">
                         <img src="img/tollo.jpg" alt="Tollo de Leche" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
@@ -765,50 +770,49 @@
                     <div class="p-5 space-y-3 flex-grow flex flex-col justify-between">
                         <div>
                             <p class="text-xs text-slate-500 mb-2">Pulpa blanca y tierna sin espinas. Ideal para cebiche, chicharrón y milanesa marina.</p>
-                        
-                        <div class="space-y-1.5 pt-2 text-xs font-mono">
-                            <div class="flex justify-between text-slate-500">
-                                <span>Acopiador en playa:</span>
-                                <span class="line-through text-red-500">S/ 5.00 /kg</span>
+                            <div class="space-y-1.5 pt-2 text-xs font-mono">
+                                <div class="flex justify-between text-slate-500">
+                                    <span>Acopiador en playa:</span>
+                                    <span class="line-through text-red-500">S/ 5.00 /kg</span>
+                                </div>
+                                <div class="flex justify-between text-slate-500">
+                                    <span>Revendedor en Piura:</span>
+                                    <span class="line-through text-red-500">S/ 18.00 /kg</span>
+                                </div>
+                                <div class="flex justify-between items-center bg-brand-50 p-2 rounded-lg border border-brand-100 font-bold">
+                                    <span class="text-brand-900">Precio Pesca-Click:</span>
+                                    <span class="text-base text-emerald-600">S/ 11.00 <small class="text-xs text-slate-600">/kg</small></span>
+                                </div>
                             </div>
-                            <div class="flex justify-between text-slate-500">
-                                <span>Revendedor en Piura:</span>
-                                <span class="line-through text-red-500">S/ 18.00 /kg</span>
-                            </div>
-                            <div class="flex justify-between items-center bg-brand-50 p-2 rounded-lg border border-brand-100 font-bold">
-                                <span class="text-brand-900">Precio Pesca-Click:</span>
-                                <span class="text-base text-emerald-600">S/ 11.00 <small class="text-xs text-slate-600">/kg</small></span>
+                            <div class="bg-slate-50 p-2 rounded-lg text-[11px] space-y-0.5 border border-slate-100 mt-2">
+                                <div class="text-amber-700 font-medium"><i class="fas fa-user-shield mr-1"></i> Pescador gana: <strong>+120%</strong> (S/ 6.00 más)</div>
+                                <div class="text-emerald-700 font-bold"><i class="fas fa-piggy-bank mr-1"></i> Cebichería ahorra: <strong>-38.8%</strong> (S/ 7.00 menos)</div>
                             </div>
                         </div>
 
-                        <div class="bg-slate-50 p-2 rounded-lg text-[11px] space-y-0.5 border border-slate-100">
-                            <div class="text-amber-700 font-medium"><i class="fas fa-user-shield mr-1"></i> Pescador gana: <strong>+120%</strong> (S/ 6.00 más)</div>
-                            <div class="text-emerald-700 font-bold"><i class="fas fa-piggy-bank mr-1"></i> Cebichería ahorra: <strong>-38.8%</strong> (S/ 7.00 menos)</div>
-                        </div>
-                    </div>
-
-                    <div class="pt-4 mt-4 border-t border-slate-100">
-                        <div class="flex items-center space-x-2 mb-3">
-                            <label class="text-xs text-slate-600 font-medium">Cantidad:</label>
-                            <input id="qty-tollo" type="number" value="25" min="10" step="5" class="bg-slate-50 text-slate-900 text-xs font-mono border border-slate-300 rounded-lg px-2 py-1.5 w-20 text-center font-bold">
-                            <span class="text-xs text-slate-500 font-mono">kg</span>
-                        </div>
-                        <button onclick="addToOrder('Tollo de Leche', 11.00, 'qty-tollo')" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-2.5 rounded-xl text-xs transition flex items-center justify-center shadow-sm">
-                            <i class="fas fa-plus-circle mr-1.5"></i> Añadir a Pedido B2B
-                        </button>
-<div class="flex items-center space-x-2 pt-2">
-                            <button onclick="openQuickView('tollo')" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 py-2 rounded-xl text-[11px] font-bold font-mono transition flex items-center justify-center">
-                                <i class="fas fa-eye mr-1 text-brand-600"></i> Vista Rápida
+                        <div class="pt-4 mt-2 border-t border-slate-100 space-y-2">
+                            <div class="flex items-center space-x-2">
+                                <label class="text-xs text-slate-600 font-medium">Cantidad:</label>
+                                <input id="qty-tollo" type="number" value="25" min="10" step="5" class="bg-slate-50 text-slate-900 text-xs font-mono border border-slate-300 rounded-lg px-2 py-1.5 w-20 text-center font-bold">
+                                <span class="text-xs text-slate-500 font-mono">kg</span>
+                            </div>
+                            <button onclick="addToOrder('Tollo de Leche', 11.00, 'qty-tollo')" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-2.5 rounded-xl text-xs transition flex items-center justify-center shadow-sm">
+                                <i class="fas fa-plus-circle mr-1.5"></i> Añadir a Pedido B2B
                             </button>
-                            <a href="producto-tollo.html" class="flex-1 bg-brand-50 hover:bg-brand-100 text-brand-700 py-2 rounded-xl text-[11px] font-bold font-mono transition flex items-center justify-center">
-                                <i class="fas fa-file-invoice mr-1 text-brand-600"></i> Ficha B2B
-                            </a>
+                            <div class="flex items-center space-x-2 pt-1">
+                                <button onclick="openQuickView('tollo')" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 py-1.5 rounded-xl text-[11px] font-bold font-mono transition flex items-center justify-center">
+                                    <i class="fas fa-eye mr-1 text-brand-600"></i> Vista Rápida
+                                </button>
+                                <a href="producto-tollo.html" class="flex-1 bg-brand-50 hover:bg-brand-100 text-brand-700 py-1.5 rounded-xl text-[11px] font-bold font-mono transition flex items-center justify-center">
+                                    <i class="fas fa-file-invoice mr-1 text-brand-600"></i> Ficha B2B
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- SPECIE 3: POTA MANTO LIMPIO -->
-                <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-card hover:shadow-card-hover transition flex flex-col justify-between group">
+                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-card hover:shadow-card-hover transition flex flex-col justify-between group">
                     <div class="relative h-44 overflow-hidden bg-slate-900">
                         <img src="img/pota.jpg" alt="Pota Manto Limpio" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
@@ -828,51 +832,50 @@
                     </div>
                     <div class="p-5 space-y-3 flex-grow flex flex-col justify-between">
                         <div>
-                            <p class="text-xs text-slate-500 mb-2">Manto grueso de 18 mm limpio y eviscerado. Cero amoniaco gracias al frío a 0.9 °C.</p>
-                        
-                        <div class="space-y-1.5 pt-2 text-xs font-mono">
-                            <div class="flex justify-between text-slate-500">
-                                <span>Acopiador en playa:</span>
-                                <span class="line-through text-red-500">S/ 2.00 /kg</span>
+                            <p class="text-xs text-slate-500 mb-2">Manto blanco de 18 mm limpio y eviscerado. Cero amoniaco gracias al frío a 0.9 °C.</p>
+                            <div class="space-y-1.5 pt-2 text-xs font-mono">
+                                <div class="flex justify-between text-slate-500">
+                                    <span>Acopiador en playa:</span>
+                                    <span class="line-through text-red-500">S/ 2.00 /kg</span>
+                                </div>
+                                <div class="flex justify-between text-slate-500">
+                                    <span>Revendedor en Piura:</span>
+                                    <span class="line-through text-red-500">S/ 8.00 /kg</span>
+                                </div>
+                                <div class="flex justify-between items-center bg-brand-50 p-2 rounded-lg border border-brand-100 font-bold">
+                                    <span class="text-brand-900">Precio Pesca-Click:</span>
+                                    <span class="text-base text-emerald-600">S/ 4.80 <small class="text-xs text-slate-600">/kg</small></span>
+                                </div>
                             </div>
-                            <div class="flex justify-between text-slate-500">
-                                <span>Revendedor en Piura:</span>
-                                <span class="line-through text-red-500">S/ 8.00 /kg</span>
-                            </div>
-                            <div class="flex justify-between items-center bg-brand-50 p-2 rounded-lg border border-brand-100 font-bold">
-                                <span class="text-brand-900">Precio Pesca-Click:</span>
-                                <span class="text-base text-emerald-600">S/ 4.80 <small class="text-xs text-slate-600">/kg</small></span>
+                            <div class="bg-slate-50 p-2 rounded-lg text-[11px] space-y-0.5 border border-slate-100 mt-2">
+                                <div class="text-amber-700 font-medium"><i class="fas fa-user-shield mr-1"></i> Pescador gana: <strong>+140%</strong> (S/ 2.80 más)</div>
+                                <div class="text-emerald-700 font-bold"><i class="fas fa-piggy-bank mr-1"></i> Cebichería ahorra: <strong>-40.0%</strong> (S/ 3.20 menos)</div>
                             </div>
                         </div>
 
-                        <div class="bg-slate-50 p-2 rounded-lg text-[11px] space-y-0.5 border border-slate-100">
-                            <div class="text-amber-700 font-medium"><i class="fas fa-user-shield mr-1"></i> Pescador gana: <strong>+140%</strong> (S/ 2.80 más)</div>
-                            <div class="text-emerald-700 font-bold"><i class="fas fa-piggy-bank mr-1"></i> Cebichería ahorra: <strong>-40.0%</strong> (S/ 3.20 menos)</div>
-                        </div>
-                    </div>
-
-                    <div class="pt-4 mt-4 border-t border-slate-100">
-                        <div class="flex items-center space-x-2 mb-3">
-                            <label class="text-xs text-slate-600 font-medium">Cantidad:</label>
-                            <input id="qty-pota" type="number" value="40" min="15" step="5" class="bg-slate-50 text-slate-900 text-xs font-mono border border-slate-300 rounded-lg px-2 py-1.5 w-20 text-center font-bold">
-                            <span class="text-xs text-slate-500 font-mono">kg</span>
-                        </div>
-                        <button onclick="addToOrder('Pota Manto Limpio', 4.80, 'qty-pota')" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-2.5 rounded-xl text-xs transition flex items-center justify-center shadow-sm">
-                            <i class="fas fa-plus-circle mr-1.5"></i> Añadir a Pedido B2B
-                        </button>
-<div class="flex items-center space-x-2 pt-2">
-                            <button onclick="openQuickView('pota')" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 py-2 rounded-xl text-[11px] font-bold font-mono transition flex items-center justify-center">
-                                <i class="fas fa-eye mr-1 text-brand-600"></i> Vista Rápida
+                        <div class="pt-4 mt-2 border-t border-slate-100 space-y-2">
+                            <div class="flex items-center space-x-2">
+                                <label class="text-xs text-slate-600 font-medium">Cantidad:</label>
+                                <input id="qty-pota" type="number" value="40" min="15" step="5" class="bg-slate-50 text-slate-900 text-xs font-mono border border-slate-300 rounded-lg px-2 py-1.5 w-20 text-center font-bold">
+                                <span class="text-xs text-slate-500 font-mono">kg</span>
+                            </div>
+                            <button onclick="addToOrder('Pota Manto Limpio', 4.80, 'qty-pota')" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-2.5 rounded-xl text-xs transition flex items-center justify-center shadow-sm">
+                                <i class="fas fa-plus-circle mr-1.5"></i> Añadir a Pedido B2B
                             </button>
-                            <a href="producto-pota.html" class="flex-1 bg-brand-50 hover:bg-brand-100 text-brand-700 py-2 rounded-xl text-[11px] font-bold font-mono transition flex items-center justify-center">
-                                <i class="fas fa-file-invoice mr-1 text-brand-600"></i> Ficha B2B
-                            </a>
+                            <div class="flex items-center space-x-2 pt-1">
+                                <button onclick="openQuickView('pota')" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 py-1.5 rounded-xl text-[11px] font-bold font-mono transition flex items-center justify-center">
+                                    <i class="fas fa-eye mr-1 text-brand-600"></i> Vista Rápida
+                                </button>
+                                <a href="producto-pota.html" class="flex-1 bg-brand-50 hover:bg-brand-100 text-brand-700 py-1.5 rounded-xl text-[11px] font-bold font-mono transition flex items-center justify-center">
+                                    <i class="fas fa-file-invoice mr-1 text-brand-600"></i> Ficha B2B
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- SPECIE 4: MERO MURIQUE -->
-                <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-card hover:shadow-card-hover transition flex flex-col justify-between group">
+                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-card hover:shadow-card-hover transition flex flex-col justify-between group">
                     <div class="relative h-44 overflow-hidden bg-slate-900">
                         <img src="img/mero.jpg" alt="Mero Murique" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
@@ -892,49 +895,50 @@
                     </div>
                     <div class="p-5 space-y-3 flex-grow flex flex-col justify-between">
                         <div>
-                            <p class="text-xs text-slate-500 mb-2">El rey de la mesa norteña. Captura selectiva con espinel a 40 brazas. Carne perlada.</p>
-                        
-                        <div class="space-y-1.5 pt-2 text-xs font-mono">
-                            <div class="flex justify-between text-slate-500">
-                                <span>Acopiador en playa:</span>
-                                <span class="line-through text-red-500">S/ 25.00 /kg</span>
+                            <p class="text-xs text-slate-500 mb-2">El rey del fondo marino norteño. Captura selectiva con espinel a 40 brazas. Carne perlada.</p>
+                            <div class="space-y-1.5 pt-2 text-xs font-mono">
+                                <div class="flex justify-between text-slate-500">
+                                    <span>Acopiador en playa:</span>
+                                    <span class="line-through text-red-500">S/ 25.00 /kg</span>
+                                </div>
+                                <div class="flex justify-between text-slate-500">
+                                    <span>Revendedor en Piura:</span>
+                                    <span class="line-through text-red-500">S/ 60.00 /kg</span>
+                                </div>
+                                <div class="flex justify-between items-center bg-brand-50 p-2 rounded-lg border border-brand-100 font-bold">
+                                    <span class="text-brand-900">Precio Pesca-Click:</span>
+                                    <span class="text-base text-emerald-600">S/ 42.00 <small class="text-xs text-slate-600">/kg</small></span>
+                                </div>
                             </div>
-                            <div class="flex justify-between text-slate-500">
-                                <span>Revendedor en Piura:</span>
-                                <span class="line-through text-red-500">S/ 60.00 /kg</span>
-                            </div>
-                            <div class="flex justify-between items-center bg-brand-50 p-2 rounded-lg border border-brand-100 font-bold">
-                                <span class="text-brand-900">Precio Pesca-Click:</span>
-                                <span class="text-base text-emerald-600">S/ 42.00 <small class="text-xs text-slate-600">/kg</small></span>
+                            <div class="bg-slate-50 p-2 rounded-lg text-[11px] space-y-0.5 border border-slate-100 mt-2">
+                                <div class="text-amber-700 font-medium"><i class="fas fa-user-shield mr-1"></i> Pescador gana: <strong>+68%</strong> (S/ 17.00 más)</div>
+                                <div class="text-emerald-700 font-bold"><i class="fas fa-piggy-bank mr-1"></i> Cebichería ahorra: <strong>-30.0%</strong> (S/ 18.00 menos)</div>
                             </div>
                         </div>
 
-                        <div class="bg-slate-50 p-2 rounded-lg text-[11px] space-y-0.5 border border-slate-100">
-                            <div class="text-amber-700 font-medium"><i class="fas fa-user-shield mr-1"></i> Pescador gana: <strong>+68%</strong> (S/ 17.00 más)</div>
-                            <div class="text-emerald-700 font-bold"><i class="fas fa-piggy-bank mr-1"></i> Cebichería ahorra: <strong>-30.0%</strong> (S/ 18.00 menos)</div>
-                        </div>
-                    </div>
-
-                    <div class="pt-4 mt-4 border-t border-slate-100">
-                        <div class="flex items-center space-x-2 mb-3">
-                            <label class="text-xs text-slate-600 font-medium">Cantidad:</label>
-                            <input id="qty-mero" type="number" value="15" min="5" step="5" class="bg-slate-50 text-slate-900 text-xs font-mono border border-slate-300 rounded-lg px-2 py-1.5 w-20 text-center font-bold">
-                            <span class="text-xs text-slate-500 font-mono">kg</span>
-                        </div>
-                        <button onclick="addToOrder('Mero Murique', 42.00, 'qty-mero')" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-2.5 rounded-xl text-xs transition flex items-center justify-center shadow-sm">
-                            <i class="fas fa-plus-circle mr-1.5"></i> Añadir a Pedido B2B
-                        </button>
-<div class="flex items-center space-x-2 pt-2">
-                            <button onclick="openQuickView('mero')" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 py-2 rounded-xl text-[11px] font-bold font-mono transition flex items-center justify-center">
-                                <i class="fas fa-eye mr-1 text-brand-600"></i> Vista Rápida
+                        <div class="pt-4 mt-2 border-t border-slate-100 space-y-2">
+                            <div class="flex items-center space-x-2">
+                                <label class="text-xs text-slate-600 font-medium">Cantidad:</label>
+                                <input id="qty-mero" type="number" value="15" min="5" step="5" class="bg-slate-50 text-slate-900 text-xs font-mono border border-slate-300 rounded-lg px-2 py-1.5 w-20 text-center font-bold">
+                                <span class="text-xs text-slate-500 font-mono">kg</span>
+                            </div>
+                            <button onclick="addToOrder('Mero Murique', 42.00, 'qty-mero')" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-2.5 rounded-xl text-xs transition flex items-center justify-center shadow-sm">
+                                <i class="fas fa-plus-circle mr-1.5"></i> Añadir a Pedido B2B
                             </button>
-                            <a href="producto-mero.html" class="flex-1 bg-brand-50 hover:bg-brand-100 text-brand-700 py-2 rounded-xl text-[11px] font-bold font-mono transition flex items-center justify-center">
-                                <i class="fas fa-file-invoice mr-1 text-brand-600"></i> Ficha B2B
-                            </a>
+                            <div class="flex items-center space-x-2 pt-1">
+                                <button onclick="openQuickView('mero')" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 py-1.5 rounded-xl text-[11px] font-bold font-mono transition flex items-center justify-center">
+                                    <i class="fas fa-eye mr-1 text-brand-600"></i> Vista Rápida
+                                </button>
+                                <a href="producto-mero.html" class="flex-1 bg-brand-50 hover:bg-brand-100 text-brand-700 py-1.5 rounded-xl text-[11px] font-bold font-mono transition flex items-center justify-center">
+                                    <i class="fas fa-file-invoice mr-1 text-brand-600"></i> Ficha B2B
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
+
 
             <!-- SHOPPING CART SUMMARY (CLEAN LIGHT DESIGN) -->
             <div id="cart-container" class="bg-white rounded-2xl p-6 border border-slate-200 shadow-card">
@@ -1792,6 +1796,81 @@
             if (cardMero) cardMero.style.display = (cat === 'all' || cat === 'gourmet') ? 'flex' : 'none';
         }
 
+        
+        // CHATBOT INTERACTIVO B2B (PESCADOR - CEBICHERÍA)
+        let isChatbotOpen = false;
+
+        function toggleChatbot() {
+            playBeep(850, 0.05);
+            isChatbotOpen = !isChatbotOpen;
+            const win = document.getElementById('chatbot-window');
+            if (isChatbotOpen) {
+                win.classList.remove('hidden');
+                setTimeout(() => {
+                    win.classList.remove('scale-95');
+                    win.classList.add('scale-100');
+                }, 10);
+            } else {
+                win.classList.remove('scale-100');
+                win.classList.add('scale-95');
+                setTimeout(() => win.classList.add('hidden'), 200);
+            }
+        }
+
+        function sendQuickChat(text) {
+            document.getElementById('chat-input').value = text;
+            sendUserMessage();
+        }
+
+        function sendUserMessage() {
+            const input = document.getElementById('chat-input');
+            const text = input.value.trim();
+            if (!text) return;
+            playBeep(920, 0.04);
+
+            const msgBox = document.getElementById('chat-messages');
+
+            // Render User Message
+            const userDiv = document.createElement('div');
+            userDiv.className = 'flex items-start justify-end space-x-2';
+            userDiv.innerHTML = `
+                <div class="bg-emerald-600 text-white p-3 rounded-2xl rounded-tr-none shadow-sm max-w-[80%]">
+                    <span class="text-[10px] font-bold text-emerald-200 block mb-0.5">Tú (Cebichería El Cántaro)</span>
+                    <p>${text}</p>
+                </div>
+            `;
+            msgBox.appendChild(userDiv);
+            input.value = '';
+            msgBox.scrollTop = msgBox.scrollHeight;
+
+            // Simulated Fisherman or Bot Response
+            setTimeout(() => {
+                playSonarPing();
+                const respDiv = document.createElement('div');
+                respDiv.className = 'flex items-start space-x-2';
+
+                let reply = '¡Copiado, maestro! Ya registré tu pedido en el manifiesto. En 15 minutos atraco en el muelle de Paita para pasar a la balanza oficial.';
+                if (text.toLowerCase().includes('especie') || text.toLowerCase().includes('traes')) {
+                    reply = 'Traigo 350 kg de Cabrilla fina, 120 kg de Tollo de leche y mi compadre Fiestas viene atrás con 600 kg de pota limpia.';
+                } else if (text.toLowerCase().includes('frío') || text.toLowerCase().includes('temperatura')) {
+                    reply = 'Venimos con 1.2 °C garantizados. El sensor IoT DS18B20 marca óptimo y el hielo en escamas está enterito.';
+                } else if (text.toLowerCase().includes('confirmar') || text.toLowerCase().includes('cabrilla')) {
+                    reply = '¡Excelente! Quedan apartados tus 30 kg de Cabrilla. Los fondos ya están seguros en la Bóveda Escrow.';
+                    triggerCelebration();
+                }
+
+                respDiv.innerHTML = `
+                    <img src="img/muelle_paita.jpg" class="w-7 h-7 rounded-full object-cover mt-0.5">
+                    <div class="bg-white p-3 rounded-2xl rounded-tl-none border border-slate-200 shadow-sm max-w-[80%]">
+                        <span class="text-[10px] font-bold text-brand-700 block mb-0.5">Don Pedro Chunga (Altamar)</span>
+                        <p class="text-slate-700">${reply}</p>
+                    </div>
+                `;
+                msgBox.appendChild(respDiv);
+                msgBox.scrollTop = msgBox.scrollHeight;
+            }, 800);
+        }
+
         function renderCart() {
             const tbody = document.getElementById('cart-items');
             tbody.innerHTML = '';
@@ -2158,5 +2237,105 @@
             renderCart();
         }
     </script>
+
+    <!-- CHATBOT FLOTANTE B2B: ENLACE MAR-CEBICHERÍA -->
+    <div id="chatbot-container" class="fixed bottom-6 left-6 z-50 font-sans">
+        
+        <!-- Botón Circular Flotante del Chatbot -->
+        <button onclick="toggleChatbot()" id="btn-chatbot-toggle" class="bg-gradient-to-tr from-brand-900 to-brand-600 hover:scale-105 text-white p-3.5 rounded-full shadow-2xl border-2 border-cyan-400/40 flex items-center space-x-2.5 transition duration-300 group cursor-pointer">
+            <div class="relative">
+                <i class="fas fa-comments text-xl text-cyan-300 group-hover:rotate-6 transition"></i>
+                <span class="w-3 h-3 rounded-full bg-emerald-400 border-2 border-brand-900 absolute -top-1 -right-1 animate-pulse"></span>
+            </div>
+            <span class="text-xs font-mono font-bold pr-1 hidden sm:inline text-white">Chat B2B Altamar</span>
+        </button>
+
+        <!-- Ventana del Chatbot (Oculta por defecto) -->
+        <div id="chatbot-window" class="hidden absolute bottom-16 left-0 w-[360px] sm:w-[400px] bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col transition-all duration-300 transform scale-95 origin-bottom-left">
+            
+            <!-- Header del Chat -->
+            <div class="bg-brand-900 text-white p-4 flex items-center justify-between border-b border-brand-800">
+                <div class="flex items-center space-x-3">
+                    <div class="relative">
+                        <img src="img/muelle_paita.jpg" alt="Don Pedro Chunga" class="w-10 h-10 rounded-full object-cover border-2 border-cyan-400">
+                        <span class="w-3 h-3 bg-emerald-400 border-2 border-brand-900 rounded-full absolute bottom-0 right-0"></span>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-white flex items-center">
+                            Don Pedro Chunga <i class="fas fa-satellite text-cyan-400 text-xs ml-1.5" title="Enlace VHF Altamar"></i>
+                        </h4>
+                        <span class="text-[10px] text-cyan-300 font-mono">Patrón Lancha "Siempre San Pedro" • Paita</span>
+                    </div>
+                </div>
+                <button onclick="toggleChatbot()" class="text-slate-400 hover:text-white transition text-sm">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Área de Mensajes del Chat -->
+            <div id="chat-messages" class="p-4 space-y-3.5 h-80 overflow-y-auto bg-slate-50 text-xs">
+                
+                <!-- Mensaje de Bienvenida del Bot IoT -->
+                <div class="bg-cyan-50 border border-cyan-200 rounded-2xl p-3 text-cyan-900 text-[11px] font-mono">
+                    <i class="fas fa-robot text-cyan-600 mr-1"></i> <strong>PescaBot IoT:</strong> Canal VHF seguro activo. Conectando al Chef Marco (El Cántaro) con Don Pedro en altamar (Bahía de Paita).
+                </div>
+
+                <!-- Mensaje de Don Pedro -->
+                <div class="flex items-start space-x-2">
+                    <img src="img/muelle_paita.jpg" class="w-7 h-7 rounded-full object-cover mt-0.5">
+                    <div class="bg-white p-3 rounded-2xl rounded-tl-none border border-slate-200 shadow-sm max-w-[80%]">
+                        <span class="text-[10px] font-bold text-brand-700 block mb-0.5">Don Pedro Chunga (05:15 AM)</span>
+                        <p class="text-slate-700">¡Buenas madrugadas, maestro Marco! Ya estamos a 4 millas con 350 kg de Cabrilla fina en hielo en escamas. ¿Te aparto los 30 kg para el cebiche de hoy?</p>
+                    </div>
+                </div>
+
+                <!-- Mensaje del Chef Marco -->
+                <div class="flex items-start justify-end space-x-2">
+                    <div class="bg-emerald-600 text-white p-3 rounded-2xl rounded-tr-none shadow-sm max-w-[80%]">
+                        <span class="text-[10px] font-bold text-emerald-200 block mb-0.5">Chef Marco (El Cántaro)</span>
+                        <p>¡Hola Don Pedro! Sí, confirma los 30 kg de cabrilla y 25 kg de tollo. ¿A qué temperatura viene la bodega?</p>
+                    </div>
+                </div>
+
+                <!-- Mensaje del Sistema IoT -->
+                <div class="flex items-start space-x-2">
+                    <div class="w-7 h-7 rounded-full bg-brand-900 text-cyan-300 flex items-center justify-center text-xs mt-0.5">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <div class="bg-brand-50 p-3 rounded-2xl rounded-tl-none border border-brand-200 text-brand-950 font-mono text-[11px] max-w-[85%]">
+                        <span class="text-[10px] font-bold text-brand-700 block mb-0.5">Telemetría Sensor DS18B20</span>
+                        <div>• Temp: <strong class="text-emerald-700">1.2 °C</strong> (Hielo 1:1)</div>
+                        <div>• ETA muelle: <strong class="text-brand-700">18 minutos</strong></div>
+                        <div>• Pago: <strong class="text-slate-700">Retenido en Bóveda Escrow (S/ 405.00)</strong></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Sugerencias de Respuesta Rápida -->
+            <div class="p-2.5 bg-slate-100 border-t border-slate-200 flex flex-wrap gap-1.5 text-[11px] font-mono">
+                <button onclick="sendQuickChat('¿Qué especies traes hoy Don Pedro?')" class="bg-white hover:bg-slate-200 text-slate-700 px-2.5 py-1 rounded-lg border border-slate-200 transition">
+                    🐟 ¿Qué especies traes?
+                </button>
+                <button onclick="sendQuickChat('Confirmar 30 kg de Cabrilla')" class="bg-white hover:bg-slate-200 text-emerald-700 font-bold px-2.5 py-1 rounded-lg border border-slate-200 transition">
+                    ✓ Confirmar 30 kg Cabrilla
+                </button>
+                <button onclick="sendQuickChat('Consultar temperatura del frío')" class="bg-white hover:bg-slate-200 text-cyan-700 px-2.5 py-1 rounded-lg border border-slate-200 transition">
+                    ❄️ Consultar Frío IoT
+                </button>
+            </div>
+
+            <!-- Input de Texto para Enviar Mensajes -->
+            <div class="p-3 bg-white border-t border-slate-200 flex items-center space-x-2">
+                <input id="chat-input" type="text" placeholder="Escribe al pescador Don Pedro..." class="flex-1 bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-brand-500">
+                <button onclick="sendUserMessage()" class="bg-brand-600 hover:bg-brand-700 text-white w-9 h-9 rounded-xl flex items-center justify-center transition shadow-sm">
+                    <i class="fas fa-paper-plane text-xs"></i>
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
 </body>
 </html>
