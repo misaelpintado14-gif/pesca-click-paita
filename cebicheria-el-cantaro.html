@@ -7,25 +7,28 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <!-- TOAST NOTIFICACIONES CEBICHERÍA -->
+    <div id="ceb-toast-box" class="fixed bottom-6 right-6 z-50 space-y-2 pointer-events-none"></div>
+
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ["'Plus Jakarta Sans'", 'sans-serif'],
-                        mono: ["'JetBrains Mono'", 'monospace'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#F0F9FF',
-                            100: '#E0F2FE',
-                            500: '#0284C7',
-                            600: '#0369A1',
-                            900: '#0A2540'
-                        }
-                    }
-                }
-            }
+        function showCebToast(title, msg) {
+            const box = document.getElementById('ceb-toast-box');
+            if (!box) return;
+            const el = document.createElement('div');
+            el.className = 'pointer-events-auto bg-emerald-950/95 text-white p-4 rounded-2xl border border-emerald-400/50 shadow-2xl flex items-start space-x-3 max-w-sm backdrop-blur-md transition-all duration-300';
+            el.innerHTML = `
+                <i class="fas fa-utensils text-emerald-400 text-lg mt-0.5"></i>
+                <div class="flex-1">
+                    <strong class="text-xs font-bold block">${title}</strong>
+                    <span class="text-[11px] text-emerald-100 block mt-0.5">${msg}</span>
+                </div>
+            `;
+            box.appendChild(el);
+            setTimeout(() => { el.style.opacity = '0'; setTimeout(() => el.remove(), 300); }, 3500);
+        }
+
+        function orderDish(name, price) {
+            showCebToast('¡Orden Enviada a Cocina!', `${name} (S/ ${price.toFixed(2)}) en preparación por el Chef Marco con pesca de hoy a 1.4 °C.`);
         }
     </script>
 </head>
@@ -398,9 +401,28 @@
         </div>
     </footer>
 
+    <!-- TOAST NOTIFICACIONES CEBICHERÍA -->
+    <div id="ceb-toast-box" class="fixed bottom-6 right-6 z-50 space-y-2 pointer-events-none"></div>
+
     <script>
+        function showCebToast(title, msg) {
+            const box = document.getElementById('ceb-toast-box');
+            if (!box) return;
+            const el = document.createElement('div');
+            el.className = 'pointer-events-auto bg-emerald-950/95 text-white p-4 rounded-2xl border border-emerald-400/50 shadow-2xl flex items-start space-x-3 max-w-sm backdrop-blur-md transition-all duration-300';
+            el.innerHTML = `
+                <i class="fas fa-utensils text-emerald-400 text-lg mt-0.5"></i>
+                <div class="flex-1">
+                    <strong class="text-xs font-bold block">${title}</strong>
+                    <span class="text-[11px] text-emerald-100 block mt-0.5">${msg}</span>
+                </div>
+            `;
+            box.appendChild(el);
+            setTimeout(() => { el.style.opacity = '0'; setTimeout(() => el.remove(), 300); }, 3500);
+        }
+
         function orderDish(name, price) {
-            alert('¡Excelente elección! Has seleccionado: ' + name + ' (S/ ' + price.toFixed(2) + ').\n\nTu orden ha sido enviada a la cocina del Chef Marco. Pescado fresco recibido hoy desde Paita a 1.4 °C.');
+            showCebToast('¡Orden Enviada a Cocina!', `${name} (S/ ${price.toFixed(2)}) en preparación por el Chef Marco con pesca de hoy a 1.4 °C.`);
         }
     </script>
 </body>

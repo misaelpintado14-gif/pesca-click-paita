@@ -300,6 +300,28 @@
                             </div>
                         </div>
 
+                        <!-- Tira Visual de Cadena Productiva Clickeable -->
+                        <div class="grid grid-cols-3 gap-2 pt-2">
+                            <a href="#modulo-radar" onclick="switchRadarMode('mapa')" class="relative h-16 rounded-xl overflow-hidden group border border-slate-200">
+                                <img src="img/muelle_paita.jpg" alt="Muelle Paita" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                                <div class="absolute inset-0 bg-slate-950/50 group-hover:bg-slate-950/30 transition flex items-end p-1.5">
+                                    <span class="text-[9px] font-mono font-bold text-white leading-none">1. Muelle Paita</span>
+                                </div>
+                            </a>
+                            <a href="#modulo-frio" class="relative h-16 rounded-xl overflow-hidden group border border-slate-200">
+                                <img src="img/furgon.jpg" alt="Furgón Frío" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                                <div class="absolute inset-0 bg-slate-950/50 group-hover:bg-slate-950/30 transition flex items-end p-1.5">
+                                    <span class="text-[9px] font-mono font-bold text-white leading-none">2. Frío 1.4 °C</span>
+                                </div>
+                            </a>
+                            <a href="cebicheria-el-cantaro.html" class="relative h-16 rounded-xl overflow-hidden group border border-slate-200">
+                                <img src="img/cabrilla.jpg" alt="Cebichería" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                                <div class="absolute inset-0 bg-slate-950/50 group-hover:bg-slate-950/30 transition flex items-end p-1.5">
+                                    <span class="text-[9px] font-mono font-bold text-emerald-300 leading-none">3. Cebichería ↗</span>
+                                </div>
+                            </a>
+                        </div>
+
                         <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-mono text-slate-600">
                             <span><i class="fas fa-arrow-down text-emerald-500 mr-1"></i> Merma: <strong>18.5% → 1.2%</strong></span>
                             <span><i class="fas fa-users text-brand-500 mr-1"></i> Red: <strong>25 Lanchas / 45 Locales</strong></span>
@@ -448,8 +470,8 @@
                         </div>
 
                         <!-- LANCHA 1: Siempre San Pedro (Cabrilla) -->
-                        <button onclick="selectVessel('Siempre San Pedro', 'PT-45210-BM', 'Don Pedro Chunga', '350 kg Cabrilla / 120 kg Tollo', '18 min', '3.8 MN', '1.4 °C', 'img/cabrilla.jpg', '8.4 kts', '118° ESE')"
-                                class="absolute top-[28%] left-[60%] group focus:outline-none z-30 transition transform hover:scale-125 cursor-pointer">
+                        <button id="blip-sanpedro" onclick="selectVesselByKey('sanpedro')"
+                                class="radar-blip absolute top-[28%] left-[60%] group focus:outline-none z-30 transition transform hover:scale-125 scale-110 cursor-pointer">
                             <span class="relative flex h-4 w-4">
                                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                                 <span class="relative inline-flex rounded-full h-4 w-4 bg-emerald-500 text-[9px] font-bold text-slate-950 items-center justify-center">1</span>
@@ -460,8 +482,8 @@
                         </button>
 
                         <!-- LANCHA 2: Don Lucho I (Tollo) -->
-                        <button onclick="selectVessel('Don Lucho I', 'PT-38194-BM', 'Don Luis Morales', '280 kg Tollo / 90 kg Cabrilla', '32 min', '6.5 MN', '1.2 °C', 'img/tollo.jpg', '7.9 kts', '135° SE')"
-                                class="absolute top-[68%] left-[34%] group focus:outline-none z-30 transition transform hover:scale-125 cursor-pointer">
+                        <button id="blip-donlucho" onclick="selectVesselByKey('donlucho')"
+                                class="radar-blip absolute top-[68%] left-[34%] group focus:outline-none z-30 transition transform hover:scale-125 cursor-pointer">
                             <span class="relative flex h-4 w-4">
                                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
                                 <span class="relative inline-flex rounded-full h-4 w-4 bg-cyan-500 text-[9px] font-bold text-slate-950 items-center justify-center">2</span>
@@ -472,8 +494,8 @@
                         </button>
 
                         <!-- LANCHA 3: Virgen de las Mercedes (Pota) -->
-                        <button onclick="selectVessel('Virgen de las Mercedes', 'PT-19402-BM', 'Don Carlos Fiestas', '600 kg Pota Manto Limpio', 'Atracando', '0.4 MN', '0.9 °C', 'img/pota.jpg', '2.1 kts', '090° E')"
-                                class="absolute top-[22%] left-[26%] group focus:outline-none z-30 transition transform hover:scale-125 cursor-pointer">
+                        <button id="blip-mercedes" onclick="selectVesselByKey('mercedes')"
+                                class="radar-blip absolute top-[22%] left-[26%] group focus:outline-none z-30 transition transform hover:scale-125 cursor-pointer">
                             <span class="relative flex h-4 w-4">
                                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
                                 <span class="relative inline-flex rounded-full h-4 w-4 bg-amber-500 text-[9px] font-bold text-slate-950 items-center justify-center">3</span>
@@ -484,8 +506,8 @@
                         </button>
 
                         <!-- LANCHA 4: San José Bendito (Mero Murique) -->
-                        <button onclick="selectVessel('San José Bendito', 'PT-51203-BM', 'Don Manuel Rumiche', '110 kg Mero Murique / 60 kg Cabrilla', '45 min', '8.9 MN', '1.0 °C', 'img/mero.jpg', '9.1 kts', '070° ENE')"
-                                class="absolute top-[62%] left-[72%] group focus:outline-none z-30 transition transform hover:scale-125 cursor-pointer">
+                        <button id="blip-sanjose" onclick="selectVesselByKey('sanjose')"
+                                class="radar-blip absolute top-[62%] left-[72%] group focus:outline-none z-30 transition transform hover:scale-125 cursor-pointer">
                             <span class="relative flex h-4 w-4">
                                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
                                 <span class="relative inline-flex rounded-full h-4 w-4 bg-purple-500 text-[9px] font-bold text-white items-center justify-center">4</span>
@@ -503,13 +525,24 @@
                             <img src="img/muelle_paita.jpg" alt="Bahía de Paita" class="w-full h-full object-cover opacity-60">
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
                             
-                            <!-- Indicadores sobre el mapa -->
-                            <div class="absolute top-4 left-4 bg-slate-900/90 text-cyan-200 text-xs font-mono p-3 rounded-xl border border-cyan-500/40 space-y-1">
-                                <strong class="text-white block"><i class="fas fa-anchor text-cyan-400 mr-1.5"></i> Red de Desembarcaderos Paita</strong>
-                                <div>• <strong>DPA Paita:</strong> Muelle Fiscal Central (Operativo 24/7)</div>
-                                <div>• <strong>Caleta Yacila:</strong> 14 km al sur (Arribo de Tollo)</div>
-                                <div>• <strong>Caleta La Islilla:</strong> 22 km al sur (Arribo de Pota)</div>
-                                <div>• <strong>Tierra Colorada:</strong> Zona arrecifes de Mero Murique</div>
+                            <!-- Caletas interactivas (al hacer click selecciona la embarcación de esa caleta) -->
+                            <div class="absolute top-3 left-3 right-3 grid grid-cols-2 gap-2 text-[11px] font-mono">
+                                <button onclick="selectVesselByKey('sanpedro')" class="bg-slate-900/90 hover:bg-brand-900 text-left text-cyan-200 p-2.5 rounded-xl border border-cyan-500/40 transition">
+                                    <strong class="text-white block"><i class="fas fa-anchor text-emerald-400 mr-1"></i> DPA Paita</strong>
+                                    <span class="text-[10px] text-emerald-300">San Pedro (Cabrilla) →</span>
+                                </button>
+                                <button onclick="selectVesselByKey('donlucho')" class="bg-slate-900/90 hover:bg-brand-900 text-left text-cyan-200 p-2.5 rounded-xl border border-cyan-500/40 transition">
+                                    <strong class="text-white block"><i class="fas fa-water text-cyan-400 mr-1"></i> Caleta Yacila</strong>
+                                    <span class="text-[10px] text-cyan-300">Don Lucho I (Tollo) →</span>
+                                </button>
+                                <button onclick="selectVesselByKey('mercedes')" class="bg-slate-900/90 hover:bg-brand-900 text-left text-cyan-200 p-2.5 rounded-xl border border-cyan-500/40 transition">
+                                    <strong class="text-white block"><i class="fas fa-ship text-amber-400 mr-1"></i> Caleta La Islilla</strong>
+                                    <span class="text-[10px] text-amber-300">V. Mercedes (Pota) →</span>
+                                </button>
+                                <button onclick="selectVesselByKey('sanjose')" class="bg-slate-900/90 hover:bg-brand-900 text-left text-cyan-200 p-2.5 rounded-xl border border-cyan-500/40 transition">
+                                    <strong class="text-white block"><i class="fas fa-crown text-purple-400 mr-1"></i> Tierra Colorada</strong>
+                                    <span class="text-[10px] text-purple-300">San José (Mero) →</span>
+                                </button>
                             </div>
 
                             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs font-mono bg-slate-900/80 p-2.5 rounded-xl border border-slate-700">
@@ -551,15 +584,48 @@
                         </div>
                     </div>
 
-                    <!-- FOOTER DEL RADAR CON CONTROLES RÁPIDOS -->
-                    <div class="flex flex-wrap items-center justify-between text-xs font-mono text-slate-400 pt-3 border-t border-slate-800 gap-2 z-10">
-                        <div class="flex items-center space-x-2">
-                            <i class="fas fa-hand-pointer text-cyan-400 animate-bounce"></i>
-                            <span>Haz clic en los puntos <strong class="text-white">(1, 2, 3 o 4)</strong> para inspeccionar la lancha</span>
+                    <!-- SELECTOR RÁPIDO DE EMBARCACIONES (CAMBIA FOTO Y TELEMETRÍA AL INSTANTE) -->
+                    <div class="space-y-2.5 pt-3 border-t border-slate-800 z-10">
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[10px] font-mono">
+                            <button id="rbtn-1" onclick="selectVesselByKey('sanpedro')" class="radar-quick-btn bg-emerald-500/20 border border-emerald-400 text-emerald-200 p-2 rounded-xl flex items-center space-x-2 transition text-left shadow-sm">
+                                <img src="img/cabrilla.jpg" class="w-7 h-7 rounded-lg object-cover border border-emerald-400/50 shrink-0">
+                                <div class="truncate">
+                                    <strong class="block text-white truncate">1. San Pedro</strong>
+                                    <span class="text-emerald-300">Cabrilla • 18m</span>
+                                </div>
+                            </button>
+                            <button id="rbtn-2" onclick="selectVesselByKey('donlucho')" class="radar-quick-btn bg-slate-900/90 hover:bg-slate-800 border border-slate-700 text-slate-300 p-2 rounded-xl flex items-center space-x-2 transition text-left">
+                                <img src="img/tollo.jpg" class="w-7 h-7 rounded-lg object-cover border border-slate-600 shrink-0">
+                                <div class="truncate">
+                                    <strong class="block text-white truncate">2. Don Lucho I</strong>
+                                    <span class="text-cyan-300">Tollo • 32m</span>
+                                </div>
+                            </button>
+                            <button id="rbtn-3" onclick="selectVesselByKey('mercedes')" class="radar-quick-btn bg-slate-900/90 hover:bg-slate-800 border border-slate-700 text-slate-300 p-2 rounded-xl flex items-center space-x-2 transition text-left">
+                                <img src="img/pota.jpg" class="w-7 h-7 rounded-lg object-cover border border-slate-600 shrink-0">
+                                <div class="truncate">
+                                    <strong class="block text-white truncate">3. V. Mercedes</strong>
+                                    <span class="text-amber-300">Pota • Muelle</span>
+                                </div>
+                            </button>
+                            <button id="rbtn-4" onclick="selectVesselByKey('sanjose')" class="radar-quick-btn bg-slate-900/90 hover:bg-slate-800 border border-slate-700 text-slate-300 p-2 rounded-xl flex items-center space-x-2 transition text-left">
+                                <img src="img/mero.jpg" class="w-7 h-7 rounded-lg object-cover border border-slate-600 shrink-0">
+                                <div class="truncate">
+                                    <strong class="block text-white truncate">4. San José</strong>
+                                    <span class="text-purple-300">Mero • 45m</span>
+                                </div>
+                            </button>
                         </div>
-                        <button onclick="playSonarPing()" class="text-cyan-300 hover:text-cyan-200 transition bg-slate-900 px-2.5 py-1 rounded border border-slate-700">
-                            <i class="fas fa-volume-up mr-1"></i> Probar Sonar
-                        </button>
+
+                        <div class="flex flex-wrap items-center justify-between text-[11px] font-mono text-slate-400 gap-2">
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-hand-pointer text-cyan-400"></i>
+                                <span>Toca cualquier lancha en el radar o botón para cambiar foto y telemetría</span>
+                            </div>
+                            <button onclick="playSonarPing(); showToast('Sonar VHF Activo', 'Barrido de 12 MN en Bahía de Paita completado.', 'info')" class="text-cyan-300 hover:text-cyan-200 transition bg-slate-900 px-2.5 py-1 rounded border border-slate-700">
+                                <i class="fas fa-volume-up mr-1"></i> Probar Sonar
+                            </button>
+                        </div>
                     </div>
 
                 </div>
@@ -584,16 +650,27 @@
                             </span>
                         </div>
 
-                        <!-- FOTO REALISTA DE LA CAPTURA O LANCHA -->
-                        <div class="relative h-36 rounded-2xl overflow-hidden bg-slate-900 border border-slate-200 shadow-sm group">
-                            <img id="vessel-img" src="img/cabrilla.jpg" alt="Captura" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                            <div class="absolute bottom-2.5 left-3 right-3 text-white flex items-end justify-between">
+                        <!-- FOTO REALISTA DE LA CAPTURA CON TRANSICIÓN Y ENLACE -->
+                        <div class="relative h-44 rounded-2xl overflow-hidden bg-slate-900 border border-slate-200 shadow-md group">
+                            <img id="vessel-img" src="img/cabrilla.jpg" alt="Captura en Embarcación" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+                            <div class="absolute top-3 left-3 flex items-center gap-1.5">
+                                <span id="vessel-specie-pill" class="bg-brand-600/95 text-white font-mono text-[10px] px-2.5 py-0.5 rounded-full font-bold backdrop-blur-sm shadow">
+                                    Cabrilla Norteña
+                                </span>
+                                <span id="vessel-caleta-pill" class="bg-slate-900/80 text-cyan-200 font-mono text-[10px] px-2.5 py-0.5 rounded-full backdrop-blur-sm border border-cyan-500/30">
+                                    Bahía de Paita
+                                </span>
+                            </div>
+                            <a id="vessel-ficha-link" href="producto-cabrilla.html" class="absolute top-3 right-3 bg-white/90 hover:bg-white text-slate-900 text-[10px] font-mono font-bold px-2.5 py-1 rounded-lg shadow transition">
+                                Ver Ficha ↗
+                            </a>
+                            <div class="absolute bottom-3 left-3.5 right-3.5 text-white flex items-end justify-between">
                                 <div>
-                                    <h4 id="vessel-name" class="text-lg font-black leading-tight text-white">Siempre San Pedro</h4>
-                                    <span id="vessel-reg" class="text-[10px] font-mono text-cyan-300">PT-45210-BM (Paita)</span>
+                                    <h4 id="vessel-name" class="text-xl font-black leading-tight text-white">Siempre San Pedro</h4>
+                                    <span id="vessel-reg" class="text-[11px] font-mono text-cyan-300">PT-45210-BM (Paita) • Rumbo <span id="vessel-heading">118° ESE</span></span>
                                 </div>
-                                <span id="vessel-eta-badge" class="bg-brand-600 text-white font-mono text-xs px-2.5 py-1 rounded-lg font-bold shadow">
+                                <span id="vessel-eta-badge" class="bg-emerald-500 text-slate-950 font-mono text-xs px-2.5 py-1 rounded-lg font-black shadow">
                                     ETA: <span id="vessel-eta">18 min</span>
                                 </span>
                             </div>
@@ -1020,8 +1097,16 @@
                             <span class="text-xs font-mono text-emerald-600 font-bold flex items-center"><i class="fas fa-signal mr-1"></i> PUERTO COM3: ACTIVO</span>
                         </div>
 
-                        <!-- DIGITAL LED DISPLAY -->
-                        <div class="my-6 bg-slate-900 rounded-2xl p-6 text-center font-mono relative overflow-hidden shadow-inner">
+                        <!-- DIGITAL LED DISPLAY CON FOTO DE ESPECIE EN PLATAFORMA -->
+                        <div class="my-5 bg-slate-900 rounded-2xl p-5 font-mono relative overflow-hidden shadow-inner grid grid-cols-1 sm:grid-cols-12 gap-4 items-center">
+                            <div class="sm:col-span-4 relative h-32 rounded-xl overflow-hidden border border-slate-700 bg-slate-800">
+                                <img id="scale-img" src="img/cabrilla.jpg" alt="Pescado en Balanza" class="w-full h-full object-cover transition-all duration-300">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                                <span id="scale-specie-badge" class="absolute bottom-2 left-2 bg-cyan-500 text-slate-950 text-[10px] font-bold px-2 py-0.5 rounded">
+                                    Cabrilla Norteña
+                                </span>
+                            </div>
+                            <div class="sm:col-span-8 text-center">
                             <div class="text-xs text-cyan-400 uppercase tracking-widest mb-1 flex justify-between px-2">
                                 <span>INDICADOR DIGITAL NETO</span>
                                 <span>TARA ACTIVA: -2.50 kg / jaba</span>
@@ -1043,21 +1128,26 @@
                                     <span class="text-emerald-400 font-bold"><i class="fas fa-lock"></i> FIJADO</span>
                                 </div>
                             </div>
+                            </div>
                         </div>
 
                         <!-- Interactive scale sample controls -->
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-                            <button onclick="setSampleWeight(52.5, 1, 'Cabrilla')" class="bg-slate-50 hover:bg-slate-100 text-slate-800 p-3 rounded-xl border border-slate-200 transition text-left">
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs">
+                            <button onclick="setSampleWeight(52.5, 1, 'Cabrilla Norteña', 'img/cabrilla.jpg')" class="bg-brand-50 hover:bg-brand-100 text-slate-800 p-2.5 rounded-xl border border-brand-200 transition text-left">
                                 <strong class="block text-brand-700 font-bold">1 Jaba Cabrilla</strong>
-                                <span class="text-slate-500 text-[11px]">Bruto: 52.5 kg → Neto: 50.0 kg</span>
+                                <span class="text-slate-500 text-[10px]">Neto: 50.0 kg</span>
                             </button>
-                            <button onclick="setSampleWeight(105.0, 2, 'Tollo')" class="bg-slate-50 hover:bg-slate-100 text-slate-800 p-3 rounded-xl border border-slate-200 transition text-left">
+                            <button onclick="setSampleWeight(105.0, 2, 'Tollo de Leche', 'img/tollo.jpg')" class="bg-slate-50 hover:bg-slate-100 text-slate-800 p-2.5 rounded-xl border border-slate-200 transition text-left">
                                 <strong class="block text-brand-700 font-bold">2 Jabas Tollo</strong>
-                                <span class="text-slate-500 text-[11px]">Bruto: 105.0 kg → Neto: 100.0 kg</span>
+                                <span class="text-slate-500 text-[10px]">Neto: 100.0 kg</span>
                             </button>
-                            <button onclick="setSampleWeight(157.5, 3, 'Pota')" class="bg-slate-50 hover:bg-slate-100 text-slate-800 p-3 rounded-xl border border-slate-200 transition text-left">
+                            <button onclick="setSampleWeight(157.5, 3, 'Pota Manto Limpio', 'img/pota.jpg')" class="bg-slate-50 hover:bg-slate-100 text-slate-800 p-2.5 rounded-xl border border-slate-200 transition text-left">
                                 <strong class="block text-brand-700 font-bold">3 Jabas Pota</strong>
-                                <span class="text-slate-500 text-[11px]">Bruto: 157.5 kg → Neto: 150.0 kg</span>
+                                <span class="text-slate-500 text-[10px]">Neto: 150.0 kg</span>
+                            </button>
+                            <button onclick="setSampleWeight(32.5, 1, 'Mero Murique', 'img/mero.jpg')" class="bg-amber-50 hover:bg-amber-100 text-slate-800 p-2.5 rounded-xl border border-amber-200 transition text-left">
+                                <strong class="block text-amber-800 font-bold">1 Jaba Mero</strong>
+                                <span class="text-amber-700 text-[10px]">Neto: 30.0 kg</span>
                             </button>
                         </div>
                     </div>
@@ -1194,6 +1284,19 @@
                                 <i class="fas fa-route mr-2 text-brand-600"></i> Ruta Express Paita - Piura (Autopista IIRSA Norte)
                             </h3>
                             <span class="text-xs font-mono text-brand-700 font-bold">58 KM • TIEMPO: 48 MIN</span>
+                        </div>
+
+                        <!-- Foto del Furgón en Autopista con Tinte Térmico Dinámico -->
+                        <div class="relative h-36 rounded-2xl overflow-hidden border border-slate-200 my-4 bg-slate-900">
+                            <img src="img/furgon.jpg" alt="Furgón Refrigerado" class="w-full h-full object-cover">
+                            <div id="frio-photo-overlay" class="absolute inset-0 bg-gradient-to-t from-brand-950/85 via-cyan-900/20 to-transparent transition-colors duration-500"></div>
+                            <div class="absolute top-3 left-3 bg-emerald-500 text-slate-950 font-mono text-[10px] font-black px-2.5 py-1 rounded-full shadow" id="frio-photo-badge">
+                                <i class="fas fa-snowflake mr-1"></i> CÁMARA ACTIVA: 1.4 °C
+                            </div>
+                            <div class="absolute bottom-3 left-4 right-4 text-white flex items-center justify-between text-xs font-mono">
+                                <span>Furgón Térmico P3A-812 (Autopista IIRSA)</span>
+                                <span class="text-cyan-300 font-bold">Velocidad: 64 km/h</span>
+                            </div>
                         </div>
 
                         <!-- Route progress -->
@@ -1374,6 +1477,9 @@
                                     <button onclick="setLotAndVerify('LOTE-PAITA-2026-044')" class="bg-slate-50 hover:bg-slate-100 text-brand-700 text-[10px] font-mono px-2 py-1 rounded border border-slate-200 font-bold">
                                         LOTE-PAITA-2026-044 (Pota)
                                     </button>
+                                    <button onclick="setLotAndVerify('LOTE-PAITA-2026-045')" class="bg-amber-50 hover:bg-amber-100 text-amber-800 text-[10px] font-mono px-2 py-1 rounded border border-amber-200 font-bold">
+                                        LOTE-PAITA-2026-045 (Mero)
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -1381,7 +1487,7 @@
                         <!-- QR Code visual preview -->
                         <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-center my-3">
                             <div class="w-28 h-28 bg-white mx-auto p-1.5 rounded-lg shadow-sm border border-slate-200 flex items-center justify-center">
-                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=PESCA-CLICK-PAITA-2026-042-VERIFICADO-SANIPES" alt="QR Trazabilidad" class="w-full h-full object-contain">
+                                <img id="qr-preview-img" src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=LOTE-PAITA-2026-042" alt="QR Trazabilidad" class="w-full h-full object-contain">
                             </div>
                             <span class="text-[10px] font-mono text-slate-500 block mt-2">
                                 <i class="fas fa-camera mr-1 text-brand-600"></i> Escanea con tu celular para ver origen
@@ -1407,6 +1513,16 @@
                         </div>
 
                         <div class="my-4 space-y-3 font-mono text-xs">
+                            <!-- Mini Banner con Foto de Especie Certificada -->
+                            <div class="flex items-center space-x-3 bg-slate-900 text-white p-3 rounded-xl border border-slate-800">
+                                <img id="m-img" src="img/cabrilla.jpg" alt="Especie Certificada" class="w-16 h-16 rounded-lg object-cover border border-cyan-400/50 transition-all duration-300 shrink-0">
+                                <div class="flex-1 min-w-0">
+                                    <span class="text-[10px] text-cyan-300 uppercase block">Especie Verificada en Custodia</span>
+                                    <strong id="m-specie-banner" class="text-sm font-black block truncate">Cabrilla Norteña (Paralabrax)</strong>
+                                    <span id="m-zone" class="text-[10px] text-emerald-400 block">Zona: Frente a Bahía de Paita • 1.4 °C</span>
+                                </div>
+                            </div>
+
                             <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 grid grid-cols-2 gap-2.5 text-slate-700">
                                 <div><span class="text-slate-500 block text-[10px]">CÓDIGO DE LOTE</span><strong id="m-lot" class="text-brand-700 font-bold">LOTE-PAITA-2026-042</strong></div>
                                 <div><span class="text-slate-500 block text-[10px]">ESPECIE CAPTURADA</span><strong id="m-specie" class="text-emerald-700 font-bold">Cabrilla Norteña (Paralabrax)</strong></div>
@@ -1432,7 +1548,7 @@
 
                     <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
                         <span class="text-xs text-slate-500 font-mono">Acreditado para inspección sanitaria.</span>
-                        <button onclick="alert('Certificado Sanipes verificado con firma SHA-256. Todo conforme.')" class="bg-purple-600 hover:bg-purple-700 text-white font-bold px-4 py-2 rounded-xl text-xs transition shadow-sm">
+                        <button onclick="showToast('Certificado Sanipes Válido', 'Firma digital SHA-256 comprobada ante PRODUCE y Sanipes.', 'success')" class="bg-purple-600 hover:bg-purple-700 text-white font-bold px-4 py-2 rounded-xl text-xs transition shadow-sm">
                             <i class="fas fa-download mr-1.5"></i> Descargar Manifiesto PDF
                         </button>
                     </div>
@@ -1553,9 +1669,9 @@
 
 
 
-    <!-- JAVASCRIPT LOGIC WITH SYNTHESIZED WEB AUDIO -->
+        <!-- JAVASCRIPT LOGIC LIMPIO Y UNIFICADO -->
     <script>
-        // Web Audio Synthesizer (Native Zero-Dependency)
+        // 1. Web Audio Synthesizer (Native Zero-Dependency)
         let audioCtx = null;
         let isAudioEnabled = true;
 
@@ -1577,6 +1693,7 @@
                 icon.className = 'fas fa-volume-up mr-1 text-cyan-300';
                 txt.innerText = 'Audio ON';
                 playBeep(650, 0.1);
+                showToast('Audio Activado', 'Efectos de sonar, balanza y caja habilitados.', 'info');
             } else {
                 icon.className = 'fas fa-volume-mute mr-1 text-slate-400';
                 txt.innerText = 'Audio Mute';
@@ -1591,13 +1708,13 @@
                 const gain = ctx.createGain();
                 osc.type = 'sine';
                 osc.frequency.setValueAtTime(880, ctx.currentTime);
-                osc.frequency.exponentialRampToValueAtTime(440, ctx.currentTime + 0.6);
-                gain.gain.setValueAtTime(0.25, ctx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.6);
+                osc.frequency.exponentialRampToValueAtTime(440, ctx.currentTime + 0.5);
+                gain.gain.setValueAtTime(0.22, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.5);
                 osc.connect(gain);
                 gain.connect(ctx.destination);
                 osc.start();
-                osc.stop(ctx.currentTime + 0.6);
+                osc.stop(ctx.currentTime + 0.5);
             } catch(e) {}
         }
 
@@ -1607,7 +1724,7 @@
                 const ctx = getAudioContext();
                 const osc = ctx.createOscillator();
                 const gain = ctx.createGain();
-                osc.type = 'square';
+                osc.type = 'triangle';
                 osc.frequency.setValueAtTime(freq, ctx.currentTime);
                 gain.gain.setValueAtTime(0.12, ctx.currentTime);
                 gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
@@ -1628,7 +1745,7 @@
                 osc.frequency.setValueAtTime(600, ctx.currentTime);
                 osc.frequency.linearRampToValueAtTime(950, ctx.currentTime + 0.25);
                 osc.frequency.linearRampToValueAtTime(600, ctx.currentTime + 0.5);
-                gain.gain.setValueAtTime(0.2, ctx.currentTime);
+                gain.gain.setValueAtTime(0.18, ctx.currentTime);
                 gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.55);
                 osc.connect(gain);
                 gain.connect(ctx.destination);
@@ -1645,234 +1762,292 @@
                     const osc = ctx.createOscillator();
                     const gain = ctx.createGain();
                     osc.type = 'triangle';
-                    osc.frequency.setValueAtTime(freq, ctx.currentTime + i * 0.1);
-                    gain.gain.setValueAtTime(0.2, ctx.currentTime + i * 0.1);
-                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.1 + 0.4);
+                    osc.frequency.setValueAtTime(freq, ctx.currentTime + i * 0.08);
+                    gain.gain.setValueAtTime(0.18, ctx.currentTime + i * 0.08);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.08 + 0.35);
                     osc.connect(gain);
                     gain.connect(ctx.destination);
-                    osc.start(ctx.currentTime + i * 0.1);
-                    osc.stop(ctx.currentTime + i * 0.1 + 0.4);
+                    osc.start(ctx.currentTime + i * 0.08);
+                    osc.stop(ctx.currentTime + i * 0.08 + 0.35);
                 });
             } catch(e) {}
         }
 
-        // SHOPPING CART STATE
+        // 2. Toast Notifications & Confetti
+        function showToast(title, msg, type = 'success') {
+            const container = document.getElementById('toast-container');
+            if (!container) return;
+
+            const toast = document.createElement('div');
+            const icon = type === 'success' ? 'fa-check-circle text-emerald-400' : (type === 'alert' ? 'fa-exclamation-triangle text-red-400' : 'fa-satellite-dish text-cyan-400');
+            const borderCol = type === 'success' ? 'border-emerald-500/40' : (type === 'alert' ? 'border-red-500/50' : 'border-cyan-500/40');
+
+            toast.className = `toast-item bg-slate-900/95 text-white p-3.5 rounded-2xl border ${borderCol} shadow-2xl flex items-start space-x-3 max-w-sm backdrop-blur-md`;
+            toast.innerHTML = `
+                <i class="fas ${icon} text-lg mt-0.5"></i>
+                <div class="flex-1 pr-2">
+                    <strong class="text-xs font-bold block text-white">${title}</strong>
+                    <span class="text-[11px] text-slate-300 block leading-tight mt-0.5">${msg}</span>
+                </div>
+                <button onclick="this.parentElement.remove()" class="text-slate-400 hover:text-white text-xs">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(10px)';
+                toast.style.transition = 'all 0.3s ease';
+                setTimeout(() => toast.remove(), 300);
+            }, 4000);
+        }
+
+        function triggerCelebration() {
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 80,
+                    spread: 70,
+                    origin: { y: 0.7 }
+                });
+            }
+        }
+
+        // 3. Base de Datos de Embarcaciones en Radar AIS (Con cambio de foto y datos reales)
+        const vesselsDB = {
+            sanpedro: {
+                btnId: 'rbtn-1',
+                blipId: 'blip-sanpedro',
+                name: 'Siempre San Pedro',
+                reg: 'PT-45210-BM (Paita)',
+                captain: 'Don Pedro Chunga',
+                specie: 'Cabrilla Norteña',
+                catchInfo: '350 kg Cabrilla Norteña / 120 kg Tollo',
+                eta: '18 min',
+                dist: '3.8 Millas Náuticas',
+                temp: '1.4 °C (Hielo Escamas)',
+                speed: '8.4 Nudos (kts)',
+                heading: '118° ESE',
+                caleta: 'DPA Paita',
+                img: 'img/cabrilla.jpg',
+                ficha: 'producto-cabrilla.html',
+                orderName: 'Cabrilla Norteña',
+                orderPrice: 13.50,
+                orderQty: 30
+            },
+            donlucho: {
+                btnId: 'rbtn-2',
+                blipId: 'blip-donlucho',
+                name: 'Don Lucho I',
+                reg: 'PT-38194-BM (Paita)',
+                captain: 'Don Luis Morales',
+                specie: 'Tollo de Leche',
+                catchInfo: '280 kg Tollo de Leche / 90 kg Cabrilla',
+                eta: '32 min',
+                dist: '6.5 Millas Náuticas',
+                temp: '1.2 °C (Hielo Escamas)',
+                speed: '7.9 Nudos (kts)',
+                heading: '135° SE',
+                caleta: 'Caleta Yacila',
+                img: 'img/tollo.jpg',
+                ficha: 'producto-tollo.html',
+                orderName: 'Tollo de Leche',
+                orderPrice: 11.00,
+                orderQty: 25
+            },
+            mercedes: {
+                btnId: 'rbtn-3',
+                blipId: 'blip-mercedes',
+                name: 'Virgen de las Mercedes',
+                reg: 'PT-19402-BM (Paita)',
+                captain: 'Don Carlos Fiestas',
+                specie: 'Pota Manto Limpio',
+                catchInfo: '600 kg Pota Manto Limpio',
+                eta: 'Atracando',
+                dist: '0.4 Millas Náuticas',
+                temp: '0.9 °C (Salmuera Fría)',
+                speed: '2.1 Nudos (kts)',
+                heading: '090° E',
+                caleta: 'Caleta La Islilla',
+                img: 'img/pota.jpg',
+                ficha: 'producto-pota.html',
+                orderName: 'Pota Manto Limpio',
+                orderPrice: 4.80,
+                orderQty: 40
+            },
+            sanjose: {
+                btnId: 'rbtn-4',
+                blipId: 'blip-sanjose',
+                name: 'San José Bendito',
+                reg: 'PT-51203-BM (Paita)',
+                captain: 'Don Manuel Rumiche',
+                specie: 'Mero Murique',
+                catchInfo: '110 kg Mero Murique / 60 kg Cabrilla',
+                eta: '45 min',
+                dist: '8.9 Millas Náuticas',
+                temp: '1.0 °C (Hielo Escamas)',
+                speed: '9.1 Nudos (kts)',
+                heading: '070° ENE',
+                caleta: 'Tierra Colorada',
+                img: 'img/mero.jpg',
+                ficha: 'producto-mero.html',
+                orderName: 'Mero Murique',
+                orderPrice: 42.00,
+                orderQty: 15
+            }
+        };
+
+        let currentVesselKey = 'sanpedro';
+
+        function selectVesselByKey(key) {
+            const v = vesselsDB[key];
+            if (!v) return;
+            currentVesselKey = key;
+            playSonarPing();
+
+            // Smooth fade transition on image
+            const imgEl = document.getElementById('vessel-img');
+            if (imgEl) {
+                imgEl.style.opacity = '0.3';
+                setTimeout(() => {
+                    imgEl.src = v.img;
+                    imgEl.style.opacity = '1';
+                }, 120);
+            }
+
+            // Update card details
+            document.getElementById('vessel-name').innerText = v.name;
+            document.getElementById('vessel-reg').innerHTML = `${v.reg} • Rumbo <span id="vessel-heading">${v.heading}</span>`;
+            document.getElementById('vessel-captain').innerText = v.captain;
+            document.getElementById('vessel-speed').innerText = v.speed;
+            document.getElementById('vessel-dist').innerText = v.dist;
+            document.getElementById('vessel-temp').innerText = v.temp;
+            document.getElementById('vessel-eta').innerText = v.eta;
+            document.getElementById('vessel-catch').innerHTML = `<i class="fas fa-boxes mr-1.5 text-brand-600"></i> ${v.catchInfo}`;
+            document.getElementById('vessel-specie-pill').innerText = v.specie;
+            document.getElementById('vessel-caleta-pill').innerText = v.caleta;
+            document.getElementById('vessel-ficha-link').href = v.ficha;
+
+            // Update navigation badge
+            const badge = document.getElementById('vessel-badge');
+            const etaBadge = document.getElementById('vessel-eta-badge');
+            if (v.eta === 'Atracando') {
+                badge.className = 'bg-amber-50 text-amber-800 border border-amber-300 text-xs px-2.5 py-1 rounded-full font-mono font-bold flex items-center';
+                badge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-amber-500 mr-1.5"></span> ATRACANDO EN MUELLE';
+                etaBadge.className = 'bg-amber-400 text-slate-950 font-mono text-xs px-2.5 py-1 rounded-lg font-black shadow';
+            } else {
+                badge.className = 'bg-emerald-50 text-emerald-800 border border-emerald-300 text-xs px-2.5 py-1 rounded-full font-mono font-bold flex items-center';
+                badge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping mr-1.5"></span> EN NAVEGACIÓN';
+                etaBadge.className = 'bg-emerald-500 text-slate-950 font-mono text-xs px-2.5 py-1 rounded-lg font-black shadow';
+            }
+
+            // Highlight active quick button
+            document.querySelectorAll('.radar-quick-btn').forEach(btn => {
+                btn.className = 'radar-quick-btn bg-slate-900/90 hover:bg-slate-800 border border-slate-700 text-slate-300 p-2 rounded-xl flex items-center space-x-2 transition text-left';
+            });
+            const activeBtn = document.getElementById(v.btnId);
+            if (activeBtn) {
+                activeBtn.className = 'radar-quick-btn bg-emerald-500/20 border-2 border-emerald-400 text-emerald-200 p-2 rounded-xl flex items-center space-x-2 transition text-left shadow-md scale-[1.02]';
+            }
+
+            // Highlight active blip on circular radar
+            document.querySelectorAll('.radar-blip').forEach(b => b.classList.remove('scale-125', 'ring-2', 'ring-white', 'rounded-full'));
+            const activeBlip = document.getElementById(v.blipId);
+            if (activeBlip) activeBlip.classList.add('scale-125');
+
+            showToast(`Lancha ${v.name}`, `${v.specie} (${v.eta}) • Patrón: ${v.captain}`, 'info');
+        }
+
+        function switchRadarMode(mode) {
+            playBeep(800, 0.05);
+            const views = ['radar', 'mapa', 'ruta'];
+            views.forEach(v => {
+                const viewEl = document.getElementById('view-' + v);
+                const tabEl = document.getElementById('tab-' + v);
+                if (viewEl) viewEl.classList.add('hidden');
+                if (tabEl) tabEl.className = 'bg-transparent hover:bg-white text-slate-600 px-3.5 py-2 rounded-xl font-semibold transition flex items-center';
+            });
+            const activeView = document.getElementById('view-' + mode);
+            const activeTab = document.getElementById('tab-' + mode);
+            if (activeView) activeView.classList.remove('hidden');
+            if (activeTab) activeTab.className = 'bg-brand-900 text-cyan-300 px-3.5 py-2 rounded-xl font-bold shadow-sm transition flex items-center';
+        }
+
+        function preorderLot() {
+            const v = vesselsDB[currentVesselKey] || vesselsDB.sanpedro;
+            playCashChime();
+            addToOrder(v.orderName, v.orderPrice, null, v.orderQty);
+            triggerCelebration();
+            showToast('¡Captura Apartada en Preventa!', `${v.orderQty} kg de ${v.orderName} de la lancha "${v.name}" añadidos al pedido.`, 'success');
+            document.getElementById('cart-container').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 4. Catálogo y Carrito B2B
         let cart = [
             { name: 'Cabrilla Norteña', qty: 30, price: 13.50, tradPrice: 22.00 }
         ];
 
-        
-        function sendOrderWhatsApp() {
-            if (cart.length === 0) {
-                alert('Tu pedido está vacío. Añade especies frescas primero.');
-                return;
-            }
-            playCashChime();
-            let msg = `*🐟 PEDIDO OFICIAL PESCA-CLICK PAITA v2.4*\n`;
-            msg += `*Cliente:* Cebichería "El Cántaro" (Piura)\n`;
-            msg += `*Despacho:* Madrugada 05:00 AM (Arribo muelle DPA Paita)\n`;
-            msg += `-------------------------------------------\n`;
-            let total = 0;
-            let totalAhorro = 0;
-            cart.forEach(item => {
-                const sub = item.qty * item.price;
-                const trad = item.qty * item.tradPrice;
-                total += sub;
-                totalAhorro += (trad - sub);
-                msg += `• *${item.name}*: ${item.qty} kg x S/ ${item.price.toFixed(2)} = S/ ${sub.toFixed(2)}\n`;
-            });
-            msg += `-------------------------------------------\n`;
-            msg += `*TOTAL INVERSIÓN:* S/ ${total.toFixed(2)}\n`;
-            msg += `*AHORRO FRENTE A REVENDEDOR:* + S/ ${totalAhorro.toFixed(2)} (-31.8%)\n`;
-            msg += `*Cadena de Frío:* 1.4 °C garantizada (Sanipes D.S. 040)\n`;
-            msg += `*Tara Oficial:* -2.5 kg/jaba en balanza industrial Torrey\n`;
-            msg += `*Pago:* Retenido en Bóveda Escrow / Yape al recibir conforme\n`;
-            
-            const url = `https://api.whatsapp.com/send?phone=51969824110&text=${encodeURIComponent(msg)}`;
-            window.open(url, '_blank');
-        }
-
-        
-        // MULTI-MODE RADAR VIEW SWITCHER
-        function switchRadarMode(mode) {
-            playBeep(800, 0.05);
-            const viewRadar = document.getElementById('view-radar');
-            const viewMapa = document.getElementById('view-mapa');
-            const viewRuta = document.getElementById('view-ruta');
-
-            const tabRadar = document.getElementById('tab-radar');
-            const tabMapa = document.getElementById('tab-mapa');
-            const tabRuta = document.getElementById('tab-ruta');
-
-            viewRadar.classList.add('hidden');
-            viewMapa.classList.add('hidden');
-            viewRuta.classList.add('hidden');
-
-            tabRadar.className = 'bg-transparent hover:bg-white text-slate-600 px-3.5 py-2 rounded-xl font-semibold transition flex items-center';
-            tabMapa.className = 'bg-transparent hover:bg-white text-slate-600 px-3.5 py-2 rounded-xl font-semibold transition flex items-center';
-            tabRuta.className = 'bg-transparent hover:bg-white text-slate-600 px-3.5 py-2 rounded-xl font-semibold transition flex items-center';
-
-            if (mode === 'radar') {
-                viewRadar.classList.remove('hidden');
-                tabRadar.className = 'bg-brand-900 text-cyan-300 px-3.5 py-2 rounded-xl font-bold shadow-sm transition flex items-center';
-            } else if (mode === 'mapa') {
-                viewMapa.classList.remove('hidden');
-                tabMapa.className = 'bg-brand-900 text-cyan-300 px-3.5 py-2 rounded-xl font-bold shadow-sm transition flex items-center';
-            } else if (mode === 'ruta') {
-                viewRuta.classList.remove('hidden');
-                tabRuta.className = 'bg-brand-900 text-cyan-300 px-3.5 py-2 rounded-xl font-bold shadow-sm transition flex items-center';
-            }
-        }
-
-        // ENHANCED SELECT VESSEL WITH REAL PHOTO & METRICS
-        function selectVessel(name, reg, captain, catchInfo, eta, dist, temp, imgUrl = 'img/cabrilla.jpg', speed = '8.4 kts', heading = '118° ESE') {
-            playSonarPing();
-            document.getElementById('vessel-name').innerText = name;
-            document.getElementById('vessel-reg').innerText = reg + ' (Paita)';
-            document.getElementById('vessel-captain').innerText = captain;
-            document.getElementById('vessel-catch').innerHTML = '<i class="fas fa-boxes mr-1.5 text-brand-600"></i> ' + catchInfo;
-            document.getElementById('vessel-eta').innerText = eta;
-            document.getElementById('vessel-dist').innerText = dist;
-            document.getElementById('vessel-temp').innerText = temp;
-
-            const speedEl = document.getElementById('vessel-speed');
-            if (speedEl) speedEl.innerText = speed;
-
-            const imgEl = document.getElementById('vessel-img');
-            if (imgEl && imgUrl) imgEl.src = imgUrl;
-
-            const badge = document.getElementById('vessel-badge');
-            if (eta === 'Atracando' || dist.includes('0.4')) {
-                badge.className = 'bg-amber-50 text-amber-800 border border-amber-300 text-xs px-2.5 py-1 rounded-full font-mono font-bold flex items-center';
-                badge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-amber-500 mr-1.5"></span> ATRACANDO EN MUELLE';
-            } else {
-                badge.className = 'bg-emerald-50 text-emerald-800 border border-emerald-300 text-xs px-2.5 py-1 rounded-full font-mono font-bold flex items-center';
-                badge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping mr-1.5"></span> EN NAVEGACIÓN';
-            }
-        }
-
-        // PREORDER LOT AND AUTO ADD TO CART
-        function preorderLot() {
-            playCashChime();
-            const vesselName = document.getElementById('vessel-name').innerText;
-            if (vesselName.includes('San Pedro')) {
-                addToOrder('Cabrilla Norteña', 13.50, 'qty-cabrilla');
-            } else if (vesselName.includes('Don Lucho')) {
-                addToOrder('Tollo de Leche', 11.00, 'qty-tollo');
-            } else if (vesselName.includes('Mercedes')) {
-                addToOrder('Pota Manto Limpio', 4.80, 'qty-pota');
-            } else {
-                addToOrder('Mero Murique', 42.00, 'qty-mero');
-            }
-            alert('¡Lote de la embarcación "' + vesselName + '" apartado con éxito! Se ha agregado al pedido de tu cebichería.\n\nPuedes revisar el resumen y confirmar por WhatsApp o Bóveda Escrow.');
-            document.getElementById('cart-container').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // CATALOG CATEGORY FILTER
         function filterCatalog(cat) {
             playBeep(700, 0.04);
-            const btnAll = document.getElementById('flt-all');
-            const btnRoca = document.getElementById('flt-roca');
-            const btnBlanca = document.getElementById('flt-blanca');
-            const btnMarisco = document.getElementById('flt-marisco');
-            const btnGourmet = document.getElementById('flt-gourmet');
-
-            [btnAll, btnRoca, btnBlanca, btnMarisco, btnGourmet].forEach(b => {
-                if (b) b.className = 'bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-xl font-semibold transition';
+            ['all', 'roca', 'blanca', 'marisco', 'gourmet'].forEach(c => {
+                const btn = document.getElementById('flt-' + c);
+                if (btn) btn.className = 'bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-xl font-semibold transition';
             });
-
             const activeBtn = document.getElementById('flt-' + cat);
             if (activeBtn) activeBtn.className = 'bg-brand-900 text-white px-3 py-1.5 rounded-xl font-bold transition';
 
-            // Cards filtering
-            const cardCabrilla = document.querySelector('[alt="Cabrilla Norteña"]')?.closest('.bg-white');
-            const cardTollo = document.querySelector('[alt="Tollo de Leche"]')?.closest('.bg-white');
-            const cardPota = document.querySelector('[alt="Pota Manto Limpio"]')?.closest('.bg-white');
-            const cardMero = document.querySelector('[alt="Mero Murique"]')?.closest('.bg-white');
+            const cards = {
+                roca: document.querySelector('[alt="Cabrilla Norteña"]')?.closest('.bg-white'),
+                blanca: document.querySelector('[alt="Tollo de Leche"]')?.closest('.bg-white'),
+                marisco: document.querySelector('[alt="Pota Manto Limpio"]')?.closest('.bg-white'),
+                gourmet: document.querySelector('[alt="Mero Murique"]')?.closest('.bg-white')
+            };
 
-            if (cardCabrilla) cardCabrilla.style.display = (cat === 'all' || cat === 'roca') ? 'flex' : 'none';
-            if (cardTollo) cardTollo.style.display = (cat === 'all' || cat === 'blanca') ? 'flex' : 'none';
-            if (cardPota) cardPota.style.display = (cat === 'all' || cat === 'marisco') ? 'flex' : 'none';
-            if (cardMero) cardMero.style.display = (cat === 'all' || cat === 'gourmet') ? 'flex' : 'none';
+            Object.keys(cards).forEach(k => {
+                if (cards[k]) cards[k].style.display = (cat === 'all' || cat === k) ? 'flex' : 'none';
+            });
         }
 
-        
-        // CHATBOT INTERACTIVO B2B (PESCADOR - CEBICHERÍA)
-        let isChatbotOpen = false;
-
-        function toggleChatbot() {
-            playBeep(850, 0.05);
-            isChatbotOpen = !isChatbotOpen;
-            const win = document.getElementById('chatbot-window');
-            if (isChatbotOpen) {
-                win.classList.remove('hidden');
-                setTimeout(() => {
-                    win.classList.remove('scale-95');
-                    win.classList.add('scale-100');
-                }, 10);
-            } else {
-                win.classList.remove('scale-100');
-                win.classList.add('scale-95');
-                setTimeout(() => win.classList.add('hidden'), 200);
+        function addToOrder(name, price, inputId, directQty = null) {
+            playBeep(880, 0.07);
+            let qty = directQty;
+            if (qty === null && inputId) {
+                qty = parseInt(document.getElementById(inputId).value) || 20;
             }
+            if (!qty || qty <= 0) qty = 20;
+
+            const tradPrices = {
+                'Cabrilla Norteña': 22.00,
+                'Tollo de Leche': 18.00,
+                'Pota Manto Limpio': 8.00,
+                'Mero Murique': 60.00
+            };
+
+            const existing = cart.find(i => i.name === name);
+            if (existing) {
+                existing.qty += qty;
+            } else {
+                cart.push({ name, qty, price, tradPrice: tradPrices[name] || price * 1.6 });
+            }
+            renderCart();
+            showToast('¡Especie Añadida al Pedido!', `${qty} kg de ${name} listos para despacho a 1.4 °C.`, 'success');
         }
 
-        function sendQuickChat(text) {
-            document.getElementById('chat-input').value = text;
-            sendUserMessage();
+        function removeFromCart(index) {
+            playBeep(350, 0.08);
+            cart.splice(index, 1);
+            renderCart();
         }
 
-        function sendUserMessage() {
-            const input = document.getElementById('chat-input');
-            const text = input.value.trim();
-            if (!text) return;
-            playBeep(920, 0.04);
-
-            const msgBox = document.getElementById('chat-messages');
-
-            // Render User Message
-            const userDiv = document.createElement('div');
-            userDiv.className = 'flex items-start justify-end space-x-2';
-            userDiv.innerHTML = `
-                <div class="bg-emerald-600 text-white p-3 rounded-2xl rounded-tr-none shadow-sm max-w-[80%]">
-                    <span class="text-[10px] font-bold text-emerald-200 block mb-0.5">Tú (Cebichería El Cántaro)</span>
-                    <p>${text}</p>
-                </div>
-            `;
-            msgBox.appendChild(userDiv);
-            input.value = '';
-            msgBox.scrollTop = msgBox.scrollHeight;
-
-            // Simulated Fisherman or Bot Response
-            setTimeout(() => {
-                playSonarPing();
-                const respDiv = document.createElement('div');
-                respDiv.className = 'flex items-start space-x-2';
-
-                let reply = '¡Copiado, maestro! Ya registré tu pedido en el manifiesto. En 15 minutos atraco en el muelle de Paita para pasar a la balanza oficial.';
-                if (text.toLowerCase().includes('especie') || text.toLowerCase().includes('traes')) {
-                    reply = 'Traigo 350 kg de Cabrilla fina, 120 kg de Tollo de leche y mi compadre Fiestas viene atrás con 600 kg de pota limpia.';
-                } else if (text.toLowerCase().includes('frío') || text.toLowerCase().includes('temperatura')) {
-                    reply = 'Venimos con 1.2 °C garantizados. El sensor IoT DS18B20 marca óptimo y el hielo en escamas está enterito.';
-                } else if (text.toLowerCase().includes('confirmar') || text.toLowerCase().includes('cabrilla')) {
-                    reply = '¡Excelente! Quedan apartados tus 30 kg de Cabrilla. Los fondos ya están seguros en la Bóveda Escrow.';
-                    triggerCelebration();
-                }
-
-                respDiv.innerHTML = `
-                    <img src="img/muelle_paita.jpg" class="w-7 h-7 rounded-full object-cover mt-0.5">
-                    <div class="bg-white p-3 rounded-2xl rounded-tl-none border border-slate-200 shadow-sm max-w-[80%]">
-                        <span class="text-[10px] font-bold text-brand-700 block mb-0.5">Don Pedro Chunga (Altamar)</span>
-                        <p class="text-slate-700">${reply}</p>
-                    </div>
-                `;
-                msgBox.appendChild(respDiv);
-                msgBox.scrollTop = msgBox.scrollHeight;
-            }, 800);
+        function clearCart() {
+            playBeep(300, 0.1);
+            cart = [];
+            renderCart();
+            showToast('Pedido Vaciado', 'El carrito ha sido limpiado.', 'info');
         }
 
         function renderCart() {
             const tbody = document.getElementById('cart-items');
+            if (!tbody) return;
             tbody.innerHTML = '';
             let total = 0;
             let savings = 0;
@@ -1903,205 +2078,96 @@
             document.getElementById('cart-savings').innerText = `S/ ${savings.toFixed(2)}`;
         }
 
-        
-        // SHOW TOAST NOTIFICATION WITH SOUND
-        function showToast(title, msg, type = 'success') {
-            playBeep(type === 'success' ? 880 : 440, 0.08);
-            const container = document.getElementById('toast-container');
-            if (!container) return;
-
-            const toast = document.createElement('div');
-            const icon = type === 'success' ? 'fa-check-circle text-emerald-400' : 'fa-info-circle text-cyan-400';
-            const borderCol = type === 'success' ? 'border-emerald-500/40' : 'border-cyan-500/40';
-
-            toast.className = `toast-item bg-slate-900/95 text-white p-3.5 rounded-2xl border ${borderCol} shadow-2xl flex items-start space-x-3 max-w-sm backdrop-blur-md`;
-            toast.innerHTML = `
-                <i class="fas ${icon} text-lg mt-0.5"></i>
-                <div class="flex-1 pr-2">
-                    <strong class="text-xs font-bold block text-white">${title}</strong>
-                    <span class="text-[11px] text-slate-300 block leading-tight mt-0.5">${msg}</span>
-                </div>
-                <button onclick="this.parentElement.remove()" class="text-slate-400 hover:text-white text-xs">
-                    <i class="fas fa-times"></i>
-                </button>
-            `;
-            container.appendChild(toast);
-            setTimeout(() => {
-                toast.style.opacity = '0';
-                toast.style.transform = 'translateY(10px)';
-                toast.style.transition = 'all 0.3s ease';
-                setTimeout(() => toast.remove(), 300);
-            }, 4000);
-        }
-
-        // TRIGGER CONFETTI CELEBRATION
-        function triggerCelebration() {
-            if (typeof confetti === 'function') {
-                confetti({
-                    particleCount: 80,
-                    spread: 70,
-                    origin: { y: 0.7 }
-                });
+        function sendOrderWhatsApp() {
+            if (cart.length === 0) {
+                showToast('Pedido Vacío', 'Añade especies frescas al carrito primero.', 'alert');
+                return;
             }
+            playCashChime();
+            let msg = `*🐟 PEDIDO OFICIAL PESCA-CLICK PAITA v2.4*\n`;
+            msg += `*Cliente:* Cebichería "El Cántaro" (Piura)\n`;
+            msg += `*Despacho:* Madrugada 05:00 AM (Arribo muelle DPA Paita)\n`;
+            msg += `-------------------------------------------\n`;
+            let total = 0, totalAhorro = 0;
+            cart.forEach(item => {
+                const sub = item.qty * item.price;
+                const trad = item.qty * item.tradPrice;
+                total += sub;
+                totalAhorro += (trad - sub);
+                msg += `• *${item.name}*: ${item.qty} kg x S/ ${item.price.toFixed(2)} = S/ ${sub.toFixed(2)}\n`;
+            });
+            msg += `-------------------------------------------\n`;
+            msg += `*TOTAL INVERSIÓN:* S/ ${total.toFixed(2)}\n`;
+            msg += `*AHORRO FRENTE A REVENDEDOR:* + S/ ${totalAhorro.toFixed(2)} (-31.8%)\n`;
+            msg += `*Cadena de Frío:* 1.4 °C garantizada (Sanipes D.S. 040)\n`;
+            msg += `*Pago:* Retenido en Bóveda Escrow / Yape al recibir conforme\n`;
+            window.open(`https://api.whatsapp.com/send?phone=51969824110&text=${encodeURIComponent(msg)}`, '_blank');
         }
 
-        // QUICK VIEW MODAL CONTROLLER
+        // 5. Modales: Vista Rápida y Bóveda Escrow
         const quickViewData = {
-            'cabrilla': {
-                title: 'Cabrilla Norteña',
-                scientific: 'Paralabrax humeralis',
-                category: '1° Calidad Marina',
-                img: 'img/cabrilla.jpg',
-                desc: 'Pescado insignia del litoral piurano. Capturado artesanalmente con espinel en Paita. Textura firme, ojos convexos y hojuelas carnosas para cebiche y sudado.',
-                price: 'S/ 13.50 /kg',
-                saving: '-38.6% (Ahorras S/ 8.50/kg)',
-                link: 'producto-cabrilla.html',
-                unitPrice: 13.50
-            },
-            'tollo': {
-                title: 'Tollo de Leche',
-                scientific: 'Mustelus whitneyi',
-                category: 'Carne Blanca Sin Espinas',
-                img: 'img/tollo.jpg',
-                desc: 'Pulpa blanca y tierna, 100% desprovista de espinas. Desembarcado en Caleta Yacila. Favorito de familias y cebicherías piuranas.',
-                price: 'S/ 11.00 /kg',
-                saving: '-38.8% (Ahorras S/ 7.00/kg)',
-                link: 'producto-tollo.html',
-                unitPrice: 11.00
-            },
-            'pota': {
-                title: 'Pota Manto Limpio',
-                scientific: 'Dosidicus gigas',
-                category: 'Cefalópodo del Pacífico',
-                img: 'img/pota.jpg',
-                desc: 'Manto grueso y blanco de 18 mm. Eviscerado en alta mar a 0.9 °C, sin amoniaco ni aditivos químicos. Listo para chicharrón y wok.',
-                price: 'S/ 4.80 /kg',
-                saving: '-40.0% (Ahorras S/ 3.20/kg)',
-                link: 'producto-pota.html',
-                unitPrice: 4.80
-            },
-            'mero': {
-                title: 'Mero Murique',
-                scientific: 'Epinephelus quinquefasciatus',
-                category: 'Alta Gama Gourmet',
-                img: 'img/mero.jpg',
-                desc: 'El rey de los arrecifes piuranos. Captura selectiva a 40 brazas en Tierra Colorada. Carne perlada inolvidable para sudado gourmet.',
-                price: 'S/ 42.00 /kg',
-                saving: '-30.0% (Ahorras S/ 18.00/kg)',
-                link: 'producto-mero.html',
-                unitPrice: 42.00
-            }
+            'cabrilla': { title: 'Cabrilla Norteña', scientific: 'Paralabrax humeralis', category: '1° Calidad Marina', img: 'img/cabrilla.jpg', desc: 'Pescado insignia del litoral piurano. Captura artesanal en Paita. Carne semi-firme, ojos cristalinos y textura ideal para cebiche.', price: 'S/ 13.50 /kg', saving: '-38.6% (Ahorras S/ 8.50/kg)', link: 'producto-cabrilla.html', unitPrice: 13.50 },
+            'tollo': { title: 'Tollo de Leche', scientific: 'Mustelus whitneyi', category: 'Carne Blanca Sin Espinas', img: 'img/tollo.jpg', desc: 'Pulpa blanca y tierna sin espinas, desembarcado en Caleta Yacila. Favorito familiar en Piura.', price: 'S/ 11.00 /kg', saving: '-38.8% (Ahorras S/ 7.00/kg)', link: 'producto-tollo.html', unitPrice: 11.00 },
+            'pota': { title: 'Pota Manto Limpio', scientific: 'Dosidicus gigas', category: 'Cefalópodo del Pacífico', img: 'img/pota.jpg', desc: 'Manto blanco de 18 mm eviscerado en altamar a 0.9 °C sin químicos. Listo para chicharrón y wok.', price: 'S/ 4.80 /kg', saving: '-40.0% (Ahorras S/ 3.20/kg)', link: 'producto-pota.html', unitPrice: 4.80 },
+            'mero': { title: 'Mero Murique', scientific: 'Epinephelus quinquefasciatus', category: 'Alta Gama Gourmet', img: 'img/mero.jpg', desc: 'El rey de la gastronomía norteña. Captura selectiva con espinel de fondo en Tierra Colorada.', price: 'S/ 42.00 /kg', saving: '-30.0% (Ahorras S/ 18.00/kg)', link: 'producto-mero.html', unitPrice: 42.00 }
         };
-
         let currentQvKey = 'cabrilla';
 
         function openQuickView(key) {
             playBeep(750, 0.05);
             currentQvKey = key;
-            const data = quickViewData[key];
-            if (!data) return;
-
-            document.getElementById('qv-title').innerText = data.title;
-            document.getElementById('qv-scientific').innerText = data.scientific;
-            document.getElementById('qv-category').innerText = data.category;
-            document.getElementById('qv-img').src = data.img;
-            document.getElementById('qv-desc').innerText = data.desc;
-            document.getElementById('qv-price').innerText = data.price;
-            document.getElementById('qv-saving').innerText = data.saving;
-            document.getElementById('qv-link').href = data.link;
-
-            const modal = document.getElementById('modal-quick-view');
-            modal.classList.remove('hidden');
+            const d = quickViewData[key];
+            if (!d) return;
+            document.getElementById('qv-title').innerText = d.title;
+            document.getElementById('qv-scientific').innerText = d.scientific;
+            document.getElementById('qv-category').innerText = d.category;
+            document.getElementById('qv-img').src = d.img;
+            document.getElementById('qv-desc').innerText = d.desc;
+            document.getElementById('qv-price').innerText = d.price;
+            document.getElementById('qv-saving').innerText = d.saving;
+            document.getElementById('qv-link').href = d.link;
+            document.getElementById('modal-quick-view').classList.remove('hidden');
         }
-
-        function closeQuickView() {
-            document.getElementById('modal-quick-view').classList.add('hidden');
-        }
-
+        function closeQuickView() { document.getElementById('modal-quick-view').classList.add('hidden'); }
         function addFromQuickView() {
-            const data = quickViewData[currentQvKey];
-            const qty = parseFloat(document.getElementById('qv-qty').value) || 30;
-            addToOrder(data.title, data.unitPrice, null, qty);
+            const d = quickViewData[currentQvKey];
+            const qty = parseInt(document.getElementById('qv-qty').value) || 30;
+            addToOrder(d.title, d.unitPrice, null, qty);
             closeQuickView();
-            showToast('¡Añadido al Pedido B2B!', `${qty} kg de ${data.title} listos para despacho en frío.`, 'success');
             triggerCelebration();
         }
 
-        // ESCROW CHECKOUT MODAL CONTROLLER
         function openEscrowModal() {
             playCashChime();
-            const total = document.getElementById('cart-total').innerText;
-            document.getElementById('escrow-modal-amount').innerText = total;
+            document.getElementById('escrow-modal-amount').innerText = document.getElementById('cart-total').innerText;
             document.getElementById('modal-escrow-checkout').classList.remove('hidden');
         }
-
-        function closeEscrowModal() {
-            document.getElementById('modal-escrow-checkout').classList.add('hidden');
-        }
-
+        function closeEscrowModal() { document.getElementById('modal-escrow-checkout').classList.add('hidden'); }
         function confirmEscrowPayment() {
             closeEscrowModal();
             triggerCelebration();
-            showToast('¡Fondos Retenidos con Éxito!', 'Bóveda Escrow activada. Don Pedro Chunga recibirá la liquidación en Yape al entregar.', 'success');
+            showToast('¡Fondos en Custodia Escrow!', 'Pago asegurado. El patrón recibirá su abono Yape al entregar en Piura.', 'success');
+            document.getElementById('modulo-escrow').scrollIntoView({ behavior: 'smooth' });
             runEscrowSimulation();
         }
 
-        function addToOrder(name, price, inputId) {
-            playBeep(850, 0.07);
-            const qty = parseInt(document.getElementById(inputId).value) || 20;
-            const tradPrices = {
-                'Cabrilla Norteña': 22.00,
-                'Tollo de Leche': 18.00,
-                'Pota Manto Limpio': 8.00,
-                'Mero Murique': 60.00
-            };
-            const existing = cart.find(i => i.name === name);
-            if (existing) {
-                existing.qty += qty;
-            } else {
-                cart.push({ name, qty, price, tradPrice: tradPrices[name] || price * 1.6 });
-            }
-            renderCart();
-            document.getElementById('cart-container').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function removeFromCart(index) {
-            playBeep(350, 0.08);
-            cart.splice(index, 1);
-            renderCart();
-        }
-
-        function clearCart() {
-            playBeep(300, 0.1);
-            cart = [];
-            renderCart();
-        }
-
-        // RADAR VESSEL SELECTION
-        function selectVessel(name, reg, captain, catchInfo, eta, dist, temp) {
-            playSonarPing();
-            document.getElementById('vessel-name').innerText = name;
-            document.getElementById('vessel-reg').innerText = `${reg} (Paita)`;
-            document.getElementById('vessel-captain').innerText = captain;
-            document.getElementById('vessel-eta').innerText = eta;
-            document.getElementById('vessel-dist').innerText = dist;
-            document.getElementById('vessel-temp').innerText = temp;
-            document.getElementById('vessel-catch').innerHTML = `<i class="fas fa-boxes mr-1 text-brand-600"></i> ${catchInfo}`;
-            document.getElementById('preorder-msg').innerText = `Lote de ${name} listo para preventa inmediata.`;
-        }
-
-        function preorderLot() {
-            playCashChime();
-            const vessel = document.getElementById('vessel-name').innerText;
-            alert(`¡Excelente! Has solicitado la reserva anticipada de captura de la lancha "${vessel}". Los lotes han sido añadidos a tu catálogo de preventa.`);
-            document.getElementById('modulo-catalogo').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // SCALE FUNCTIONS WITH DYNAMIC FLUCTUATION
-        function setSampleWeight(gross, boxes, specie) {
+        // 6. Balanza Digital Industrial (Con cambio dinámico de imagen de la especie)
+        function setSampleWeight(gross, boxes, specie, imgPath = 'img/cabrilla.jpg') {
             playBeep(900, 0.06);
             const tare = boxes * 2.5;
             const net = gross - tare;
+
+            // Swap image smoothly
+            const scaleImg = document.getElementById('scale-img');
+            const scaleBadge = document.getElementById('scale-specie-badge');
+            if (scaleImg) {
+                scaleImg.style.opacity = '0.3';
+                setTimeout(() => {
+                    scaleImg.src = imgPath;
+                    scaleImg.style.opacity = '1';
+                }, 120);
+            }
+            if (scaleBadge) scaleBadge.innerText = specie;
 
             const display = document.getElementById('scale-net-display');
             display.innerText = '---.--';
@@ -2110,31 +2176,29 @@
                 setTimeout(() => {
                     display.innerText = net.toFixed(2);
                     playBeep(1200, 0.09);
-                }, 200);
-            }, 150);
+                }, 180);
+            }, 140);
 
             document.getElementById('scale-gross').innerText = `${gross.toFixed(2)} kg`;
             document.getElementById('scale-tare').innerText = `-${tare.toFixed(2)} kg`;
-
             document.getElementById('ticket-specie').innerText = specie;
-            document.getElementById('ticket-boxes').innerText = `${boxes} Caja(s) Plástica(s) Oficial(es)`;
+            document.getElementById('ticket-boxes').innerText = `${boxes} Caja(s) Oficial(es)`;
             document.getElementById('ticket-gross').innerText = `${gross.toFixed(2)} kg`;
             document.getElementById('ticket-tare').innerText = `-${tare.toFixed(2)} kg`;
             document.getElementById('ticket-net').innerText = `${net.toFixed(2)} kg`;
+
+            showToast(`Pesaje ${specie}`, `Bruto ${gross.toFixed(1)} kg - Tara ${tare.toFixed(1)} kg = Neto ${net.toFixed(1)} kg`, 'info');
         }
 
         function generateScaleTicket() {
             playCashChime();
             const now = new Date();
             document.getElementById('ticket-time').innerText = now.toLocaleDateString() + ' ' + now.toLocaleTimeString();
-            alert('¡Ticket Fiscal DPA Paita emitido con éxito con descuento estricto de tara (-2.5 kg) y firma criptográfica SHA-256!');
+            showToast('Ticket Fiscal Emitido', 'Documento electrónico certificado con firma SHA-256 sin fraude.', 'success');
         }
+        function printScaleTicket() { window.print(); }
 
-        function printScaleTicket() {
-            window.print();
-        }
-
-        // COLD CHAIN IOT SIMULATION
+        // 7. Cadena de Frío IoT (Con tinte térmico en foto del furgón)
         function simulateHeatLeak() {
             playSiren();
             document.getElementById('iot-temp-display').innerText = '3.2';
@@ -2142,14 +2206,24 @@
             document.getElementById('top-temp-indicator').innerText = '3.2 °C';
             document.getElementById('top-temp-indicator').className = 'text-red-400 font-bold';
             document.getElementById('temp-ring').className = 'w-48 h-48 rounded-full border-8 border-red-200 flex flex-col items-center justify-center bg-red-50 shadow-inner';
-            
+
             const badge = document.getElementById('temp-status-badge');
             badge.className = 'bg-red-50 text-red-800 border border-red-300 text-xs px-3.5 py-1.5 rounded-full font-mono font-bold flex items-center animate-pulse';
             badge.innerHTML = '<i class="fas fa-exclamation-triangle mr-1.5 text-red-600"></i> ALERTA: TEMPERATURA 3.2 °C (> 2.5 °C)';
 
             const alertBox = document.getElementById('temp-alert-box');
             alertBox.className = 'mt-4 p-3 rounded-xl bg-red-100 border border-red-300 text-xs text-red-800 flex items-center justify-center space-x-2 animate-bounce font-bold';
-            alertBox.innerHTML = '<i class="fas fa-exclamation-circle text-lg text-red-600"></i><span>¡Sirena en cabina activada! Alerta push enviada a supervisor en Piura.</span>';
+            alertBox.innerHTML = '<i class="fas fa-exclamation-circle text-lg text-red-600"></i><span>¡Sirena activada! Alerta enviada al chofer y supervisor.</span>';
+
+            const ov = document.getElementById('frio-photo-overlay');
+            const fbadge = document.getElementById('frio-photo-badge');
+            if (ov) ov.className = 'absolute inset-0 bg-gradient-to-t from-red-950/90 via-red-600/35 to-transparent transition-colors duration-500';
+            if (fbadge) {
+                fbadge.className = 'bg-red-600 text-white font-mono text-[10px] font-black px-2.5 py-1 rounded-full shadow animate-pulse';
+                fbadge.innerHTML = '<i class="fas fa-exclamation-triangle mr-1"></i> ALERTA TÉRMICA: 3.2 °C';
+            }
+
+            showToast('¡Alerta Térmica > 2.5 °C!', 'El sensor DS18B20 detectó apertura prolongada de puerta en ruta.', 'alert');
         }
 
         function resetOptimalTemp() {
@@ -2159,7 +2233,7 @@
             document.getElementById('top-temp-indicator').innerText = '1.4 °C';
             document.getElementById('top-temp-indicator').className = 'text-emerald-300 font-bold';
             document.getElementById('temp-ring').className = 'w-48 h-48 rounded-full border-8 border-brand-100 flex flex-col items-center justify-center bg-slate-50 shadow-inner';
-            
+
             const badge = document.getElementById('temp-status-badge');
             badge.className = 'bg-emerald-50 text-emerald-800 border border-emerald-300 text-xs px-3.5 py-1.5 rounded-full font-mono font-bold flex items-center';
             badge.innerHTML = '<i class="fas fa-thermometer-half mr-1.5 text-emerald-600"></i> TEMPERATURA CONFORME: 1.4 °C';
@@ -2167,9 +2241,19 @@
             const alertBox = document.getElementById('temp-alert-box');
             alertBox.className = 'mt-4 p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-800 flex items-center justify-center space-x-2 font-medium';
             alertBox.innerHTML = '<i class="fas fa-shield-check text-base text-emerald-600"></i><span>Cadena de frío óptima restablecida. Cumplimiento Sanipes D.S. 040.</span>';
+
+            const ov = document.getElementById('frio-photo-overlay');
+            const fbadge = document.getElementById('frio-photo-badge');
+            if (ov) ov.className = 'absolute inset-0 bg-gradient-to-t from-brand-950/85 via-cyan-900/20 to-transparent transition-colors duration-500';
+            if (fbadge) {
+                fbadge.className = 'bg-emerald-500 text-slate-950 font-mono text-[10px] font-black px-2.5 py-1 rounded-full shadow';
+                fbadge.innerHTML = '<i class="fas fa-snowflake mr-1"></i> CÁMARA ACTIVA: 1.4 °C';
+            }
+
+            showToast('Frío Óptimo Restablecido', 'La cabina retornó a 1.4 °C cumpliendo D.S. 040 Sanipes.', 'success');
         }
 
-        // ESCROW SIMULATION
+        // 8. Bóveda Escrow (Animación secuencial de 4 pasos)
         function prepareEscrow() {
             document.getElementById('modulo-escrow').scrollIntoView({ behavior: 'smooth' });
         }
@@ -2177,35 +2261,70 @@
         function runEscrowSimulation() {
             playCashChime();
             const log = document.getElementById('escrow-log');
+            const amount = document.getElementById('cart-total')?.innerText || 'S/ 405.00';
             log.classList.remove('hidden');
-            log.innerHTML = `
-                <div class="text-brand-700"><strong>[05:30:00]</strong> Paso 1: Cebichería "El Cántaro" transfiere S/ 405.00 mediante Yape Business.</div>
-                <div class="text-slate-600"><strong>[05:30:02]</strong> Paso 2: Fondos asegurados en Bóveda Escrow Virtual PESCA-CLICK.</div>
-                <div class="text-amber-700"><strong>[06:28:15]</strong> Paso 3: Furgón P3A-812 arriba a Piura. Chef escanea QR del manifiesto. Temperatura verificada: 1.4 °C.</div>
-                <div class="text-emerald-700 font-bold"><strong>[06:28:17]</strong> Paso 4: ¡Fondos liberados! Don Pedro Chunga recibe S/ 405.00 en su cuenta Yape en 2.1 segundos. (Comisión 0% a pescador).</div>
-            `;
-            alert('¡Prueba de Bóveda Escrow ejecutada con éxito! Fondos liquidados en 2.1 segundos tras confirmación de entrega.');
+            log.innerHTML = `<div class="text-brand-700 font-bold"><strong>[05:30:00]</strong> Procesando depósito de ${amount} desde Cebichería "El Cántaro"...</div>`;
+
+            [1, 2, 3, 4].forEach(i => {
+                const el = document.getElementById('step-card-' + i);
+                if (el) el.className = 'bg-slate-50 p-4 rounded-xl border border-slate-200 transition-all duration-300';
+            });
+
+            const steps = [
+                { id: 1, delay: 100, msg: `<div class="text-brand-700"><strong>[05:30:00]</strong> Paso 1: Cebichería "El Cántaro" transfiere ${amount} mediante Yape Business.</div>` },
+                { id: 2, delay: 700, msg: `<div class="text-slate-600"><strong>[05:30:02]</strong> Paso 2: Fondos asegurados en Bóveda Escrow Virtual PESCA-CLICK.</div>` },
+                { id: 3, delay: 1300, msg: `<div class="text-amber-700"><strong>[06:28:15]</strong> Paso 3: Furgón P3A-812 arriba a Piura. Chef escanea QR. Temperatura: 1.4 °C.</div>` },
+                { id: 4, delay: 1900, msg: `<div class="text-emerald-700 font-bold"><strong>[06:28:17]</strong> Paso 4: ¡Fondos liberados! Pescador recibe ${amount} en su Yape en 2.1 segundos.</div>` }
+            ];
+
+            steps.forEach(s => {
+                setTimeout(() => {
+                    playBeep(600 + s.id * 120, 0.06);
+                    const card = document.getElementById('step-card-' + s.id);
+                    if (card) card.className = 'bg-emerald-50 p-4 rounded-xl border-2 border-emerald-500 shadow-md scale-[1.03] transition-all duration-300';
+                    if (s.id > 1) log.innerHTML += s.msg; else log.innerHTML = s.msg;
+                    if (s.id === 4) {
+                        playCashChime();
+                        triggerCelebration();
+                        showToast('¡Pago Escrow Liquidado (2.1s)!', `Se transfirieron ${amount} directo al Yape del pescador.`, 'success');
+                    }
+                }, s.delay);
+            });
         }
 
-        // TRACEABILITY LOT LOOKUP
+        // 9. Trazabilidad Sanipes QR (Cambia foto, código QR y certificado completo)
         const lotDatabase = {
             'LOTE-PAITA-2026-042': {
                 specie: 'Cabrilla Norteña (Paralabrax)',
                 vessel: 'Siempre San Pedro (PT-45210-BM)',
                 captain: 'Don Pedro Chunga (Paita)',
-                dest: 'Cebichería "El Cántaro" (Piura)'
+                dest: 'Cebichería "El Cántaro" (Piura)',
+                zone: 'Bahía de Paita • 1.4 °C',
+                img: 'img/cabrilla.jpg'
             },
             'LOTE-PAITA-2026-043': {
                 specie: 'Tollo de Leche (Mustelus)',
                 vessel: 'Don Lucho I (PT-38194-BM)',
                 captain: 'Don Luis Morales (Yacila)',
-                dest: 'Restaurante Marino "Mar y Luna" (Sullana)'
+                dest: 'Restaurante Marino "Mar y Luna" (Sullana)',
+                zone: 'Caleta Yacila • 1.2 °C',
+                img: 'img/tollo.jpg'
             },
             'LOTE-PAITA-2026-044': {
                 specie: 'Pota Manto Limpio (Dosidicus)',
                 vessel: 'Virgen de las Mercedes (PT-19402-BM)',
                 captain: 'Don Carlos Fiestas (La Islilla)',
-                dest: 'Cebichería "Norte Bravío" (Castilla)'
+                dest: 'Cebichería "Norte Bravío" (Castilla)',
+                zone: 'Caleta La Islilla • 0.9 °C',
+                img: 'img/pota.jpg'
+            },
+            'LOTE-PAITA-2026-045': {
+                specie: 'Mero Murique (Epinephelus)',
+                vessel: 'San José Bendito (PT-51203-BM)',
+                captain: 'Don Manuel Rumiche (Tierra Colorada)',
+                dest: 'Cebichería "El Cántaro" (Piura VIP)',
+                zone: 'Arrecifes Tierra Colorada • 1.0 °C',
+                img: 'img/mero.jpg'
             }
         };
 
@@ -2217,24 +2336,164 @@
         function verifyLot() {
             playSonarPing();
             const code = document.getElementById('lot-input').value.trim();
-            const data = lotDatabase[code] || {
-                specie: 'Especie Marina Certificada',
-                vessel: 'Embarcación Artesanal Paita',
-                captain: 'Patrón de Caleta',
-                dest: 'Cebichería Piurana'
-            };
+            const data = lotDatabase[code] || lotDatabase['LOTE-PAITA-2026-042'];
 
             document.getElementById('m-lot').innerText = code;
             document.getElementById('m-specie').innerText = data.specie;
             document.getElementById('m-vessel').innerText = data.vessel;
             document.getElementById('m-captain').innerText = data.captain;
             document.getElementById('m-dest').innerText = data.dest;
-            alert(`Lote ${code} verificado en la base de datos oficial de Sanipes / PRODUCE.`);
+
+            const mImg = document.getElementById('m-img');
+            const mBannerSpecie = document.getElementById('m-specie-banner');
+            const mZone = document.getElementById('m-zone');
+            const qrImg = document.getElementById('qr-preview-img');
+
+            if (mImg) {
+                mImg.style.opacity = '0.3';
+                setTimeout(() => { mImg.src = data.img; mImg.style.opacity = '1'; }, 120);
+            }
+            if (mBannerSpecie) mBannerSpecie.innerText = data.specie;
+            if (mZone) mZone.innerText = `Zona: ${data.zone} (Sanipes Conforme)`;
+            if (qrImg) qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(code + ' - ' + data.specie)}`;
+
+            showToast(`Lote ${code} Verificado`, `${data.specie} • Patrón: ${data.captain}`, 'success');
         }
 
-        // Initialize on load
+        // 10. Chatbot B2B (Con selector de pescadores y cambio de foto)
+        let isChatbotOpen = false;
+        let currentChatCaptain = 'pedro';
+
+        const captainsChatDB = {
+            pedro: {
+                name: 'Don Pedro Chunga',
+                sub: 'Lancha "Siempre San Pedro" • Cabrilla',
+                avatar: 'img/cabrilla.jpg',
+                greeting: '¡Buenas madrugadas, maestro! Ya estamos a 4 millas con 350 kg de Cabrilla fina en hielo en escamas. ¿Cuántos kilos te aparto?',
+                btnId: 'cbtn-pedro'
+            },
+            luis: {
+                name: 'Don Luis Morales',
+                sub: 'Lancha "Don Lucho I" • Tollo de Leche',
+                avatar: 'img/tollo.jpg',
+                greeting: '¡Hola chef! Saliendo de Caleta Yacila con 280 kg de Tollo de leche limpiecito y sin espinas a 1.2 °C.',
+                btnId: 'cbtn-luis'
+            },
+            carlos: {
+                name: 'Don Carlos Fiestas',
+                sub: 'Lancha "V. Mercedes" • Pota Limpia',
+                avatar: 'img/pota.jpg',
+                greeting: '¡Qué tal! Atracando en el muelle con 600 kg de Pota manto blanco de 18 mm. Lista para chicharrón y wok.',
+                btnId: 'cbtn-carlos'
+            }
+        };
+
+        function switchChatCaptain(key) {
+            const c = captainsChatDB[key];
+            if (!c) return;
+            currentChatCaptain = key;
+            playBeep(820, 0.05);
+
+            document.getElementById('chat-captain-name').innerText = c.name;
+            document.getElementById('chat-vessel-sub').innerText = c.sub;
+            const avatar = document.getElementById('chat-avatar');
+            avatar.style.opacity = '0.3';
+            setTimeout(() => { avatar.src = c.avatar; avatar.style.opacity = '1'; }, 120);
+
+            ['pedro', 'luis', 'carlos'].forEach(k => {
+                const btn = document.getElementById('cbtn-' + k);
+                if (btn) btn.className = 'bg-brand-800 hover:bg-brand-700 border border-brand-700 text-cyan-200 py-1 px-2 rounded-lg truncate';
+            });
+            const active = document.getElementById(c.btnId);
+            if (active) active.className = 'bg-cyan-500/30 border border-cyan-400 text-white py-1 px-2 rounded-lg font-bold truncate';
+
+            const msgBox = document.getElementById('chat-messages');
+            const newMsg = document.createElement('div');
+            newMsg.className = 'flex items-start space-x-2';
+            newMsg.innerHTML = `
+                <img src="${c.avatar}" class="w-7 h-7 rounded-full object-cover mt-0.5">
+                <div class="bg-white p-3 rounded-2xl rounded-tl-none border border-slate-200 shadow-sm max-w-[80%]">
+                    <span class="text-[10px] font-bold text-brand-700 block mb-0.5">${c.name} (Ahora)</span>
+                    <p class="text-slate-700">${c.greeting}</p>
+                </div>
+            `;
+            msgBox.appendChild(newMsg);
+            msgBox.scrollTop = msgBox.scrollHeight;
+        }
+
+        function toggleChatbot() {
+            playBeep(850, 0.05);
+            isChatbotOpen = !isChatbotOpen;
+            const win = document.getElementById('chatbot-window');
+            if (isChatbotOpen) {
+                win.classList.remove('hidden');
+                setTimeout(() => {
+                    win.classList.remove('scale-95');
+                    win.classList.add('scale-100');
+                }, 10);
+            } else {
+                win.classList.remove('scale-100');
+                win.classList.add('scale-95');
+                setTimeout(() => win.classList.add('hidden'), 200);
+            }
+        }
+
+        function sendQuickChat(text) {
+            document.getElementById('chat-input').value = text;
+            sendUserMessage();
+        }
+
+        function sendUserMessage() {
+            const input = document.getElementById('chat-input');
+            const text = input.value.trim();
+            if (!text) return;
+            playBeep(920, 0.04);
+
+            const msgBox = document.getElementById('chat-messages');
+            const userDiv = document.createElement('div');
+            userDiv.className = 'flex items-start justify-end space-x-2';
+            userDiv.innerHTML = `
+                <div class="bg-emerald-600 text-white p-3 rounded-2xl rounded-tr-none shadow-sm max-w-[80%]">
+                    <span class="text-[10px] font-bold text-emerald-200 block mb-0.5">Tú (Cebichería El Cántaro)</span>
+                    <p>${text}</p>
+                </div>
+            `;
+            msgBox.appendChild(userDiv);
+            input.value = '';
+            msgBox.scrollTop = msgBox.scrollHeight;
+
+            setTimeout(() => {
+                playSonarPing();
+                const c = captainsChatDB[currentChatCaptain];
+                const respDiv = document.createElement('div');
+                respDiv.className = 'flex items-start space-x-2';
+
+                let reply = '¡Copiado, maestro! Ya registré tu solicitud en la plataforma. En minutos pasamos por la balanza oficial del DPA Paita.';
+                if (text.toLowerCase().includes('especie') || text.toLowerCase().includes('traes')) {
+                    reply = `Hoy traemos captura selecta fresca: ${c.sub.split('•')[1].trim()} en excelente tamaño y rigor mortis.`;
+                } else if (text.toLowerCase().includes('frío') || text.toLowerCase().includes('temperatura')) {
+                    reply = 'Nuestra bodega marca entre 1.0 °C y 1.4 °C con hielo en escamas 1:1. Sensor DS18B20 verificando todo el trayecto.';
+                } else if (text.toLowerCase().includes('confirmar') || text.toLowerCase().includes('cabrilla')) {
+                    reply = '¡Excelente! Queda apartado tu lote. Los fondos ya están asegurados en la Bóveda Escrow para pago inmediato al recibir.';
+                    triggerCelebration();
+                }
+
+                respDiv.innerHTML = `
+                    <img src="${c.avatar}" class="w-7 h-7 rounded-full object-cover mt-0.5">
+                    <div class="bg-white p-3 rounded-2xl rounded-tl-none border border-slate-200 shadow-sm max-w-[80%]">
+                        <span class="text-[10px] font-bold text-brand-700 block mb-0.5">${c.name} (En Vivo)</span>
+                        <p class="text-slate-700">${reply}</p>
+                    </div>
+                `;
+                msgBox.appendChild(respDiv);
+                msgBox.scrollTop = msgBox.scrollHeight;
+            }, 650);
+        }
+
+        // Inicialización al cargar página
         window.onload = function() {
             renderCart();
+            selectVesselByKey('sanpedro');
         }
     </script>
 
@@ -2253,23 +2512,32 @@
         <!-- Ventana del Chatbot (Oculta por defecto) -->
         <div id="chatbot-window" class="hidden absolute bottom-16 left-0 w-[360px] sm:w-[400px] bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col transition-all duration-300 transform scale-95 origin-bottom-left">
             
-            <!-- Header del Chat -->
-            <div class="bg-brand-900 text-white p-4 flex items-center justify-between border-b border-brand-800">
-                <div class="flex items-center space-x-3">
-                    <div class="relative">
-                        <img src="img/muelle_paita.jpg" alt="Don Pedro Chunga" class="w-10 h-10 rounded-full object-cover border-2 border-cyan-400">
-                        <span class="w-3 h-3 bg-emerald-400 border-2 border-brand-900 rounded-full absolute bottom-0 right-0"></span>
+            <!-- Header del Chat con selector de pescadores -->
+            <div class="bg-brand-900 text-white p-4 space-y-3 border-b border-brand-800">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <div class="relative">
+                            <img id="chat-avatar" src="img/cabrilla.jpg" alt="Pescador" class="w-10 h-10 rounded-full object-cover border-2 border-cyan-400 transition-all duration-300">
+                            <span class="w-3 h-3 bg-emerald-400 border-2 border-brand-900 rounded-full absolute bottom-0 right-0"></span>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-white flex items-center">
+                                <span id="chat-captain-name">Don Pedro Chunga</span>
+                                <i class="fas fa-satellite text-cyan-400 text-xs ml-1.5" title="Enlace VHF Altamar"></i>
+                            </h4>
+                            <span id="chat-vessel-sub" class="text-[10px] text-cyan-300 font-mono block">Lancha "Siempre San Pedro" • Cabrilla</span>
+                        </div>
                     </div>
-                    <div>
-                        <h4 class="text-sm font-bold text-white flex items-center">
-                            Don Pedro Chunga <i class="fas fa-satellite text-cyan-400 text-xs ml-1.5" title="Enlace VHF Altamar"></i>
-                        </h4>
-                        <span class="text-[10px] text-cyan-300 font-mono">Patrón Lancha "Siempre San Pedro" • Paita</span>
-                    </div>
+                    <button onclick="toggleChatbot()" class="text-slate-400 hover:text-white transition text-sm">
+                        <i class="fas fa-times"></i>
+                    </button>
                 </div>
-                <button onclick="toggleChatbot()" class="text-slate-400 hover:text-white transition text-sm">
-                    <i class="fas fa-times"></i>
-                </button>
+                <!-- Selector rápido de embarcación en chat -->
+                <div class="grid grid-cols-3 gap-1.5 text-[10px] font-mono">
+                    <button onclick="switchChatCaptain('pedro')" id="cbtn-pedro" class="bg-cyan-500/30 border border-cyan-400 text-white py-1 px-2 rounded-lg font-bold truncate">Don Pedro (Cabrilla)</button>
+                    <button onclick="switchChatCaptain('luis')" id="cbtn-luis" class="bg-brand-800 hover:bg-brand-700 border border-brand-700 text-cyan-200 py-1 px-2 rounded-lg truncate">Don Luis (Tollo)</button>
+                    <button onclick="switchChatCaptain('carlos')" id="cbtn-carlos" class="bg-brand-800 hover:bg-brand-700 border border-brand-700 text-cyan-200 py-1 px-2 rounded-lg truncate">Don Carlos (Pota)</button>
+                </div>
             </div>
 
             <!-- Área de Mensajes del Chat -->
@@ -2327,7 +2595,7 @@
 
             <!-- Input de Texto para Enviar Mensajes -->
             <div class="p-3 bg-white border-t border-slate-200 flex items-center space-x-2">
-                <input id="chat-input" type="text" placeholder="Escribe al pescador Don Pedro..." class="flex-1 bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-brand-500">
+                <input id="chat-input" type="text" onkeypress="if(event.key==='Enter') sendUserMessage()" placeholder="Escribe al pescador Don Pedro..." class="flex-1 bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-brand-500">
                 <button onclick="sendUserMessage()" class="bg-brand-600 hover:bg-brand-700 text-white w-9 h-9 rounded-xl flex items-center justify-center transition shadow-sm">
                     <i class="fas fa-paper-plane text-xs"></i>
                 </button>
