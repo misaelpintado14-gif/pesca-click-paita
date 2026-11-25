@@ -57,7 +57,48 @@
             0% { transform: translate3d(0, 0, 0); }
             100% { transform: translate3d(-50%, 0, 0); }
         }
+    
+        /* ULTRA DESIGN ENHANCEMENTS */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .glow-brand {
+            box-shadow: 0 0 25px -5px rgba(2, 132, 199, 0.25);
+        }
+        .glow-emerald {
+            box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.25);
+        }
+        .card-lift {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .card-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 30px -10px rgba(10, 37, 64, 0.12), 0 10px 15px -5px rgba(10, 37, 64, 0.05);
+        }
+        /* TOAST CONTAINER */
+        #toast-container {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            pointer-events: none;
+        }
+        .toast-item {
+            pointer-events: auto;
+            animation: slideInRight 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-500 selection:text-white min-h-screen flex flex-col">
 
@@ -264,6 +305,45 @@
             </div>
         </div>
     </section>
+
+    <!-- STATS COUNTER BAR (IMPACTO REAL DEL PROYECTO) -->
+    <section class="bg-white border-y border-slate-200 py-6 px-4 shadow-sm relative z-20">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-4 text-center divide-y md:divide-y-0 md:divide-x divide-slate-100">
+            
+            <div class="p-2 space-y-1">
+                <span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider block font-bold">Volumen Transaccionado</span>
+                <div class="text-2xl sm:text-3xl font-black text-brand-900 font-mono">6,850 <small class="text-xs text-brand-600 font-bold">KG</small></div>
+                <span class="text-[11px] text-emerald-600 font-semibold block"><i class="fas fa-check-circle mr-1"></i> 137 despachos auditados</span>
+            </div>
+
+            <div class="p-2 space-y-1 pt-3 md:pt-2">
+                <span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider block font-bold">Embarcaciones Aliadas</span>
+                <div class="text-2xl sm:text-3xl font-black text-slate-900 font-mono">25 <small class="text-xs text-slate-500 font-bold">LANCHAS</small></div>
+                <span class="text-[11px] text-slate-600 font-medium block">Paita, Yacila y La Islilla</span>
+            </div>
+
+            <div class="p-2 space-y-1 pt-3 md:pt-2">
+                <span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider block font-bold">Cebicherías Conectadas</span>
+                <div class="text-2xl sm:text-3xl font-black text-brand-600 font-mono">45 <small class="text-xs text-brand-500 font-bold">LOCALES</small></div>
+                <span class="text-[11px] text-slate-600 font-medium block">Piura, Castilla y Sullana</span>
+            </div>
+
+            <div class="p-2 space-y-1 pt-3 md:pt-2">
+                <span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider block font-bold">Cadena de Frío IoT</span>
+                <div class="text-2xl sm:text-3xl font-black text-emerald-600 font-mono">1.4 <small class="text-xs text-emerald-500 font-bold">°C</small></div>
+                <span class="text-[11px] text-emerald-700 font-semibold block"><i class="fas fa-snowflake mr-1"></i> Sanipes D.S. 040 cumplido</span>
+            </div>
+
+            <div class="p-2 space-y-1 pt-3 md:pt-2 col-span-2 md:col-span-1">
+                <span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider block font-bold">Beneficio Directo Pescador</span>
+                <div class="text-2xl sm:text-3xl font-black text-emerald-600 font-mono">+125%</div>
+                <span class="text-[11px] text-brand-700 font-bold block">S/ 6.00 ➔ S/ 13.50 /kg neto</span>
+            </div>
+
+        </div>
+    </section>
+
+
 
     <!-- CONTENT SECTIONS (CLEAN & INTUITIVE) -->
     <main class="flex-grow max-w-7xl mx-auto px-4 py-12 space-y-16 w-full">
@@ -652,6 +732,14 @@
                         <button onclick="addToOrder('Cabrilla Norteña', 13.50, 'qty-cabrilla')" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-2.5 rounded-xl text-xs transition flex items-center justify-center shadow-sm">
                             <i class="fas fa-plus-circle mr-1.5"></i> Añadir a Pedido B2B
                         </button>
+<div class="flex items-center space-x-2 pt-2">
+                            <button onclick="openQuickView('cabrilla')" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 py-2 rounded-xl text-[11px] font-bold font-mono transition flex items-center justify-center">
+                                <i class="fas fa-eye mr-1 text-brand-600"></i> Vista Rápida
+                            </button>
+                            <a href="producto-cabrilla.html" class="flex-1 bg-brand-50 hover:bg-brand-100 text-brand-700 py-2 rounded-xl text-[11px] font-bold font-mono transition flex items-center justify-center">
+                                <i class="fas fa-file-invoice mr-1 text-brand-600"></i> Ficha B2B
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -708,6 +796,14 @@
                         <button onclick="addToOrder('Tollo de Leche', 11.00, 'qty-tollo')" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-2.5 rounded-xl text-xs transition flex items-center justify-center shadow-sm">
                             <i class="fas fa-plus-circle mr-1.5"></i> Añadir a Pedido B2B
                         </button>
+<div class="flex items-center space-x-2 pt-2">
+                            <button onclick="openQuickView('tollo')" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 py-2 rounded-xl text-[11px] font-bold font-mono transition flex items-center justify-center">
+                                <i class="fas fa-eye mr-1 text-brand-600"></i> Vista Rápida
+                            </button>
+                            <a href="producto-tollo.html" class="flex-1 bg-brand-50 hover:bg-brand-100 text-brand-700 py-2 rounded-xl text-[11px] font-bold font-mono transition flex items-center justify-center">
+                                <i class="fas fa-file-invoice mr-1 text-brand-600"></i> Ficha B2B
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -764,6 +860,14 @@
                         <button onclick="addToOrder('Pota Manto Limpio', 4.80, 'qty-pota')" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-2.5 rounded-xl text-xs transition flex items-center justify-center shadow-sm">
                             <i class="fas fa-plus-circle mr-1.5"></i> Añadir a Pedido B2B
                         </button>
+<div class="flex items-center space-x-2 pt-2">
+                            <button onclick="openQuickView('pota')" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 py-2 rounded-xl text-[11px] font-bold font-mono transition flex items-center justify-center">
+                                <i class="fas fa-eye mr-1 text-brand-600"></i> Vista Rápida
+                            </button>
+                            <a href="producto-pota.html" class="flex-1 bg-brand-50 hover:bg-brand-100 text-brand-700 py-2 rounded-xl text-[11px] font-bold font-mono transition flex items-center justify-center">
+                                <i class="fas fa-file-invoice mr-1 text-brand-600"></i> Ficha B2B
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -820,6 +924,14 @@
                         <button onclick="addToOrder('Mero Murique', 42.00, 'qty-mero')" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-2.5 rounded-xl text-xs transition flex items-center justify-center shadow-sm">
                             <i class="fas fa-plus-circle mr-1.5"></i> Añadir a Pedido B2B
                         </button>
+<div class="flex items-center space-x-2 pt-2">
+                            <button onclick="openQuickView('mero')" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 py-2 rounded-xl text-[11px] font-bold font-mono transition flex items-center justify-center">
+                                <i class="fas fa-eye mr-1 text-brand-600"></i> Vista Rápida
+                            </button>
+                            <a href="producto-mero.html" class="flex-1 bg-brand-50 hover:bg-brand-100 text-brand-700 py-2 rounded-xl text-[11px] font-bold font-mono transition flex items-center justify-center">
+                                <i class="fas fa-file-invoice mr-1 text-brand-600"></i> Ficha B2B
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -868,7 +980,7 @@
                         <button onclick="sendOrderWhatsApp()" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-5 py-3 rounded-xl text-xs transition shadow-md flex items-center justify-center">
                             <i class="fab fa-whatsapp mr-2 text-base"></i> Pedir por WhatsApp
                         </button>
-                        <a href="#modulo-escrow" onclick="prepareEscrow()" class="bg-brand-600 hover:bg-brand-700 text-white font-bold px-5 py-3 rounded-xl text-xs transition shadow-md flex items-center justify-center">
+                        <a onclick="openEscrowModal()" class="bg-brand-600 hover:bg-brand-700 text-white font-bold px-5 py-3 rounded-xl text-xs transition shadow-md flex items-center justify-center cursor-pointer">
                             <i class="fas fa-shield-alt mr-2"></i> Bóveda Escrow (Yape)
                         </a>
                     </div>
@@ -1355,6 +1467,88 @@
         </div>
     </footer>
 
+    <!-- TOAST CONTAINER -->
+    <div id="toast-container"></div>
+
+    <!-- MODAL DE VISTA RÁPIDA DE PRODUCTO -->
+    <div id="modal-quick-view" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm transition-all duration-300">
+        <div class="bg-white rounded-3xl max-w-xl w-full overflow-hidden shadow-2xl border border-slate-200 transform transition-all scale-95 duration-200" id="modal-box">
+            <div class="relative h-56 bg-slate-900">
+                <img id="qv-img" src="img/cabrilla.jpg" alt="Producto" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                <button onclick="closeQuickView()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/50 text-white hover:bg-black transition flex items-center justify-center backdrop-blur-sm">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="absolute bottom-4 left-5 right-5 text-white">
+                    <span id="qv-category" class="bg-brand-500 text-white font-mono text-[10px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider mb-1 inline-block">1° Calidad Marina</span>
+                    <h3 id="qv-title" class="text-2xl font-black">Cabrilla Norteña</h3>
+                    <p id="qv-scientific" class="text-xs text-cyan-300 font-mono italic">Paralabrax humeralis</p>
+                </div>
+            </div>
+            <div class="p-6 space-y-4">
+                <p id="qv-desc" class="text-xs text-slate-600 leading-relaxed">
+                    Pescado fresco del día desembarcado en el DPA Paita. Rigor mortis garantizado, branquias rojas y textura elástica para cebiche premium.
+                </p>
+                <div class="grid grid-cols-2 gap-3 text-xs font-mono">
+                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                        <span class="text-slate-400 block text-[10px] font-sans">Precio Pesca-Click:</span>
+                        <strong id="qv-price" class="text-lg text-emerald-600 font-bold">S/ 13.50 /kg</strong>
+                    </div>
+                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                        <span class="text-slate-400 block text-[10px] font-sans">Ahorro para Restaurante:</span>
+                        <strong id="qv-saving" class="text-lg text-brand-600 font-bold">-38.6% (vs revendedor)</strong>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3 pt-2">
+                    <input type="number" id="qv-qty" value="30" min="5" step="5" class="bg-slate-50 border border-slate-300 text-slate-800 text-sm font-mono font-bold rounded-xl px-3 py-3 w-24 text-center">
+                    <button onclick="addFromQuickView()" class="flex-1 bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition flex items-center justify-center space-x-2 text-xs">
+                        <i class="fas fa-cart-plus"></i>
+                        <span>Añadir al Pedido B2B</span>
+                    </button>
+                    <a id="qv-link" href="producto-cabrilla.html" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3 px-4 rounded-xl transition text-xs flex items-center">
+                        <i class="fas fa-file-invoice mr-1 text-brand-600"></i> Ficha
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE CHECKOUT BÓVEDA ESCROW / YAPE -->
+    <div id="modal-escrow-checkout" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm transition-all duration-300">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-slate-200 space-y-5 text-center">
+            <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl mx-auto shadow-sm">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <div>
+                <h3 class="text-xl font-black text-slate-900">Bóveda Escrow Virtual PESCA-CLICK</h3>
+                <p class="text-xs text-slate-500 mt-1">Pago custodiado con retención de fondos y liquidación automática al recibir conforme.</p>
+            </div>
+            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 font-mono text-xs space-y-2 text-left">
+                <div class="flex justify-between"><span>Restaurante:</span><strong>Cebichería "El Cántaro" (Piura)</strong></div>
+                <div class="flex justify-between"><span>Monto en Custodia:</span><strong id="escrow-modal-amount" class="text-brand-900 text-sm font-bold">S/ 405.00</strong></div>
+                <div class="flex justify-between text-emerald-700"><span>Ahorro Garantizado:</span><strong>-31.8%</strong></div>
+                <div class="flex justify-between text-slate-500"><span>Destinatario:</span><span>Patrón de Lancha (Paita)</span></div>
+            </div>
+            
+            <div class="p-3 bg-purple-50 rounded-2xl border border-purple-200 text-xs text-purple-900 space-y-1 text-left">
+                <div class="font-bold flex items-center"><i class="fas fa-qrcode mr-1.5 text-purple-600"></i> Yape Business / Plin Integrado:</div>
+                <p class="text-[11px] text-purple-700">Escanea o confirma para transferir los fondos a la bóveda temporal. Se liberan cuando el furgón llegue a Piura a 1.4 °C.</p>
+            </div>
+
+            <div class="space-y-2">
+                <button onclick="confirmEscrowPayment()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-4 rounded-xl shadow-md transition text-xs sm:text-sm flex items-center justify-center space-x-2">
+                    <i class="fas fa-lock"></i>
+                    <span>Confirmar Retención en Bóveda Escrow</span>
+                </button>
+                <button onclick="closeEscrowModal()" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-2.5 px-4 rounded-xl transition text-xs">
+                    Cancelar
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+
     <!-- JAVASCRIPT LOGIC WITH SYNTHESIZED WEB AUDIO -->
     <script>
         // Web Audio Synthesizer (Native Zero-Dependency)
@@ -1628,6 +1822,149 @@
             document.getElementById('cart-total').innerText = `S/ ${total.toFixed(2)}`;
             document.getElementById('nav-cart-total').innerText = `S/ ${total.toFixed(2)}`;
             document.getElementById('cart-savings').innerText = `S/ ${savings.toFixed(2)}`;
+        }
+
+        
+        // SHOW TOAST NOTIFICATION WITH SOUND
+        function showToast(title, msg, type = 'success') {
+            playBeep(type === 'success' ? 880 : 440, 0.08);
+            const container = document.getElementById('toast-container');
+            if (!container) return;
+
+            const toast = document.createElement('div');
+            const icon = type === 'success' ? 'fa-check-circle text-emerald-400' : 'fa-info-circle text-cyan-400';
+            const borderCol = type === 'success' ? 'border-emerald-500/40' : 'border-cyan-500/40';
+
+            toast.className = `toast-item bg-slate-900/95 text-white p-3.5 rounded-2xl border ${borderCol} shadow-2xl flex items-start space-x-3 max-w-sm backdrop-blur-md`;
+            toast.innerHTML = `
+                <i class="fas ${icon} text-lg mt-0.5"></i>
+                <div class="flex-1 pr-2">
+                    <strong class="text-xs font-bold block text-white">${title}</strong>
+                    <span class="text-[11px] text-slate-300 block leading-tight mt-0.5">${msg}</span>
+                </div>
+                <button onclick="this.parentElement.remove()" class="text-slate-400 hover:text-white text-xs">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(10px)';
+                toast.style.transition = 'all 0.3s ease';
+                setTimeout(() => toast.remove(), 300);
+            }, 4000);
+        }
+
+        // TRIGGER CONFETTI CELEBRATION
+        function triggerCelebration() {
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 80,
+                    spread: 70,
+                    origin: { y: 0.7 }
+                });
+            }
+        }
+
+        // QUICK VIEW MODAL CONTROLLER
+        const quickViewData = {
+            'cabrilla': {
+                title: 'Cabrilla Norteña',
+                scientific: 'Paralabrax humeralis',
+                category: '1° Calidad Marina',
+                img: 'img/cabrilla.jpg',
+                desc: 'Pescado insignia del litoral piurano. Capturado artesanalmente con espinel en Paita. Textura firme, ojos convexos y hojuelas carnosas para cebiche y sudado.',
+                price: 'S/ 13.50 /kg',
+                saving: '-38.6% (Ahorras S/ 8.50/kg)',
+                link: 'producto-cabrilla.html',
+                unitPrice: 13.50
+            },
+            'tollo': {
+                title: 'Tollo de Leche',
+                scientific: 'Mustelus whitneyi',
+                category: 'Carne Blanca Sin Espinas',
+                img: 'img/tollo.jpg',
+                desc: 'Pulpa blanca y tierna, 100% desprovista de espinas. Desembarcado en Caleta Yacila. Favorito de familias y cebicherías piuranas.',
+                price: 'S/ 11.00 /kg',
+                saving: '-38.8% (Ahorras S/ 7.00/kg)',
+                link: 'producto-tollo.html',
+                unitPrice: 11.00
+            },
+            'pota': {
+                title: 'Pota Manto Limpio',
+                scientific: 'Dosidicus gigas',
+                category: 'Cefalópodo del Pacífico',
+                img: 'img/pota.jpg',
+                desc: 'Manto grueso y blanco de 18 mm. Eviscerado en alta mar a 0.9 °C, sin amoniaco ni aditivos químicos. Listo para chicharrón y wok.',
+                price: 'S/ 4.80 /kg',
+                saving: '-40.0% (Ahorras S/ 3.20/kg)',
+                link: 'producto-pota.html',
+                unitPrice: 4.80
+            },
+            'mero': {
+                title: 'Mero Murique',
+                scientific: 'Epinephelus quinquefasciatus',
+                category: 'Alta Gama Gourmet',
+                img: 'img/mero.jpg',
+                desc: 'El rey de los arrecifes piuranos. Captura selectiva a 40 brazas en Tierra Colorada. Carne perlada inolvidable para sudado gourmet.',
+                price: 'S/ 42.00 /kg',
+                saving: '-30.0% (Ahorras S/ 18.00/kg)',
+                link: 'producto-mero.html',
+                unitPrice: 42.00
+            }
+        };
+
+        let currentQvKey = 'cabrilla';
+
+        function openQuickView(key) {
+            playBeep(750, 0.05);
+            currentQvKey = key;
+            const data = quickViewData[key];
+            if (!data) return;
+
+            document.getElementById('qv-title').innerText = data.title;
+            document.getElementById('qv-scientific').innerText = data.scientific;
+            document.getElementById('qv-category').innerText = data.category;
+            document.getElementById('qv-img').src = data.img;
+            document.getElementById('qv-desc').innerText = data.desc;
+            document.getElementById('qv-price').innerText = data.price;
+            document.getElementById('qv-saving').innerText = data.saving;
+            document.getElementById('qv-link').href = data.link;
+
+            const modal = document.getElementById('modal-quick-view');
+            modal.classList.remove('hidden');
+        }
+
+        function closeQuickView() {
+            document.getElementById('modal-quick-view').classList.add('hidden');
+        }
+
+        function addFromQuickView() {
+            const data = quickViewData[currentQvKey];
+            const qty = parseFloat(document.getElementById('qv-qty').value) || 30;
+            addToOrder(data.title, data.unitPrice, null, qty);
+            closeQuickView();
+            showToast('¡Añadido al Pedido B2B!', `${qty} kg de ${data.title} listos para despacho en frío.`, 'success');
+            triggerCelebration();
+        }
+
+        // ESCROW CHECKOUT MODAL CONTROLLER
+        function openEscrowModal() {
+            playCashChime();
+            const total = document.getElementById('cart-total').innerText;
+            document.getElementById('escrow-modal-amount').innerText = total;
+            document.getElementById('modal-escrow-checkout').classList.remove('hidden');
+        }
+
+        function closeEscrowModal() {
+            document.getElementById('modal-escrow-checkout').classList.add('hidden');
+        }
+
+        function confirmEscrowPayment() {
+            closeEscrowModal();
+            triggerCelebration();
+            showToast('¡Fondos Retenidos con Éxito!', 'Bóveda Escrow activada. Don Pedro Chunga recibirá la liquidación en Yape al entregar.', 'success');
+            runEscrowSimulation();
         }
 
         function addToOrder(name, price, inputId) {
